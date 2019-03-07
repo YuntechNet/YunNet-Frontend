@@ -6,10 +6,10 @@
           <li class="visible-sm visible-lg visible-md sidebar-brand"><a href="#top">YunNET 雲科網管</a></li>                  
           <li>
             <a href="/login">
-              <div class="visible-sm visible-md visible-lg"><span class="glyphicon glyphicon-log-in"> 登入｜Login</span></div>
-              <div class="hidden-sm hidden-md hidden-lg"> 登入｜Login</div>
+              <div class="d-none d-sm-block"><span class="glyphicon glyphicon-log-in"> 登入｜Login</span></div>
+              <div class="d-sm-none"> 登入｜Login</div>
             </a>
-          </li>                                   
+          </li>
           <div style="position: fixed; bottom: 0px; width: 100%;">
             <li><a href="#top">首頁｜Home</a></li>
             <li><a href="/regist">註冊｜Register</a></li>
