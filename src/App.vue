@@ -1,16 +1,15 @@
 <template>
-  <div id="app" class="container-fluid">
-    <index/>
+  <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
+  <div id="app" class="container-fluid ">
+    <router-view />
   </div>
 </template>
 
 <script>
-import Index from './components/Index.vue'
-
 export default {
   name: 'app',
-  components: { Index }
 }
+
 </script>
 
 <style>
@@ -21,5 +20,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   height: 100vh;
+  position: relative;
 }
 </style>
+    
