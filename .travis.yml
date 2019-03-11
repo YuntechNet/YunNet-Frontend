@@ -1,0 +1,30 @@
+language: node_js
+
+node_js: stable
+
+cache:
+  directories:
+    - npm
+    - node_modules
+
+before_install:
+  - npm i -g npm@6.4.1
+
+install:
+  - npm install
+
+script:
+  - npm run build
+
+after_success:
+  - cd ./dist
+  - git init
+  - git config user.name "YunNet-bot"
+  - git config user.email "dormnet@yuntech.edu.tw"
+  - git add .
+  - git commit -m "Travis Build Bot Update"
+  - git push --force --quiet "https://${BOT_GH_TOKEN}@github.com/YuntechNet/YunNet-Frontend" master:gh-pages
+
+branches:
+  only:
+    - dev
