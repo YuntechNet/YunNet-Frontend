@@ -6,7 +6,7 @@
           <li class="visible-sm visible-lg visible-md sidebar-brand"><a href="#top" style="font-size:19px;"><div id="yunnet-button">YunNET 雲科網管</div></a></li>                  
           
           <li>           
-            <a href="/login">
+            <a href="/#/login">
                 <div class="visible-sm visible-md visible-lg"><octicon name="zap" flip="vertical"> 登入｜Login</octicon></div>
                 <div class="hidden-sm hidden-md hidden-lg"> 登入｜Login</div>
             </a>
@@ -14,10 +14,10 @@
           </li>                                   
           <div style="position: fixed; bottom: 0px; width: 100%;">
             <li><a href="#top"><div id="button">首頁｜Home</div></a></li>
-            <li><a href="/regist"><div id="button">註冊｜Register</div></a></li>
-            <li><a href="/netflow?page=ipv4"><div id="button">流量｜Netflow</div></a></li>
-            <li><a href="/user_contract"><div id="button">規範｜Contract</div></a></li>
-            <li><a href="/universal_lock"><div id="button">鎖卡列表｜Lock Table</div></a></li>
+            <li><a href="/#/regist"><div id="button">註冊｜Register</div></a></li>
+            <li><a href="/#/netflow?page=ipv4"><div id="button">流量｜Netflow</div></a></li>
+            <li><a href="/#/user_contract"><div id="button">規範｜Contract</div></a></li>
+            <li><a href="/#/universal_lock"><div id="button">鎖卡列表｜Lock Table</div></a></li>
             <li><a href="#announce"><div id="button">公告｜Announce</div></a></li>
             <li><a href="#find_us"><div id="button">關於｜Find Us</div></a></li> 
             <hr style="background-color: #e0e0e0">                  
@@ -27,7 +27,6 @@
       </div>
     </div>
   </div>
-  
 </template>
 
 <script>

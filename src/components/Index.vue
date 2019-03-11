@@ -7,8 +7,8 @@
             <div style="height: 70px; width:510px; position: absolute; top:50%; left: 50%; margin: -40px 0 0 -255px;top: 40%;">                    
               <h1 style="margin: 0; padding: 0; font-size: 3.8em; font-weight: 600;">YunNET 雲科網管</h1>
             </div>
-            <div style="width: 104px; height:46px; position: absolute; left: 50%; bottom: 30px; margin: 0 0 0 -91px;">
-              <a href="/regist" class="btn btn-dark btn-lg"><b>Register Network</b></a>    
+            <div  style="width: 200px; height:46px; position: absolute; left: 50%; bottom: 30px; margin: 0 0 0 -91px;">
+              <a href="/#/regist" class="btn btn-dark btn-lg"><b>Register Network</b></a>    
             </div>
           </div>
           <div id="announce" class="col-12 bg-primary">
@@ -63,7 +63,7 @@ export default {
     padding: 0;
     height: 100vh;
   }
-     #top{
+  #top{
     background: url('https://yunnet.yuntech.edu.tw/static/stylish-portfolio/img/bg_test8_compress.jpg') center center fixed no-repeat;
     margin: 0;
     padding: 0;

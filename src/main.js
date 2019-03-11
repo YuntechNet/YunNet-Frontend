@@ -13,5 +13,7 @@ new Vue({
   router,
   components: { App },
   //template: '<App/>'
+  
   render: h => h(App)
+  
 })

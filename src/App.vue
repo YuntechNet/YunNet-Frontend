@@ -1,6 +1,5 @@
 <template>
-  <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
-  <div id="app" class="container-fluid ">
+  <div id="app" class="container-fluid">
     <router-view />
   </div>
 </template>
