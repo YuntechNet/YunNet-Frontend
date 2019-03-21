@@ -16,5 +16,10 @@ export default new Router({
       name: 'Userinfo',
       component: () => import('./components/Userinfo.vue')
     },
+    {
+      path: '/test',
+      name: 'Test',
+      component: () => import('./components/Test.vue')
+    },
   ]
 })

@@ -4,10 +4,10 @@
       <div class="container-fluid">
         <div class="row">
           <div id="top" class="col-12">
-            <div style="height: 70px; width:510px; position: absolute; top:50%; left: 50%; margin: -40px 0 0 -255px;top: 40%;">                    
+            <div style="height: 70px; position: absolute; top:50%; left: 50%; margin: -40px 0 0 -255px;top: 40%;">                    
               <h1 style="margin: 0; padding: 0; font-size: 3.8em; font-weight: 600;">YunNET 雲科網管</h1>
             </div>
-            <div  style="width: 200px; height:46px; position: absolute; left: 50%; bottom: 30px; margin: 0 0 0 -91px;">
+            <div  style="height:46px; position: absolute; left: 50%; bottom: 30px; margin: 0 0 0 -91px;">
               <a href="/#/regist" class="btn btn-dark btn-lg"><b>Register Network</b></a>    
             </div>
           </div>
@@ -67,9 +67,7 @@ export default {
     background: url('https://yunnet.yuntech.edu.tw/static/stylish-portfolio/img/bg_test8_compress.jpg') center center fixed no-repeat;
     margin: 0;
     padding: 0;
-    /*padding-top:122px; */
     height:100vh;
-    /*min-height:400px;*/
     -moz-background-size:cover;
     background-size:cover;
     background-repeat:no-repeat;

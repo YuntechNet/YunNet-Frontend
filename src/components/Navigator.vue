@@ -7,8 +7,9 @@
           
           <li>           
             <a href="/#/login">
-                <div class="visible-sm visible-md visible-lg"><octicon name="zap" flip="vertical"> 登入｜Login</octicon></div>
-                <div class="hidden-sm hidden-md hidden-lg"> 登入｜Login</div>
+                <div class="d-inline-block"><font-awesome-icon icon="sign-in-alt" /></div>
+                &nbsp
+                <div class="d-inline-block"> 登入｜Login</div>
             </a>
             
           </li>                                   
