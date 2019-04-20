@@ -3,14 +3,15 @@
     <background /> 
     <section class="container-fluid">
       <div class="row">
-        <div class="col-9 " style="margin:0px auto; top: 60px;background-color:#3d3d3d;">
-          <div >
-            <div class="col-11 d-inline-block" align="left">
-              <br>
-              <h1 >使用者資訊｜User Info.</h1>
-            </div>
-            <div class="d-inline-block" align="right">
-              <a class="btn btn-default btn-lg" href="/" style="background-color: white;"><font-awesome-icon icon="times" /></a>
+        <div class="col-8" style="margin:0px auto; padding:40px 50px 0px; top:60px;background-color:#3d3d3d;">
+          <div class="row">
+            <div class="col-12">
+              <div class="float-left">
+                <h1>使用者資訊｜User Info.</h1>
+              </div>
+              <div class="float-right">
+                <a class="btn btn-default btn-lg" href="/" style="background-color: white;"><font-awesome-icon icon="times" /></a>
+              </div>
             </div>
           </div>
           <hr>  

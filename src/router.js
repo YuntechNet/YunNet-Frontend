@@ -11,10 +11,17 @@ export default new Router({
       name: 'Index',
       component: () => import('./components/Index.vue')
     },
+    
     {
       path: '/userinfo',
       name: 'Userinfo',
       component: () => import('./components/Userinfo.vue')
+    },
+
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import('./components/Login.vue')
     },
 
   ]

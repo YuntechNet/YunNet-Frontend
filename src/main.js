@@ -7,10 +7,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 Vue.config.productionTip = false
 library.add(faTimes, faSignInAlt);
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-
 
 
 new Vue({
@@ -18,7 +18,11 @@ new Vue({
   router,
   components: { App },
   //template: '<App/>'
-  
+  methods: {
+    prompt() {
+      ('#query_form').submit();
+    },
+  },
   render: h => h(App)
   
 })

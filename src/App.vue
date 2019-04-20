@@ -5,10 +5,11 @@
 </template>
 
 <script>
+import VueRecaptcha from 'vue-recaptcha';
 export default {
   name: 'app',
+  components: { VueRecaptcha }
 }
-
 </script>
 
 <style>

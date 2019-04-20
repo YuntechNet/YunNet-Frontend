@@ -18,6 +18,7 @@
     "octicons-vue": "^0.17.12",
     "popper.js": "^1.14.7",
     "vue": "^2.6.6",
+    "vue-recaptcha": "^1.1.1",
     "vue-router": "^3.0.2"
   },
   "devDependencies": {
