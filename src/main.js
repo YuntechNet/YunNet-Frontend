@@ -18,11 +18,7 @@ new Vue({
   router,
   components: { App },
   //template: '<App/>'
-  methods: {
-    prompt() {
-      ('#query_form').submit();
-    },
-  },
+  
   render: h => h(App)
   
 })
