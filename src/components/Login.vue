@@ -11,13 +11,13 @@
                 <h1>Login</h1>
               </div>
               <div class="float-right">
-                <a class="btn btn-default btn-lg" href="/" style="background-color: white;"><font-awesome-icon icon="times" /></a>
+                <a class="btn btn-default btn-lg" href="./" style="background-color: white;"><font-awesome-icon icon="times" /></a>
               </div>
             </div>
           </div>
           <hr>
           <div>
-            <form id="query_form" action="/login" method="POST" accept-charset="utf-8" style="font-size:20px;">
+            <form id="query_form" action="./#/login" method="POST" accept-charset="utf-8" style="font-size:20px;">
               <div class="form-group">
                 <p>
                   <label for="account" class="float-left" >帳號(學號) / 床位｜Username(Std. ID)/Bed：</label>
@@ -34,8 +34,8 @@
                     </div>
                   </div>
                 <div>
-                  <a class="btn btn-primary btn-lg" href="/regist">註冊｜Regist</a>
-                  <a class="btn btn-danger btn-lg" href="/forgot_password">忘記密碼｜Forget Password</a>
+                  <a class="btn btn-primary btn-lg" href="./#/regist">註冊｜Regist</a>
+                  <a class="btn btn-danger btn-lg" href="./#/forgot_password">忘記密碼｜Forget Password</a>
                   <a class="btn btn-success btn-lg"type="submit">登入｜Login</a>
                 </div>
               </div>

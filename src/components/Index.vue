@@ -8,7 +8,7 @@
               <h1 style="margin: 0; padding: 0; font-size: 3.8em; font-weight: 600;">YunNET 雲科網管</h1>
             </div>
             <div  style="height:46px; position: absolute; left: 50%; bottom: 30px; margin: 0 0 0 -91px;">
-              <a href="/#/regist" class="btn btn-dark btn-lg"><b>Register Network</b></a>    
+              <a href="./#/regist" class="btn btn-dark btn-lg"><b>Register Network</b></a>    
             </div>
           </div>
           <div id="announce" class="col-12 bg-primary">

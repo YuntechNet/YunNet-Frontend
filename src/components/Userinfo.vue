@@ -10,18 +10,18 @@
                 <h1>使用者資訊｜User Info.</h1>
               </div>
               <div class="float-right">
-                <a class="btn btn-default btn-lg" href="/" style="background-color: white;"><font-awesome-icon icon="times" /></a>
+                <a class="btn btn-default btn-lg" href="./" style="background-color: white;"><font-awesome-icon icon="times" /></a>
               </div>
             </div>
           </div>
           <hr>  
           <div style="text-align:left;">
             <div class="d-inline-block" >
-              <a class="btn btn-primary " href="/#/change_password">更改密碼<br>Change Password</a>
+              <a class="btn btn-primary " href="./#/change_password">更改密碼<br>Change Password</a>
             </div> 
             &nbsp
             <div class="d-inline-block">
-              <a class="btn btn-primary" href="/#/change_mac">更換MAC卡號<br>Change MAC</a>
+              <a class="btn btn-primary" href="./#/change_mac">更換MAC卡號<br>Change MAC</a>
             </div>
           </div>
           <div style="text-align:center;" > 
