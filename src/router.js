@@ -23,6 +23,21 @@ export default new Router({
       name: 'Login',
       component: () => import('./components/Login.vue')
     },
+    {
+      path: '/netflow',
+      name: 'Netflown',
+      component: () => import('./components/Netflow.vue')
+    },
+    {
+      path: '/universal_lock',
+      name: 'Universal_lock',
+      component: () => import('./components/Universal_lock.vue')
+    },
+    {
+      path: '/dormitory_lock',
+      name: 'Dormitory_lock',
+      component: () => import('./components/Dormitory_lock.vue')
+    },
 
   ]
 })

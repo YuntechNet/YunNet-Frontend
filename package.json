@@ -14,13 +14,16 @@
     "@fortawesome/free-solid-svg-icons": "^5.8.0",
     "@fortawesome/vue-fontawesome": "^0.1.6",
     "bootstrap": "^4.0.0-beta.3",
+    "bootstrap-material-design": "^4.1.1",
     "jquery": "^3.3.1",
     "octicons": "^8.5.0",
     "octicons-vue": "^0.17.12",
     "popper.js": "^1.14.7",
     "vue": "^2.6.6",
     "vue-recaptcha": "^1.1.1",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.0.2",
+    "vue2-datepicker": "^2.11.1",
+    "vuejs-datepicker": "^1.5.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
@@ -55,5 +58,4 @@
     "last 2 versions",
     "not ie <= 8"
   ]
-  
 }
