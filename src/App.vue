@@ -1,20 +1,18 @@
 <template>
   <div id="app" class="container-fluid">
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
 <script>
-import VueRecaptcha from 'vue-recaptcha';
 export default {
-  name: 'app',
-  components: { VueRecaptcha }
+  name: "app"
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -23,4 +21,3 @@ export default {
   position: relative;
 }
 </style>
-    
