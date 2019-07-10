@@ -15,15 +15,15 @@
           <li>
             <a href="./#/login" v-show="!user.token">
               <div class="d-inline-block">
-                <font-awesome-icon icon="sign-in-alt"/>
-              </div>&nbsp
-              <div class="d-inline-block">登入｜Login</div>
+                <font-awesome-icon icon="sign-in-alt" />
+              </div>
+              <div class="d-inline-block" style="margin:0px 20px">登入｜Login</div>
             </a>
             <b-btn v-show="user.token" @click="loginOut">
               <div class="d-inline-block">
-                <font-awesome-icon icon="sign-in-alt"/>
-              </div>&nbsp
-              <div class="d-inline-block">登出｜Logout</div>
+                <font-awesome-icon icon="sign-in-alt" />
+              </div>
+              <div class="d-inline-block" style="margin:0px 20px">登出｜Logout</div>
             </b-btn>
           </li>
           <div style="position: fixed; bottom: 0px; width: 100%;">
@@ -62,7 +62,7 @@
                 <div id="button">關於｜Find Us</div>
               </a>
             </li>
-            <hr style="background-color: #e0e0e0">
+            <hr style="background-color: #e0e0e0" />
           </div>
         </ul>
       </div>

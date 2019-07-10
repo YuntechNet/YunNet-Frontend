@@ -1,107 +1,154 @@
 <template>
   <div class="row">
-    <background/>
+    <background />
     <section class="container-fluid">
       <div class="row">
-        <div
-          class="col-8"
-          style="margin:0px auto; padding:40px 50px 0px; top:60px;background-color:#3d3d3d;"
-        >
+        <div class="col-12" style="padding-top: 5%;"></div>
+        <div class="col-12 col-sm-10 offset-sm-1" style="background-color: rgb(51,51,51,0.6);">
           <div class="row">
-            <div class="col-12">
+            <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
+              <div class="float-right">
+                <a class="btn btn-default btn-lg" href="./" style="background-color: white;">
+                  <font-awesome-icon icon="times" />
+                </a>
+              </div>
               <div class="float-left">
                 <h1>使用者資訊｜User Info.</h1>
               </div>
-              <div class="float-right">
-                <a class="btn btn-default btn-lg" href="./" style="background-color: white;">
-                  <font-awesome-icon icon="times"/>
-                </a>
+            </div>
+
+            <div class="col-10 offset-1">
+              <hr />
+            </div>
+            <div class="col-12">
+              <div class="d-flex justify-content-center">
+                <div class="btn btn-info column" href="./#/change_password">
+                  更改密碼
+                  <br />Change Password
+                </div>
+
+                <div class="btn btn-info column" href="./#/change_mac">
+                  更換MAC卡號
+                  <br />Change MAC
+                </div>
               </div>
             </div>
-          </div>
-          <hr>
-          <div style="text-align:left;">
-            <div class="d-inline-block">
-              <a class="btn btn-primary" href="./#/change_password">
-                更改密碼
-                <br>Change Password
-              </a>
-            </div>&nbsp
-            <div class="d-inline-block">
-              <a class="btn btn-primary" href="./#/change_mac">
-                更換MAC卡號
-                <br>Change MAC
-              </a>
+            <div class="col-12" style="padding-top: 2%;"></div>
+            <div class="col-10 offset-1">
+              <div class="row">
+                <div class="col-11 offset-1">
+                  <div class="d-flex justify-content-center">
+                    <table style="text-align:left;">
+                      <tbody>
+                        <tr>
+                          <th scope="row">
+                            <a style="font-size:13px;">使用者</a>
+                            <a style="margin:0px 2px;">|</a> User
+                          </th>
+                          <td align="left">
+                            <div style="margin:0px 20px">{{ User }}</div>
+                          </td>
+                        </tr>
+                        <tr align="left">
+                          <th scope="row">部門｜Depart</th>
+                          <td align="left">
+                            <div style="margin:0px 20px">{{ Depart }}</div>
+                          </td>
+                        </tr>
+                        <tr align="left">
+                          <th scope="row">姓名｜Name</th>
+                          <td align="left">
+                            <div style="margin:0px 20px">{{ Name }}</div>
+                          </td>
+                        </tr>
+                        <tr align="left">
+                          <th scope="row">IP&nbsp; &nbsp;</th>
+                          <td>
+                            <div style="margin:0px 20px">{{ IP }}&nbsp; &nbsp;&nbsp; &nbsp;</div>
+                          </td>
+                        </tr>
+                        <tr align="left">
+                          <th scope="row">Mac</th>
+                          <td>
+                            <div style="margin:0px 20px">{{ Mac }}</div>
+                          </td>
+                        </tr>
+                        <tr align="left">
+                          <th scope="row">戶號｜Portal</th>
+                          <td>
+                            <div style="margin:0px 20px">{{ Portal }}</div>
+                          </td>
+                        </tr>
+                        <tr align="left">
+                          <th scope="row">床型｜Type</th>
+                          <td>
+                            <div style="margin:0px 20px">{{ Type }}</div>
+                          </td>
+                        </tr>
+                        <tr align="left">
+                          <th scope="row">狀態｜Status</th>
+                          <td>
+                            <div style="margin:0px 20px">{{ Status }}</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <div class="d-inline-block" style="height:25%;">
+                      <center>
+                        <b-button v-b-toggle.collapse-1 variant="info">Show</b-button>
+
+                        <b-collapse id="collapse-1" class="mt-2">
+                          <b-card>
+                            <img class="hidden-xs" src="https://ppt.cc/qr/fW46Dx" style="width:80%" />
+                            <a style="color: black;" href="http://www.google.com.tw">
+                              <p>
+                                YunTech網路流量粉絲團。
+                                <br />
+                              </p>
+                            </a>
+                          </b-card>
+                        </b-collapse>
+                      </center>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12" style="padding-top: 3%;"></div>
+                <div class="col-12 table-responsive">
+                  <table class="table table-sm" cellspacing="0">
+                    <thead>
+                      <tr class="bg-warning">
+                        <th id="thead" class="text-size" style="text-align:center;">月份日期</th>
+                        <th id="thead" class="text-size" style="text-align:center;">校內上傳</th>
+                        <th id="thead" class="text-size" style="text-align:center;">校內下載</th>
+                        <th id="thead" class="text-size" style="text-align:center;">校外上傳</th>
+                        <th id="thead" class="text-size" style="text-align:center;">校外下載</th>
+                        <th id="thead" class="text-size" style="text-align:center;">校內總量</th>
+                        <th id="thead" class="text-size" style="text-align:center;">校外總量</th>
+                        <th id="thead" class="text-size" style="text-align:center;">總共流量</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr id="tbody" class="bg-info">
+                        <th class="text-size" style="text-align:center;">2019/7/6</th>
+                        <th class="text-size" style="text-align:center;">0.0B</th>
+                        <th class="text-size" style="text-align:center;">0.0B</th>
+                        <th class="text-size" style="text-align:center;">0.0B</th>
+                        <th class="text-size" style="text-align:center;">16.89KB</th>
+                        <th class="text-size" style="text-align:center;">0.0B</th>
+                        <th class="text-size" style="text-align:center;">16.89KB</th>
+                        <th class="text-size" style="text-align:center;">16.89KB</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-1"></div>
             </div>
-          </div>
-          <div style="text-align:center;">
-            <div class="d-inline-block" style="height:300px;">
-              <table align="center">
-                <tr align="left">
-                  使用者｜User
-                  <td align="left">&nbsp&nbsp&nbsp&nbsp{{ User }}</td>
-                </tr>
-                <tr align="left">
-                  部門｜Depart
-                  <td align="left">&nbsp&nbsp&nbsp&nbsp{{ Depart }}</td>
-                </tr>
-                <tr align="left">
-                  姓名｜Name
-                  <td align="left">&nbsp&nbsp&nbsp&nbsp{{ Name }}</td>
-                </tr>
-                <tr align="left">
-                  IP｜IP
-                  <td>&nbsp&nbsp&nbsp&nbsp{{ IP }}</td>
-                </tr>
-                <tr align="left">
-                  MAC｜Mac
-                  <td>&nbsp&nbsp&nbsp&nbsp{{ Mac }}</td>
-                </tr>
-                <tr align="left">
-                  戶號｜Portal
-                  <td>&nbsp&nbsp&nbsp&nbsp{{ Portal }}</td>
-                </tr>
-                <tr align="left">
-                  Type
-                  <td>&nbsp&nbsp&nbsp&nbsp{{ Type }}</td>
-                </tr>
-                <tr align="left">
-                  狀態｜Status
-                  <td>&nbsp&nbsp&nbsp&nbsp{{ Status }}</td>
-                </tr>
-              </table>
-            </div>&nbsp&nbsp
-            <div class="d-inline-block" style="height:300px;">
-              <td rowspan="9" style="width: 50px;">
-                <center>
-                  <a style="color: pink;" href="http://www.google.com.tw">
-                    <img class="hidden-xs" src="https://ppt.cc/qr/fW46Dx">
-                    <p>
-                      點擊加入YunTech網路流量粉絲團。
-                      <br>
-                    </p>
-                    <div class="hidden-xs">掃描QRCode即可隨時追蹤網路狀態！</div>
-                    <p></p>
-                  </a>
-                </center>
-              </td>
-            </div>
-          </div>
-          <div style="text-align:left;">
-            <table class="table table-hover" style="color: black;" cellspacing="0">
-              <tr class="bg-primary">
-                <th style="text-align:center;">日期</th>
-                <th style="text-align:center;">校內上傳</th>
-                <th style="text-align:center;">校內下載</th>
-                <th style="text-align:center;">校外上傳</th>
-                <th style="text-align:center;">校外下載</th>
-                <th style="text-align:center;">校內總量</th>
-                <th style="text-align:center;">校外總量</th>
-                <th style="text-align:center;">總流量</th>
-              </tr>
-            </table>
           </div>
         </div>
+        <div class="col-1"></div>
+        <div class="col-12" style="padding-top: 20%;"></div>
       </div>
     </section>
   </div>
@@ -113,16 +160,16 @@ import Background from "@/components/Background"
 export default {
   name: "Userinfo",
   components: { Background },
-  data: function() {
+  data() {
     return {
-      User: "123",
-      Depart: "123",
-      Name: "123",
-      IP: "123",
-      Mac: "123",
-      Portal: "123",
-      Type: "123",
-      Status: "123"
+      User: " B10713104",
+      Depart: " 四電子一B",
+      Name: "林子崴",
+      IP: "140.125.201.107",
+      Mac: "70-8B-CD-12-F5-DC",
+      Portal: "A2101",
+      Type: "一般房 ",
+      Status: "已使用/已註冊"
     }
   }
 }
@@ -137,5 +184,32 @@ td {
 }
 hr {
   background-color: white;
+}
+div.column {
+  margin: 0px 20px;
+  width: 25%;
+}
+th.text-size {
+  font-size: 15px;
+}
+a.display {
+  display: block;
+}
+@media screen and (max-width: 600px) {
+  div.column {
+    width: 50%;
+  }
+  th.text-size {
+    font-size: 12px;
+  }
+  a.display {
+    display: none;
+  }
+}
+#thead:hover {
+  background-color: rgba(245, 233, 132, 0.5);
+}
+#tbody:hover {
+  background-color: rgba(199, 244, 244, 0.5);
 }
 </style>

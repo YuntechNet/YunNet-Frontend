@@ -1,5 +1,5 @@
 <template>
-  <header id="BK" class="col-12" style="position:fixed"></header>
+  <header id="BK" class="col-12" style="position:fixed;"></header>
 </template>
 <style>
 #BK {

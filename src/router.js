@@ -37,6 +37,21 @@ export default new Router({
       path: "/dormitory_lock",
       name: "Dormitory_lock",
       component: () => import("./components/Dormitory_lock.vue")
-    }
+    },
+    {
+      path: "/register",
+      name: "Register",
+      component: () => import("./components/Register.vue")
+    },
+    {
+      path: "/contract",
+      name: "Contract",
+      component: () => import("./components/Contract.vue")
+    },
+    {
+      path: "/user_contract",
+      name: "User_contract",
+      component: () => import("./components/User_contract.vue")
+    },
   ]
 });
