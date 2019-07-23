@@ -3,11 +3,8 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: "http://localhost:9090",
-        secure: false,
-        pathRewrite: {
-          "^/api": ""
-        }
+        target: "http://yunnet-boom.dorm.yuntech.edu.tw:8000",
+        secure: false
       }
     }
   }

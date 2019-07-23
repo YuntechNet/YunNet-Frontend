@@ -1,6 +1,7 @@
 <template>
   <div class="row">
     <div class="col-12 col-sm-10" id="BK">
+      <b-alert :show="errors" variant="warning" dismissible>{{errors}}</b-alert>
       <div class="row">
         <div class="col-12 display1" style="position: fixed; z-index: 999;">
           <b-button id="list" variant="info" @click="increase" style="color:white;">選單 | LIST</b-button>
@@ -34,24 +35,21 @@
               @sliding-end="onSlideEnd"
             >
               <b-carousel-slide
-                caption="系統表定維護時間公告
-"
+                caption="系統表定維護時間公告"
                 style="height:70vh;background-color:rgba(63,127,191,0.85)"
               >
                 <div class="col-12 col-sm-6 offset-sm-3 announce"></div>
               </b-carousel-slide>
 
               <b-carousel-slide
-                caption=" 107暑假住宿網路註冊須知
-"
+                caption=" 107暑假住宿網路註冊須知"
                 style="height:70vh;background-color:rgba(63,127,191,0.85)"
               >
                 <div class="col-12 col-sm-6 offset-sm-3 announce"></div>
               </b-carousel-slide>
 
               <b-carousel-slide
-                caption="107學年度宿舍暑期網路設備更換時程表
-"
+                caption="107學年度宿舍暑期網路設備更換時程表"
                 style="height:70vh;background-color:rgba(63,127,191,0.85)"
               >
                 <div class="col-12 col-sm-6 offset-sm-3 announce"></div>
@@ -87,7 +85,8 @@
       <div class="row">
         <div class="col-12" style="padding:7%;"></div>
         <a class="btn col-12" href="#top" role="button">YunNET 雲科網管</a>
-        <a class="btn col-12" href="./#/login" role="button">登入｜Login</a>
+        <a v-if="!isAuthenticated" class="btn col-12" href="./#/login" role="button">登入｜Login</a>
+        <a v-if="isAuthenticated" class="btn col-12" @click.prevent="logout" role="button">登出｜Login</a>
         <div class="col-12" style="padding:7%;"></div>
         <a class="btn col-12" href="#top" role="button">首頁｜Home</a>
         <a class="btn col-12" href="./#/register" role="button">註冊｜Register</a>
@@ -105,7 +104,14 @@
     >
       <div class="row">
         <a class="btn col-12" href="#top" role="button">YunNET 雲科網管</a>
-        <a class="btn col-12" href="./#/login" role="button">登入｜Login</a>
+        <a v-if="!isAuthenticated" class="btn col-12" href="./#/login" role="button">登入｜Login</a>
+        <a
+          v-if="isAuthenticated"
+          class="btn col-12"
+          @click.prevent="logout"
+          role="button"
+          style="color:white;"
+        >登出｜Login</a>
         <div class="col-12" style="padding:25vh;"></div>
         <a class="btn col-12" href="#top" role="button">首頁｜Home</a>
         <a class="btn col-12" href="./#/register" role="button">註冊｜Register</a>
@@ -122,34 +128,48 @@
 
 
 <script>
-var counter = 0
+import { mapGetters } from "vuex";
+import { mapState } from "vuex";
+import { LOGOUT } from "@/store/actions_type";
+
 export default {
   name: "index",
   data() {
     return {
       slide: 0,
       sliding: null
-    }
+    };
   },
   methods: {
     increase: function() {
-      var x = document.getElementById("title")
-
-      counter++
+      var x = document.getElementById("title");
+      let counter = 0;
+      counter++;
 
       if (counter == 1) {
-        x.style.visibility = "visible"
+        x.style.visibility = "visible";
       }
 
       if (counter == 2) {
-        x.style.visibility = "hidden"
+        x.style.visibility = "hidden";
       }
       if (counter == 2) {
-        counter = 0
+        counter = 0;
       }
+    },
+    logout() {
+      this.$store.dispatch(LOGOUT).then(() => {
+        this.$router.push({ name: "Index" });
+      });
     }
+  },
+  computed: {
+    ...mapGetters(["isAuthenticated"]),
+    ...mapState({
+      errors: state => state.auth.errors
+    })
   }
-}
+};
 </script>
 <style>
 #BK {

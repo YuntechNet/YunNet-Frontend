@@ -1,4 +1,4 @@
-    <template>
+<template>
   <div class="row">
     <background />
     <section class="container-fluid">
@@ -21,21 +21,17 @@
             </div>
           </div>
           <hr />
+          <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
           <div class="col-10 offset-1">
-            <b-form @submit.prevent="login">
+            <b-form @submit.prevent="login(username, password, recaptcha_id)">
               <h5>
                 <b-form-group
                   class="text-left"
                   id="username-group"
-                  label="帳號(學號) / 床位｜Username(Std. ID)/Bed："
+                  label="帳號(學號)｜Username(Std. ID)："
                   label-for="username"
                 >
-                  <b-form-input
-                    id="username"
-                    v-model="form.username"
-                    required
-                    placeholder="account"
-                  ></b-form-input>
+                  <b-form-input id="username" v-model="username" required placeholder="account"></b-form-input>
                 </b-form-group>
                 <b-form-group
                   class="text-left"
@@ -46,8 +42,7 @@
                   <b-form-input
                     type="password"
                     id="password"
-                    v-model="form.password"
-                    required
+                    v-model="password"
                     placeholder="password"
                   ></b-form-input>
                 </b-form-group>
@@ -56,7 +51,7 @@
                 <div style="padding:10px">
                   <div style="margin:0px auto;">
                     <vue-recaptcha
-                      sitekey="6Leyq6AUAAAAACiPhHIFI14DwDbhS1RVk0DoSIJ2"
+                      sitekey="6LdCE64UAAAAAFqQk-rUgfq4RqjVy0VMMrsP7Qfk"
                       @verify="recaptcha"
                       class="align-self-center"
                     ></vue-recaptcha>
@@ -64,7 +59,11 @@
                 </div>
               </center>
               <div>
-                <a class="btn btn-primary btn-lg" href="./#/regist" style="margin:5px 5px">註冊｜Regist</a>
+                <a
+                  class="btn btn-primary btn-lg"
+                  href="./#/register"
+                  style="margin:5px 5px"
+                >註冊｜Regist</a>
                 <b-button
                   type="submit"
                   variant="btn btn-success btn-lg"
@@ -85,9 +84,10 @@
 </template>
 
 <script>
-import Background from "@/components/Background"
-import VueRecaptcha from "vue-recaptcha"
-import { mapActions } from "vuex"
+import Background from "@/components/Background";
+import VueRecaptcha from "vue-recaptcha";
+import { mapState } from "vuex";
+import { LOGIN } from "@/store/actions_type";
 
 export default {
   name: "Login",
@@ -97,41 +97,27 @@ export default {
   },
   data() {
     return {
-      form: {
-        username: "",
-        password: "",
-        recaptcha_id: ""
-      }
-    }
+      username: null,
+      password: null,
+      recaptcha_id: null
+    };
   },
   methods: {
-    recaptcha: function(response) {
-      this.form.recaptcha_id = response
+    recaptcha(response) {
+      this.recaptcha_id = response;
     },
-    ...mapActions(["userLogin"]),
-    login: function() {
-      let login = this.form
-      let formData = {
-        username: login.username,
-        password: login.password,
-        recaptcha: login.recaptcha_id
-      }
-      this.$http
-        .post("./api/login", formData)
-        .then(res => {
-          if (res.data.token) {
-            this.userLogin(res.data)
-            this.$router.push("./")
-          } else {
-            alert("????")
-          }
-        })
-        .catch(err => {
-          alert(err.response.data.message)
-        })
+    login(username, password) {
+      this.$store
+        .dispatch(LOGIN, { username, password })
+        .then(() => this.$router.push({ name: "Index" }));
     }
+  },
+  computed: {
+    ...mapState({
+      errors: state => state.auth.errors
+    })
   }
-}
+};
 </script>
 
 <style>
