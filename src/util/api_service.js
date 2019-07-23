@@ -3,7 +3,7 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 import JwtService from "@/util/jwt_service";
 
-const API_URL = "http://localhost:8080/api";
+const API_URL = "./api";
 
 const ApiService = {
   init() {
