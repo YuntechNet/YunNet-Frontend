@@ -4,10 +4,7 @@
     <section class="container-fluid">
       <div class="row">
         <div class="col-12" style="padding:3%;"></div>
-        <div
-          class="col-10 offset-1 offset-sm-3 col-sm-6"
-          style="background-color: rgb(51, 51, 51,0.6);"
-        >
+        <div class="col-12 offset-sm-3 col-sm-6" style="background-color: rgb(51, 51, 51,0.6);">
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
@@ -21,7 +18,7 @@
             </div>
           </div>
           <hr />
-          <div class="col-10 offset-1">
+          <div class="col-12 col-sm-10 offset-sm-1">
             <b-form @submit.prevent="login">
               <h5>
                 <b-form-group
@@ -52,29 +49,41 @@
                   ></b-form-input>
                 </b-form-group>
               </h5>
-              <center>
-                <div style="padding:10px">
-                  <div style="margin:0px auto;">
-                    <vue-recaptcha
-                      sitekey="6Leyq6AUAAAAACiPhHIFI14DwDbhS1RVk0DoSIJ2"
-                      @verify="recaptcha"
-                      class="align-self-center"
-                    ></vue-recaptcha>
-                  </div>
+
+              <div align="center">
+                <div>
+                  <vue-recaptcha
+                    sitekey="6Leyq6AUAAAAACiPhHIFI14DwDbhS1RVk0DoSIJ2"
+                    @verify="recaptcha"
+                    class="align-self-center"
+                  ></vue-recaptcha>
                 </div>
-              </center>
-              <div>
-                <a class="btn btn-primary btn-lg" href="./#/regist" style="margin:5px 5px">註冊｜Regist</a>
-                <b-button
-                  type="submit"
-                  variant="btn btn-success btn-lg"
-                  style="margin:5px 5px;"
-                >登入｜Login</b-button>
+              </div>
+
+              <div style="margin:0px auto;">
                 <a
-                  class="btn btn-danger btn-lg"
+                  class="btn btn-info"
+                  href="./#/regist"
+                  role="button"
+                  style="width:48%;margin:2% 2% 2% 0% ;"
+                >
+                  <p style="margin:auto auto">註冊｜Regist</p>
+                </a>
+                <button
+                  class="btn btn-success"
+                  type="submit"
+                  
+                  style="width:48%;margin:2% 0% 2% 2% ;"
+                >
+                  <p style="margin:auto auto">登入｜Login</p>
+                </button>
+                <a
+                  class="btn btn-danger"
                   href="./#/forgot_password"
-                  style="margin:5px 5px;"
-                >忘記密碼｜Forget Password</a>
+                  style="width:100%;margin:0% 0% 2% 0% ;"
+                >
+                  <p style="margin:auto auto">忘記密碼｜Forget Password</p>
+                </a>
               </div>
             </b-form>
           </div>
@@ -135,12 +144,31 @@ export default {
 </script>
 
 <style>
-h1,
+
+p,
+button,
+label {
+  font-family: Microsoft JhengHei;
+  font-weight: 600;
+}
+p {
+  font-size: 18px;
+  color: rgba(999, 999, 999, 0.9);
+}
+
+
 label {
   color: white;
 }
 
 hr {
   background-color: white;
+}
+a {
+  color: white;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 600px) {
 }
 </style>

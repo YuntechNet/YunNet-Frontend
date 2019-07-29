@@ -53,5 +53,35 @@ export default new Router({
       name: "User_contract",
       component: () => import("./components/User_contract.vue")
     },
+    {
+      path: "/forgot_password",
+      name: "Forgot_password",
+      component: () => import("./components/Forgot_password.vue")
+    },
+    {
+      path: "/system_universal",
+      name: "System_universal",
+      component: () => import("./components/system_universal/System_universal.vue")
+    },
+    {
+      path: "/sys_uni_abuse",
+      name: "Sys_uni_abuse",
+      component: () => import("./components/system_universal/Sys_uni_abuse.vue")
+    },
+    {
+      path: "/sys_uni_permission",
+      name: "Sys_uni_permission",
+      component: () => import("./components/system_universal/Sys_uni_permission.vue")
+    },
+    {
+      path: "/system_dormitory",
+      name: "System_dormitory",
+      component: () => import("./components/system_dormitory/System_dormitory.vue")
+    },
+    {
+      path: "/sys_dorm_import",
+      name: "Sys_dorm_import",
+      component: () => import("./components/system_dormitory/Sys_dorm_import.vue")
+    },
   ]
 });

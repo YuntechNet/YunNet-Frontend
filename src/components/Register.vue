@@ -93,7 +93,7 @@
 
                 <div class="col-12">
                   <b-button class="button" variant="info">
-                    <p>Button</p>
+                    <p style="margin:auto auto;">Button</p>
                   </b-button>
                 </div>
               </div>

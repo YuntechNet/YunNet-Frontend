@@ -91,7 +91,7 @@ export default {
 </script>
 
 <style >
-h1,
+32
 tr {
   color: white;
 }
