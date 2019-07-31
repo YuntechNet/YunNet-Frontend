@@ -51,9 +51,10 @@
                 <div style="padding:10px">
                   <div style="margin:0px auto;">
                     <vue-recaptcha
-                      sitekey="6LdCE64UAAAAAFqQk-rUgfq4RqjVy0VMMrsP7Qfk"
-                      @verify="recaptcha"
-                      class="align-self-center"
+                      ref="invisibleRecaptcha"
+                      @verify="onVerify"
+                      size="invisible"
+                      :sitekey="sitekey"
                     ></vue-recaptcha>
                   </div>
                 </div>
@@ -97,16 +98,18 @@ export default {
   },
   data() {
     return {
+      sitekey: "6LcukLAUAAAAACA1hw5Rz_uh8dwNrNZGYlAl4CDW",
       username: null,
       password: null,
       recaptcha_id: null
     };
   },
   methods: {
-    recaptcha(response) {
+    onVerify(response) {
       this.recaptcha_id = response;
     },
     login(username, password) {
+      this.$refs.invisibleRecaptcha.execute();
       this.$store
         .dispatch(LOGIN, { username, password })
         .then(() => this.$router.push({ name: "Index" }));
@@ -120,7 +123,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 h1,
 label {
   color: white;
