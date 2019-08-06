@@ -11,9 +11,13 @@
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
-                <a class="btn btn-default btn-lg" href="./" style="background-color: white;">
+                <router-link
+                  to="./"
+                  class="btn btn-default btn-lg"
+                  style="background-color: white;"
+                >
                   <font-awesome-icon icon="times" />
-                </a>
+                </router-link>
               </div>
               <div class="float-left">
                 <h1>Login</h1>
@@ -23,7 +27,7 @@
           <hr />
           <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
           <div class="col-10 offset-1">
-            <b-form @submit.prevent="login(username, password, recaptcha_id)">
+            <b-form @submit="login">
               <h5>
                 <b-form-group
                   class="text-left"
@@ -42,24 +46,20 @@
                   <b-form-input
                     type="password"
                     id="password"
+                    required
                     v-model="password"
                     placeholder="password"
                   ></b-form-input>
                 </b-form-group>
               </h5>
-              <center>
-                <div style="padding:10px">
-                  <div style="margin:0px auto;">
-                    <vue-recaptcha
-                      ref="invisibleRecaptcha"
-                      @verify="onVerify"
-                      size="invisible"
-                      :sitekey="sitekey"
-                    ></vue-recaptcha>
-                  </div>
-                </div>
-              </center>
               <div>
+                <vue-recaptcha
+                ref="recaptcha"
+                @verify="onVerify"
+                @expired="onExpired"
+                size="invisible"
+                :sitekey="sitekey"
+                ></vue-recaptcha>
                 <a
                   class="btn btn-primary btn-lg"
                   href="./#/register"
@@ -101,18 +101,25 @@ export default {
       sitekey: "6LcukLAUAAAAACA1hw5Rz_uh8dwNrNZGYlAl4CDW",
       username: null,
       password: null,
-      recaptcha_id: null
+      recaptcha_token:null,
     };
   },
   methods: {
-    onVerify(response) {
-      this.recaptcha_id = response;
+    login() {
+      this.$refs.recaptcha.execute();
     },
-    login(username, password) {
-      this.$refs.invisibleRecaptcha.execute();
+    onVerify(response){
+      this.$refs.recaptcha.reset();
+      this.touch=true;
+      let username = this.username;
+      let password = this.password;
+      let recaptcha_token = response
       this.$store
-        .dispatch(LOGIN, { username, password })
-        .then(() => this.$router.push({ name: "Index" }));
+        .dispatch(LOGIN, { username, password, recaptcha_token })
+        .then(() => this.$router.push({ name: "Index" }))
+    },
+    onExpired(){
+      this.$refs.recaptcha.reset();
     }
   },
   computed: {
