@@ -86,10 +86,11 @@
 </template>
 
 <script>
-import Background from "@/components/Background"
-import VueRecaptcha from "vue-recaptcha"
-import { mapState } from "vuex"
-import { LOGIN } from "@/store/actions_type"
+import Background from "@/components/Background";
+import VueRecaptcha from "vue-recaptcha";
+import { mapState } from "vuex";
+import { LOGIN } from "@/store/actions_type";
+
 export default {
   name: "Login",
   components: {
@@ -101,16 +102,16 @@ export default {
       username: null,
       password: null,
       recaptcha_id: null
-    }
+    };
   },
   methods: {
     recaptcha(response) {
-      this.recaptcha_id = response
+      this.recaptcha_id = response;
     },
     login(username, password) {
       this.$store
         .dispatch(LOGIN, { username, password })
-        .then(() => this.$router.push({ name: "Index" }))
+        .then(() => this.$router.push({ name: "Index" }));
     }
   },
   computed: {
@@ -118,7 +119,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 
 <style scoped>

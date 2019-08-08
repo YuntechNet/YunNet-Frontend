@@ -152,17 +152,17 @@
 
 
 <script>
-import { mapGetters } from "vuex"
-import { mapState } from "vuex"
-import { LOGOUT } from "@/store/actions_type"
-//let counter = 0
+import { mapGetters } from "vuex";
+import { mapState } from "vuex";
+import { LOGOUT } from "@/store/actions_type";
+
 export default {
   name: "index",
   data() {
     return {
       slide: 0,
       sliding: null
-    }
+    };
   },
   methods: {
     //increase: function() {
@@ -191,7 +191,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 <style scoped>
 #BK {

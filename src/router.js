@@ -15,7 +15,9 @@ export default new Router({
     {
       path: "/userinfo",
       name: "Userinfo",
-     
+      meta:{
+        isAuth: true
+      },
       component: () => import("./components/Userinfo.vue")
     },
 
