@@ -4,7 +4,7 @@
     <section class="container-fluid">
       <div class="row">
         <div class="col-12" style="padding-top: 5%;"></div>
-        <div class="col-10 offset-1" style="background-color:rgb(51,51,51,0.6);">
+        <div class="col-10 offset-1 frame" style="background-color:rgb(51,51,51,0.6);">
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
@@ -90,8 +90,8 @@ export default {
 }
 </script>
 
-<style >
-32
+<style scoped>
+
 tr {
   color: white;
 }
@@ -101,9 +101,11 @@ hr {
 #thead:hover {
   background-color: rgba(245, 233, 132, 0.5);
 }
+
 @media screen and (max-width: 600px) {
   th {
     font-size: 10px;
   }
 }
+
 </style>

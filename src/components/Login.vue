@@ -1,10 +1,13 @@
-    <template>
+<template>
   <div class="row">
     <background />
     <section class="container-fluid">
       <div class="row">
         <div class="col-12" style="padding:3%;"></div>
-        <div class="col-12 offset-sm-3 col-sm-6" style="background-color: rgb(51, 51, 51,0.6);">
+        <div
+          class="col-10 offset-1 offset-sm-3 col-sm-6 frame"
+          style="background-color: rgb(51, 51, 51,0.6);"
+        >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
@@ -18,24 +21,22 @@
             </div>
           </div>
           <hr />
-          <div class="col-12 col-sm-10 offset-sm-1">
-            <b-form @submit.prevent="login">
+          <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
+          <div class="col-10 offset-1">
+            <b-form @submit.prevent="login(username, password, recaptcha_id)">
               <h5>
                 <b-form-group
                   class="text-left"
+                  style="color:white;"
                   id="username-group"
-                  label="帳號(學號) / 床位｜Username(Std. ID)/Bed："
+                  label="帳號(學號)｜Username(Std. ID)："
                   label-for="username"
                 >
-                  <b-form-input
-                    id="username"
-                    v-model="form.username"
-                    required
-                    placeholder="account"
-                  ></b-form-input>
+                  <b-form-input id="username" v-model="username" required placeholder="account"></b-form-input>
                 </b-form-group>
                 <b-form-group
                   class="text-left"
+                  style="color:white;"
                   id="password-group"
                   label="密碼｜Password："
                   label-for="username"
@@ -43,47 +44,38 @@
                   <b-form-input
                     type="password"
                     id="password"
-                    v-model="form.password"
-                    required
+                    v-model="password"
                     placeholder="password"
                   ></b-form-input>
                 </b-form-group>
               </h5>
-
-              <div align="center">
-                <div>
-                  <vue-recaptcha
-                    sitekey="6Leyq6AUAAAAACiPhHIFI14DwDbhS1RVk0DoSIJ2"
-                    @verify="recaptcha"
-                    class="align-self-center"
-                  ></vue-recaptcha>
+              <center>
+                <div style="padding:10px">
+                  <div style="margin:0px auto;">
+                    <vue-recaptcha
+                      sitekey="6LdCE64UAAAAAFqQk-rUgfq4RqjVy0VMMrsP7Qfk"
+                      @verify="recaptcha"
+                      class="align-self-center"
+                    ></vue-recaptcha>
+                  </div>
                 </div>
-              </div>
-
-              <div style="margin:0px auto;">
+              </center>
+              <div>
                 <a
-                  class="btn btn-info"
-                  href="./#/regist"
-                  role="button"
-                  style="width:48%;margin:2% 2% 2% 0% ;"
-                >
-                  <p style="margin:auto auto">註冊｜Regist</p>
-                </a>
-                <button
-                  class="btn btn-success"
+                  class="btn btn-primary btn-lg"
+                  href="./#/register"
+                  style="margin:5px 5px"
+                >註冊｜Regist</a>
+                <b-button
                   type="submit"
-                  
-                  style="width:48%;margin:2% 0% 2% 2% ;"
-                >
-                  <p style="margin:auto auto">登入｜Login</p>
-                </button>
+                  variant="btn btn-success btn-lg"
+                  style="margin:5px 5px;"
+                >登入｜Login</b-button>
                 <a
-                  class="btn btn-danger"
+                  class="btn btn-danger btn-lg"
                   href="./#/forgot_password"
-                  style="width:100%;margin:0% 0% 2% 0% ;"
-                >
-                  <p style="margin:auto auto">忘記密碼｜Forget Password</p>
-                </a>
+                  style="margin:5px 5px;"
+                >忘記密碼｜Forget Password</a>
               </div>
             </b-form>
           </div>
@@ -96,8 +88,8 @@
 <script>
 import Background from "@/components/Background"
 import VueRecaptcha from "vue-recaptcha"
-import { mapActions } from "vuex"
-
+import { mapState } from "vuex"
+import { LOGIN } from "@/store/actions_type"
 export default {
   name: "Login",
   components: {
@@ -106,69 +98,71 @@ export default {
   },
   data() {
     return {
-      form: {
-        username: "",
-        password: "",
-        recaptcha_id: ""
-      }
+      username: null,
+      password: null,
+      recaptcha_id: null
     }
   },
   methods: {
-    recaptcha: function(response) {
-      this.form.recaptcha_id = response
+    recaptcha(response) {
+      this.recaptcha_id = response
     },
-    ...mapActions(["userLogin"]),
-    login: function() {
-      let login = this.form
-      let formData = {
-        username: login.username,
-        password: login.password,
-        recaptcha: login.recaptcha_id
-      }
-      this.$http
-        .post("./api/login", formData)
-        .then(res => {
-          if (res.data.token) {
-            this.userLogin(res.data)
-            this.$router.push("./")
-          } else {
-            alert("????")
-          }
-        })
-        .catch(err => {
-          alert(err.response.data.message)
-        })
+    login(username, password) {
+      this.$store
+        .dispatch(LOGIN, { username, password })
+        .then(() => this.$router.push({ name: "Index" }))
     }
+  },
+  computed: {
+    ...mapState({
+      errors: state => state.auth.errors
+    })
   }
 }
 </script>
 
-<style>
-
-p,
-button,
-label {
-  font-family: Microsoft JhengHei;
-  font-weight: 600;
-}
-p {
-  font-size: 18px;
-  color: rgba(999, 999, 999, 0.9);
-}
-
-
+<style scoped>
+a,
+h1,
 label {
   color: white;
 }
-
 hr {
   background-color: white;
 }
-a {
-  color: white;
-  font-size: 12px;
+
+.frame {
+  animation-name: inner-frame;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  left: 0;
 }
 
-@media screen and (max-width: 600px) {
+@keyframes inner-frame {
+  from,
+  25% {
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    filter: blur(3px);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
 </style>

@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --mode development & npm run mock",
+    "serve": "vue-cli-service serve --mode development",
     "preview": "vue-cli-service serve --mode production",
     "build": "vue-cli-service build --mode production",
-    "mock": "node_modules/.bin/json-server --watch ./mock/test.json --port 9090 --middlewares ./mock/middleware.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -14,7 +13,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.8.0",
     "@fortawesome/free-solid-svg-icons": "^5.8.0",
     "@fortawesome/vue-fontawesome": "^0.1.6",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "bootstrap-material-design": "^4.1.1",
     "bootstrap-vue": "^2.0.0-rc.20",
@@ -24,7 +23,9 @@
     "octicons": "^8.5.0",
     "octicons-vue": "^0.17.12",
     "popper.js": "^1.14.7",
+    "qs": "^6.7.0",
     "vue": "^2.6.10",
+    "vue-axios": "^2.1.4",
     "vue-recaptcha": "^1.1.1",
     "vue-router": "^3.0.2",
     "vue2-datepicker": "^2.11.1",

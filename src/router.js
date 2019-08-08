@@ -15,39 +15,49 @@ export default new Router({
     {
       path: "/userinfo",
       name: "Userinfo",
+     
       component: () => import("./components/Userinfo.vue")
     },
 
     {
       path: "/login",
       name: "Login",
+      meta: {
+        deAuth: true
+      },
       component: () => import("./components/Login.vue")
     },
+
     {
       path: "/netflow",
       name: "Netflown",
       component: () => import("./components/Netflow.vue")
     },
+
     {
       path: "/universal_lock",
       name: "Universal_lock",
       component: () => import("./components/Universal_lock.vue")
     },
+
     {
       path: "/dormitory_lock",
       name: "Dormitory_lock",
       component: () => import("./components/Dormitory_lock.vue")
     },
+
     {
       path: "/register",
       name: "Register",
       component: () => import("./components/Register.vue")
     },
+
     {
       path: "/contract",
       name: "Contract",
       component: () => import("./components/Contract.vue")
     },
+
     {
       path: "/user_contract",
       name: "User_contract",
@@ -82,6 +92,16 @@ export default new Router({
       path: "/sys_dorm_import",
       name: "Sys_dorm_import",
       component: () => import("./components/system_dormitory/Sys_dorm_import.vue")
+    },
+    {
+      path: "/change_mac",
+      name: "Change_mac",
+      component: () => import("./components/Change_mac.vue")
+    },
+    {
+      path: "/user_netflow",
+      name: "User_netflow",
+      component: () => import("./components/User_netflow")
     },
   ]
 });

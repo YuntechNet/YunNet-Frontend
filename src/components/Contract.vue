@@ -1203,12 +1203,13 @@ export default {
   name: "Contract"
 }
 </script>
-<style>
+<style scoped>
 p {
   text-align: left;
   color: black;
   font-size: 1em;
   font-weight: 400;
 }
+
 </style>
 

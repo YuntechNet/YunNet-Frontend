@@ -1,16 +1,11 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import mutations from "./mutations";
-import actions from "./actions";
+import auth from "./auth_module";
 
 Vue.use(Vuex);
 
-const state = {
-  token: null,
-};
-
 export default new Vuex.Store({
-  state,
-  mutations,
-  actions
+  modules: {
+    auth
+  }
 });

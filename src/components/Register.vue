@@ -5,8 +5,8 @@
       <div class="row">
         <div class="col-12" style="padding:3%;"></div>
         <div
-          class="col-12 col-sm-10 offset-sm-1"
-          style="background-color: rgb(51, 51, 51,0.6);height:130vh;"
+          class="col-12 col-sm-10 offset-sm-1 regist frame"
+          
         >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
@@ -50,8 +50,8 @@
         </div>
         <div class="col-12" style="padding:3%;"></div>
         <div
-          class="col-12 col-sm-10 offset-sm-1"
-          style="background-color: rgb(51, 51, 51,0.6);height:60vh;"
+          class="col-12 col-sm-10 offset-sm-1 regist1 frame"
+         
         >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
@@ -72,10 +72,12 @@
               <p style="color:white;margin:0px auto;white-space:nowrap;">床位格式:</p>
               <p
                 style="color:white;margin:0px auto;white-space:nowrap;"
-              >Example1: A3棟108房4床, A3108-4 (棟別,房號)-(床號)</p>
+              >Example1: A3棟108房4床 </p>
+              <p>A3108-4 | (棟別,房號)-(床號)</p>
               <p
                 style="color:white;margin:0px auto;white-space:nowrap;"
-              >Example2: F棟102房2床, E2102-2 (棟別),(房號)-(床號)</p>
+              >Example2: F棟102房2床</p>
+               <p>E2102-2 | (棟別,房號)-(床號)</p>
               <div class="row">
                 <div class="col-12">
                   <p>
@@ -97,9 +99,7 @@
                   </b-button>
                 </div>
               </div>
-              <div>
-                <b-spinner type="grow" label="Loading..."></b-spinner>
-              </div>
+          
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 hr {
   background-color: white;
 }
@@ -138,26 +138,37 @@ label {
 button {
   height: 40px;
 }
+.regist{background-color: rgb(51, 51, 51,0.6);
+height:140vh;
+
+}
+.regist1{
+   background-color: rgb(51, 51, 51,0.6);height:70vh;
+}
 
 @media screen and (max-width: 600px) {
   p {
-    font-size: 1px;
+    
     font-weight: 400;
   }
   .title {
-    font-size: 1px;
+  
     color: red;
     font-weight: 400;
   }
-  h1 {
-    font-size: 5px;
-  }
+  
   .input {
-    width: 50px;
-    height: 10px;
+    
   }
   .button {
-    height: 20px;
+ 
   }
+  .regist{background-color: rgb(51, 51, 51,0.6);
+height:180vh;
+
+}
+.regist1{
+   background-color: rgb(51, 51, 51,0.6);height:100vh;
+}
 }
 </style>
