@@ -27,7 +27,7 @@
           <hr />
           <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
           <div class="col-10 offset-1">
-            <b-form @submit="login">
+            <b-form @submit.prevent="login">
               <h5>
                 <b-form-group
                   class="text-left"
@@ -54,11 +54,11 @@
               </h5>
               <div>
                 <vue-recaptcha
-                ref="recaptcha"
-                @verify="onVerify"
-                @expired="onExpired"
-                size="invisible"
-                :sitekey="sitekey"
+                  ref="recaptcha"
+                  @verify="onVerify"
+                  @expired="onExpired"
+                  size="invisible"
+                  :sitekey="sitekey"
                 ></vue-recaptcha>
                 <a
                   class="btn btn-primary btn-lg"
@@ -100,25 +100,23 @@ export default {
     return {
       sitekey: "6LcukLAUAAAAACA1hw5Rz_uh8dwNrNZGYlAl4CDW",
       username: null,
-      password: null,
-      recaptcha_token:null,
+      password: null
     };
   },
   methods: {
     login() {
       this.$refs.recaptcha.execute();
     },
-    onVerify(response){
+    onVerify(response) {
       this.$refs.recaptcha.reset();
-      this.touch=true;
       let username = this.username;
       let password = this.password;
-      let recaptcha_token = response
+      let recaptcha_token = response;
       this.$store
         .dispatch(LOGIN, { username, password, recaptcha_token })
-        .then(() => this.$router.push({ name: "Index" }))
+        .then(() => this.$router.push({ name: "Index" }));
     },
-    onExpired(){
+    onExpired() {
       this.$refs.recaptcha.reset();
     }
   },
