@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-12" style="padding:3%;"></div>
         <div
-          class="col-10 offset-1 offset-sm-3 col-sm-6"
+          class="col-10 offset-1 offset-sm-3 col-sm-6 frame"
           style="background-color: rgb(51, 51, 51,0.6);"
         >
           <div class="row">
@@ -31,6 +31,7 @@
               <h5>
                 <b-form-group
                   class="text-left"
+                  style="color:white;"
                   id="username-group"
                   label="帳號(學號)｜Username(Std. ID)："
                   label-for="username"
@@ -39,6 +40,7 @@
                 </b-form-group>
                 <b-form-group
                   class="text-left"
+                  style="color:white;"
                   id="password-group"
                   label="密碼｜Password："
                   label-for="username"
@@ -53,13 +55,6 @@
                 </b-form-group>
               </h5>
               <div>
-                <vue-recaptcha
-                  ref="recaptcha"
-                  @verify="onVerify"
-                  @expired="onExpired"
-                  size="invisible"
-                  :sitekey="sitekey"
-                ></vue-recaptcha>
                 <a
                   class="btn btn-primary btn-lg"
                   href="./#/register"
@@ -80,6 +75,13 @@
           </div>
         </div>
       </div>
+      <vue-recaptcha
+        ref="recaptcha"
+        @verify="onVerify"
+        @expired="onExpired"
+        size="invisible"
+        :sitekey="sitekey"
+      ></vue-recaptcha>
     </section>
   </div>
 </template>
@@ -129,12 +131,47 @@ export default {
 </script>
 
 <style scoped>
+
 h1,
 label {
   color: white;
 }
-
 hr {
   background-color: white;
+}
+
+.frame {
+  animation-name: inner-frame;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  left: 0;
+}
+
+@keyframes inner-frame {
+  from,
+  25% {
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    filter: blur(3px);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    filter: blur(0px);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
 </style>

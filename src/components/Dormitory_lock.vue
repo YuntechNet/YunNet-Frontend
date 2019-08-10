@@ -4,7 +4,7 @@
     <section class="container-fluid">
       <div class="row">
         <div
-          class="col-10"
+          class="col-10 frame"
           style="margin:0px auto; padding:40px 50px 0px; top:60px;background-color:rgb(51,51,51,0.6);"
         >
           <div class="row">
@@ -80,7 +80,7 @@ export default {
 }
 </script>
 
-<style >
+<style scoped>
 h1,
 tr {
   color: white;
@@ -88,6 +88,7 @@ tr {
 hr {
   background-color: white;
 }
+
 @media screen and (max-width: 600px) {
   th {
     font-size: 15px;

@@ -1,11 +1,56 @@
 <template>
   <div class="row">
-    <div class="col-12 col-sm-10" id="BK">
-      <b-alert :show="errors" variant="warning" dismissible>{{errors}}</b-alert>
-      <div class="row">
-        <div class="col-12 display1" style="position: fixed; z-index: 999;">
-          <b-button id="list" variant="info" @click="increase" style="color:white;">選單 | LIST</b-button>
+    <div class="display1 zindex" style="width:100%;">
+      <div class="pos-f-t">
+        <nav class="navbar navbar-dark bg-dark">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div class="bg-dark p-4">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-12" style="padding:7%;"></div>
+                <a class="btn col-12" href="#top" role="button">YunNET 雲科網管</a>
+                <a
+                  v-if="!isAuthenticated"
+                  class="btn col-12"
+                  href="./#/login"
+                  role="button"
+                >登入｜Login</a>
+                <a
+                  v-if="isAuthenticated"
+                  class="btn col-12"
+                  @click.prevent="logout"
+                  role="button"
+                >登出｜Login</a>
+                <div class="col-12" style="padding:7%;"></div>
+                <a class="btn col-12" href="#top" role="button">首頁｜Home</a>
+                <a class="btn col-12" href="./#/register" role="button">註冊｜Register</a>
+                <a class="btn col-12" href="./#/netflow" role="button">流量｜Netflow</a>
+                <a class="btn col-12" href="./#/user_contract" role="button">規範｜Contract</a>
+                <a class="btn col-12" href="./#/universal_lock" role="button">鎖卡列表｜Lock Table</a>
+                <a class="btn col-12" href="#announce" role="button">公告｜Announce</a>
+                <a class="btn col-12" href="#findus" role="button">關於｜Find Us</a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-10 frame" id="BK">
+      <b-alert :show="errors" variant="warning" dismissible>{{errors}}</b-alert>
+
+      <div class="row">
         <div class="col-12" style="padding:18vh;"></div>
         <div class="col-12">
           <h1 class="title" style="margin:0px auto">YunNET 雲科網管</h1>
@@ -78,27 +123,6 @@
     </div>
 
     <div
-      id="title"
-      class="col-12"
-      style="background-color:rgba(51,51,51,0.9);height: 100vh;position: fixed;visibility:hidden;z-index:998;"
-    >
-      <div class="row">
-        <div class="col-12" style="padding:7%;"></div>
-        <a class="btn col-12" href="#top" role="button">YunNET 雲科網管</a>
-        <a v-if="!isAuthenticated" class="btn col-12" href="./#/login" role="button">登入｜Login</a>
-        <a v-if="isAuthenticated" class="btn col-12" @click.prevent="logout" role="button">登出｜Login</a>
-        <div class="col-12" style="padding:7%;"></div>
-        <a class="btn col-12" href="#top" role="button">首頁｜Home</a>
-        <a class="btn col-12" href="./#/register" role="button">註冊｜Register</a>
-        <a class="btn col-12" href="./#/netflow" role="button">流量｜Netflow</a>
-        <a class="btn col-12" href="./#/user_contract" role="button">規範｜Contract</a>
-        <a class="btn col-12" href="./#/universal_lock" role="button">鎖卡列表｜Lock Table</a>
-        <a class="btn col-12" href="#announce" role="button">公告｜Announce</a>
-        <a class="btn col-12" href="#findus" role="button">關於｜Find Us</a>
-        <div class="col-12" style="background-color:white;height:1vh;margin:25px 0px"></div>
-      </div>
-    </div>
-    <div
       class="col-0 offset-12 col-sm-2 offset-sm-10 display"
       style="background-color:rgb(51,51,51);height: 100vh;position: fixed;"
     >
@@ -141,26 +165,24 @@ export default {
     };
   },
   methods: {
-    increase: function() {
-      var x = document.getElementById("title");
-      let counter = 0;
-      counter++;
+    //increase: function() {
+    //  var x = document.getElementById("title")
 
-      if (counter == 1) {
-        x.style.visibility = "visible";
-      }
+    // counter++
 
-      if (counter == 2) {
-        x.style.visibility = "hidden";
-      }
-      if (counter == 2) {
-        counter = 0;
-      }
-    },
+    // if (counter == 1) {
+    //   x.style.visibility = "visible"
+    // }
+
+    // if (counter == 2) {
+    //  x.style.visibility = "hidden"
+    //  counter = 0
+    // }
+    //},
     logout() {
       this.$store.dispatch(LOGOUT).then(() => {
-        this.$router.push({ name: "Index" });
-      });
+        this.$router.push({ name: "Index" })
+      })
     }
   },
   computed: {
@@ -171,7 +193,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 #BK {
   background: url("https://yunnet.yuntech.edu.tw/static/stylish-portfolio/img/bg_test8_compress.jpg")
     center center no-repeat;
@@ -213,6 +235,10 @@ export default {
   height: 50%;
   width: 50%;
 }
+.zindex {
+  z-index: -999;
+  position: absolute;
+}
 @media screen and (max-width: 600px) {
   .title {
     font-size: 2em;
@@ -233,6 +259,10 @@ export default {
   .map {
     height: 90%;
     width: 90%;
+  }
+  .zindex {
+    z-index: 0;
+    position: static;
   }
 }
 </style>

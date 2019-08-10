@@ -4,7 +4,7 @@
     <section class="container-fluid">
       <div class="row">
         <div class="col-12" style="padding-top: 5%;"></div>
-        <div class="col-12 col-sm-10 offset-sm-1" style="background-color: rgb(51,51,51,0.6);">
+        <div class="col-12 col-sm-10 offset-sm-1 frame" style="background-color: rgb(51,51,51,0.6);">
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
@@ -94,23 +94,7 @@
                       </tbody>
                     </table>
 
-                    <div class="d-inline-block" style="height:25%;">
-                      <center>
-                        <b-button v-b-toggle.collapse-1 variant="info">Show</b-button>
-
-                        <b-collapse id="collapse-1" class="mt-2">
-                          <b-card>
-                            <img class="hidden-xs" src="https://ppt.cc/qr/fW46Dx" style="width:80%" />
-                            <a style="color: black;" href="http://www.google.com.tw">
-                              <p>
-                                YunTech網路流量粉絲團。
-                                <br />
-                              </p>
-                            </a>
-                          </b-card>
-                        </b-collapse>
-                      </center>
-                    </div>
+                   
                   </div>
                 </div>
                 <div class="col-12" style="padding-top: 3%;"></div>
@@ -176,7 +160,7 @@ export default {
 </script>
 
 
-<style >
+<style scoped>
 h1,
 tr,
 td {
@@ -195,6 +179,7 @@ th.text-size {
 a.display {
   display: block;
 }
+
 @media screen and (max-width: 600px) {
   div.column {
     width: 50%;
