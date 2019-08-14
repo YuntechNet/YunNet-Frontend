@@ -60,15 +60,17 @@
                   href="./#/register"
                   style="margin:5px 5px"
                 >註冊｜Regist</a>
-                <b-button
-                  type="submit"
-                  variant="btn btn-success btn-lg"
-                  style="margin:5px 5px;"
-                >登入｜Login</b-button>
+                <a>
+                  <b-button
+                    type="submit"
+                    variant="btn btn-success btn-lg"
+                    style="margin:5px 5px;"
+                  >登入｜Login</b-button>
+                </a>
                 <a
                   class="btn btn-danger btn-lg"
                   href="./#/forgot_password"
-                  style="margin:5px 5px;"
+                  style="margin:10px 10px;"
                 >忘記密碼｜Forget Password</a>
               </div>
             </b-form>
@@ -87,10 +89,10 @@
 </template>
 
 <script>
-import Background from "@/components/Background";
-import VueRecaptcha from "vue-recaptcha";
-import { mapState } from "vuex";
-import { LOGIN } from "@/store/actions_type";
+import Background from "@/components/Background"
+import VueRecaptcha from "vue-recaptcha"
+import { mapState } from "vuex"
+import { LOGIN } from "@/store/actions_type"
 
 export default {
   name: "Login",
@@ -103,23 +105,23 @@ export default {
       sitekey: "6LcukLAUAAAAACA1hw5Rz_uh8dwNrNZGYlAl4CDW",
       username: null,
       password: null
-    };
+    }
   },
   methods: {
     login() {
-      this.$refs.recaptcha.execute();
+      this.$refs.recaptcha.execute()
     },
     onVerify(response) {
-      this.$refs.recaptcha.reset();
-      let username = this.username;
-      let password = this.password;
-      let recaptcha_token = response;
+      this.$refs.recaptcha.reset()
+      let username = this.username
+      let password = this.password
+      let recaptcha_token = response
       this.$store
         .dispatch(LOGIN, { username, password, recaptcha_token })
-        .then(() => this.$router.push({ name: "Index" }));
+        .then(() => this.$router.push({ name: "Index" }))
     },
     onExpired() {
-      this.$refs.recaptcha.reset();
+      this.$refs.recaptcha.reset()
     }
   },
   computed: {
@@ -127,51 +129,15 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 
 <style scoped>
-
 h1,
 label {
   color: white;
 }
 hr {
   background-color: white;
-}
-
-.frame {
-  animation-name: inner-frame;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  left: 0;
-}
-
-@keyframes inner-frame {
-  from,
-  25% {
-    -webkit-filter: blur(3px);
-    -moz-filter: blur(3px);
-    -o-filter: blur(3px);
-    filter: blur(3px);
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-    opacity: 0;
-    background-color: rgba(0, 0, 0, 0);
-  }
-  to {
-    -webkit-filter: blur(0px);
-    -moz-filter: blur(0px);
-    -o-filter: blur(0px);
-    filter: blur(0px);
-    -webkit-transform: scale(1.05);
-    -moz-transform: scale(1.05);
-    -o-transform: scale(1.05);
-    transform: scale(1.05);
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
 }
 </style>

@@ -4,7 +4,10 @@
     <section class="container-fluid">
       <div class="row">
         <div class="col-12" style="padding-top: 5%;"></div>
-        <div class="col-12 col-sm-10 offset-sm-1 frame" style="background-color: rgb(51,51,51,0.6);">
+        <div
+          class="col-12 col-sm-10 offset-sm-1 frame"
+          style="background-color: rgb(51,51,51,0.6);"
+        >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
@@ -93,8 +96,6 @@
                         </tr>
                       </tbody>
                     </table>
-
-                   
                   </div>
                 </div>
                 <div class="col-12" style="padding-top: 3%;"></div>

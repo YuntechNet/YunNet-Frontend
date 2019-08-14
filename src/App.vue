@@ -20,12 +20,41 @@ export default {
   height: 100vh;
   position: relative;
 }
+h1{
+  font-family: fantasy;
+}
+a,p,label,button{
+  font-family: Glyphicons Halflings;
+  font-size: 20px;
+}
 .frame {
   animation-name: inner-frame;
   animation-duration: 1s;
   animation-fill-mode: both;
   left: 0;
 }
+.head-padding{
+  padding: 3%;
+}
+.display-hidden {
+    visibility: hidden;
+  }
+  .display-visible {
+    visibility: visible;
+  }
+  @media screen and (max-width: 600px) {
+    .head-padding{
+  padding: 0%;
+}
+    .display-hidden {
+    visibility:  visible;
+  }
+  .display-visible {
+    visibility:hidden;
+  }
+    
+  }
+
 @keyframes inner-frame {
   from,
   25% {
@@ -33,10 +62,10 @@ export default {
     -moz-filter: blur(3px);
     -o-filter: blur(3px);
     filter: blur(3px);
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9);
     opacity: 0;
     background-color: rgba(0, 0, 0, 0);
   }
@@ -45,10 +74,10 @@ export default {
     -moz-filter: blur(0px);
     -o-filter: blur(0px);
     filter: blur(0px);
-    -webkit-transform: scale(1.05);
-    -moz-transform: scale(1.05);
-    -o-transform: scale(1.05);
-    transform: scale(1.05);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.5);
   }

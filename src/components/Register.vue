@@ -3,10 +3,10 @@
     <background />
     <section class="container-fluid">
       <div class="row">
-        <div class="col-12" style="padding:3%;"></div>
+        <div class="col-12 head-padding"></div>
         <div
-          class="col-12 col-sm-10 offset-sm-1 regist frame"
-          
+          class="col-12 col-sm-10 offset-sm-1 frame"
+          style="background-color: rgb(51, 51, 51, 0.6);"
         >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
@@ -36,22 +36,27 @@
             </p>
 
             <p class="title">請看完詳細條款再行註冊，註冊後等同您同意遵守本條款約定，請細心閱讀，以免您的權利受損!!</p>
-            <div style="height:80vh;">
-              <iframe
-                id="contract"
-                name="contract"
-                width="100%"
-                height="100%"
-                src="./#/contract"
-                style="background-color: white;"
-              ></iframe>
-            </div>
+          </div>
+          <div class="col-10 offset-1" style="height:70vh">
+            <iframe
+              id="contract"
+              name="contract"
+              width="100%"
+              height="100%"
+              src="./#/contract"
+              style="background-color: white;"
+            ></iframe>
           </div>
         </div>
-        <div class="col-12" style="padding:3%;"></div>
         <div
-          class="col-12 col-sm-10 offset-sm-1 regist1 frame"
-         
+          class="col-12 col-sm-10 offset-sm-1 frame"
+          style=" background-color: rgb(51, 51, 51, 0.6);height:10vh"
+        ></div>
+        <div class="col-12" style="padding:3%;"></div>
+
+        <div
+          class="col-12 col-sm-10 offset-sm-1 frame"
+          style="background-color: rgb(51, 51, 51, 0.6);"
         >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
@@ -70,14 +75,10 @@
             <div class="col-10 offset-1">
               <p style="color:white;margin:0px auto;white-space:nowrap;">學號格式:限定字母全大寫。</p>
               <p style="color:white;margin:0px auto;white-space:nowrap;">床位格式:</p>
-              <p
-                style="color:white;margin:0px auto;white-space:nowrap;"
-              >Example1: A3棟108房4床 </p>
+              <p style="color:white;margin:0px auto;white-space:nowrap;">Example1: A3棟108房4床</p>
               <p>A3108-4 | (棟別,房號)-(床號)</p>
-              <p
-                style="color:white;margin:0px auto;white-space:nowrap;"
-              >Example2: F棟102房2床</p>
-               <p>E2102-2 | (棟別,房號)-(床號)</p>
+              <p style="color:white;margin:0px auto;white-space:nowrap;">Example2: F棟102房2床</p>
+              <p>E2102-2 | (棟別,房號)-(床號)</p>
               <div class="row">
                 <div class="col-12">
                   <p>
@@ -99,10 +100,13 @@
                   </b-button>
                 </div>
               </div>
-          
             </div>
           </div>
         </div>
+        <div
+          class="col-12 col-sm-10 offset-sm-1 frame"
+          style=" background-color: rgb(51, 51, 51, 0.6);height:10vh"
+        ></div>
         <div class="col-12" style="padding:10%;"></div>
       </div>
     </section>
@@ -127,48 +131,22 @@ hr {
 p,
 label {
   color: white;
-  font-size: 1em;
   font-weight: 400;
 }
 .title {
-  font-size: 1.2em;
   color: red;
   font-weight: 900;
 }
 button {
   height: 40px;
 }
-.regist{background-color: rgb(51, 51, 51,0.6);
-height:140vh;
-
-}
-.regist1{
-   background-color: rgb(51, 51, 51,0.6);height:70vh;
-}
 
 @media screen and (max-width: 600px) {
+  h1 {
+    font-size: 30px;
+  }
   p {
-    
     font-weight: 400;
   }
-  .title {
-  
-    color: red;
-    font-weight: 400;
-  }
-  
-  .input {
-    
-  }
-  .button {
- 
-  }
-  .regist{background-color: rgb(51, 51, 51,0.6);
-height:180vh;
-
-}
-.regist1{
-   background-color: rgb(51, 51, 51,0.6);height:100vh;
-}
 }
 </style>
