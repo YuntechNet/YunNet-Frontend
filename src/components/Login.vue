@@ -100,7 +100,7 @@ export default {
   },
   data() {
     return {
-      sitekey: "6LcukLAUAAAAACA1hw5Rz_uh8dwNrNZGYlAl4CDW",
+      sitekey: "6LfB_rIUAAAAABwccTjvi8bez-uw7lcZuk3TjigQ",
       username: null,
       password: null
     };
@@ -131,7 +131,6 @@ export default {
 </script>
 
 <style scoped>
-
 h1,
 label {
   color: white;
