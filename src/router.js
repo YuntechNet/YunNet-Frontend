@@ -51,6 +51,9 @@ export default new Router({
     {
       path: "/register",
       name: "Register",
+      meta:{
+        deAuth: true
+      },
       component: () => import("./components/Register.vue")
     },
 

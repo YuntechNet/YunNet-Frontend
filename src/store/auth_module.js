@@ -21,7 +21,7 @@ const getters = {
 const actions = {
   [LOGIN](context, credentials) {
     return new Promise(resolve => {
-      ApiService.post("user/login", credentials)
+      ApiService.post("login", credentials)
         .then(({ data }) => {
           context.commit(SET_AUTH, data);
           resolve(data);
@@ -35,15 +35,13 @@ const actions = {
     context.commit(PURGE_AUTH);
   },
   [REGISTER](context, credentials) {
-    return new Promise((resolve, reject) => {
-      ApiService.post("users", { user: credentials })
+    return new Promise(resolve => {
+      ApiService.post("register", credentials)
         .then(({ data }) => {
-          context.commit(SET_AUTH, data.user);
           resolve(data);
         })
         .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
-          reject(response);
+          context.commit(SET_ERROR, response.data.message);
         });
     });
   },
@@ -77,12 +75,12 @@ const mutations = {
       username: JwtService.getUsername()
     };
     state.errors = null;
-    JwtService.saveToken(state.user.token, status.user.username);
+    JwtService.saveToken(state.user.token, state.user.username);
   },
   [PURGE_AUTH](state) {
     state.isAuthenticated = false;
-    state.user = {};
     state.errors = null;
+    state.user = {};
     ApiService.deleteHeader();
     JwtService.destroyToken();
   }

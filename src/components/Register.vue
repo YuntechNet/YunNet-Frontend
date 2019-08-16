@@ -4,10 +4,7 @@
     <section class="container-fluid">
       <div class="row">
         <div class="col-12" style="padding:3%;"></div>
-        <div
-          class="col-12 col-sm-10 offset-sm-1 regist frame"
-          
-        >
+        <div class="col-12 col-sm-10 offset-sm-1 regist frame">
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
@@ -49,10 +46,7 @@
           </div>
         </div>
         <div class="col-12" style="padding:3%;"></div>
-        <div
-          class="col-12 col-sm-10 offset-sm-1 regist1 frame"
-         
-        >
+        <div class="col-12 col-sm-10 offset-sm-1 regist1 frame">
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
@@ -68,38 +62,46 @@
               <hr />
             </div>
             <div class="col-10 offset-1">
+              <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
               <p style="color:white;margin:0px auto;white-space:nowrap;">學號格式:限定字母全大寫。</p>
               <p style="color:white;margin:0px auto;white-space:nowrap;">床位格式:</p>
-              <p
-                style="color:white;margin:0px auto;white-space:nowrap;"
-              >Example1: A3棟108房4床 </p>
+              <p style="color:white;margin:0px auto;white-space:nowrap;">Example1: A3棟108房4床</p>
               <p>A3108-4 | (棟別,房號)-(床號)</p>
-              <p
-                style="color:white;margin:0px auto;white-space:nowrap;"
-              >Example2: F棟102房2床</p>
-               <p>E2102-2 | (棟別,房號)-(床號)</p>
-              <div class="row">
-                <div class="col-12">
-                  <p>
-                    <label for="student_id">學號/臨時卡號｜Student ID/Access Card Number：</label>
-                    <input type="text" name="student_id" required id="student_id" class="input" />
-                  </p>
+              <p style="color:white;margin:0px auto;white-space:nowrap;">Example2: F棟102房2床</p>
+              <p>E2102-2 | (棟別,房號)-(床號)</p>
+              <b-form @submit.prevent="regist">
+                <div class="row">
+                  <div class="col-12 d-flex justify-content-center">
+                    <b-form-group
+                      id="student_id group"
+                      label-cols-sm="12"
+                      label-cols-lg="8"
+                      label="學號/臨時卡號｜Student ID/Access Card Number："
+                      label-for="student_id"
+                      style="color:white;"
+                    >
+                      <b-form-input id="student_id" v-model="id" required></b-form-input>
+                    </b-form-group>
+                  </div>
+                  <div class="col-12 d-flex justify-content-center">
+                    <b-form-group
+                      id="bed group"
+                      label-cols-sm="12"
+                      label-cols-lg="8"
+                      label="床位｜Bed："
+                      label-for="bed"
+                      style="color:white;"
+                    >
+                      <b-form-input id="bed" v-model="bed" required></b-form-input>
+                    </b-form-group>
+                  </div>
+                  <div class="col-12">
+                    <b-button type="submit" variant="info">
+                      <p style="margin:auto auto;">送出</p>
+                    </b-button>
+                  </div>
                 </div>
-                <div class="col-12">
-                  <p>
-                    <label for="bed">床位｜Bed：</label>
-
-                    <input class="input" type="text" name="bed" required id="bed" />
-                  </p>
-                </div>
-
-                <div class="col-12">
-                  <b-button class="button" variant="info">
-                    <p style="margin:auto auto;">Button</p>
-                  </b-button>
-                </div>
-              </div>
-          
+              </b-form>
             </div>
           </div>
         </div>
@@ -110,14 +112,36 @@
 </template>
 
 <script>
-import Background from "@/components/Background"
+import Background from "@/components/Background";
+import { REGISTER } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "Register",
   components: {
     Background
+  },
+  data() {
+    return {
+      id: null,
+      bed: null
+    };
+  },
+  methods: {
+    regist() {
+      let id = this.id;
+      let bed = this.bed;
+      this.$store
+        .dispatch(REGISTER, { id, bed })
+        .then(() => this.$router.push({ name: "Index" }));
+    }
+  },
+  computed: {
+    ...mapState({
+      errors: state => state.auth.errors
+    })
   }
-}
+};
 </script>
 
 <style scoped>
@@ -125,6 +149,7 @@ hr {
   background-color: white;
 }
 p,
+b-form-group,
 label {
   color: white;
   font-size: 1em;
@@ -138,37 +163,30 @@ label {
 button {
   height: 40px;
 }
-.regist{background-color: rgb(51, 51, 51,0.6);
-height:140vh;
-
+.regist {
+  background-color: rgb(51, 51, 51, 0.6);
+  height: 140vh;
 }
-.regist1{
-   background-color: rgb(51, 51, 51,0.6);height:70vh;
+.regist1 {
+  background-color: rgb(51, 51, 51, 0.6);
+  height: 70vh;
 }
 
 @media screen and (max-width: 600px) {
   p {
-    
     font-weight: 400;
   }
   .title {
-  
     color: red;
     font-weight: 400;
   }
-  
-  .input {
-    
+  .regist {
+    background-color: rgb(51, 51, 51, 0.6);
+    height: 180vh;
   }
-  .button {
- 
+  .regist1 {
+    background-color: rgb(51, 51, 51, 0.6);
+    height: 100vh;
   }
-  .regist{background-color: rgb(51, 51, 51,0.6);
-height:180vh;
-
-}
-.regist1{
-   background-color: rgb(51, 51, 51,0.6);height:100vh;
-}
 }
 </style>

@@ -3,7 +3,7 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: "http://yunnet-boom.dorm.yuntech.edu.tw",
+        target: "https://yunnet-boom.dorm.yuntech.edu.tw",
         secure: false
       }
     }
