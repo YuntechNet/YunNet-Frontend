@@ -4,127 +4,108 @@
     <section class="container-fluid">
       <div class="row">
         <div class="col-12" style="padding-top: 5%;"></div>
-        <div class="col-12 col-sm-10 offset-sm-1 frame" style="background-color: rgb(51,51,51,0.6);">
+        <div
+          class="col-12 col-sm-10 offset-sm-1 frame"
+          style="background-color: rgb(51,51,51,0.6);"
+        >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
-                <a class="btn btn-default btn-lg" href="./" style="background-color: white;">
+                <router-link
+                  to="./"
+                  class="btn btn-default btn-lg"
+                  style="background-color: white;"
+                >
                   <font-awesome-icon icon="times" />
-                </a>
+                </router-link>
               </div>
               <div class="float-left">
                 <h1>使用者資訊｜User Info.</h1>
               </div>
             </div>
-
             <div class="col-10 offset-1">
               <hr />
             </div>
-            <div class="col-12">
-              <div class="d-flex justify-content-center">
-                <div class="btn btn-info column" href="./#/change_password">
-                  更改密碼
-                  <br />Change Password
-                </div>
-
-                <div class="btn btn-info column" href="./#/change_mac">
-                  更換MAC卡號
-                  <br />Change MAC
-                </div>
-              </div>
-            </div>
-            <div class="col-12" style="padding-top: 2%;"></div>
             <div class="col-10 offset-1">
-              <div class="row">
-                <div class="col-11 offset-1">
-                  <div class="d-flex justify-content-center">
-                    <table style="text-align:left;">
-                      <tbody>
-                        <tr>
-                          <th scope="row">
-                            <a style="font-size:13px;">使用者</a>
-                            <a style="margin:0px 2px;">|</a> User
-                          </th>
-                          <td align="left">
-                            <div style="margin:0px 20px">{{ User }}</div>
-                          </td>
-                        </tr>
-                        <tr align="left">
-                          <th scope="row">部門｜Depart</th>
-                          <td align="left">
-                            <div style="margin:0px 20px">{{ Depart }}</div>
-                          </td>
-                        </tr>
-                        <tr align="left">
-                          <th scope="row">姓名｜Name</th>
-                          <td align="left">
-                            <div style="margin:0px 20px">{{ Name }}</div>
-                          </td>
-                        </tr>
-                        <tr align="left">
-                          <th scope="row">IP&nbsp; &nbsp;</th>
-                          <td>
-                            <div style="margin:0px 20px">{{ IP }}&nbsp; &nbsp;&nbsp; &nbsp;</div>
-                          </td>
-                        </tr>
-                        <tr align="left">
-                          <th scope="row">Mac</th>
-                          <td>
-                            <div style="margin:0px 20px">{{ Mac }}</div>
-                          </td>
-                        </tr>
-                        <tr align="left">
-                          <th scope="row">戶號｜Portal</th>
-                          <td>
-                            <div style="margin:0px 20px">{{ Portal }}</div>
-                          </td>
-                        </tr>
-                        <tr align="left">
-                          <th scope="row">床型｜Type</th>
-                          <td>
-                            <div style="margin:0px 20px">{{ Type }}</div>
-                          </td>
-                        </tr>
-                        <tr align="left">
-                          <th scope="row">狀態｜Status</th>
-                          <td>
-                            <div style="margin:0px 20px">{{ Status }}</div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-
-                   
+              <div class="row mb-5">
+                <div class="col-12" style="text-align: left;">
+                  <div>
+                    <div class="row justify-content-md-center pt-5" style="color:white;">
+                      <div class="w-100"></div>
+                      <div class="col-sm-1 font-weight-bold">學號</div>
+                      <div class="col-sm-1 font-weight-bold">ID</div>
+                      <div class="col-sm-2 offset-sm-1">{{info.username}}</div>
+                      <div class="w-100 mb-2"></div>
+                      <div class="col-sm-1 font-weight-bold">姓名</div>
+                      <div class="col-sm-1 font-weight-bold">Name</div>
+                      <div class="col-sm-2 offset-sm-1">{{info.name}}</div>
+                      <div class="w-100 mb-2"></div>
+                      <div class="col-sm-1 font-weight-bold">部門</div>
+                      <div class="col-sm-1 font-weight-bold">Department</div>
+                      <div class="col-sm-2 offset-sm-1">{{info.department}}</div>
+                      <div class="w-100 mb-2"></div>
+                      <div class="col-sm-1 font-weight-bold">類型</div>
+                      <div class="col-sm-1 font-weight-bold">Type</div>
+                      <div class="col-sm-2 offset-sm-1">
+                        <div v-for="(item,index) in info.group" :key="index">{{item}}</div>
+                      </div>
+                    </div>
+                    <div class="mt-5">
+                      <div
+                        class="card-deck mx-xl-8 pt-2"
+                        v-for="(item,index) in info_IP"
+                        :key="index"
+                      >
+                        <div :class="['card bg-light', index===0?'border-warning':'' ,'text-dark']">
+                          <div :class="[index === 0?'bg-warning':'bg-light','card-header']">
+                            <button
+                              class="btn btn-block"
+                              data-toggle="collapse"
+                              :data-target="`#id${index}`"
+                              aria-expanded="true"
+                              :aria-controls="`#id${index}`"
+                            >
+                              <div class="row">
+                                <h4 class="col text-left font-weight-bold">{{item.ip}}</h4>
+                                <h4 class="dropdown-toggle">{{item.description}}</h4>
+                              </div>
+                            </button>
+                          </div>
+                          <div
+                            :class="['card-body','collapse',index===0|item.lock_status==='鎖定'?'show':'hide']"
+                            :id="['id'+index]"
+                          >
+                            <div class="row mt-xs-1">
+                              <h5 class="col-3 card-title">MAC</h5>
+                              <div class="col card-text">
+                                <div>
+                                  {{item.mac.match( /.{1,2}/g ).join( ':' ).toUpperCase() }}
+                                  <kbd
+                                    :class="['ml-2',item.is_updated?'bg-success':'bg-danger']"
+                                  >{{item.is_updated?"已更新":"未更新"}}</kbd>
+                                </div>
+                              </div>
+                              <div class="w-100"></div>
+                              <h5 class="col-3 card-title">校外總量</h5>
+                              <div class="col card-text">??GB</div>
+                              <div class="w-100"></div>
+                              <h5 class="col-3 card-title">狀態</h5>
+                              <div
+                                :class="['col' ,'card-text', item.lock_status==='鎖定'?'text-danger':'text-success']"
+                              >{{item.lock_status}}</div>
+                              <div class="w-100"></div>
+                            </div>
+                            <div class="btn-group btn-right" role="group" aria-label="功能">
+                              <a href="#" class="btn btn-success">更改MAC</a>
+                              <a href="#" class="btn btn-primary">流量紀錄</a>
+                              <a href="#" class="btn btn-secondary">鎖卡紀錄</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="w-100 py-1"></div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-12" style="padding-top: 3%;"></div>
-                <div class="col-12 table-responsive">
-                  <table class="table table-sm" cellspacing="0">
-                    <thead>
-                      <tr class="bg-warning">
-                        <th id="thead" class="text-size" style="text-align:center;">月份日期</th>
-                        <th id="thead" class="text-size" style="text-align:center;">校內上傳</th>
-                        <th id="thead" class="text-size" style="text-align:center;">校內下載</th>
-                        <th id="thead" class="text-size" style="text-align:center;">校外上傳</th>
-                        <th id="thead" class="text-size" style="text-align:center;">校外下載</th>
-                        <th id="thead" class="text-size" style="text-align:center;">校內總量</th>
-                        <th id="thead" class="text-size" style="text-align:center;">校外總量</th>
-                        <th id="thead" class="text-size" style="text-align:center;">總共流量</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr id="tbody" class="bg-info">
-                        <th class="text-size" style="text-align:center;">2019/7/6</th>
-                        <th class="text-size" style="text-align:center;">0.0B</th>
-                        <th class="text-size" style="text-align:center;">0.0B</th>
-                        <th class="text-size" style="text-align:center;">0.0B</th>
-                        <th class="text-size" style="text-align:center;">16.89KB</th>
-                        <th class="text-size" style="text-align:center;">0.0B</th>
-                        <th class="text-size" style="text-align:center;">16.89KB</th>
-                        <th class="text-size" style="text-align:center;">16.89KB</th>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
               </div>
               <div class="col-1"></div>
@@ -140,23 +121,25 @@
 
 
 <script>
-import Background from "@/components/Background"
+import Background from "@/components/Background";
+import { INFO, IP } from "@/store/actions_type";
+import { mapState } from "vuex";
+
 export default {
   name: "Userinfo",
   components: { Background },
-  data() {
-    return {
-      User: " B10713104",
-      Depart: " 四電子一B",
-      Name: "林子崴",
-      IP: "140.125.201.107",
-      Mac: "70-8B-CD-12-F5-DC",
-      Portal: "A2101",
-      Type: "一般房 ",
-      Status: "已使用/已註冊"
-    }
+  beforeCreate: function() {
+    this.$store.dispatch(IP);
+    this.$store.dispatch(INFO);
+  },
+
+  computed: {
+    ...mapState({
+      info: state => state.profile.info,
+      info_IP: state => state.profile.info_IP
+    })
   }
-}
+};
 </script>
 
 

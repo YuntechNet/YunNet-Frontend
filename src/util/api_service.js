@@ -15,7 +15,7 @@ const ApiService = {
       "Authorization"
     ] = `Bearer ${JwtService.getToken()}`;
   },
-  deleteHeader(){
+  deleteHeader() {
     delete axios.defaults.headers.common["Authorization"];
   },
   query(resource, params) {
@@ -24,9 +24,11 @@ const ApiService = {
     });
   },
   get(resource, slug = "") {
-    return Vue.axios.get(`${resource}/${slug}`).catch(error => {
-      throw new Error(`[YunNet] ApiService ${error}`);
-    });
+    return Vue.axios.get(`${resource}/${slug}`);
+  },
+
+  get_pure(resource) {
+    return Vue.axios.get(`${resource}`);
   },
 
   post(resource, params) {
