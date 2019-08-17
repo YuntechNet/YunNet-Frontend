@@ -9,14 +9,15 @@
         >
           <div class="row">
             <div class="col-12">
-              <div class="float-left">
-                <h1>Lock Table - Universal</h1>
-              </div>
-              <div class="float-right">
+               <div class="float-right">
                 <a class="btn btn-default btn-lg" href="./" style="background-color: white;">
                   <font-awesome-icon icon="times" />
                 </a>
               </div>
+              <div class="float-left">
+                <h1>Lock Table - Universal</h1>
+              </div>
+             
             </div>
           </div>
           <hr />
@@ -95,6 +96,9 @@ hr {
 }
 
 @media screen and (max-width: 600px) {
+  h1{
+    font-size: 35px;
+  }
   th {
     font-size: 15px;
   }

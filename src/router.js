@@ -15,7 +15,7 @@ export default new Router({
     {
       path: "/userinfo",
       name: "Userinfo",
-      meta:{
+      meta: {
         isAuth: true
       },
       component: () => import("./components/Userinfo.vue")
@@ -106,7 +106,12 @@ export default new Router({
     {
       path: "/user_netflow",
       name: "User_netflow",
-      component: () => import("./components/User_netflow")
+      component: () => import("./components/User_netflow.vue")
+    },
+    {
+      path: "/change_password",
+      name: "Change_password",
+      component: () => import("./components/Change_password.vue")
     },
   ]
 });

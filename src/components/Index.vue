@@ -1,6 +1,6 @@
 <template>
-  <div class="row">
-    <div class="display1 zindex" style="width:100%;">
+  <div id="index" class="row">
+    <div class="display-hidden zindex" style="width:100%;">
       <div class="pos-f-t">
         <nav class="navbar navbar-dark bg-dark">
           <button
@@ -104,7 +104,7 @@
         </div>
       </div>
     </div>
-    <div class="col-12 col-sm-10" style="background-color:white;height: 80vh;">
+    <div class="col-12 col-sm-10" style="background-color:white;height: 90vh;">
       <div class="row">
         <div id="findus" class="col-12">
           <h1 class="title" style="margin:30px auto">關於我們 Find Us!</h1>
@@ -123,12 +123,15 @@
     </div>
 
     <div
-      class="col-0 offset-12 col-sm-2 offset-sm-10 display"
+      class="col-0 offset-12 col-sm-2 offset-sm-10 display-visible"
       style="background-color:rgb(51,51,51);height: 100vh;position: fixed;"
     >
       <div class="row">
         <a class="btn col-12" href="#top" role="button">YunNET 雲科網管</a>
+
+        <a class="btn col-12" href="./#/userinfo" role="button">使用者資訊｜User Info</a>
         <a v-if="!isAuthenticated" class="btn col-12" href="./#/login" role="button">登入｜Login</a>
+
         <a
           v-if="isAuthenticated"
           class="btn col-12"
@@ -136,7 +139,7 @@
           role="button"
           style="color:white;"
         >登出｜Login</a>
-        <div class="col-12" style="padding:25vh;"></div>
+        <div class="col-12" style="padding:17vh"></div>
         <a class="btn col-12" href="#top" role="button">首頁｜Home</a>
         <a class="btn col-12" href="./#/register" role="button">註冊｜Register</a>
         <a class="btn col-12" href="./#/netflow" role="button">流量｜Netflow</a>
@@ -152,9 +155,9 @@
 
 
 <script>
-import { mapGetters } from "vuex";
-import { mapState } from "vuex";
-import { LOGOUT } from "@/store/actions_type";
+import { mapGetters } from "vuex"
+import { mapState } from "vuex"
+import { LOGOUT } from "@/store/actions_type"
 
 export default {
   name: "index",
@@ -162,23 +165,9 @@ export default {
     return {
       slide: 0,
       sliding: null
-    };
+    }
   },
   methods: {
-    //increase: function() {
-    //  var x = document.getElementById("title")
-
-    // counter++
-
-    // if (counter == 1) {
-    //   x.style.visibility = "visible"
-    // }
-
-    // if (counter == 2) {
-    //  x.style.visibility = "hidden"
-    //  counter = 0
-    // }
-    //},
     logout() {
       this.$store.dispatch(LOGOUT).then(() => {
         this.$router.push({ name: "Index" })
@@ -191,7 +180,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 <style scoped>
 #BK {
@@ -216,21 +205,19 @@ export default {
 }
 .btn {
   text-align: left;
-  padding: 3px 25px;
+  padding: 5px 25px;
   color: rgb(192, 192, 192);
   font-size: 1em;
 }
 .btn:hover {
-  color: black;
-  background-color: sandybrown;
+  color: rgb(255, 255, 255);
+  background-color: rgb(114, 112, 112);
 }
 .announce {
   height: 43vh;
   background-color: white;
 }
-.display1 {
-  visibility: hidden;
-}
+
 .map {
   height: 50%;
   width: 50%;
@@ -239,6 +226,7 @@ export default {
   z-index: -999;
   position: absolute;
 }
+
 @media screen and (max-width: 600px) {
   .title {
     font-size: 2em;
@@ -247,18 +235,10 @@ export default {
   .btn {
     font-size: 1.4em;
   }
-  p {
-    font-size: 0.4em;
-  }
-  .display {
-    visibility: hidden;
-  }
-  .display1 {
-    visibility: visible;
-  }
+
   .map {
-    height: 90%;
-    width: 90%;
+    height: 70%;
+    width: 70%;
   }
   .zindex {
     z-index: 0;

@@ -3,8 +3,11 @@
     <background />
     <section class="container-fluid">
       <div class="row">
-        <div class="col-12" style="padding:3%;"></div>
-        <div class="col-12 col-sm-10 offset-sm-1 regist frame">
+        <div class="col-12 head-padding"></div>
+        <div
+          class="col-12 col-sm-10 offset-sm-1 frame"
+          style="background-color: rgb(51, 51, 51, 0.6);"
+        >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
@@ -33,20 +36,28 @@
             </p>
 
             <p class="title">請看完詳細條款再行註冊，註冊後等同您同意遵守本條款約定，請細心閱讀，以免您的權利受損!!</p>
-            <div style="height:80vh;">
-              <iframe
-                id="contract"
-                name="contract"
-                width="100%"
-                height="100%"
-                src="./#/contract"
-                style="background-color: white;"
-              ></iframe>
-            </div>
+          </div>
+          <div class="col-10 offset-1" style="height:70vh">
+            <iframe
+              id="contract"
+              name="contract"
+              width="100%"
+              height="100%"
+              src="./#/contract"
+              style="background-color: white;"
+            ></iframe>
           </div>
         </div>
+        <div
+          class="col-12 col-sm-10 offset-sm-1 frame"
+          style=" background-color: rgb(51, 51, 51, 0.6);height:10vh"
+        ></div>
         <div class="col-12" style="padding:3%;"></div>
-        <div class="col-12 col-sm-10 offset-sm-1 regist1 frame">
+
+        <div
+          class="col-12 col-sm-10 offset-sm-1 frame"
+          style="background-color: rgb(51, 51, 51, 0.6);"
+        >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
@@ -105,6 +116,10 @@
             </div>
           </div>
         </div>
+        <div
+          class="col-12 col-sm-10 offset-sm-1 frame"
+          style=" background-color: rgb(51, 51, 51, 0.6);height:10vh"
+        ></div>
         <div class="col-12" style="padding:10%;"></div>
       </div>
     </section>
@@ -152,41 +167,22 @@ p,
 b-form-group,
 label {
   color: white;
-  font-size: 1em;
   font-weight: 400;
 }
 .title {
-  font-size: 1.2em;
   color: red;
   font-weight: 900;
 }
 button {
   height: 40px;
 }
-.regist {
-  background-color: rgb(51, 51, 51, 0.6);
-  height: 140vh;
-}
-.regist1 {
-  background-color: rgb(51, 51, 51, 0.6);
-  height: 70vh;
-}
 
 @media screen and (max-width: 600px) {
+  h1 {
+    font-size: 30px;
+  }
   p {
     font-weight: 400;
-  }
-  .title {
-    color: red;
-    font-weight: 400;
-  }
-  .regist {
-    background-color: rgb(51, 51, 51, 0.6);
-    height: 180vh;
-  }
-  .regist1 {
-    background-color: rgb(51, 51, 51, 0.6);
-    height: 100vh;
   }
 }
 </style>

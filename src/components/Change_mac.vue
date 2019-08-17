@@ -95,34 +95,30 @@
             <div class="row" style="color: WHITE;">
               <div class="col-sm-4 col-12">
                 <strong>Windows XP System.</strong>
-                <iframe
+                <iframe style="width:100%;height:80%"
                   src="https://drive.google.com/file/d/0B7hvpkydNrx8STVnRmF0bS0zdFE/preview"
-                  width="320"
-                  height="240"
+                
                   allowfullscreen
                 ></iframe>
               </div>
-              <div class="col-sm-4 col-12">
+              <div class="col-sm-4 col-12" >
                 <strong>Windows 7 / 8 / 8.1 / 10 System.</strong>
-                <iframe
+                <iframe style="width:100%;height:80%"
                   src="https://drive.google.com/file/d/0B7hvpkydNrx8Y1NsdFlLUDUybmc/preview"
-                  width="320"
-                  height="240"
                   allowfullscreen
                 ></iframe>
               </div>
               <div class="col-sm-4 col-12">
-                <strong>MAC OS System.</strong>
-                <iframe
-                  src="https://drive.google.com/file/d/0B7hvpkydNrx8eTZJRjVnYUdVMHM/preview"
-                  width="320"
-                  height="240"
+                <strong>MAC OS ---System.</strong>
+                <iframe style="width:100%;height:80%"
+                  src="https://drive.google.com/file/d/0B7hvpkydNrx8eTZJRjVnYUdVMHM/preview" 
                   allowfullscreen
                 ></iframe>
               </div>
             </div>
           </div>
         </div>
+         <div class="col-10 offset-1 frame " style="background-color:rgb(51, 51, 51,0.6);height:6vh;"></div>
         <div class="col-12" style="padding:10%;"></div>
       </div>
     </section>
@@ -142,10 +138,10 @@ hr {
   background-color: white;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   iframe {
-    width: 240px;
-    height: 160px;
+    width: 170px;
+    height: 140px;
   }
 }
 </style>
