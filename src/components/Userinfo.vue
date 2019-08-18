@@ -96,7 +96,10 @@
                               <div class="w-100"></div>
                             </div>
                             <div class="btn-group btn-right" role="group" aria-label="功能">
-                              <a href="#" class="btn btn-success">更改MAC</a>
+                              <router-link
+                                :to="`./change_mac/${item.ip}`"
+                                class="btn btn-success"
+                              >更改MAC</router-link>
                               <a href="#" class="btn btn-primary">流量紀錄</a>
                               <a href="#" class="btn btn-secondary">鎖卡紀錄</a>
                             </div>

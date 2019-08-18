@@ -1,6 +1,6 @@
 import ApiService from "@/util/api_service";
 import JwtService from "@/util/jwt_service";
-import { INFO, IP } from "./actions_type";
+import { INFO, IP, CHANGE_MAC } from "./actions_type";
 import { SET_INFO, PURGE_AUTH, SET_ERROR, SET_INFO_IP } from "./mutations_type";
 import router from "@/router";
 
@@ -21,9 +21,13 @@ const actions = {
             resolve(data);
           })
           .catch(({ response }) => {
-            context.commit(PURGE_AUTH);
-            router.replace({ name: "Login" });
-            context.commit(SET_ERROR, response.data.message);
+            if (response.status != 500) {
+              context.commit(PURGE_AUTH);
+              router.replace({ name: "Login" });
+              context.commit(SET_ERROR, response.data.message);
+            }else{
+              router.replace({ name: "Index" });
+            }
           });
       });
     }
@@ -39,8 +43,31 @@ const actions = {
             resolve(data);
           })
           .catch(({ response }) => {
-            context.commit(PURGE_AUTH);
-            router.replace({ name: "Login" });
+            if (response.status != 500) {
+              context.commit(PURGE_AUTH);
+              router.replace({ name: "Login" });
+              context.commit(SET_ERROR, response.data.message);
+            }else{
+              router.replace({ name: "Index" });
+            }
+          });
+      });
+    }
+  },
+  [CHANGE_MAC](context, credentials) {
+    if (JwtService.getToken()) {
+      ApiService.setHeader();
+      const username = JwtService.getUsername();
+      return new Promise(resolve => {
+        ApiService.patch(`user/${username}/${credentials.ip}/mac`, {
+          mac: credentials.mac
+        })
+          .then(({ data }) => {
+            router.replace({ name: "Index" });
+            context.commit(SET_ERROR, data.message);
+            resolve(data);
+          })
+          .catch(({ response }) => {
             context.commit(SET_ERROR, response.data.message);
           });
       });

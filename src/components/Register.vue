@@ -55,7 +55,7 @@
         <div class="col-12" style="padding:3%;"></div>
 
         <div
-          class="col-12 col-sm-10 offset-sm-1 frame"
+          class="col-12 col-sm-10 offset-sm-1 frame pb-4"
           style="background-color: rgb(51, 51, 51, 0.6);"
         >
           <div class="row">
@@ -116,10 +116,6 @@
             </div>
           </div>
         </div>
-        <div
-          class="col-12 col-sm-10 offset-sm-1 frame"
-          style=" background-color: rgb(51, 51, 51, 0.6);height:10vh"
-        ></div>
         <div class="col-12" style="padding:10%;"></div>
       </div>
     </section>

@@ -51,7 +51,7 @@ export default new Router({
     {
       path: "/register",
       name: "Register",
-      meta:{
+      meta: {
         deAuth: true
       },
       component: () => import("./components/Register.vue")
@@ -76,7 +76,8 @@ export default new Router({
     {
       path: "/system_universal",
       name: "System_universal",
-      component: () => import("./components/system_universal/System_universal.vue")
+      component: () =>
+        import("./components/system_universal/System_universal.vue")
     },
     {
       path: "/sys_uni_abuse",
@@ -86,22 +87,27 @@ export default new Router({
     {
       path: "/sys_uni_permission",
       name: "Sys_uni_permission",
-      component: () => import("./components/system_universal/Sys_uni_permission.vue")
+      component: () =>
+        import("./components/system_universal/Sys_uni_permission.vue")
     },
     {
       path: "/system_dormitory",
       name: "System_dormitory",
-      component: () => import("./components/system_dormitory/System_dormitory.vue")
+      component: () =>
+        import("./components/system_dormitory/System_dormitory.vue")
     },
     {
       path: "/sys_dorm_import",
       name: "Sys_dorm_import",
-      component: () => import("./components/system_dormitory/Sys_dorm_import.vue")
+      component: () =>
+        import("./components/system_dormitory/Sys_dorm_import.vue")
     },
     {
-      path: "/change_mac",
-      name: "Change_mac",
-      component: () => import("./components/Change_mac.vue")
+      path: "/change_mac/:ip",
+      component: () => import("./components/Change_mac.vue"),
+      meta: {
+        isAuth: true
+      }
     },
     {
       path: "/user_netflow",
@@ -112,6 +118,6 @@ export default new Router({
       path: "/change_password",
       name: "Change_password",
       component: () => import("./components/Change_password.vue")
-    },
+    }
   ]
 });
