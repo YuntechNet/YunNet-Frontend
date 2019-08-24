@@ -120,7 +120,14 @@ export default new Router({
     {
       path: "/change_password",
       name: "Change_password",
-      component: () => import("./components/Change_password.vue")
+      component: () => import("./components/Change_password.vue"),
+      meta: {
+        isAuth: true
+      }
+    },
+    {
+      path:'*',
+      component: () => import("./components/Index.vue"),
     }
   ]
 });
