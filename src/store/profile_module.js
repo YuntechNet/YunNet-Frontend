@@ -1,6 +1,12 @@
 import ApiService from "@/util/api_service";
 import JwtService from "@/util/jwt_service";
-import { INFO, IP, CHANGE_MAC, NETFLOW_USER } from "./actions_type";
+import {
+  INFO,
+  IP,
+  CHANGE_MAC,
+  CHANGE_PASSWORD,
+  NETFLOW_USER
+} from "./actions_type";
 import {
   SET_INFO,
   PURGE_AUTH,
@@ -79,7 +85,25 @@ const actions = {
       });
     }
   },
-  [NETFLOW_USER](context,credentials) {
+  [CHANGE_PASSWORD](context, credentials) {
+    if (JwtService.getToken()) {
+      ApiService.setHeader();
+      const username = JwtService.getUsername();
+      return new Promise(resolve => {
+        ApiService.patch(`user/${username}/password`, credentials)
+          .then(({ data }) => {
+            context.commit(PURGE_AUTH);
+            router.replace({ name: "Index" });
+            context.commit(SET_ERROR, data.message);
+            resolve(data);
+          })
+          .catch(({ response }) => {
+            context.commit(SET_ERROR, response.data.message);
+          });
+      });
+    }
+  },
+  [NETFLOW_USER](context, credentials) {
     if (JwtService.getToken()) {
       ApiService.setHeader();
       return new Promise(resolve => {
