@@ -24,7 +24,7 @@
             <hr />
           </div>
           <div class="col-12" style="padding:2%;"></div>
-          <div class="col-12 col-sm-10 offset-sm-1" style="height:80vh;">
+          <div class="col-12 col-sm-10 offset-sm-1 rounded-lg" style="height:80vh;">
             <iframe
               id="contract"
               name="contract"

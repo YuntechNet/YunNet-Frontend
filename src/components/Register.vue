@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-12 head-padding"></div>
         <div
-          class="col-12 col-sm-10 offset-sm-1 frame"
+          class="col-12 col-sm-10 offset-sm-1 frame rounded-lg"
           style="background-color: rgb(51, 51, 51, 0.6);"
         >
           <div class="row">
@@ -37,7 +37,7 @@
 
             <p class="title">請看完詳細條款再行註冊，註冊後等同您同意遵守本條款約定，請細心閱讀，以免您的權利受損!!</p>
           </div>
-          <div class="col-10 offset-1" style="height:70vh">
+          <div class="col-12 col-sm-10 offset-sm-1" style="height:70vh">
             <iframe
               id="contract"
               name="contract"
@@ -47,11 +47,9 @@
               style="background-color: white;"
             ></iframe>
           </div>
+           <div class="col-12" style="padding:3%;"></div>
         </div>
-        <div
-          class="col-12 col-sm-10 offset-sm-1 frame"
-          style=" background-color: rgb(51, 51, 51, 0.6);height:10vh"
-        ></div>
+       
         <div class="col-12" style="padding:3%;"></div>
 
         <div

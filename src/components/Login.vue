@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-12" style="padding:3%;"></div>
         <div
-          class="col-10 offset-1 offset-sm-3 col-sm-6 frame"
+          class="col-10 offset-1 offset-sm-3 col-sm-6 frame rounded-lg"
           style="background-color: rgb(51, 51, 51,0.6);"
         >
           <div class="row">

@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-12" style="padding-top: 5%;"></div>
         <div
-          class="col-12 col-sm-10 offset-sm-1 frame"
+          class="col-12 col-sm-10 offset-sm-1 frame rounded-lg"
           style="background-color: rgb(51,51,51,0.6);"
         >
           <div class="row">
@@ -100,7 +100,7 @@
                                 :to="`./change_mac/${item.ip}`"
                                 class="btn btn-success"
                               >更改MAC</router-link>
-                              <a href="#" class="btn btn-primary">流量紀錄</a>
+                              <a href="./#/User_netflow" class="btn btn-primary">流量紀錄</a>
                               <a href="#" class="btn btn-secondary">鎖卡紀錄</a>
                             </div>
                           </div>
@@ -124,16 +124,16 @@
 
 
 <script>
-import Background from "@/components/Background";
-import { INFO, IP } from "@/store/actions_type";
-import { mapState } from "vuex";
+import Background from "@/components/Background"
+import { INFO, IP } from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "Userinfo",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(IP);
-    this.$store.dispatch(INFO);
+    this.$store.dispatch(IP)
+    this.$store.dispatch(INFO)
   },
 
   computed: {
@@ -142,7 +142,7 @@ export default {
       info_IP: state => state.profile.info_IP
     })
   }
-};
+}
 </script>
 
 

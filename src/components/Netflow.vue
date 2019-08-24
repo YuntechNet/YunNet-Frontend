@@ -4,7 +4,7 @@
     <section class="container-fluid">
       <div class="row">
         <div class="col-12" style="padding-top: 5%;"></div>
-        <div class="col-10 offset-1 frame" style="background-color:rgb(51,51,51,0.6);">
+        <div class="col-10 offset-1 frame rounded-lg" style="background-color:rgb(51,51,51,0.6);">
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
@@ -36,29 +36,30 @@
           <div class="col-12 table-responsive">
             <table class="table table-sm" cellspacing="0">
               <thead>
-                <tr class="bg-warning" style="white-space:nowrap;">
-                  <th id="thead" class="text-size" style="text-align:center;">Rank</th>
-                  <th id="thead" class="text-size" style="text-align:center;">IP</th>
-                  <th id="thead" class="text-size" style="text-align:center;">校內上傳</th>
+                <tr style="white-space:nowrap;background-color:#337ab7;">
+                  <th id="thead" class="text-size" style="text-align:center;">日期</th>
                   <th id="thead" class="text-size" style="text-align:center;">校內下載</th>
-                  <th id="thead" class="text-size" style="text-align:center;">校外上傳</th>
+                  <th id="thead" class="text-size" style="text-align:center;">校內上傳</th>
                   <th id="thead" class="text-size" style="text-align:center;">校外下載</th>
-                  <th id="thead" class="text-size" style="text-align:center;">校內總量</th>
-                  <th id="thead" class="text-size" style="text-align:center;">校外總量</th>
-                  <th id="thead" class="text-size" style="text-align:center;">總共流量</th>
+                  <th id="thead" class="text-size" style="text-align:center;">校外上傳</th>
+                  <th id="thead" class="text-size" style="text-align:center;">總流量</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="bg-info">
-                  <th class="text-size" style="text-align:center;">1</th>
-                  <th class="text-size" style="text-align:center;">140.125.111.111</th>
-                  <th class="text-size" style="text-align:center;">0.0B</th>
-                  <th class="text-size" style="text-align:center;">0.0B</th>
-                  <th class="text-size" style="text-align:center;">0.0B</th>
-                  <th class="text-size" style="text-align:center;">16.89KB</th>
-                  <th class="text-size" style="text-align:center;">0.0B</th>
-                  <th class="text-size" style="text-align:center;">16.89KB</th>
-                  <th class="text-size" style="text-align:center;">16.89KB</th>
+                <tr
+                  style="background-color:#FAFAD2;color:#444444;"
+                  v-for="(item,index) in netflow"
+                  :key="index"
+                >
+                  <th class="text-size" style="text-align:center;">{{item.date}}</th>
+                  <th class="text-size" style="text-align:center;">{{(item.lan_download/1)}}</th>
+                  <th class="text-size" style="text-align:centerS;">{{(item.lan_upload/1)}}</th>
+                  <th class="text-size" style="text-align:center;">{{(item.wan_download/1)}}</th>
+                  <th class="text-size" style="text-align:center;">{{(item.wan_upload/1)}}</th>
+                  <th
+                    class="text-size"
+                    style="text-align:center;"
+                  >{{((item.lan_download+item.lan_upload+item.wan_download+item.wan_upload)/1)}}</th>
                 </tr>
               </tbody>
             </table>
@@ -81,7 +82,37 @@ export default {
       form: {
         date: "",
         ip: ""
-      }
+      },
+      netflow: [
+        {
+          date: "2020-1-4",
+          lan_download: 500,
+          lan_upload: 600,
+          wan_download: 32767,
+          wan_upload: 1024
+        },
+        {
+          date: "2020-1-3",
+          lan_download: 7,
+          lan_upload: 87,
+          wan_download: 6,
+          wan_upload: 3
+        },
+        {
+          date: "2020-1-2",
+          lan_download: 500,
+          lan_upload: 600,
+          wan_download: 32767,
+          wan_upload: 1024
+        },
+        {
+          date: "2020-1-1",
+          lan_download: 7,
+          lan_upload: 87,
+          wan_download: 6,
+          wan_upload: 3
+        }
+      ]
     }
   },
   methods: {
@@ -91,7 +122,6 @@ export default {
 </script>
 
 <style scoped>
-
 tr {
   color: white;
 }
@@ -99,13 +129,6 @@ hr {
   background-color: white;
 }
 #thead:hover {
-  background-color: rgba(245, 233, 132, 0.5);
+  background-color: rgba(181, 215, 255, 0.5);
 }
-
-@media screen and (max-width: 600px) {
-  th {
-    font-size: 10px;
-  }
-}
-
 </style>

@@ -6,3 +6,4 @@ export const ERROR = "error";
 export const INFO = "info";
 export const IP = "ip";
 export const CHANGE_MAC = "change_MAC";
+export const NETFLOW = "netflow";

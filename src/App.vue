@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container-fluid">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -12,48 +12,42 @@ export default {
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Microsoft Yahei", Helvetica, Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   height: 100vh;
   position: relative;
+  font-weight: bold;
 }
-h1{
-  font-family: fantasy;
-}
-a,p,label,button{
-  font-family: Glyphicons Halflings;
-  font-size: 20px;
-}
+
 .frame {
   animation-name: inner-frame;
   animation-duration: 1s;
   animation-fill-mode: both;
   left: 0;
 }
-.head-padding{
+.head-padding {
   padding: 3%;
 }
 .display-hidden {
-    visibility: hidden;
+  visibility: hidden;
+}
+.display-visible {
+  visibility: visible;
+}
+@media screen and (max-width: 600px) {
+  .head-padding {
+    padding: 0%;
   }
-  .display-visible {
+  .display-hidden {
     visibility: visible;
   }
-  @media screen and (max-width: 600px) {
-    .head-padding{
-  padding: 0%;
-}
-    .display-hidden {
-    visibility:  visible;
-  }
   .display-visible {
-    visibility:hidden;
+    visibility: hidden;
   }
-    
-  }
+}
 
 @keyframes inner-frame {
   from,

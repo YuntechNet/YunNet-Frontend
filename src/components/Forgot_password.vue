@@ -4,7 +4,10 @@
     <section class="container-fluid">
       <div class="row">
         <div class="col-12" style="padding:3%;"></div>
-        <div class="col-12 col-sm-4 offset-sm-4 frame" style="background-color: rgb(51, 51, 51,0.6);">
+        <div
+          class="col-12 col-sm-4 offset-sm-4 frame rounded-lg"
+          style="background-color: rgb(51, 51, 51,0.6);"
+        >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
@@ -56,5 +59,4 @@ export default {
 hr {
   background-color: white;
 }
-
 </style>
