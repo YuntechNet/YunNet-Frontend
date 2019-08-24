@@ -104,7 +104,10 @@
                                 :to="`./user_netflow/${item.ip}`"
                                 class="btn btn-primary"
                               >流量紀錄</router-link>
-                              <a href="#" class="btn btn-secondary">鎖卡紀錄</a>
+                              <router-link
+                                :to="`./user_lock/${item.ip}`"
+                                class="btn btn-secondary"
+                              >鎖卡紀錄</router-link>
                             </div>
                           </div>
                         </div>
