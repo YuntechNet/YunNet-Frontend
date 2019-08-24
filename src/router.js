@@ -110,9 +110,12 @@ export default new Router({
       }
     },
     {
-      path: "/user_netflow",
+      path: "/user_netflow/:ip",
       name: "User_netflow",
-      component: () => import("./components/User_netflow.vue")
+      component: () => import("./components/User_netflow.vue"),
+      meta: {
+        isAuth: true
+      }
     },
     {
       path: "/change_password",

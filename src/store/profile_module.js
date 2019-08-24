@@ -1,7 +1,13 @@
 import ApiService from "@/util/api_service";
 import JwtService from "@/util/jwt_service";
-import { INFO, IP, CHANGE_MAC, NETFLOW } from "./actions_type";
-import { SET_INFO, PURGE_AUTH, SET_ERROR, SET_INFO_IP, SET_NETFLOW } from "./mutations_type";
+import { INFO, IP, CHANGE_MAC, NETFLOW_USER } from "./actions_type";
+import {
+  SET_INFO,
+  PURGE_AUTH,
+  SET_ERROR,
+  SET_INFO_IP,
+  SET_NETFLOW
+} from "./mutations_type";
 import router from "@/router";
 
 const state = {
@@ -64,7 +70,6 @@ const actions = {
           mac: credentials.mac
         })
           .then(({ data }) => {
-
             context.commit(SET_ERROR, data.message);
             resolve(data);
           })
@@ -74,16 +79,11 @@ const actions = {
       });
     }
   },
-
-
-  [NETFLOW](context) {
+  [NETFLOW_USER](context,credentials) {
     if (JwtService.getToken()) {
       ApiService.setHeader();
-      const ip = "000.000.000.000"
-
       return new Promise(resolve => {
-
-        ApiService.get("netflow", ip)
+        ApiService.get("netflow", credentials)
           .then(({ data }) => {
             context.commit(SET_NETFLOW, data);
             resolve(data);
@@ -99,37 +99,8 @@ const actions = {
           });
       });
     }
-  },
-    [INFO](context) {
-      if (JwtService.getToken()) {
-        ApiService.setHeader();
-        const username = JwtService.getUsername();
-        return new Promise(resolve => {
-          ApiService.get("user", username)
-            .then(({ data }) => {
-              context.commit(SET_INFO, data);
-              resolve(data);
-            })
-            .catch(({ response }) => {
-              if (response.status != 500) {
-                context.commit(PURGE_AUTH);
-                router.replace({ name: "Login" });
-                context.commit(SET_ERROR, response.data.message);
-              } else {
-                router.replace({ name: "Index" });
-              }
-            });
-        });
-      }
-    },
-
-
-
-
-
+  }
 };
-
-
 
 const mutations = {
   [SET_INFO](state, info) {

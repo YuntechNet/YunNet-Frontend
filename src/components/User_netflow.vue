@@ -27,7 +27,6 @@
             <div class="col-10 offset-1">
               <hr />
             </div>
-
             <div class="col-12" style="padding-top: 2%;"></div>
             <div class="col-10 offset-1">
               <div class="row justify-content-md-center pt-5" style="color:white;">
@@ -43,6 +42,10 @@
                 <div class="col-sm-1 font-weight-bold">部門</div>
                 <div class="col-sm-1 font-weight-bold">Department</div>
                 <div class="col-sm-2 offset-sm-1">{{info.department}}</div>
+                <div class="w-100 mb-2"></div>
+                <div class="col-sm-1 font-weight-bold">IP</div>
+                <div class="col-sm-1 font-weight-bold">IP</div>
+                <div class="col-sm-2 offset-sm-1">{{ipnow}}</div>
                 <div class="w-100 mb-2"></div>
                 <div class="col-sm-1 font-weight-bold">類型</div>
                 <div class="col-sm-1 font-weight-bold">Type</div>
@@ -65,15 +68,18 @@
                     <tbody>
                       <tr
                         style="background-color:#FAFAD2;color:#444444;"
-                        v-for="(item,index) in netflow"
+                        v-for="(item,index) in netflow.netflow"
                         :key="index"
                       >
                         <th class="text-size" style="text-align:center;">{{item.date}}</th>
-                        <th class="text-size" style="text-align:center;">{{item.lan_download}}</th>
-                        <th class="text-size" style="text-align:center;">{{item.lan_upload}}</th>
-                        <th class="text-size" style="text-align:center;">{{item.wan_download}}</th>
-                        <th class="text-size" style="text-align:center;">{{item.wan_upload}}</th>
-                        <th class="text-size" style="text-align:center;">0</th>
+                        <th class="text-size" style="text-align:center;">{{(item.lan_download/1)}}</th>
+                        <th class="text-size" style="text-align:centerS;">{{(item.lan_upload/1)}}</th>
+                        <th class="text-size" style="text-align:center;">{{(item.wan_download/1)}}</th>
+                        <th class="text-size" style="text-align:center;">{{(item.wan_upload/1)}}</th>
+                        <th
+                          class="text-size"
+                          style="text-align:center;"
+                        >{{((item.lan_download+item.lan_upload+item.wan_download+item.wan_upload)/1)}}</th>
                       </tr>
                     </tbody>
                   </table>
@@ -92,16 +98,33 @@
 
 
 <script>
-import Background from "@/components/Background"
-import { INFO, IP } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { INFO, NETFLOW_USER, IP } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "User_netflow",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(IP)
-    this.$store.dispatch(INFO)
+    this.$store.dispatch(INFO);
+    this.$store.dispatch(IP);
+  },
+  created: function() {
+    let i = 0;
+    for (i = 0; i < this.info_IP.length; i++) {
+      if (this.info_IP[i].ip === this.$route.params.ip) {
+        this.ipnow = this.info_IP[i].ip;
+      }
+    }
+    if (this.ipnow === null) {
+      this.$router.push({ name: "Index" });
+    }
+    this.$store.dispatch(NETFLOW_USER, this.ipnow);
+  },
+  data() {
+    return {
+      ipnow: null
+    };
   },
   computed: {
     ...mapState({
@@ -110,7 +133,7 @@ export default {
       netflow: state => state.profile.netflow
     })
   }
-}
+};
 </script>
 
 
