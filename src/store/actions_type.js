@@ -8,3 +8,4 @@ export const IP = "ip";
 export const CHANGE_MAC = "change_MAC";
 export const NETFLOW_USER = "netflow_user";
 export const CHANGE_PASSWORD = "change_password";
+export const LOCK = "lock";

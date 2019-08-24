@@ -7,3 +7,4 @@ export const RE_AUTH = "reAuth";
 export const SET_INFO = "setINFO";
 export const SET_INFO_IP = "setINFO_IP";
 export const SET_NETFLOW = "setNETFLOW";
+export const SET_LOCK = "setLOCK";
