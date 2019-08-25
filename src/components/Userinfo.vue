@@ -79,7 +79,7 @@
                               <h5 class="col-3 card-title">MAC</h5>
                               <div class="col card-text">
                                 <div>
-                                  {{item.mac.match( /.{1,2}/g ).join( ':' ).toUpperCase() }}
+                                  {{item.mac/*.match( /.{1,2}/g ).join( ':' ).toUpperCase()*/ }}
                                   <kbd
                                     :class="['ml-2',item.is_updated?'bg-success':'bg-danger']"
                                   >{{item.is_updated?"已更新":"未更新"}}</kbd>
@@ -91,7 +91,7 @@
                               <div class="w-100"></div>
                               <h5 class="col-3 card-title">狀態</h5>
                               <div
-                                :class="['col' ,'card-text', item.lock_status==='鎖定'?'text-danger':'text-success']"
+                                :class="['col' ,'card-text', item.lock_status==='LOCKED'?'text-danger':'text-success']"
                               >{{item.lock_status}}</div>
                               <div class="w-100"></div>
                             </div>
@@ -100,8 +100,14 @@
                                 :to="`./change_mac/${item.ip}`"
                                 class="btn btn-success"
                               >更改MAC</router-link>
-                              <router-link href="./User_netflow" class="btn btn-primary">流量紀錄</router-link>
-                              <router-link href="./" class="btn btn-secondary">鎖卡紀錄</router-link>
+                              <router-link
+                                :to="`./user_netflow/${item.ip}`"
+                                class="btn btn-primary"
+                              >流量紀錄</router-link>
+                              <router-link
+                                :to="`./user_lock/${item.ip}`"
+                                class="btn btn-secondary"
+                              >鎖卡紀錄</router-link>
                             </div>
                           </div>
                         </div>
@@ -124,16 +130,16 @@
 
 
 <script>
-import Background from "@/components/Background"
-import { INFO, IP } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { INFO, IP } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "Userinfo",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(IP)
-    this.$store.dispatch(INFO)
+    this.$store.dispatch(IP);
+    this.$store.dispatch(INFO);
   },
 
   computed: {
@@ -142,7 +148,7 @@ export default {
       info_IP: state => state.profile.info_IP
     })
   }
-}
+};
 </script>
 
 

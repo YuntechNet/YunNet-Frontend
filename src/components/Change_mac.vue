@@ -108,7 +108,6 @@
             </ul>
           </div>
           <div class="col-10 offset-1">
-            <!--
             <div class="row" style="color: WHITE;">
               <div class="col-sm-4 col-12">
                 <strong>Windows XP System.</strong>
@@ -135,7 +134,6 @@
                 ></iframe>
               </div>
             </div>
-            -->
           </div>
         </div>
         <div class="col-10 offset-1 frame" style="background-color:rgb(51, 51, 51,0.6);height:6vh;"></div>
@@ -187,10 +185,7 @@ export default {
   computed: {
     ...mapState({
       info_IP: state => state.profile.info_IP,
-      errors: state => state.auth.errors,
-      textState(text) {
-        return text.length === 2 ? true : false;
-      }
+      errors: state => state.auth.errors
     })
   }
 };

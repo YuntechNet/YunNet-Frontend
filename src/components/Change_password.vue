@@ -26,7 +26,8 @@
           </div>
           <hr />
           <div class="col-10 offset-1">
-            <b-form>
+            <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
+            <b-form @submit.prevent="submit">
               <h5>
                 <b-form-group
                   class="text-left"
@@ -35,7 +36,13 @@
                   label="舊密碼｜Old Password："
                   label-for="old-Password"
                 >
-                  <b-form-input id="username" v-model="username" required placeholder="Old"></b-form-input>
+                  <b-form-input
+                    type="password"
+                    id="old-Password"
+                    v-model="old_Password"
+                    required
+                    placeholder="Old"
+                  ></b-form-input>
                 </b-form-group>
                 <b-form-group
                   class="text-left"
@@ -46,9 +53,9 @@
                 >
                   <b-form-input
                     type="password"
-                    id="password"
+                    id="new-Password"
                     required
-                    v-model="password"
+                    v-model="new_Password"
                     placeholder="New"
                   ></b-form-input>
                 </b-form-group>
@@ -59,18 +66,18 @@
                   label="確認密碼｜Confirm Password："
                   label-for="confirm-Password"
                 >
-                  <b-form-input id="confirm-Password" v-model="username" required placeholder="Confirm"></b-form-input>
+                  <b-form-input
+                    type="password"
+                    id="confirm-Password"
+                    v-model="REnew_Password"
+                    required
+                    placeholder="Confirm"
+                  ></b-form-input>
                 </b-form-group>
               </h5>
               <div>
-                <a class="btn btn-primary btn-lg" href="./#/" style="margin:10px 5px">送出</a>
-                <a>
-                  <b-button
-                    type="submit"
-                    variant="btn btn-success btn-lg"
-                    style="margin:10px 5px;"
-                  >重填</b-button>
-                </a>
+                <input class="btn btn-primary" type="submit" value="確定" />
+                <input class="btn btn-danger" type="reset" value="重填" />
               </div>
             </b-form>
           </div>
@@ -81,14 +88,39 @@
 </template>
 
 <script>
-import Background from "@/components/Background"
+import Background from "@/components/Background";
+import { mapState } from "vuex";
+import { CHANGE_PASSWORD, ERROR } from "@/store/actions_type";
 
 export default {
   name: "Change_password",
   components: {
     Background
+  },
+  data() {
+    return {
+      old_Password: null,
+      new_Password: null,
+      REnew_Password: null
+    };
+  },
+  methods: {
+    submit() {
+      let old_password = this.old_Password;
+      let new_password = this.new_Password;
+      if (this.new_Password === this.REnew_Password) {
+        this.$store.dispatch(CHANGE_PASSWORD, { old_password, new_password });
+      } else {
+        this.$store.dispatch(ERROR, "重複密碼錯誤!");
+      }
+    }
+  },
+  computed: {
+    ...mapState({
+      errors: state => state.auth.errors
+    })
   }
-}
+};
 </script>
 
 <style scoped>
@@ -100,9 +132,8 @@ hr {
   background-color: white;
 }
 @media screen and (max-width: 600px) {
-  h1{
-    font-size:30px;
+  h1 {
+    font-size: 30px;
   }
-
 }
 </style>

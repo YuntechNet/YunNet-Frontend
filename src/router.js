@@ -110,14 +110,28 @@ export default new Router({
       }
     },
     {
-      path: "/user_netflow",
+      path: "/user_netflow/:ip",
       name: "User_netflow",
-      component: () => import("./components/User_netflow.vue")
+      component: () => import("./components/User_netflow.vue"),
+      meta: {
+        isAuth: true
+      }
     },
     {
       path: "/change_password",
       name: "Change_password",
-      component: () => import("./components/Change_password.vue")
+      component: () => import("./components/Change_password.vue"),
+      meta: {
+        isAuth: true
+      }
+    },
+    {
+      path: "/user_lock/:ip",
+      name: "Change_password",
+      component: () => import("./components/User_lockTable.vue"),
+      meta: {
+        isAuth: true
+      }
     },
     {
       path: "/user_announce1",
@@ -148,6 +162,10 @@ export default new Router({
       path: "/announce3",
       name: "Announce3",
       component: () => import("./components/Announce3.vue")
+    },
+    {
+      path: "*",
+      component: () => import("./components/Index.vue")
     }
   ]
 });

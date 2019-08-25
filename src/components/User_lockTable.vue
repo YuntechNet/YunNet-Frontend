@@ -11,16 +11,16 @@
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
-                <router-link
-                  to="./Userinfo"
+                <a
                   class="btn btn-default btn-lg"
+                  href="./#/Userinfo"
                   style="background-color: white;"
                 >
                   <font-awesome-icon icon="times" />
-                </router-link>
+                </a>
               </div>
               <div class="float-left">
-                <h1>流量紀錄｜User_netflow</h1>
+                <h1>鎖卡紀錄｜User_Lock</h1>
               </div>
             </div>
 
@@ -57,29 +57,24 @@
                   <table class="table table-sm" cellspacing="0">
                     <thead>
                       <tr style="white-space:nowrap;background-color:#337ab7;">
-                        <th id="thead" class="text-size" style="text-align:center;">日期</th>
-                        <th id="thead" class="text-size" style="text-align:center;">校內下載</th>
-                        <th id="thead" class="text-size" style="text-align:center;">校內上傳</th>
-                        <th id="thead" class="text-size" style="text-align:center;">校外下載</th>
-                        <th id="thead" class="text-size" style="text-align:center;">校外上傳</th>
-                        <th id="thead" class="text-size" style="text-align:center;">總流量</th>
+                        <th id="thead" class="text-size" style="text-align:center;">lock_id</th>
+                        <th id="thead" class="text-size" style="text-align:center;">lock_type</th>
+                        <th id="thead" class="text-size" style="text-align:center;">lock_date</th>
+                        <th id="thead" class="text-size" style="text-align:center;">unlock_date</th>
+                        <th id="thead" class="text-size" style="text-align:center;">lock_by_user_id</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr
                         style="background-color:#FAFAD2;color:#444444;"
-                        v-for="(item,index) in netflow.netflow"
+                        v-for="(item,index) in lock"
                         :key="index"
                       >
-                        <th class="text-size" style="text-align:center;">{{item.date}}</th>
-                        <th class="text-size" style="text-align:center;">{{(item.lan_download/1)}}</th>
-                        <th class="text-size" style="text-align:centerS;">{{(item.lan_upload/1)}}</th>
-                        <th class="text-size" style="text-align:center;">{{(item.wan_download/1)}}</th>
-                        <th class="text-size" style="text-align:center;">{{(item.wan_upload/1)}}</th>
-                        <th
-                          class="text-size"
-                          style="text-align:center;"
-                        >{{((item.lan_download+item.lan_upload+item.wan_download+item.wan_upload)/1)}}</th>
+                        <th class="text-size" style="text-align:center;">{{item.lock_id}}</th>
+                        <th class="text-size" style="text-align:center;">{{item.lock_type}}</th>
+                        <th class="text-size" style="text-align:centerS;">{{item.lock_date}}</th>
+                        <th class="text-size" style="text-align:center;">{{item.unlock_date}}</th>
+                        <th class="text-size" style="text-align:center;">{{item.lock_by_user_id}}</th>
                       </tr>
                     </tbody>
                   </table>
@@ -99,11 +94,11 @@
 
 <script>
 import Background from "@/components/Background";
-import { INFO, NETFLOW_USER, IP } from "@/store/actions_type";
+import { INFO, LOCK, IP } from "@/store/actions_type";
 import { mapState } from "vuex";
 
 export default {
-  name: "User_netflow",
+  name: "User_lockTable",
   components: { Background },
   beforeCreate: function() {
     this.$store.dispatch(INFO);
@@ -119,7 +114,7 @@ export default {
     if (this.ipnow === null) {
       this.$router.push({ name: "Index" });
     }
-    this.$store.dispatch(NETFLOW_USER, this.ipnow);
+    this.$store.dispatch(LOCK, this.ipnow);
   },
   data() {
     return {
@@ -130,7 +125,7 @@ export default {
     ...mapState({
       info: state => state.profile.info,
       info_IP: state => state.profile.info_IP,
-      netflow: state => state.profile.netflow
+      lock: state => state.profile.lock
     })
   }
 };
