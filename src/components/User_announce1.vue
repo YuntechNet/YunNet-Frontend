@@ -11,7 +11,7 @@
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
-               <router-link
+                <router-link
                   to="./"
                   class="btn btn-default btn-lg"
                   style="background-color: white;"
@@ -30,11 +30,11 @@
           <div class="col-12" style="padding:2%;"></div>
           <div class="col-12 col-sm-10 offset-sm-1 rounded-lg" style="height:80vh;">
             <iframe
-              id="contract"
-              name="contract"
+              id="announce1"
+              name="announce1"
               width="100%"
               height="100%"
-              src="./#/contract"
+              src="./#/announce1"
               style="background-color: white;"
             ></iframe>
           </div>
@@ -59,5 +59,4 @@ export default {
 hr {
   background-color: white;
 }
-
 </style>

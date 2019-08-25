@@ -20,29 +20,29 @@
             <div class="col-12">
               <div class="row">
                 <div class="col-12" style="padding:7%;"></div>
-                <a class="btn col-12" href="#top" role="button">YunNET 雲科網管</a>
-                <a class="btn col-12" href="./#/userinfo" role="button">使用者資訊｜User Info</a>
-                <a
+                <router-link class="btn col-12" to="./" role="button">YunNET 雲科網管</router-link>
+                <router-link class="btn col-12" to="./userinfo" role="button">使用者資訊｜User Info</router-link>
+                <router-link
                   v-if="!isAuthenticated"
                   class="btn col-12"
-                  href="./#/login"
+                  to="./login"
                   role="button"
-                >登入｜Login</a>
-                <a
+                >登入｜Login</router-link>
+                <router-link
                   v-if="isAuthenticated"
                   class="btn col-12"
                   @click.prevent="logout"
                   role="button"
                   style="color:rgb(192, 192, 192);"
-                >登出｜Login</a>
+                >登出｜Login</router-link>
                 <div class="col-12" style="padding:7%;"></div>
-                <a class="btn col-12" href="#top" role="button">首頁｜Home</a>
-                <a class="btn col-12" href="./#/register" role="button">註冊｜Register</a>
-                <a class="btn col-12" href="./#/netflow" role="button">流量｜Netflow</a>
-                <a class="btn col-12" href="./#/user_contract" role="button">規範｜Contract</a>
-                <a class="btn col-12" href="./#/universal_lock" role="button">鎖卡列表｜Lock Table</a>
-                <a class="btn col-12" href="#announce" role="button">公告｜Announce</a>
-                <a class="btn col-12" href="#findus" role="button">關於｜Find Us</a>
+                <router-link class="btn col-12" to="./" role="button">首頁｜Home</router-link>
+                <router-link class="btn col-12" to="./register" role="button">註冊｜Register</router-link>
+                <router-link class="btn col-12" to="./netflow" role="button">流量｜Netflow</router-link>
+                <router-link class="btn col-12" to="./user_contract" role="button">規範｜Contract</router-link>
+                <router-link class="btn col-12" to="./universal_lock" role="button">鎖卡列表｜Lock Table</router-link>
+                <router-link class="btn col-12" to="#announce" role="button">公告｜Announce</router-link>
+                <router-link class="btn col-12" to="#findus" role="button">關於｜Find Us</router-link>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@
       <div class="col-12">
         <h1 class="title" style="margin:0px auto">YunNET 雲科網管</h1>
         <div class="col-12" style="padding:18vh;"></div>
-        <a href="/regist" class="btn btn-dark btn-lg" style="margin:0px auto">
+        <a href="./" class="btn btn-dark btn-lg" style="margin:0px auto">
           <b>Register Network</b>
         </a>
       </div>
@@ -81,11 +81,11 @@
               <div class="col-12 col-sm-10 offset-sm-1 announce rounded-lg">
                 <iframe
                   class="rounded-lg"
-                  id="contract"
-                  name="contract"
+                  id="announce3"
+                  name="announce3"
                   width="100%"
                   height="100%"
-                  src="./#/contract"
+                  src="./#/announce3"
                   style="background-color: white;"
                 ></iframe>
               </div>
@@ -96,11 +96,11 @@
               <div class="col-12 col-sm-10 offset-sm-1 announce rounded-lg">
                 <iframe
                   class="rounded-lg"
-                  id="contract"
-                  name="contract"
+                  id="announce1"
+                  name="announce1"
                   width="100%"
                   height="100%"
-                  src="./#/contract"
+                  src="./#/announce1"
                   style="background-color: white;"
                 ></iframe>
               </div>
@@ -111,11 +111,11 @@
               <div class="col-12 col-sm-10 offset-sm-1 announce rounded-lg">
                 <iframe
                   class="rounded-lg"
-                  id="contract"
-                  name="contract"
+                  id="announce2"
+                  name="announce2"
                   width="100%"
                   height="100%"
-                  src="./#/contract"
+                  src="./#/announce2"
                   style="background-color: white;"
                 ></iframe>
               </div>
@@ -142,13 +142,13 @@
     </div>
 
     <div
-      class="col-2 offset-10 display-visible"
+      class="col-2 offset-10 display-visible frame-navigator"
       style="background-color:rgb(51,51,51);height: 100vh;position: fixed;"
     >
       <div class="row">
-        <a class="btn col-12" href="#top" role="button">YunNET 雲科網管</a>
-        <a class="btn col-12" href="./#/userinfo" role="button">使用者資訊｜User Info</a>
-        <a v-if="!isAuthenticated" class="btn col-12" href="./#/login" role="button">登入｜Login</a>
+        <router-link class="btn col-12" to="./" role="button">YunNET 雲科網管</router-link>
+        <router-link class="btn col-12" to="./userinfo" role="button">使用者資訊｜User Info</router-link>
+        <router-link v-if="!isAuthenticated" class="btn col-12" to="./login" role="button">登入｜Login</router-link>
 
         <a
           v-if="isAuthenticated"
@@ -158,13 +158,13 @@
           style="color:rgb(192, 192, 192);"
         >登出｜Login</a>
         <div class="col-12" style="padding:17vh"></div>
-        <a class="btn col-12" href="#top" role="button">首頁｜Home</a>
-        <a class="btn col-12" href="./#/register" role="button">註冊｜Register</a>
-        <a class="btn col-12" href="./#/netflow" role="button">流量｜Netflow</a>
-        <a class="btn col-12" href="./#/user_contract" role="button">規範｜Contract</a>
-        <a class="btn col-12" href="./#/universal_lock" role="button">鎖卡列表｜Lock Table</a>
-        <a class="btn col-12" href="#announce" role="button">公告｜Announce</a>
-        <a class="btn col-12" href="#findus" role="button">關於｜Find Us</a>
+        <router-link class="btn col-12" to="./" role="button">首頁｜Home</router-link>
+        <router-link class="btn col-12" to="./register" role="button">註冊｜Register</router-link>
+        <router-link class="btn col-12" to="./netflow" role="button">流量｜Netflow</router-link>
+        <router-link class="btn col-12" to="./user_contract" role="button">規範｜Contract</router-link>
+        <router-link class="btn col-12" to="./universal_lock" role="button">鎖卡列表｜Lock Table</router-link>
+        <router-link class="btn col-12" to="#announce" role="button">公告｜Announce</router-link>
+        <router-link class="btn col-12" to="#findus" role="button">關於｜Find Us</router-link>
         <div class="col-12" style="background-color:white;height:3px;margin:25px 0px"></div>
       </div>
     </div>

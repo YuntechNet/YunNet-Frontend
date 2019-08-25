@@ -12,6 +12,7 @@ export default {
 
 <style>
 #app {
+  font-weight: 600 !important;
   font-family: "Microsoft Yahei", Helvetica, Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -19,11 +20,16 @@ export default {
   color: #2c3e50;
   height: 100vh;
   position: relative;
-  font-weight: bold;
 }
 
 .frame {
   animation-name: inner-frame;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  left: 0;
+}
+.frame-navigator {
+  animation-name: navigator;
   animation-duration: 1s;
   animation-fill-mode: both;
   left: 0;
@@ -64,16 +70,39 @@ export default {
     background-color: rgba(0, 0, 0, 0);
   }
   to {
-    -webkit-filter: blur(0px);
-    -moz-filter: blur(0px);
-    -o-filter: blur(0px);
-    filter: blur(0px);
+    -webkit-filter: blur(0.4px);
+    -moz-filter: blur(0.4px);
+    -o-filter: blur(0.4px);
+    filter: blur(0.4px);
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -o-transform: scale(1);
     transform: scale(1);
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+@keyframes navigator {
+  from,
+  25% {
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    filter: blur(3px);
+    -webkit-transform: scale(1.);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  to {
+    -webkit-filter: blur(0.4px);
+    -moz-filter: blur(0.4px);
+    -o-filter: blur(0.4px);
+    filter: blur(0.4px);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
   }
 }
 </style>

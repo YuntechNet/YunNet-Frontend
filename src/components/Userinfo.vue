@@ -100,8 +100,8 @@
                                 :to="`./change_mac/${item.ip}`"
                                 class="btn btn-success"
                               >更改MAC</router-link>
-                              <a href="./#/User_netflow" class="btn btn-primary">流量紀錄</a>
-                              <a href="#" class="btn btn-secondary">鎖卡紀錄</a>
+                              <router-link href="./User_netflow" class="btn btn-primary">流量紀錄</router-link>
+                              <router-link href="./" class="btn btn-secondary">鎖卡紀錄</router-link>
                             </div>
                           </div>
                         </div>

@@ -118,6 +118,36 @@ export default new Router({
       path: "/change_password",
       name: "Change_password",
       component: () => import("./components/Change_password.vue")
+    },
+    {
+      path: "/user_announce1",
+      name: "User_announce1",
+      component: () => import("./components/User_announce1.vue")
+    },
+    {
+      path: "/user_announce2",
+      name: "User_announce2",
+      component: () => import("./components/User_announce2.vue")
+    },
+    {
+      path: "/user_announce3",
+      name: "User_announce3",
+      component: () => import("./components/User_announce3.vue")
+    },
+    {
+      path: "/announce1",
+      name: "Announce1",
+      component: () => import("./components/Announce1.vue")
+    },
+    {
+      path: "/announce2",
+      name: "Announce2",
+      component: () => import("./components/Announce2.vue")
+    },
+    {
+      path: "/announce3",
+      name: "Announce3",
+      component: () => import("./components/Announce3.vue")
     }
   ]
 });

@@ -30,11 +30,11 @@
           <div class="col-12" style="padding:2%;"></div>
           <div class="col-12 col-sm-10 offset-sm-1 rounded-lg" style="height:80vh;">
             <iframe
-              id="contract"
-              name="contract"
+              id="announce2"
+              name="announce2"
               width="100%"
               height="100%"
-              src="./#/contract"
+              src="./#/announce2"
               style="background-color: white;"
             ></iframe>
           </div>
