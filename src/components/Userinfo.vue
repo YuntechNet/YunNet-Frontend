@@ -79,7 +79,7 @@
                               <h5 class="col-3 card-title">MAC</h5>
                               <div class="col card-text">
                                 <div>
-                                  {{item.mac/*.match( /.{1,2}/g ).join( ':' ).toUpperCase()*/ }}
+                                  {{item.mac!=null?item.mac.match( /.{1,2}/g ).join( ':' ).toUpperCase():"未設定 (請按下方更改MAC)" }}
                                   <kbd
                                     :class="['ml-2',item.is_updated?'bg-success':'bg-danger']"
                                   >{{item.is_updated?"已更新":"未更新"}}</kbd>
