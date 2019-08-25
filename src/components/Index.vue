@@ -105,7 +105,6 @@
                 ></iframe>
               </div>
             </b-carousel-slide>
-
             <b-carousel-slide style="height:70vh;background-color:rgba(63,127,191,0.85)">
               <h2>107學年度宿舍暑期網路設備更換時程表</h2>
               <div class="col-12 col-sm-10 offset-sm-1 announce rounded-lg">
@@ -173,9 +172,9 @@
 
 
 <script>
-import { mapGetters } from "vuex"
-import { mapState } from "vuex"
-import { LOGOUT } from "@/store/actions_type"
+import { mapGetters } from "vuex";
+import { mapState } from "vuex";
+import { LOGOUT } from "@/store/actions_type";
 
 export default {
   name: "index",
@@ -183,13 +182,13 @@ export default {
     return {
       slide: 0,
       sliding: null
-    }
+    };
   },
   methods: {
     logout() {
       this.$store.dispatch(LOGOUT).then(() => {
-        this.$router.push({ name: "Index" })
-      })
+        this.$router.push({ name: "Index" });
+      });
     }
   },
   computed: {
@@ -198,7 +197,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 <style scoped>
 #BK {

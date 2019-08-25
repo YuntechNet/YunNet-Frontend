@@ -11,13 +11,13 @@
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
-                <a
+                <router-link
                   class="btn btn-default btn-lg"
-                  href="./#/Userinfo"
+                  :to="{name:'Userinfo'}"
                   style="background-color: white;"
                 >
                   <font-awesome-icon icon="times" />
-                </a>
+                </router-link>
               </div>
               <div class="float-left">
                 <h1>鎖卡紀錄｜User_Lock</h1>
