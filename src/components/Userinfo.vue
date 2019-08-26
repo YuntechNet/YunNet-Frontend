@@ -2,144 +2,143 @@
   <div class="row">
     <background />
     <section class="container-fluid">
-      <div class="row">
-        <div class="col-12" style="padding-top: 5%;"></div>
-        <div
-          class="col-12 col-sm-10 offset-sm-1 frame rounded-lg"
-          style="background-color: rgb(51,51,51,0.6);"
-        >
-          <div class="row">
-            <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
-              <div class="float-right">
-                <router-link
-                  to="./"
-                  class="btn btn-default btn-lg"
-                  style="background-color: white;"
+      <div class="col-12 head-padding"></div>
+      <div
+        class="col-12 col-sm-10 offset-sm-1 frame rounded-lg"
+        style="background-color: rgb(51,51,51,0.6);"
+      >
+        <div class="row">
+          <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
+            <div class="float-right">
+              <router-link to="./" class="btn btn-default btn-lg" style="background-color: white;">
+                <font-awesome-icon icon="times" />
+              </router-link>
+            </div>
+            <div class="float-left">
+              <h1>使用者資訊｜User Info.</h1>
+            </div>
+          </div>
+          <div class="col-10 offset-1">
+            <hr />
+          </div>
+          <div class="col-10 offset-1" style="text-align: left;color:white;">
+            <div class="row">
+              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+                <p>學號</p>
+              </div>
+              <div class="col-sm-2 col-4 font-weight-bold">
+                <p>ID</p>
+              </div>
+              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+                <p>{{info.username}}</p>
+              </div>
+
+              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+                <p>姓名</p>
+              </div>
+              <div class="col-sm-2 col-4 font-weight-bold">
+                <p>Name</p>
+              </div>
+              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+                <p>{{info.name}}</p>
+              </div>
+
+              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+                <p>部門</p>
+              </div>
+              <div class="col-sm-2 col-4 font-weight-bold">
+                <p>Department</p>
+              </div>
+              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+                <p>{{info.department}}</p>
+              </div>
+
+              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+                <p>類型</p>
+              </div>
+              <div class="col-sm-2 col-4 font-weight-bold">
+                <p>Type</p>
+              </div>
+              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+                <div v-for="(item,index) in info.group" :key="index">
+                  <p>{{item}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-10 offset-sm-1 col-12" style="text-align:left;">
+            <div class="card-deck" v-for="(item,index) in info_IP" :key="index">
+              <div :class="['card bg-light', index===0?'border-warning':'' ,'text-dark']">
+                <div :class="[index === 0?'bg-warning':'bg-light','card-header']">
+                  <button
+                    class="btn btn-block"
+                    data-toggle="collapse"
+                    :data-target="`#id${index}`"
+                    aria-expanded="true"
+                    :aria-controls="`#id${index}`"
+                  >
+                    <div class="row">
+                      <h4 class="col text-left font-weight-bold">{{item.ip}}</h4>
+                      <h4 class="dropdown-toggle">{{item.description}}</h4>
+                    </div>
+                  </button>
+                </div>
+                <div
+                  :class="['card-body','collapse',index===0|item.lock_status==='鎖定'?'show':'hide']"
+                  :id="['id'+index]"
                 >
-                  <font-awesome-icon icon="times" />
-                </router-link>
-              </div>
-              <div class="float-left">
-                <h1>使用者資訊｜User Info.</h1>
-              </div>
-            </div>
-            <div class="col-10 offset-1">
-              <hr />
-            </div>
-            <div class="col-10 offset-1">
-              <div class="row mb-5">
-                <div class="col-12" style="text-align: left;">
-                  <div>
-                    <div class="row justify-content-md-center pt-5" style="color:white;">
-                      <div class="w-100"></div>
-                      <div class="col-sm-1 font-weight-bold">學號</div>
-                      <div class="col-sm-1 font-weight-bold">ID</div>
-                      <div class="col-sm-2 offset-sm-1">{{info.username}}</div>
-                      <div class="w-100 mb-2"></div>
-                      <div class="col-sm-1 font-weight-bold">姓名</div>
-                      <div class="col-sm-1 font-weight-bold">Name</div>
-                      <div class="col-sm-2 offset-sm-1">{{info.name}}</div>
-                      <div class="w-100 mb-2"></div>
-                      <div class="col-sm-1 font-weight-bold">部門</div>
-                      <div class="col-sm-1 font-weight-bold">Department</div>
-                      <div class="col-sm-2 offset-sm-1">{{info.department}}</div>
-                      <div class="w-100 mb-2"></div>
-                      <div class="col-sm-1 font-weight-bold">類型</div>
-                      <div class="col-sm-1 font-weight-bold">Type</div>
-                      <div class="col-sm-2 offset-sm-1">
-                        <div v-for="(item,index) in info.group" :key="index">{{item}}</div>
+                  <div class="row">
+                    <h5 class="col-6">MAC</h5>
+                    <div class="col-6">
+                      <div>
+                        {{item.mac/*.match( /.{1,2}/g ).join( ':' ).toUpperCase()*/ }}
+                        <kbd
+                          :class="[item.is_updated?'bg-success':'bg-danger']"
+                        >{{item.is_updated?"已更新":"未更新"}}</kbd>
                       </div>
                     </div>
-                    <div class="mt-5">
-                      <div
-                        class="card-deck mx-xl-8 pt-2"
-                        v-for="(item,index) in info_IP"
-                        :key="index"
-                      >
-                        <div :class="['card bg-light', index===0?'border-warning':'' ,'text-dark']">
-                          <div :class="[index === 0?'bg-warning':'bg-light','card-header']">
-                            <button
-                              class="btn btn-block"
-                              data-toggle="collapse"
-                              :data-target="`#id${index}`"
-                              aria-expanded="true"
-                              :aria-controls="`#id${index}`"
-                            >
-                              <div class="row">
-                                <h4 class="col text-left font-weight-bold">{{item.ip}}</h4>
-                                <h4 class="dropdown-toggle">{{item.description}}</h4>
-                              </div>
-                            </button>
-                          </div>
-                          <div
-                            :class="['card-body','collapse',index===0|item.lock_status==='鎖定'?'show':'hide']"
-                            :id="['id'+index]"
-                          >
-                            <div class="row mt-xs-1">
-                              <h5 class="col-3 card-title">MAC</h5>
-                              <div class="col card-text">
-                                <div>
-                                  {{item.mac/*.match( /.{1,2}/g ).join( ':' ).toUpperCase()*/ }}
-                                  <kbd
-                                    :class="['ml-2',item.is_updated?'bg-success':'bg-danger']"
-                                  >{{item.is_updated?"已更新":"未更新"}}</kbd>
-                                </div>
-                              </div>
-                              <div class="w-100"></div>
-                              <h5 class="col-3 card-title">校外總量</h5>
-                              <div class="col card-text">??GB</div>
-                              <div class="w-100"></div>
-                              <h5 class="col-3 card-title">狀態</h5>
-                              <div
-                                :class="['col' ,'card-text', item.lock_status==='LOCKED'?'text-danger':'text-success']"
-                              >{{item.lock_status}}</div>
-                              <div class="w-100"></div>
-                            </div>
-                            <div class="btn-group btn-right" role="group" aria-label="功能">
-                              <router-link
-                                :to="`./change_mac/${item.ip}`"
-                                class="btn btn-success"
-                              >更改MAC</router-link>
-                              <router-link
-                                :to="`./user_netflow/${item.ip}`"
-                                class="btn btn-primary"
-                              >流量紀錄</router-link>
-                              <router-link
-                                :to="`./user_lock/${item.ip}`"
-                                class="btn btn-secondary"
-                              >鎖卡紀錄</router-link>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="w-100 py-1"></div>
-                      </div>
+
+                    <h5 class="col-6">校外總量</h5>
+                    <div class="col-6">??GB</div>
+
+                    <h5 class="col-6">狀態</h5>
+                    <div
+                      :class="['col-6', item.lock_status==='LOCKED'?'text-danger':'text-success']"
+                    >{{item.lock_status}}</div>
+
+                    <div class="btn-group btn-right" role="group" aria-label="功能">
+                      <router-link :to="`./change_mac/${item.ip}`" class="btn btn-success">更改MAC</router-link>
+                      <router-link :to="`./user_netflow/${item.ip}`" class="btn btn-primary">流量紀錄</router-link>
+                      <router-link :to="`./user_lock/${item.ip}`" class="btn btn-secondary">鎖卡紀錄</router-link>
+                      <router-link :to="`./Change_password/${item.ip}`" class="btn btn-danger">更改密碼</router-link>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-1"></div>
+              <div class="w-100 py-1"></div>
             </div>
           </div>
         </div>
-        <div class="col-1"></div>
-        <div class="col-12" style="padding-top: 20%;"></div>
+        <div class="col-12" style="padding-top: 2%;"></div>
       </div>
+
+      <div class="col-12" style="padding-top: 20%;"></div>
     </section>
   </div>
 </template>
 
 
 <script>
-import Background from "@/components/Background";
-import { INFO, IP } from "@/store/actions_type";
-import { mapState } from "vuex";
+import Background from "@/components/Background"
+import { INFO, IP } from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "Userinfo",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(IP);
-    this.$store.dispatch(INFO);
+    this.$store.dispatch(IP)
+    this.$store.dispatch(INFO)
   },
 
   computed: {
@@ -148,7 +147,7 @@ export default {
       info_IP: state => state.profile.info_IP
     })
   }
-};
+}
 </script>
 
 
@@ -173,6 +172,10 @@ a.display {
 }
 
 @media screen and (max-width: 600px) {
+  p {
+    font-size: 18px;
+  }
+
   div.column {
     width: 50%;
   }

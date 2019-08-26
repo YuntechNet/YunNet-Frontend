@@ -3,7 +3,7 @@
     <background />
     <section class="container-fluid">
       <div class="row">
-        <div class="col-12" style="padding-top: 5%;"></div>
+        <div class="col-12 head-padding"></div>
         <div
           class="col-12 col-sm-10 offset-sm-1 frame rounded-lg"
           style="background-color: rgb(51,51,51,0.6);"
@@ -11,13 +11,13 @@
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
-                <a
+                <router-link
+                  to="./Userinfo"
                   class="btn btn-default btn-lg"
-                  href="./#/Userinfo"
                   style="background-color: white;"
                 >
                   <font-awesome-icon icon="times" />
-                </a>
+                </router-link>
               </div>
               <div class="float-left">
                 <h1>鎖卡紀錄｜User_Lock</h1>
@@ -80,11 +80,11 @@
                   </table>
                 </div>
               </div>
-              <div class="col-1"></div>
             </div>
           </div>
+          <div class="col-12" style="padding-top: 1%;"></div>
         </div>
-        <div class="col-1"></div>
+
         <div class="col-12" style="padding-top: 20%;"></div>
       </div>
     </section>
@@ -93,33 +93,33 @@
 
 
 <script>
-import Background from "@/components/Background";
-import { INFO, LOCK, IP } from "@/store/actions_type";
-import { mapState } from "vuex";
+import Background from "@/components/Background"
+import { INFO, LOCK, IP } from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "User_lockTable",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(INFO);
-    this.$store.dispatch(IP);
+    this.$store.dispatch(INFO)
+    this.$store.dispatch(IP)
   },
   created: function() {
-    let i = 0;
+    let i = 0
     for (i = 0; i < this.info_IP.length; i++) {
       if (this.info_IP[i].ip === this.$route.params.ip) {
-        this.ipnow = this.info_IP[i].ip;
+        this.ipnow = this.info_IP[i].ip
       }
     }
     if (this.ipnow === null) {
-      this.$router.push({ name: "Index" });
+      this.$router.push({ name: "Index" })
     }
-    this.$store.dispatch(LOCK, this.ipnow);
+    this.$store.dispatch(LOCK, this.ipnow)
   },
   data() {
     return {
       ipnow: null
-    };
+    }
   },
   computed: {
     ...mapState({
@@ -128,7 +128,7 @@ export default {
       lock: state => state.profile.lock
     })
   }
-};
+}
 </script>
 
 
@@ -154,9 +154,6 @@ a {
   }
 }
 #thead:hover {
-  background-color: rgba(245, 233, 132, 0.5);
-}
-#tbody:hover {
-  background-color: rgba(199, 244, 244, 0.5);
+  background-color: rgba(181, 215, 255, 0.5);
 }
 </style>
