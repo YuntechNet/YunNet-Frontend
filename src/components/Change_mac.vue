@@ -101,7 +101,8 @@
                   ></b-form-input>
                 </div>
               </div>
-              <div class="submit col-3 offset-2" style="text-align:left;display:inline;">
+               <div class="col-12" style="padding:5%;"></div>
+              <div style="text-align:left;display:inline;">
                 <input class="btn btn-primary" type="submit" value="確定" />
                 <input class="btn btn-danger" type="reset" value="重填" />
               </div>
@@ -122,7 +123,7 @@
                 ></iframe>
               </div>
               <div class="col-sm-4 col-12">
-                <strong>Windows 7 / 8 / 8.1 / 10 System.</strong>
+                <strong>Windows 7/8/10 </strong>
                 <iframe
                   style="width:100%;height:80%"
                   src="https://drive.google.com/file/d/0B7hvpkydNrx8Y1NsdFlLUDUybmc/preview"
@@ -139,8 +140,8 @@
               </div>
             </div>
           </div>
+           <div class="col-12" style="padding:2%;"></div>
         </div>
-        <div class="col-10 offset-1 frame" style="background-color:rgb(51, 51, 51,0.6);height:6vh;"></div>
         <div class="col-12" style="padding:10%;"></div>
       </div>
     </section>

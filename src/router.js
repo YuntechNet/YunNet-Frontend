@@ -37,18 +37,6 @@ export default new Router({
     },
 
     {
-      path: "/universal_lock",
-      name: "Universal_lock",
-      component: () => import("./components/Universal_lock.vue")
-    },
-
-    {
-      path: "/dormitory_lock",
-      name: "Dormitory_lock",
-      component: () => import("./components/Dormitory_lock.vue")
-    },
-
-    {
       path: "/register",
       name: "Register",
       meta: {
@@ -73,6 +61,7 @@ export default new Router({
       name: "Forgot_password",
       component: () => import("./components/Forgot_password.vue")
     },
+    /*
     {
       path: "/system_universal",
       name: "System_universal",
@@ -102,6 +91,18 @@ export default new Router({
       component: () =>
         import("./components/system_dormitory/Sys_dorm_import.vue")
     },
+    {
+      path: "/universal_lock",
+      name: "Universal_lock",
+      component: () => import("./components/Universal_lock.vue")
+    },
+
+    {
+      path: "/dormitory_lock",
+      name: "Dormitory_lock",
+      component: () => import("./components/Dormitory_lock.vue")
+    },
+*/
     {
       path: "/change_mac/:ip",
       component: () => import("./components/Change_mac.vue"),

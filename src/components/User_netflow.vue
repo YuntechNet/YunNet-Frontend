@@ -3,7 +3,7 @@
     <background />
     <section class="container-fluid">
       <div class="row">
-        <div class="col-12" style="padding-top: 5%;"></div>
+        <div class="col-12 head-padding"></div>
         <div
           class="col-12 col-sm-10 offset-sm-1 frame rounded-lg"
           style="background-color: rgb(51,51,51,0.6);"
@@ -85,11 +85,12 @@
                   </table>
                 </div>
               </div>
-              <div class="col-1"></div>
+        
             </div>
           </div>
+           <div class="col-12" style="padding-top: 1%;"></div>
         </div>
-        <div class="col-1"></div>
+        
         <div class="col-12" style="padding-top: 20%;"></div>
       </div>
     </section>
@@ -159,9 +160,6 @@ a {
   }
 }
 #thead:hover {
-  background-color: rgba(245, 233, 132, 0.5);
-}
-#tbody:hover {
-  background-color: rgba(199, 244, 244, 0.5);
+  background-color: rgba(181, 215, 255, 0.5);
 }
 </style>
