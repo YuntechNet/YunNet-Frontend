@@ -174,7 +174,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
-import { LOGOUT } from "@/store/actions_type";
+import { LOGOUT, WAN_DOWN,IP } from "@/store/actions_type";
 
 export default {
   name: "index",
@@ -183,6 +183,10 @@ export default {
       slide: 0,
       sliding: null
     };
+  },
+  beforeMount: function() {
+    this.$store.dispatch(IP).then(() => {
+        this.$store.dispatch(WAN_DOWN);})
   },
   methods: {
     logout() {
