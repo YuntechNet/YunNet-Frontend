@@ -99,7 +99,7 @@
                     </div>
 
                     <h5 class="col-sm-2 col-6">校外總量</h5>
-                    <div class="col-sm-10 col-6">??GB</div>
+                    <div class="col-sm-10 col-6">{{wan[index]}}</div>
 
                     <h5 class="col-sm-2 col-6">狀態</h5>
                     <div
@@ -129,9 +129,9 @@
 
 
 <script>
-import Background from "@/components/Background";
-import { INFO, IP, WAN_DOWN } from "@/store/actions_type";
-import { mapState } from "vuex";
+import Background from "@/components/Background"
+import { INFO, IP, WAN_DOWN } from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "Userinfo",
@@ -139,17 +139,9 @@ export default {
   beforeCreate: function() {
     this.$store.dispatch(INFO).then(() => {
       this.$store.dispatch(IP).then(() => {
-        this.$store.dispatch(WAN_DOWN);
-      });
-    });
-  },
-  created: function() {
-    this.iptable = this.info_IP;
-  },
-  data() {
-    return {
-      iptable: []
-    };
+        this.$store.dispatch(WAN_DOWN)
+      })
+    })
   },
   computed: {
     ...mapState({
@@ -158,7 +150,7 @@ export default {
       wan: state => state.profile.wan
     })
   }
-};
+}
 </script>
 
 
@@ -196,7 +188,7 @@ a.display {
   a.display {
     display: none;
   }
-  .fontsize{
+  .fontsize {
     font-size: 15px;
   }
 }
