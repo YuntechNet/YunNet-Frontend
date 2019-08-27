@@ -7,7 +7,8 @@ import {
   REGISTER,
   CHECK_AUTH,
   ERROR,
-  REGISTER_VERIFY
+  REGISTER_VERIFY,
+  FORGOT_PASSWORD
 } from "./actions_type";
 import { RE_AUTH, SET_AUTH, PURGE_AUTH, SET_ERROR } from "./mutations_type";
 
@@ -46,6 +47,8 @@ const actions = {
     return new Promise(resolve => {
       ApiService.post("register", credentials)
         .then(({ data }) => {
+          alert("Success! Please check mail!");
+          router.replace({ name: "Index" });
           resolve(data);
         })
         .catch(({ response }) => {
@@ -53,9 +56,9 @@ const actions = {
         });
     });
   },
-  [REGISTER_VERIFY](context,token) {
+  [REGISTER_VERIFY](context, token) {
     return new Promise(resolve => {
-      ApiService.get("verify-mail",token)
+      ApiService.get("verify-mail", token)
         .then(({ data }) => {
           alert("Success");
           router.replace({ name: "Index" });
@@ -65,6 +68,23 @@ const actions = {
           if (response.status != 500) {
             alert(response.data.message);
             router.replace({ name: "Index" });
+          } else {
+            router.replace({ name: "Index" });
+          }
+        });
+    });
+  },
+  [FORGOT_PASSWORD](context, credentials) {
+    return new Promise(resolve => {
+      ApiService.post("forgot-password", credentials)
+        .then(({ data }) => {
+          alert("Success! Please check mail!");
+          router.replace({ name: "Index" });
+          resolve(data);
+        })
+        .catch(({ response }) => {
+          if (response.status != 500) {
+            context.commit(SET_ERROR, response.data.message);
           } else {
             router.replace({ name: "Index" });
           }

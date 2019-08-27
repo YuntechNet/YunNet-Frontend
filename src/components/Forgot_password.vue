@@ -11,7 +11,7 @@
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
-                  <router-link
+                <router-link
                   to="./"
                   class="btn btn-default btn-lg"
                   style="background-color: white;"
@@ -20,7 +20,7 @@
                 </router-link>
               </div>
               <div class="float-left">
-                <h1>Set Password</h1>
+                <h1>Forgot Password</h1>
               </div>
             </div>
           </div>
@@ -33,11 +33,21 @@
               <br />Before using this feature, please make sure that your school mailbox (XXXX@yuntech.edu.tw) is fully equipped and can be used normally, otherwise you will not receive a verification letter.
               <br />使用此功能前，請先確定您的學校信箱(XXXX@yuntech.edu.tw)容量充足且能正常使用，否則將無法收到驗證信。
             </div>
-            <label for="student_id" style="color:white;">學號｜Student ID：</label>
-            <input type="text" name="student_id" required id="student_id" class="form-control" />
-            <input class="btn btn-primary" type="submit" value="送出｜Submit" />
-            <input class="btn btn-danger" value="清除｜Reset" type="reset" />
-            <div class="col-12" style="padding:3%;"></div>
+            <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
+            <b-form @submit.prevent="submit">
+              <label for="student_id" style="color:white;">學號｜Student ID：</label>
+              <input
+                type="text"
+                v-model="username"
+                name="student_id"
+                required
+                id="student_id"
+                class="form-control"
+              />
+              <input class="btn btn-primary" type="submit" value="送出｜Submit" />
+              <input class="btn btn-danger" value="清除｜Reset" type="reset" />
+              <div class="col-12" style="padding:3%;"></div>
+            </b-form>
           </div>
         </div>
       </div>
@@ -46,7 +56,9 @@
 </template>
 
 <script>
-import Background from "@/components/Background"
+import Background from "@/components/Background";
+import { mapState } from "vuex";
+import { FORGOT_PASSWORD } from "@/store/actions_type";
 
 export default {
   name: "Forgot_password",
@@ -54,9 +66,22 @@ export default {
     Background
   },
   data() {
-    return {}
+    return {
+      username: null
+    };
+  },
+  methods: {
+    submit() {
+      let username = this.username;
+      this.$store.dispatch(FORGOT_PASSWORD, { username });
+    }
+  },
+  computed: {
+    ...mapState({
+      errors: state => state.auth.errors
+    })
   }
-}
+};
 </script>
 
 <style scoped>
