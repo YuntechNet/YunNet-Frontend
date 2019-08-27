@@ -20,7 +20,7 @@
                 </router-link>
               </div>
               <div class="float-left">
-                <h1>Change_password</h1>
+                <h1>Set_password</h1>
               </div>
             </div>
           </div>

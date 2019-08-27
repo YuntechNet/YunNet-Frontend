@@ -98,6 +98,18 @@
                   </div>
                   <div class="col-12 d-flex justify-content-center">
                     <b-form-group
+                      id="password group"
+                      label-cols-sm="12"
+                      label-cols-lg="8"
+                      label="密碼｜password："
+                      label-for="password"
+                      style="color:white;"
+                    >
+                      <b-form-input id="password" v-model="password" required></b-form-input>
+                    </b-form-group>
+                  </div>
+                  <div class="col-12 d-flex justify-content-center">
+                    <b-form-group
                       id="bed group"
                       label-cols-sm="12"
                       label-cols-lg="8"
@@ -185,7 +197,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 
 <style scoped>

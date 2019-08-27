@@ -101,6 +101,11 @@ export default new Router({
       name: "Dormitory_lock",
       component: () => import("./components/Dormitory_lock.vue")
     },
+    {
+      path: "/sys_dorm_query",
+      name: "Sys_dorm_query",
+      component: () => import("./components/system_dormitory/Sys_dorm_query.vue")
+    },
 */
     {
       path: "/change_mac/:ip",

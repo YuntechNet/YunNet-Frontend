@@ -21,45 +21,45 @@
           <div class="col-10 offset-1">
             <hr />
           </div>
-          <div class="col-10 offset-1" style="text-align: left;color:white;">
+          <div class="col-sm-6 offset-sm-3 col-10 offset-1" style="text-align: left;color:white;">
             <div class="row">
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>學號</p>
               </div>
-              <div class="col-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>ID</p>
               </div>
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>{{info.username}}</p>
               </div>
 
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>姓名</p>
               </div>
-              <div class="col-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>Name</p>
               </div>
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>{{info.name}}</p>
               </div>
 
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>部門</p>
               </div>
-              <div class="col-sm-2 col-4 font-weight-bold">
-                <p>Department</p>
+              <div class="col-4 font-weight-bold">
+                <p class="fontsize">Department</p>
               </div>
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>{{info.department}}</p>
               </div>
 
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>類型</p>
               </div>
-              <div class="col-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>Type</p>
               </div>
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <div v-for="(item,index) in info.group" :key="index">
                   <p>{{item}}</p>
                 </div>
@@ -110,7 +110,7 @@
                       <router-link :to="`./change_mac/${item.ip}`" class="btn btn-success">更改MAC</router-link>
                       <router-link :to="`./user_netflow/${item.ip}`" class="btn btn-primary">流量紀錄</router-link>
                       <router-link :to="`./user_lock/${item.ip}`" class="btn btn-secondary">鎖卡紀錄</router-link>
-                      <router-link :to="`./Change_password/${item.ip}`" class="btn btn-danger">更改密碼</router-link>
+                      <router-link :to="`./Change_password/`" class="btn btn-danger">更改密碼</router-link>
                     </div>
                   </div>
                 </div>
@@ -129,9 +129,9 @@
 
 
 <script>
-import Background from "@/components/Background";
-import { INFO, IP, WAN_DOWN } from "@/store/actions_type";
-import { mapState } from "vuex";
+import Background from "@/components/Background"
+import { INFO, IP, WAN_DOWN } from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "Userinfo",
@@ -139,17 +139,9 @@ export default {
   beforeCreate: function() {
     this.$store.dispatch(INFO).then(() => {
       this.$store.dispatch(IP).then(() => {
-        this.$store.dispatch(WAN_DOWN);
-      });
-    });
-  },
-  created: function() {
-    this.iptable = this.info_IP;
-  },
-  data() {
-    return {
-      iptable: []
-    };
+        this.$store.dispatch(WAN_DOWN)
+      })
+    })
   },
   computed: {
     ...mapState({
@@ -158,7 +150,7 @@ export default {
       wan: state => state.profile.wan
     })
   }
-};
+}
 </script>
 
 
@@ -195,6 +187,9 @@ a.display {
   }
   a.display {
     display: none;
+  }
+  .fontsize {
+    font-size: 15px;
   }
 }
 #thead:hover {
