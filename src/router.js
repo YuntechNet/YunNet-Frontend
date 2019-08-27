@@ -53,6 +53,9 @@ export default new Router({
     {
       path: "/forgot_password",
       name: "Forgot_password",
+      meta: {
+        deAuth: true
+      },
       component: () => import("./components/Forgot_password.vue")
     },
     /*
@@ -171,11 +174,17 @@ export default new Router({
     {
       path: "/register_verify/:token",
       name: "Register_verify",
+      meta: {
+        deAuth: true
+      },
       component: () => import("./components/Register_verify.vue")
     },
     {
       path: "/set_password/:token",
       name: "Set_Password",
+      meta: {
+        deAuth: true
+      },
       component: () => import("./components/Set_Password.vue")
     },
     {
