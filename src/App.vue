@@ -7,7 +7,7 @@
 <script>
 export default {
   name: "app"
-}
+};
 </script>
 
 <style>
@@ -70,10 +70,6 @@ export default {
     background-color: rgba(0, 0, 0, 0);
   }
   to {
-    -webkit-filter: blur(0.4px);
-    -moz-filter: blur(0.4px);
-    -o-filter: blur(0.4px);
-    filter: blur(0.4px);
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -o-transform: scale(1);
@@ -89,7 +85,7 @@ export default {
     -moz-filter: blur(3px);
     -o-filter: blur(3px);
     filter: blur(3px);
-    -webkit-transform: scale(1.);
+    -webkit-transform: scale(1);
     -moz-transform: scale(1.2);
     -o-transform: scale(1.2);
     transform: scale(1.2);
