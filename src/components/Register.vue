@@ -51,9 +51,9 @@
               style="background-color: white;"
             ></iframe>
           </div>
-           <div class="col-12" style="padding:3%;"></div>
+          <div class="col-12" style="padding:3%;"></div>
         </div>
-       
+
         <div class="col-12" style="padding:3%;"></div>
 
         <div
@@ -108,6 +108,30 @@
                       <b-form-input id="bed" v-model="bed" required></b-form-input>
                     </b-form-group>
                   </div>
+                  <div class="col-12 d-flex justify-content-center">
+                    <b-form-group
+                      id="password group"
+                      label-cols-sm="12"
+                      label-cols-lg="8"
+                      label="密碼 | Password："
+                      label-for="password"
+                      style="color:white;"
+                    >
+                      <b-form-input id="password" type="password" v-model="password" required></b-form-input>
+                    </b-form-group>
+                  </div>
+                  <div class="col-12 d-flex justify-content-center">
+                    <b-form-group
+                      id="REpassword group"
+                      label-cols-sm="12"
+                      label-cols-lg="8"
+                      label="確認密碼 | Confirm Password："
+                      label-for="REpassword"
+                      style="color:white;"
+                    >
+                      <b-form-input id="REpassword" type="password" v-model="REpassword" required></b-form-input>
+                    </b-form-group>
+                  </div>
                   <div class="col-12">
                     <b-button type="submit" variant="info">
                       <p style="margin:auto auto;">送出</p>
@@ -126,7 +150,7 @@
 
 <script>
 import Background from "@/components/Background";
-import { REGISTER } from "@/store/actions_type";
+import { REGISTER, ERROR } from "@/store/actions_type";
 import { mapState } from "vuex";
 
 export default {
@@ -137,16 +161,23 @@ export default {
   data() {
     return {
       id: null,
-      bed: null
+      bed: null,
+      password: null,
+      REpassword: null
     };
   },
   methods: {
     regist() {
-      let id = this.id;
+      let username = this.id;
       let bed = this.bed;
-      this.$store
-        .dispatch(REGISTER, { id, bed })
-        .then(() => this.$router.push({ name: "Index" }));
+      let password = this.password;
+      if (password === this.REpassword) {
+        this.$store
+          .dispatch(REGISTER, { username, bed, password })
+          .then(() => this.$router.push({ name: "Index" }));
+      } else {
+        this.$store.dispatch(ERROR, "重複密碼錯誤!");
+      }
     }
   },
   computed: {

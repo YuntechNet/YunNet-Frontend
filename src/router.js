@@ -165,6 +165,10 @@ export default new Router({
       component: () => import("./components/Announce3.vue")
     },
     {
+      path: "/register_verify/:token",
+      component: () => import("./components/Register_verify.vue")
+    },
+    {
       path: "*",
       component: () => import("./components/Index.vue")
     }

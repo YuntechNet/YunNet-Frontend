@@ -1,6 +1,14 @@
 import ApiService from "@/util/api_service";
 import JwtService from "@/util/jwt_service";
-import { LOGIN, LOGOUT, REGISTER, CHECK_AUTH, ERROR } from "./actions_type";
+import router from "@/router";
+import {
+  LOGIN,
+  LOGOUT,
+  REGISTER,
+  CHECK_AUTH,
+  ERROR,
+  REGISTER_VERIFY
+} from "./actions_type";
 import { RE_AUTH, SET_AUTH, PURGE_AUTH, SET_ERROR } from "./mutations_type";
 
 const state = {
@@ -42,6 +50,24 @@ const actions = {
         })
         .catch(({ response }) => {
           context.commit(SET_ERROR, response.data.message);
+        });
+    });
+  },
+  [REGISTER_VERIFY](context,token) {
+    return new Promise(resolve => {
+      ApiService.get("verify-mail",token)
+        .then(({ data }) => {
+          alert("Success");
+          router.replace({ name: "Index" });
+          resolve(data);
+        })
+        .catch(({ response }) => {
+          if (response.status != 500) {
+            alert(response.data.message);
+            router.replace({ name: "Index" });
+          } else {
+            router.replace({ name: "Index" });
+          }
         });
     });
   },
