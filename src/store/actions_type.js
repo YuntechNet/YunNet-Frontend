@@ -12,3 +12,4 @@ export const LOCK = "lock";
 export const WAN_DOWN = "wan_down";
 export const REGISTER_VERIFY = "register_verify";
 export const FORGOT_PASSWORD = "forgot_password"
+export const SET_PASSWORD = "set_password"

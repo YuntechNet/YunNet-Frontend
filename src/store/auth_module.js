@@ -8,7 +8,8 @@ import {
   CHECK_AUTH,
   ERROR,
   REGISTER_VERIFY,
-  FORGOT_PASSWORD
+  FORGOT_PASSWORD,
+  SET_PASSWORD
 } from "./actions_type";
 import { RE_AUTH, SET_AUTH, PURGE_AUTH, SET_ERROR } from "./mutations_type";
 
@@ -79,6 +80,23 @@ const actions = {
       ApiService.post("forgot-password", credentials)
         .then(({ data }) => {
           alert("Success! Please check mail!");
+          router.replace({ name: "Index" });
+          resolve(data);
+        })
+        .catch(({ response }) => {
+          if (response.status != 500) {
+            context.commit(SET_ERROR, response.data.message);
+          } else {
+            router.replace({ name: "Index" });
+          }
+        });
+    });
+  },
+  [SET_PASSWORD](context, credentials) {
+    return new Promise(resolve => {
+      ApiService.post(`forgot-password/${credentials.db_token}`, credentials)
+        .then(({ data }) => {
+          alert("Success!");
           router.replace({ name: "Index" });
           resolve(data);
         })

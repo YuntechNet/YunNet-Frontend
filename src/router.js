@@ -166,7 +166,13 @@ export default new Router({
     },
     {
       path: "/register_verify/:token",
+      name: "Register_verify",
       component: () => import("./components/Register_verify.vue")
+    },
+    {
+      path: "/set_password/:token",
+      name: "Set_Password",
+      component: () => import("./components/Set_Password.vue")
     },
     {
       path: "*",
