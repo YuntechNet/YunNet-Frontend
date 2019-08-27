@@ -128,7 +128,7 @@ export default new Router({
     },
     {
       path: "/user_lock/:ip",
-      name: "Change_password",
+      name: "User_lock",
       component: () => import("./components/User_lockTable.vue"),
       meta: {
         isAuth: true

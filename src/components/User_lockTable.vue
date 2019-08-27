@@ -2,21 +2,21 @@
   <div class="row">
     <background />
     <section class="container-fluid">
-      <div class="col-12 head-padding"></div>
-      <div
-        class="col-12 col-sm-10 offset-sm-1 frame rounded-lg"
-        style="background-color: rgb(51,51,51,0.6);"
-      >
-        <div class="row">
-          <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
-            <div class="float-right">
-              <router-link
-                to="./Userinfo"
-                class="btn btn-default btn-lg"
-                style="background-color: white;"
-              >
-                <font-awesome-icon icon="times" />
-              </router-link>
+        <div class="col-12 head-padding"></div>
+        <div
+          class="col-12 col-sm-10 offset-sm-1 frame rounded-lg"
+          style="background-color: rgb(51,51,51,0.6);"
+        >
+          <div class="row">
+            <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
+              <div class="float-right">
+                <router-link
+                  class="btn btn-default btn-lg"
+                  :to="{name:'Userinfo'}"
+                  style="background-color: white;"
+                >
+                  <font-awesome-icon icon="times" />
+                </router-link>
             </div>
             <div class="float-left">
               <h1>鎖卡紀錄｜User_lockTable.</h1>
@@ -32,6 +32,7 @@
             <div class="row">
               <div class="col-4 font-weight-bold">
                 <p>學號</p>
+
               </div>
               <div class="col-4 font-weight-bold">
                 <p>ID</p>

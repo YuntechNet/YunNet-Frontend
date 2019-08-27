@@ -91,7 +91,7 @@
                     <h5 class="col-sm-2 col-6">MAC</h5>
                     <div class="col-sm-10 col-6">
                       <div>
-                        {{item.mac/*.match( /.{1,2}/g ).join( ':' ).toUpperCase()*/ }}
+                        {{item.mac!=null?item.mac.match( /.{1,2}/g ).join( ':' ).toUpperCase():"未設定 (請按下方更改MAC)" }}
                         <kbd
                           :class="[item.is_updated?'bg-success':'bg-danger']"
                         >{{item.is_updated?"已更新":"未更新"}}</kbd>
@@ -106,7 +106,7 @@
                       :class="['col-sm-10 col-6', item.lock_status==='LOCKED'?'text-danger':'text-success']"
                     >{{item.lock_status}}</div>
 
-                    <div class="btn-group btn-right" role="group" aria-label="功能">
+                    <div class="btn-group btn-right ml-3" role="group" aria-label="功能">
                       <router-link :to="`./change_mac/${item.ip}`" class="btn btn-success">更改MAC</router-link>
                       <router-link :to="`./user_netflow/${item.ip}`" class="btn btn-primary">流量紀錄</router-link>
                       <router-link :to="`./user_lock/${item.ip}`" class="btn btn-secondary">鎖卡紀錄</router-link>
@@ -129,25 +129,36 @@
 
 
 <script>
-import Background from "@/components/Background"
-import { INFO, IP } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { INFO, IP, WAN_DOWN } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "Userinfo",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(IP)
-    this.$store.dispatch(INFO)
+    this.$store.dispatch(INFO).then(() => {
+      this.$store.dispatch(IP).then(() => {
+        this.$store.dispatch(WAN_DOWN);
+      });
+    });
   },
-
+  created: function() {
+    this.iptable = this.info_IP;
+  },
+  data() {
+    return {
+      iptable: []
+    };
+  },
   computed: {
     ...mapState({
       info: state => state.profile.info,
-      info_IP: state => state.profile.info_IP
+      info_IP: state => state.profile.info_IP,
+      wan: state => state.profile.wan
     })
   }
-}
+};
 </script>
 
 

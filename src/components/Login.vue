@@ -36,8 +36,9 @@
                   label="帳號(學號)｜Username(Std. ID)："
                   label-for="username"
                 >
-                  <b-form-input id="username" v-model="username" required placeholder="account"></b-form-input>
+                  <b-form-input id="username" v-model="username" required placeholder="account" οnkeyup="value=value.replace(/[^/w/.//]/ig,'')"></b-form-input>
                 </b-form-group>
+                
                 <b-form-group
                   class="text-left"
                   style="color:white;"

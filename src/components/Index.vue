@@ -76,12 +76,7 @@
       <div id="announce" class="col-12">
         <h1 class="title" style="margin:20px auto;color:white;">公告 Announce</h1>
         <div>
-          <b-carousel
-            id="carousel-1"
-            v-model="slide"
-            controls
-            indicators
-          >
+          <b-carousel id="carousel-1" v-model="slide" controls indicators>
             <b-carousel-slide style="height:70vh;background-color:rgba(63,127,191,0.1);">
               <h2>系統表定維護時間公告</h2>
               <div class="col-12 col-sm-10 offset-sm-1 announce rounded-lg">
@@ -111,7 +106,6 @@
                 ></iframe>
               </div>
             </b-carousel-slide>
-
             <b-carousel-slide style="height:70vh;background-color:rgba(63,127,191,0.1)">
               <h2>107學年度宿舍暑期網路設備更換時程表</h2>
               <div class="col-12 col-sm-10 offset-sm-1 announce rounded-lg">
@@ -191,7 +185,7 @@
 <script>
 import { mapGetters } from "vuex"
 import { mapState } from "vuex"
-import { LOGOUT } from "@/store/actions_type"
+import { LOGOUT, WAN_DOWN, IP } from "@/store/actions_type"
 
 export default {
   name: "index",
@@ -200,6 +194,11 @@ export default {
       slide: 0,
       sliding: null
     }
+  },
+  beforeMount: function() {
+    this.$store.dispatch(IP).then(() => {
+      this.$store.dispatch(WAN_DOWN)
+    })
   },
   methods: {
     logout() {

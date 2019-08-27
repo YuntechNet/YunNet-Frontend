@@ -4,12 +4,15 @@
     <section class="container-fluid">
       <div class="row">
         <div class="col-12" style="padding:3%;"></div>
-        <div class="col-10 offset-1 frame rounded-lg" style="background-color: rgb(51, 51, 51,0.6);">
+        <div
+          class="col-10 offset-1 frame rounded-lg"
+          style="background-color: rgb(51, 51, 51,0.6);"
+        >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
                 <router-link
-                  to="./"
+                  :to="{name:'Userinfo'}"
                   class="btn btn-default btn-lg"
                   style="background-color: white;"
                 >
@@ -29,9 +32,10 @@
             <div style="text-align:left;">
               <div class="form-group">
                 <label>當前 MAC 卡號:</label>
-                <p
-                  class="form-contro-static"
-                >{{macnow.match( /.{1,2}/g ).join( ':' ).toUpperCase()}}</p>
+                <div class="w-100"></div>
+                <kbd
+                  :class="['form-contro-static',macnow===null?'bg-danger text-white':'']"
+                >{{macnow!=null?macnow.match( /.{1,2}/g ).join( ':' ).toUpperCase():"未設定"}}</kbd>
               </div>
             </div>
             <b-form
@@ -159,9 +163,10 @@ export default {
     for (i = 0; i < this.info_IP.length; i++) {
       if (this.info_IP[i].ip === this.$route.params.ip) {
         this.macnow = this.info_IP[i].mac;
+        this.ipnow = this.info_IP[i].ip;
       }
     }
-    if (this.macnow === null) {
+    if (this.ipnow === null) {
       this.$router.push({ name: "Index" });
     }
   },
@@ -173,7 +178,8 @@ export default {
       mac4: null,
       mac5: null,
       mac6: null,
-      macnow: null
+      macnow: null,
+      ipnow: null
     };
   },
   methods: {
