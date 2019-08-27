@@ -21,7 +21,12 @@
               <div class="row">
                 <div class="col-12" style="padding:7%;"></div>
                 <router-link class="btn col-12" to="./" role="button">YunNET 雲科網管</router-link>
-                <router-link class="btn col-12" to="./userinfo" role="button">使用者資訊｜User Info</router-link>
+                <router-link
+                  v-if="isAuthenticated"
+                  class="btn col-12"
+                  to="./userinfo"
+                  role="button"
+                >使用者資訊｜User Info</router-link>
                 <router-link
                   v-if="!isAuthenticated"
                   class="btn col-12"
@@ -37,12 +42,17 @@
                 >登出｜Login</router-link>
                 <div class="col-12" style="padding:7%;"></div>
                 <router-link class="btn col-12" to="./" role="button">首頁｜Home</router-link>
-                <router-link class="btn col-12" to="./register" role="button">註冊｜Register</router-link>
-                <router-link class="btn col-12" to="./netflow" role="button">流量｜Netflow</router-link>
+                <router-link
+                  v-if="!isAuthenticated"
+                  class="btn col-12"
+                  to="./register"
+                  role="button"
+                >註冊｜Register</router-link>
+                <router-link v-if="false" class="btn col-12" to="./netflow" role="button">流量｜Netflow</router-link>
                 <router-link class="btn col-12" to="./user_contract" role="button">規範｜Contract</router-link>
-                <router-link class="btn col-12" to="./universal_lock" role="button">鎖卡列表｜Lock Table</router-link>
-                <router-link class="btn col-12" to="#announce" role="button">公告｜Announce</router-link>
-                <router-link class="btn col-12" to="#findus" role="button">關於｜Find Us</router-link>
+                <router-link v-if="false" class="btn col-12" to="./universal_lock" role="button">鎖卡列表｜Lock Table</router-link>
+                <a class="btn col-12" href="#announce" role="button">公告｜Announce</a>
+                <a class="btn col-12" href="#findus" role="button">關於｜Find Us</a>
               </div>
             </div>
           </div>
@@ -56,9 +66,9 @@
       <div class="col-12">
         <h1 class="title" style="margin:0px auto">YunNET 雲科網管</h1>
         <div class="col-12" style="padding:18vh;"></div>
-        <a href="./" class="btn btn-dark btn-lg" style="margin:0px auto">
+        <router-link v-if="!isAuthenticated" :to="{name:'Register'}" class="btn btn-dark btn-lg" style="margin:0px auto">
           <b>Register Network</b>
-        </a>
+        </router-link>
       </div>
     </div>
     <div class="col-12 col-sm-10" style="background-color:rgba(63,127,191,0.85);">
@@ -146,7 +156,7 @@
     >
       <div class="row">
         <router-link class="btn col-12" to="./" role="button">YunNET 雲科網管</router-link>
-        <router-link class="btn col-12" to="./userinfo" role="button">使用者資訊｜User Info</router-link>
+        <router-link v-if="isAuthenticated" class="btn col-12" to="./userinfo" role="button">使用者資訊｜User Info</router-link>
         <router-link v-if="!isAuthenticated" class="btn col-12" to="./login" role="button">登入｜Login</router-link>
 
         <a
@@ -158,12 +168,12 @@
         >登出｜Login</a>
         <div class="col-12" style="padding:17vh"></div>
         <router-link class="btn col-12" to="./" role="button">首頁｜Home</router-link>
-        <router-link class="btn col-12" to="./register" role="button">註冊｜Register</router-link>
-        <router-link class="btn col-12" to="./netflow" role="button">流量｜Netflow</router-link>
+        <router-link v-if="!isAuthenticated" class="btn col-12" to="./register" role="button">註冊｜Register</router-link>
+        <router-link v-if="false" class="btn col-12" to="./netflow" role="button">流量｜Netflow</router-link>
         <router-link class="btn col-12" to="./user_contract" role="button">規範｜Contract</router-link>
-        <router-link class="btn col-12" to="./universal_lock" role="button">鎖卡列表｜Lock Table</router-link>
-        <router-link class="btn col-12" to="#announce" role="button">公告｜Announce</router-link>
-        <router-link class="btn col-12" to="#findus" role="button">關於｜Find Us</router-link>
+        <router-link v-if="false" class="btn col-12" to="./universal_lock" role="button">鎖卡列表｜Lock Table</router-link>
+        <a class="btn col-12" href="#announce" role="button">公告｜Announce</a>
+        <a class="btn col-12" href="#findus" role="button">關於｜Find Us</a>
         <div class="col-12" style="background-color:white;height:3px;margin:25px 0px"></div>
       </div>
     </div>
@@ -174,7 +184,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
-import { LOGOUT, WAN_DOWN,IP } from "@/store/actions_type";
+import { LOGOUT, WAN_DOWN, IP } from "@/store/actions_type";
 
 export default {
   name: "index",
@@ -186,7 +196,8 @@ export default {
   },
   beforeMount: function() {
     this.$store.dispatch(IP).then(() => {
-        this.$store.dispatch(WAN_DOWN);})
+      this.$store.dispatch(WAN_DOWN);
+    });
   },
   methods: {
     logout() {

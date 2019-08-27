@@ -31,12 +31,6 @@ export default new Router({
     },
 
     {
-      path: "/netflow",
-      name: "Netflown",
-      component: () => import("./components/Netflow.vue")
-    },
-
-    {
       path: "/register",
       name: "Register",
       meta: {
@@ -67,6 +61,11 @@ export default new Router({
       name: "System_universal",
       component: () =>
         import("./components/system_universal/System_universal.vue")
+    },
+    {
+      path: "/netflow",
+      name: "Netflown",
+      component: () => import("./components/Netflow.vue")
     },
     {
       path: "/sys_uni_abuse",
