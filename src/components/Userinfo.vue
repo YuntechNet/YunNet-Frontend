@@ -21,45 +21,45 @@
           <div class="col-10 offset-1">
             <hr />
           </div>
-          <div class="col-10 offset-1" style="text-align: left;color:white;">
+          <div class="col-sm-6 offset-sm-3 col-10 offset-1" style="text-align: left;color:white;">
             <div class="row">
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>學號</p>
               </div>
-              <div class="col-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>ID</p>
               </div>
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>{{info.username}}</p>
               </div>
 
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>姓名</p>
               </div>
-              <div class="col-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>Name</p>
               </div>
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>{{info.name}}</p>
               </div>
 
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>部門</p>
               </div>
-              <div class="col-sm-2 col-4 font-weight-bold">
-                <p>Department</p>
+              <div class="col-4 font-weight-bold">
+                <p class="fontsize">Department</p>
               </div>
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>{{info.department}}</p>
               </div>
 
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>類型</p>
               </div>
-              <div class="col-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <p>Type</p>
               </div>
-              <div class="col-sm-2 offset-sm-2 col-4 font-weight-bold">
+              <div class="col-4 font-weight-bold">
                 <div v-for="(item,index) in info.group" :key="index">
                   <p>{{item}}</p>
                 </div>
@@ -88,8 +88,8 @@
                   :id="['id'+index]"
                 >
                   <div class="row">
-                    <h5 class="col-6">MAC</h5>
-                    <div class="col-6">
+                    <h5 class="col-sm-2 col-6">MAC</h5>
+                    <div class="col-sm-10 col-6">
                       <div>
                         {{item.mac/*.match( /.{1,2}/g ).join( ':' ).toUpperCase()*/ }}
                         <kbd
@@ -98,19 +98,19 @@
                       </div>
                     </div>
 
-                    <h5 class="col-6">校外總量</h5>
-                    <div class="col-6">??GB</div>
+                    <h5 class="col-sm-2 col-6">校外總量</h5>
+                    <div class="col-sm-10 col-6">??GB</div>
 
-                    <h5 class="col-6">狀態</h5>
+                    <h5 class="col-sm-2 col-6">狀態</h5>
                     <div
-                      :class="['col-6', item.lock_status==='LOCKED'?'text-danger':'text-success']"
+                      :class="['col-sm-10 col-6', item.lock_status==='LOCKED'?'text-danger':'text-success']"
                     >{{item.lock_status}}</div>
 
                     <div class="btn-group btn-right" role="group" aria-label="功能">
                       <router-link :to="`./change_mac/${item.ip}`" class="btn btn-success">更改MAC</router-link>
                       <router-link :to="`./user_netflow/${item.ip}`" class="btn btn-primary">流量紀錄</router-link>
                       <router-link :to="`./user_lock/${item.ip}`" class="btn btn-secondary">鎖卡紀錄</router-link>
-                      <router-link :to="`./Change_password/${item.ip}`" class="btn btn-danger">更改密碼</router-link>
+                      <router-link :to="`./Change_password/`" class="btn btn-danger">更改密碼</router-link>
                     </div>
                   </div>
                 </div>
@@ -184,6 +184,9 @@ a.display {
   }
   a.display {
     display: none;
+  }
+  .fontsize{
+    font-size: 15px;
   }
 }
 #thead:hover {

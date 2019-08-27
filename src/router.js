@@ -167,6 +167,11 @@ export default new Router({
     {
       path: "*",
       component: () => import("./components/Index.vue")
+    },
+    {
+      path: "/sys_dorm_query",
+      name: "Sys_dorm_query",
+      component: () => import("./components/system_dormitory/Sys_dorm_query.vue")
     }
   ]
 });

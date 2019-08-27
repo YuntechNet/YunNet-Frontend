@@ -21,23 +21,34 @@
               <div class="row">
                 <div class="col-12" style="padding:7%;"></div>
                 <router-link class="btn col-12" to="./" role="button">YunNET 雲科網管</router-link>
-                <router-link class="btn col-12" to="./userinfo" role="button">使用者資訊｜User Info</router-link>
+                <router-link
+                  v-if="isAuthenticated"
+                  class="btn col-12"
+                  to="./userinfo"
+                  role="button"
+                >使用者資訊｜User Info</router-link>
                 <router-link
                   v-if="!isAuthenticated"
                   class="btn col-12"
                   to="./login"
                   role="button"
                 >登入｜Login</router-link>
-                <router-link
+
+                <a
                   v-if="isAuthenticated"
                   class="btn col-12"
                   @click.prevent="logout"
                   role="button"
                   style="color:rgb(192, 192, 192);"
-                >登出｜Login</router-link>
+                >登出｜Login</a>
                 <div class="col-12" style="padding:7%;"></div>
                 <router-link class="btn col-12" to="./" role="button">首頁｜Home</router-link>
-                <router-link class="btn col-12" to="./register" role="button">註冊｜Register</router-link>
+                <router-link
+                  v-if="!isAuthenticated"
+                  class="btn col-12"
+                  to="./register"
+                  role="button"
+                >註冊｜Register</router-link>
                 <router-link class="btn col-12" to="./netflow" role="button">流量｜Netflow</router-link>
                 <router-link class="btn col-12" to="./user_contract" role="button">規範｜Contract</router-link>
                 <router-link class="btn col-12" to="./universal_lock" role="button">鎖卡列表｜Lock Table</router-link>
@@ -68,15 +79,10 @@
           <b-carousel
             id="carousel-1"
             v-model="slide"
-            :interval="4000"
             controls
             indicators
-            background="#ababab"
-            img-width="1024"
-            img-height="480"
-            style="text-shadow: 1px 1px 2px #333;"
           >
-            <b-carousel-slide style="height:70vh;background-color:rgba(63,127,191,0.85);">
+            <b-carousel-slide style="height:70vh;background-color:rgba(63,127,191,0.1);">
               <h2>系統表定維護時間公告</h2>
               <div class="col-12 col-sm-10 offset-sm-1 announce rounded-lg">
                 <iframe
@@ -91,7 +97,7 @@
               </div>
             </b-carousel-slide>
 
-            <b-carousel-slide style="height:70vh;background-color:rgba(63,127,191,0.85)">
+            <b-carousel-slide style="height:70vh;background-color:rgba(63,127,191,0.1)">
               <h2>107暑假住宿網路註冊須知</h2>
               <div class="col-12 col-sm-10 offset-sm-1 announce rounded-lg">
                 <iframe
@@ -106,7 +112,7 @@
               </div>
             </b-carousel-slide>
 
-            <b-carousel-slide style="height:70vh;background-color:rgba(63,127,191,0.85)">
+            <b-carousel-slide style="height:70vh;background-color:rgba(63,127,191,0.1)">
               <h2>107學年度宿舍暑期網路設備更換時程表</h2>
               <div class="col-12 col-sm-10 offset-sm-1 announce rounded-lg">
                 <iframe
@@ -147,7 +153,12 @@
     >
       <div class="row">
         <router-link class="btn col-12" to="./" role="button">YunNET 雲科網管</router-link>
-        <router-link class="btn col-12" to="./userinfo" role="button">使用者資訊｜User Info</router-link>
+        <router-link
+          v-if="isAuthenticated"
+          class="btn col-12"
+          to="./userinfo"
+          role="button"
+        >使用者資訊｜User Info</router-link>
         <router-link v-if="!isAuthenticated" class="btn col-12" to="./login" role="button">登入｜Login</router-link>
 
         <a
@@ -159,7 +170,12 @@
         >登出｜Login</a>
         <div class="col-12" style="padding:17vh"></div>
         <router-link class="btn col-12" to="./" role="button">首頁｜Home</router-link>
-        <router-link class="btn col-12" to="./register" role="button">註冊｜Register</router-link>
+        <router-link
+          v-if="!isAuthenticated"
+          class="btn col-12"
+          to="./register"
+          role="button"
+        >註冊｜Register</router-link>
         <router-link class="btn col-12" to="./netflow" role="button">流量｜Netflow</router-link>
         <router-link class="btn col-12" to="./user_contract" role="button">規範｜Contract</router-link>
         <router-link class="btn col-12" to="./universal_lock" role="button">鎖卡列表｜Lock Table</router-link>

@@ -51,9 +51,9 @@
               style="background-color: white;"
             ></iframe>
           </div>
-           <div class="col-12" style="padding:3%;"></div>
+          <div class="col-12" style="padding:3%;"></div>
         </div>
-       
+
         <div class="col-12" style="padding:3%;"></div>
 
         <div
@@ -98,6 +98,18 @@
                   </div>
                   <div class="col-12 d-flex justify-content-center">
                     <b-form-group
+                      id="password group"
+                      label-cols-sm="12"
+                      label-cols-lg="8"
+                      label="密碼｜password："
+                      label-for="password"
+                      style="color:white;"
+                    >
+                      <b-form-input id="password" v-model="password" required></b-form-input>
+                    </b-form-group>
+                  </div>
+                  <div class="col-12 d-flex justify-content-center">
+                    <b-form-group
                       id="bed group"
                       label-cols-sm="12"
                       label-cols-lg="8"
@@ -108,6 +120,7 @@
                       <b-form-input id="bed" v-model="bed" required></b-form-input>
                     </b-form-group>
                   </div>
+
                   <div class="col-12">
                     <b-button type="submit" variant="info">
                       <p style="margin:auto auto;">送出</p>
@@ -125,9 +138,9 @@
 </template>
 
 <script>
-import Background from "@/components/Background";
-import { REGISTER } from "@/store/actions_type";
-import { mapState } from "vuex";
+import Background from "@/components/Background"
+import { REGISTER } from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "Register",
@@ -138,15 +151,15 @@ export default {
     return {
       id: null,
       bed: null
-    };
+    }
   },
   methods: {
     regist() {
-      let id = this.id;
-      let bed = this.bed;
+      let id = this.id
+      let bed = this.bed
       this.$store
         .dispatch(REGISTER, { id, bed })
-        .then(() => this.$router.push({ name: "Index" }));
+        .then(() => this.$router.push({ name: "Index" }))
     }
   },
   computed: {
@@ -154,7 +167,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 
 <style scoped>
