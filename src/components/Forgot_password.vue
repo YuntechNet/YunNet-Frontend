@@ -43,6 +43,7 @@
                 required
                 id="student_id"
                 class="form-control"
+                maxlength="40"
               />
               <input class="btn btn-primary" type="submit" value="送出｜Submit" />
               <input class="btn btn-danger" value="清除｜Reset" type="reset" />
@@ -56,9 +57,9 @@
 </template>
 
 <script>
-import Background from "@/components/Background";
-import { mapState } from "vuex";
-import { FORGOT_PASSWORD } from "@/store/actions_type";
+import Background from "@/components/Background"
+import { mapState } from "vuex"
+import { FORGOT_PASSWORD, ERROR } from "@/store/actions_type"
 
 export default {
   name: "Forgot_password",
@@ -68,12 +69,17 @@ export default {
   data() {
     return {
       username: null
-    };
+    }
   },
   methods: {
     submit() {
-      let username = this.username;
-      this.$store.dispatch(FORGOT_PASSWORD, { username });
+      let reg = /[\W]/g
+      let username = this.username
+      if (!reg.test(username)) {
+        this.$store.dispatch(FORGOT_PASSWORD, { username })
+      } else {
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
+      }
     }
   },
   computed: {
@@ -81,7 +87,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 
 <style scoped>

@@ -39,6 +39,7 @@
                   <b-form-input
                     type="password"
                     id="old-Password"
+                    maxlength="40"
                     v-model="old_Password"
                     required
                     placeholder="Old"
@@ -54,6 +55,7 @@
                   <b-form-input
                     type="password"
                     id="new-Password"
+                    maxlength="40"
                     required
                     v-model="new_Password"
                     placeholder="New"
@@ -69,6 +71,7 @@
                   <b-form-input
                     type="password"
                     id="confirm-Password"
+                    maxlength="40"
                     v-model="REnew_Password"
                     required
                     placeholder="Confirm"
@@ -89,9 +92,9 @@
 </template>
 
 <script>
-import Background from "@/components/Background";
-import { mapState } from "vuex";
-import { CHANGE_PASSWORD, ERROR } from "@/store/actions_type";
+import Background from "@/components/Background"
+import { mapState } from "vuex"
+import { CHANGE_PASSWORD, ERROR } from "@/store/actions_type"
 
 export default {
   name: "Change_password",
@@ -103,16 +106,21 @@ export default {
       old_Password: null,
       new_Password: null,
       REnew_Password: null
-    };
+    }
   },
   methods: {
     submit() {
-      let old_password = this.old_Password;
-      let new_password = this.new_Password;
-      if (this.new_Password === this.REnew_Password) {
-        this.$store.dispatch(CHANGE_PASSWORD, { old_password, new_password });
+      let reg = /[\W]/g
+      let old_password = this.old_Password
+      let new_password = this.new_Password
+      if (!reg.text(new_password)) {
+        if (this.new_Password === this.REnew_Password) {
+          this.$store.dispatch(CHANGE_PASSWORD, { old_password, new_password })
+        } else {
+          this.$store.dispatch(ERROR, "重複密碼錯誤!")
+        }
       } else {
-        this.$store.dispatch(ERROR, "重複密碼錯誤!");
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
       }
     }
   },
@@ -121,7 +129,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 
 <style scoped>

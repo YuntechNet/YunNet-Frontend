@@ -44,64 +44,65 @@
               @submit.prevent="submit(mac1+mac2+mac3+mac4+mac5+mac6)"
             >
               <label>新 MAC 卡號:</label>
+              
               <div class="form-group">
-                <div style="display:inline;float:left;">
+                <div style="display:inline;">
                   <b-form-input
                     type="text"
                     id="new_mac1"
                     v-model="mac1"
-                    style="height:25px;width:44px;display:inline;"
+                    style="height:25px;width:50px;display:inline;text-align:center;"
                     maxlength="2"
                     required
                   ></b-form-input>
-                  <label>:</label>
+                  <label style="margin:0px 5px;">:</label>
                   <b-form-input
                     type="text"
                     id="new_mac2"
                     v-model="mac2"
-                    style="height:25px;width:44px;display:inline;"
+                    style="height:25px;width:50px;display:inline;text-align:center"
                     maxlength="2"
                     required
                   ></b-form-input>
-                  <label>:</label>
+                  <label style="margin:0px 5px;">:</label>
                   <b-form-input
                     type="text"
                     id="new_mac3"
                     v-model="mac3"
-                    style="height:25px;width:44px;display:inline;"
+                    style="height:25px;width:50px;display:inline;text-align:center"
                     maxlength="2"
                     required
                   ></b-form-input>
-                  <label>:</label>
+                  <label style="margin:0px 5px;">:</label>
                   <b-form-input
                     type="text"
                     id="new_mac4"
                     v-model="mac4"
-                    style="height:25px;width:44px;display:inline;"
+                    style="height:25px;width:50px;display:inline;text-align:center"
                     maxlength="2"
                     required
                   ></b-form-input>
-                  <label>:</label>
+                  <label style="margin:0px 5px;">:</label>
                   <b-form-input
                     type="text"
                     id="new_mac5"
                     v-model="mac5"
-                    style="height:25px;width:44px;display:inline;"
+                    style="height:25px;width:50px;display:inline;text-align:center"
                     maxlength="2"
                     required
                   ></b-form-input>
-                  <label>:</label>
+                  <label style="margin:0px 5px;">:</label>
                   <b-form-input
                     type="text"
                     id="new_mac6"
                     v-model="mac6"
-                    style="height:25px;width:44px;display:inline;"
+                    style="height:25px;width:50px;display:inline;text-align:center"
                     maxlength="2"
                     required
                   ></b-form-input>
                 </div>
               </div>
-               <div class="col-12" style="padding:5%;"></div>
+              <div class="col-12" style="padding:10px;"></div>
               <div style="text-align:left;display:inline;">
                 <input class="btn btn-primary" type="submit" value="確定" />
                 <input class="btn btn-danger" type="reset" value="重填" />
@@ -123,7 +124,7 @@
                 ></iframe>
               </div>
               <div class="col-sm-4 col-12">
-                <strong>Windows 7/8/10 </strong>
+                <strong>Windows 7/8/10</strong>
                 <iframe
                   style="width:100%;height:80%"
                   src="https://drive.google.com/file/d/0B7hvpkydNrx8Y1NsdFlLUDUybmc/preview"
@@ -140,7 +141,7 @@
               </div>
             </div>
           </div>
-           <div class="col-12" style="padding:2%;"></div>
+          <div class="col-12" style="padding:2%;"></div>
         </div>
         <div class="col-12" style="padding:10%;"></div>
       </div>
@@ -148,26 +149,26 @@
   </div>
 </template>
 <script>
-import Background from "@/components/Background";
-import { IP, CHANGE_MAC } from "@/store/actions_type";
-import { mapState } from "vuex";
+import Background from "@/components/Background"
+import { IP, CHANGE_MAC, ERROR } from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "Change_mac",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(IP);
+    this.$store.dispatch(IP)
   },
   created: function() {
-    let i = 0;
+    let i = 0
     for (i = 0; i < this.info_IP.length; i++) {
       if (this.info_IP[i].ip === this.$route.params.ip) {
-        this.macnow = this.info_IP[i].mac;
-        this.ipnow = this.info_IP[i].ip;
+        this.macnow = this.info_IP[i].mac
+        this.ipnow = this.info_IP[i].ip
       }
     }
     if (this.ipnow === null) {
-      this.$router.push({ name: "Index" });
+      this.$router.push({ name: "Index" })
     }
   },
   data() {
@@ -180,13 +181,18 @@ export default {
       mac6: null,
       macnow: null,
       ipnow: null
-    };
+    }
   },
   methods: {
     submit(mac) {
-      mac = mac.toUpperCase();
-      let ip = this.$route.params.ip;
-      this.$store.dispatch(CHANGE_MAC, { mac, ip });
+      let reg = /[\W]/g
+      mac = mac.toUpperCase()
+      if (!reg.test(mac)) {
+        let ip = this.$route.params.ip
+        this.$store.dispatch(CHANGE_MAC, { mac, ip })
+      } else {
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
+      }
     }
   },
   computed: {
@@ -195,7 +201,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 <style scoped>
 hr {

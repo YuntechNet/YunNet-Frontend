@@ -73,9 +73,9 @@
 </template>
 
 <script>
-import Background from "@/components/Background";
-import { mapState } from "vuex";
-import { SET_PASSWORD, ERROR } from "@/store/actions_type";
+import Background from "@/components/Background"
+import { mapState } from "vuex"
+import { SET_PASSWORD, ERROR } from "@/store/actions_type"
 
 export default {
   name: "Set_password",
@@ -87,16 +87,21 @@ export default {
       db_token: this.$route.params.token,
       new_Password: null,
       REnew_Password: null
-    };
+    }
   },
   methods: {
     submit() {
-      let password = this.new_Password;
-      let db_token = this.db_token;
-      if (this.new_Password === this.REnew_Password) {
-        this.$store.dispatch(SET_PASSWORD, { password, db_token });
+      let reg = /[\W]/g
+      let password = this.new_Password
+      let db_token = this.db_token
+      if (!reg.test(password)) {
+        if (this.new_Password === this.REnew_Password) {
+          this.$store.dispatch(SET_PASSWORD, { password, db_token })
+        } else {
+          this.$store.dispatch(ERROR, "重複密碼錯誤!")
+        }
       } else {
-        this.$store.dispatch(ERROR, "重複密碼錯誤!");
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
       }
     }
   },
@@ -105,7 +110,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 
 <style scoped>
