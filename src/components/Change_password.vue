@@ -77,7 +77,7 @@
               </h5>
               <div>
                 <input class="btn btn-primary" type="submit" value="確定" />
-               <input class="btn btn-danger" type="reset" value="重填" />
+                <input class="btn btn-danger" type="reset" value="重填" />
               </div>
             </b-form>
           </div>
@@ -89,9 +89,9 @@
 </template>
 
 <script>
-import Background from "@/components/Background"
-import { mapState } from "vuex"
-import { CHANGE_PASSWORD, ERROR } from "@/store/actions_type"
+import Background from "@/components/Background";
+import { mapState } from "vuex";
+import { CHANGE_PASSWORD, ERROR } from "@/store/actions_type";
 
 export default {
   name: "Change_password",
@@ -103,28 +103,25 @@ export default {
       old_Password: null,
       new_Password: null,
       REnew_Password: null
-    }
+    };
   },
   methods: {
     submit() {
-      let old_password = this.old_Password
-      let new_password = this.new_Password
+      let old_password = this.old_Password;
+      let new_password = this.new_Password;
       if (this.new_Password === this.REnew_Password) {
-        this.$store.dispatch(CHANGE_PASSWORD, { old_password, new_password })
+        this.$store.dispatch(CHANGE_PASSWORD, { old_password, new_password });
       } else {
-        this.$store.dispatch(ERROR, "重複密碼錯誤!")
+        this.$store.dispatch(ERROR, "重複密碼錯誤!");
       }
     }
-
-
-
   },
   computed: {
     ...mapState({
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 
 <style scoped>

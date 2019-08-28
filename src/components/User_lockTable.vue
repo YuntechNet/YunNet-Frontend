@@ -2,21 +2,21 @@
   <div class="row">
     <background />
     <section class="container-fluid">
-        <div class="col-12 head-padding"></div>
-        <div
-          class="col-12 col-sm-10 offset-sm-1 frame rounded-lg"
-          style="background-color: rgb(51,51,51,0.6);"
-        >
-          <div class="row">
-            <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
-              <div class="float-right">
-                <router-link
-                  class="btn btn-default btn-lg"
-                  :to="{name:'Userinfo'}"
-                  style="background-color: white;"
-                >
-                  <font-awesome-icon icon="times" />
-                </router-link>
+      <div class="col-12 head-padding"></div>
+      <div
+        class="col-12 col-sm-10 offset-sm-1 frame rounded-lg"
+        style="background-color: rgb(51,51,51,0.6);"
+      >
+        <div class="row">
+          <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
+            <div class="float-right">
+              <router-link
+                class="btn btn-default btn-lg"
+                :to="{name:'Userinfo'}"
+                style="background-color: white;"
+              >
+                <font-awesome-icon icon="times" />
+              </router-link>
             </div>
             <div class="float-left">
               <h1>鎖卡紀錄｜User_lockTable.</h1>
@@ -32,7 +32,6 @@
             <div class="row">
               <div class="col-4 font-weight-bold">
                 <p>學號</p>
-
               </div>
               <div class="col-4 font-weight-bold">
                 <p>ID</p>
@@ -62,6 +61,16 @@
               </div>
 
               <div class="col-4 font-weight-bold">
+                <p>IP</p>
+              </div>
+              <div class="col-4 font-weight-bold">
+                <p class="fontsize">IP</p>
+              </div>
+              <div class="col-4 font-weight-bold">
+                <p>{{ipnow}}</p>
+              </div>
+
+              <div class="col-4 font-weight-bold">
                 <p>類型</p>
               </div>
               <div class="col-4 font-weight-bold">
@@ -84,7 +93,6 @@
                   <th id="thead" class="text-size" style="text-align:center;">lock_type</th>
                   <th id="thead" class="text-size" style="text-align:center;">lock_date</th>
                   <th id="thead" class="text-size" style="text-align:center;">unlock_date</th>
-                  <th id="thead" class="text-size" style="text-align:center;">lock_by_user_id</th>
                 </tr>
               </thead>
               <tbody>
@@ -95,9 +103,8 @@
                 >
                   <th class="text-size" style="text-align:center;">{{item.lock_id}}</th>
                   <th class="text-size" style="text-align:center;">{{item.lock_type}}</th>
-                  <th class="text-size" style="text-align:centerS;">{{item.lock_date}}</th>
+                  <th class="text-size" style="text-align:center;">{{item.lock_date}}</th>
                   <th class="text-size" style="text-align:center;">{{item.unlock_date}}</th>
-                  <th class="text-size" style="text-align:center;">{{item.lock_by_user_id}}</th>
                 </tr>
               </tbody>
             </table>
@@ -113,33 +120,33 @@
 
 
 <script>
-import Background from "@/components/Background"
-import { INFO, LOCK, IP } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { INFO, LOCK, IP } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "User_lockTable",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(INFO)
-    this.$store.dispatch(IP)
+    this.$store.dispatch(INFO);
+    this.$store.dispatch(IP);
   },
   created: function() {
-    let i = 0
+    let i = 0;
     for (i = 0; i < this.info_IP.length; i++) {
       if (this.info_IP[i].ip === this.$route.params.ip) {
-        this.ipnow = this.info_IP[i].ip
+        this.ipnow = this.info_IP[i].ip;
       }
     }
     if (this.ipnow === null) {
-      this.$router.push({ name: "Index" })
+      this.$router.push({ name: "Index" });
     }
-    this.$store.dispatch(LOCK, this.ipnow)
+    this.$store.dispatch(LOCK, this.ipnow);
   },
   data() {
     return {
       ipnow: null
-    }
+    };
   },
   computed: {
     ...mapState({
@@ -148,7 +155,7 @@ export default {
       lock: state => state.profile.lock
     })
   }
-}
+};
 </script>
 
 

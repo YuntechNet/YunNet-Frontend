@@ -1,6 +1,3 @@
-<template>
-  <h1>Wait...</h1>
-</template>
 <script>
 import { REGISTER_VERIFY } from "@/store/actions_type";
 export default {

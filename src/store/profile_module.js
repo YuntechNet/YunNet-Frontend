@@ -82,6 +82,7 @@ const actions = {
           mac: credentials.mac
         })
           .then(({ data }) => {
+            router.replace({ name: "Index" });
             context.commit(SET_ERROR, data.message);
             resolve(data);
           })

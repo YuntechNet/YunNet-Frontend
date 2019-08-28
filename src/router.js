@@ -109,7 +109,7 @@ export default new Router({
       name: "Sys_dorm_query",
       component: () => import("./components/system_dormitory/Sys_dorm_query.vue")
     },
-*/
+    */
     {
       path: "/change_mac/:ip",
       component: () => import("./components/Change_mac.vue"),

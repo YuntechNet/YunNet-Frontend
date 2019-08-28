@@ -48,8 +48,8 @@ const actions = {
     return new Promise(resolve => {
       ApiService.post("register", credentials)
         .then(({ data }) => {
-          alert("Success! Please check mail!");
           router.replace({ name: "Index" });
+          context.commit(SET_ERROR, "Success! Please check mail!");
           resolve(data);
         })
         .catch(({ response }) => {
@@ -61,14 +61,14 @@ const actions = {
     return new Promise(resolve => {
       ApiService.get("verify-mail", token)
         .then(({ data }) => {
-          alert("Success");
           router.replace({ name: "Index" });
+          context.commit(SET_ERROR, "Success!");
           resolve(data);
         })
         .catch(({ response }) => {
           if (response.status != 500) {
-            alert(response.data.message);
             router.replace({ name: "Index" });
+            context.commit(SET_ERROR, response.data.message);
           } else {
             router.replace({ name: "Index" });
           }
@@ -79,8 +79,8 @@ const actions = {
     return new Promise(resolve => {
       ApiService.post("forgot-password", credentials)
         .then(({ data }) => {
-          alert("Success! Please check mail!");
           router.replace({ name: "Index" });
+          context.commit(SET_ERROR, "Success! Please check mail!");
           resolve(data);
         })
         .catch(({ response }) => {
@@ -94,10 +94,12 @@ const actions = {
   },
   [SET_PASSWORD](context, credentials) {
     return new Promise(resolve => {
-      ApiService.post(`forgot-password/${credentials.db_token}`, credentials)
+      ApiService.post(`forgot-password/${credentials.db_token}`, {
+        password: credentials.password
+      })
         .then(({ data }) => {
-          alert("Success!");
           router.replace({ name: "Index" });
+          context.commit(SET_ERROR, "Success!");
           resolve(data);
         })
         .catch(({ response }) => {
