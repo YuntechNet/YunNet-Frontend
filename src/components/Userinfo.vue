@@ -99,7 +99,7 @@
                     </div>
 
                     <h5 class="col-sm-2 col-6">校外總量</h5>
-                    <div class="col-sm-10 col-6">{{wan[index]}}</div>
+                    <div class="col-sm-10 col-6">{{readablizeBytes(wan[index])}}</div>
 
                     <h5 class="col-sm-2 col-6">狀態</h5>
                     <div
@@ -129,9 +129,9 @@
 
 
 <script>
-import Background from "@/components/Background"
-import { INFO, IP, WAN_DOWN } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { INFO, IP, WAN_DOWN } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "Userinfo",
@@ -139,9 +139,16 @@ export default {
   beforeCreate: function() {
     this.$store.dispatch(INFO).then(() => {
       this.$store.dispatch(IP).then(() => {
-        this.$store.dispatch(WAN_DOWN)
-      })
-    })
+        this.$store.dispatch(WAN_DOWN);
+      });
+    });
+  },
+  methods: {
+    readablizeBytes(bytes) {
+      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"];
+      let e = Math.floor(Math.log(bytes) / Math.log(1024));
+      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
+    }
   },
   computed: {
     ...mapState({
@@ -150,7 +157,7 @@ export default {
       wan: state => state.profile.wan
     })
   }
-}
+};
 </script>
 
 
