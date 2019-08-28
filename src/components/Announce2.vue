@@ -5,8 +5,8 @@
                     <div>
                         <h3 class="panel-title">
                 
-            <a target="_top" href="./#/user_announce2">
-                <strong>107學年度宿舍暑期網路設備更換時程表</strong>
+            <a target="_top" href="./#/user_announce2" style="color:#2980b9:margin:2px auto;">
+                107學年度宿舍暑期網路設備更換時程表
             </a>
                         </h3>
                     </div>

@@ -106,7 +106,7 @@
                       :class="['col-sm-10 col-6', item.lock_status==='LOCKED'?'text-danger':'text-success']"
                     >{{item.lock_status}}</div>
 
-                    <div class="btn-group btn-right ml-3" role="group" aria-label="功能">
+                    <div class="btn-group btn-right mx-3" role="group" aria-label="功能">
                       <router-link :to="`./change_mac/${item.ip}`" class="btn btn-success">更改MAC</router-link>
                       <router-link :to="`./user_netflow/${item.ip}`" class="btn btn-primary">流量紀錄</router-link>
                       <router-link :to="`./user_lock/${item.ip}`" class="btn btn-secondary">鎖卡紀錄</router-link>

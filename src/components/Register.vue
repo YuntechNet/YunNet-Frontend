@@ -63,7 +63,11 @@
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
-                <router-link class="btn btn-default btn-lg" to="./" style="background-color: white;">
+                <router-link
+                  class="btn btn-default btn-lg"
+                  to="./"
+                  style="background-color: white;"
+                >
                   <font-awesome-icon icon="times" />
                 </router-link>
               </div>
@@ -76,60 +80,72 @@
             </div>
             <div class="col-10 offset-1">
               <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
+
               <p style="color:white;margin:0px auto;white-space:nowrap;">學號格式:限定字母全大寫。</p>
               <p style="color:white;margin:0px auto;white-space:nowrap;">床位格式:</p>
               <p style="color:white;margin:0px auto;white-space:nowrap;">Example1: A3棟108房4床</p>
               <p>A3108-4 | (棟別,房號)-(床號)</p>
               <p style="color:white;margin:0px auto;white-space:nowrap;">Example2: F棟102房2床</p>
               <p>E2102-2 | (棟別,房號)-(床號)</p>
+
               <b-form @submit.prevent="regist">
                 <div class="row">
-                  <div class="col-12 d-flex justify-content-center">
+                  <div class="col-12 form-inline d-flex justify-content-center" style="padding:1%;">
                     <b-form-group
                       id="student_id group"
-                      label-cols-sm="12"
-                      label-cols-lg="8"
                       label="學號/臨時卡號｜Student ID/Access Card Number："
                       label-for="student_id"
                       style="color:white;"
                     >
-                      <b-form-input id="student_id" v-model="id" required></b-form-input>
+                      <b-form-input id="student_id" maxlength="40" v-model="id" required></b-form-input>
                     </b-form-group>
                   </div>
-                  <div class="col-12 d-flex justify-content-center">
+                  <div class="col-12 form-inline d-flex justify-content-center" style="padding:1%;">
                     <b-form-group
                       id="bed group"
-                      label-cols-sm="12"
-                      label-cols-lg="8"
                       label="床位｜Bed："
                       label-for="bed"
                       style="color:white;"
                     >
-                      <b-form-input id="bed" v-model="bed" required></b-form-input>
+                      <b-form-input
+                        id="bed"
+                        maxlength="40"
+                        v-model="bed"
+                        required
+                        style="margin:0px "
+                      ></b-form-input>
                     </b-form-group>
                   </div>
-                  <div class="col-12 d-flex justify-content-center">
+                  <div class="col-12 form-inline d-flex justify-content-center" style="padding:1%;">
                     <b-form-group
                       id="password group"
-                      label-cols-sm="12"
-                      label-cols-lg="8"
                       label="密碼 | Password："
                       label-for="password"
                       style="color:white;"
                     >
-                      <b-form-input id="password" type="password" v-model="password" required></b-form-input>
+                      <b-form-input
+                        id="password"
+                        type="password"
+                        maxlength="40"
+                        v-model="password"
+                        required
+                      ></b-form-input>
                     </b-form-group>
                   </div>
-                  <div class="col-12 d-flex justify-content-center">
+                  <div class="col-12 form-inline d-flex justify-content-center" style="padding:1%;">
                     <b-form-group
                       id="REpassword group"
-                      label-cols-sm="12"
-                      label-cols-lg="8"
                       label="確認密碼 | Confirm Password："
                       label-for="REpassword"
                       style="color:white;"
                     >
-                      <b-form-input id="REpassword" type="password" v-model="REpassword" required></b-form-input>
+                      <b-form-input
+                        id="REpassword"
+                        type="password"
+                        maxlength="40"
+                        v-model="REpassword"
+                        required
+                      ></b-form-input>
                     </b-form-group>
                   </div>
                   <div class="col-12">
@@ -149,10 +165,9 @@
 </template>
 
 <script>
-import Background from "@/components/Background";
-import { REGISTER, ERROR } from "@/store/actions_type";
-import { mapState } from "vuex";
-
+import Background from "@/components/Background"
+import { REGISTER, ERROR } from "@/store/actions_type"
+import { mapState } from "vuex"
 export default {
   name: "Register",
   components: {
@@ -164,19 +179,24 @@ export default {
       bed: null,
       password: null,
       REpassword: null
-    };
+    }
   },
   methods: {
     regist() {
-      let username = this.id;
-      let bed = this.bed;
-      let password = this.password;
-      if (password === this.REpassword) {
-        this.$store
-          .dispatch(REGISTER, { username, bed, password })
-          .then(() => this.$router.push({ name: "Index" }));
+      let reg = /[\W]/g
+      let username = this.id
+      let bed = this.bed
+      let password = this.password
+      if (!reg.test(username) && !reg.test(password)) {
+        if (password === this.REpassword) {
+          this.$store
+            .dispatch(REGISTER, { username, bed, password })
+            .then(() => this.$router.push({ name: "Index" }))
+        } else {
+          this.$store.dispatch(ERROR, "重複密碼錯誤!")
+        }
       } else {
-        this.$store.dispatch(ERROR, "重複密碼錯誤!");
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
       }
     }
   },
@@ -187,6 +207,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 hr {

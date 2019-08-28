@@ -36,9 +36,15 @@
                   label="帳號(學號)｜Username(Std. ID)："
                   label-for="username"
                 >
-                  <b-form-input id="username" v-model="username" required placeholder="account" οnkeyup="value=value.replace(/[^/w/.//]/ig,'')"></b-form-input>
+                  <b-form-input
+                    id="username"
+                    maxlength="40"
+                    v-model="username"
+                    required
+                    placeholder="account"
+                  ></b-form-input>
                 </b-form-group>
-                
+
                 <b-form-group
                   class="text-left"
                   style="color:white;"
@@ -49,6 +55,7 @@
                   <b-form-input
                     type="password"
                     id="password"
+                    maxlength="40"
                     required
                     v-model="password"
                     placeholder="password"
@@ -57,7 +64,7 @@
               </h5>
               <div>
                 <a
-                  class="btn btn-primary btn-lg"
+                  class="btn btn-info btn-lg"
                   href="./#/register"
                   style="margin:5px 5px"
                 >註冊｜Regist</a>
@@ -93,7 +100,7 @@
 import Background from "@/components/Background"
 import VueRecaptcha from "vue-recaptcha"
 import { mapState } from "vuex"
-import { LOGIN } from "@/store/actions_type"
+import { LOGIN, ERROR } from "@/store/actions_type"
 
 export default {
   name: "Login",
@@ -114,12 +121,17 @@ export default {
     },
     onVerify(response) {
       this.$refs.recaptcha.reset()
+      let reg = /[\W]/g
       let username = this.username
       let password = this.password
-      let recaptcha_token = response
-      this.$store
-        .dispatch(LOGIN, { username, password, recaptcha_token })
-        .then(() => this.$router.push({ name: "Index" }))
+      if (!reg.test(username)&!reg.test(password)) {
+        let recaptcha_token = response
+        this.$store
+          .dispatch(LOGIN, { username, password, recaptcha_token })
+          .then(() => this.$router.push({ name: "Index" }))
+      } else {
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
+      }
     },
     onExpired() {
       this.$refs.recaptcha.reset()

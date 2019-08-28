@@ -39,6 +39,7 @@
                   <b-form-input
                     type="password"
                     id="old-Password"
+                    maxlength="40"
                     v-model="old_Password"
                     required
                     placeholder="Old"
@@ -54,6 +55,7 @@
                   <b-form-input
                     type="password"
                     id="new-Password"
+                    maxlength="40"
                     required
                     v-model="new_Password"
                     placeholder="New"
@@ -69,6 +71,7 @@
                   <b-form-input
                     type="password"
                     id="confirm-Password"
+                    maxlength="40"
                     v-model="REnew_Password"
                     required
                     placeholder="Confirm"
@@ -77,7 +80,7 @@
               </h5>
               <div>
                 <input class="btn btn-primary" type="submit" value="確定" />
-               <input class="btn btn-danger" type="reset" value="重填" />
+                <input class="btn btn-danger" type="reset" value="重填" />
               </div>
             </b-form>
           </div>
@@ -107,17 +110,19 @@ export default {
   },
   methods: {
     submit() {
+      let reg = /[\W]/g
       let old_password = this.old_Password
       let new_password = this.new_Password
-      if (this.new_Password === this.REnew_Password) {
-        this.$store.dispatch(CHANGE_PASSWORD, { old_password, new_password })
+      if (!reg.text(new_password)) {
+        if (this.new_Password === this.REnew_Password) {
+          this.$store.dispatch(CHANGE_PASSWORD, { old_password, new_password })
+        } else {
+          this.$store.dispatch(ERROR, "重複密碼錯誤!")
+        }
       } else {
-        this.$store.dispatch(ERROR, "重複密碼錯誤!")
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
       }
     }
-
-
-
   },
   computed: {
     ...mapState({

@@ -91,10 +91,7 @@ export default {
     transform: scale(1.2);
   }
   to {
-    -webkit-filter: blur(0.4px);
-    -moz-filter: blur(0.4px);
-    -o-filter: blur(0.4px);
-    filter: blur(0.4px);
+   
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -o-transform: scale(1);
