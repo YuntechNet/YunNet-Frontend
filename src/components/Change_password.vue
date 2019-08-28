@@ -113,7 +113,7 @@ export default {
       let reg = /[\W]/g
       let old_password = this.old_Password
       let new_password = this.new_Password
-      if (!reg.text(new_password)) {
+      if (!reg.test(new_password)) {
         if (this.new_Password === this.REnew_Password) {
           this.$store.dispatch(CHANGE_PASSWORD, { old_password, new_password })
         } else {
