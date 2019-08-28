@@ -104,14 +104,26 @@
                   :key="index"
                 >
                   <th class="text-size" style="text-align:center;">{{item.date}}</th>
-                  <th class="text-size" style="text-align:center;">{{(item.lan_download/1)}}</th>
-                  <th class="text-size" style="text-align:centerS;">{{(item.lan_upload/1)}}</th>
-                  <th class="text-size" style="text-align:center;">{{(item.wan_download/1)}}</th>
-                  <th class="text-size" style="text-align:center;">{{(item.wan_upload/1)}}</th>
                   <th
                     class="text-size"
                     style="text-align:center;"
-                  >{{((item.lan_download+item.lan_upload+item.wan_download+item.wan_upload)/1)}}</th>
+                  >{{readablizeBytes(item.lan_download)}}</th>
+                  <th
+                    class="text-size"
+                    style="text-align:centerS;"
+                  >{{readablizeBytes(item.lan_upload)}}</th>
+                  <th
+                    class="text-size"
+                    style="text-align:center;"
+                  >{{readablizeBytes(item.wan_download)}}</th>
+                  <th
+                    class="text-size"
+                    style="text-align:center;"
+                  >{{readablizeBytes(item.wan_upload)}}</th>
+                  <th
+                    class="text-size"
+                    style="text-align:center;"
+                  >{{readablizeBytes(item.lan_download+item.lan_upload+item.wan_download+item.wan_upload)}}</th>
                 </tr>
               </tbody>
             </table>
@@ -154,6 +166,13 @@ export default {
     return {
       ipnow: null
     };
+  },
+  methods: {
+    readablizeBytes(bytes) {
+      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"];
+      let e = Math.floor(Math.log(bytes) / Math.log(1024));
+      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
+    }
   },
   computed: {
     ...mapState({
