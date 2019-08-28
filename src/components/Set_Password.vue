@@ -12,7 +12,7 @@
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
                 <router-link
-                  to="./"
+                  :to="{name:'Index'}"
                   class="btn btn-default btn-lg"
                   style="background-color: white;"
                 >
@@ -25,19 +25,10 @@
             </div>
           </div>
           <hr />
-          <div class="col-10 offset-1">
+          <div class="col-10 offset-1 pb-4">
             <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
             <b-form @submit.prevent="submit">
               <h5>
-                <b-form-group
-                  class="text-left"
-                  style="color:white;"
-                  id="chang-Password"
-                  label="帳號(學號)｜Username(Std. ID)："
-                  label-for="username"
-                >
-                  <b-form-input id="username" v-model="username" required placeholder="Username"></b-form-input>
-                </b-form-group>
                 <b-form-group
                   class="text-left"
                   style="color:white;"
@@ -82,9 +73,9 @@
 </template>
 
 <script>
-import Background from "@/components/Background";
-import { mapState } from "vuex";
-import { SET_PASSWORD, ERROR } from "@/store/actions_type";
+import Background from "@/components/Background"
+import { mapState } from "vuex"
+import { SET_PASSWORD, ERROR } from "@/store/actions_type"
 
 export default {
   name: "Set_password",
@@ -94,20 +85,23 @@ export default {
   data() {
     return {
       db_token: this.$route.params.token,
-      username: null,
       new_Password: null,
       REnew_Password: null
-    };
+    }
   },
   methods: {
     submit() {
-      let username = this.username;
-      let password = this.new_Password;
-      let db_token = this.db_token;
-      if (this.new_Password === this.REnew_Password) {
-        this.$store.dispatch(SET_PASSWORD, { username, password, db_token });
+      let reg = /[\W]/g
+      let password = this.new_Password
+      let db_token = this.db_token
+      if (!reg.test(password)) {
+        if (this.new_Password === this.REnew_Password) {
+          this.$store.dispatch(SET_PASSWORD, { password, db_token })
+        } else {
+          this.$store.dispatch(ERROR, "重複密碼錯誤!")
+        }
       } else {
-        this.$store.dispatch(ERROR, "重複密碼錯誤!");
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
       }
     }
   },
@@ -116,7 +110,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 
 <style scoped>

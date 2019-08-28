@@ -61,6 +61,16 @@
               </div>
 
               <div class="col-4 font-weight-bold">
+                <p>IP</p>
+              </div>
+              <div class="col-4 font-weight-bold">
+                <p class="fontsize">IP</p>
+              </div>
+              <div class="col-4 font-weight-bold">
+                <p>{{ipnow}}</p>
+              </div>
+
+              <div class="col-4 font-weight-bold">
                 <p>類型</p>
               </div>
               <div class="col-4 font-weight-bold">

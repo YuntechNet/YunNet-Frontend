@@ -1,42 +1,39 @@
 <template>
-    <div class="panel panel-default" style="color: black;">
-            <div class="panel-heading">
-                
-                    <div>
-                        <h3 class="panel-title">
-                
-            <a target="_top" href="./#/user_announce2" style="color:#2980b9:margin:2px auto;">
-                107學年度宿舍暑期網路設備更換時程表
-            </a>
-                        </h3>
-                    </div>
-            </div>
-            <div class="panel-body">
-                <div class="post-info-area">
-                    <div class="row">
-                        
-                           <div style="padding:20px;">2019-06-22 21:37:26</div>
-                        
-                    </div>
-                </div>
-                
-                <div class="post-conten-area"><p><span style="font-family:&quot;新細明體&quot;,serif">宿舍區將於暑假期間陸續更換各區網路設備，設備更換期間將會斷網，造成不便敬請見諒。</span></p>
-
-<p><span style="font-family:&quot;新細明體&quot;,serif">更換時程如附檔。</span></p>
-
-<p>The dormitory area will change network equipment in each district during the summer vacation.</p>
-
-<p>The network will be disconnected during the change of the equipment.</p>
-
-<p>We apologize for any inconvenience caused.</p>
-
-<p>The detailed replacement schedule is in the attachment.</p>
-
-<p><img alt="" src="https://i.imgur.com/1LDirxp.png" style="height:177px; width:500px"></p>
-</div>
-                
-            </div>
+  <div class="panel panel-default" style="color: black;">
+    <div class="panel-heading">
+      <div>
+        <h3 class="panel-title">
+          <a
+            target="_top"
+            href="./#/user_announce3"
+            style="color:#2980b9:margin:2px auto;"
+          >系統表定維護時間公告</a>
+        </h3>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="post-info-area">
+        <div class="row">
+          <div class="col-xs-4">2017-09-06 02:01:49</div>
         </div>
+      </div>
+
+      <div class="post-conten-area">
+        <p>
+          <span style="font-size:22px">
+            即日(0906)起至0911(一) 開學止、開學後每逢周三、周六，
+            <br />每日00點00分至02點00分為表定系統維護時間。
+          </span>
+        </p>
+
+        <p>
+          <span style="font-size:22px">期間停止系統所有服務，關閉正常使用者登入管道。</span>
+        </p>
+
+        <p>&nbsp;</p>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
@@ -50,5 +47,4 @@ p {
   font-size: 1em;
   font-weight: 400;
 }
-
 </style>
