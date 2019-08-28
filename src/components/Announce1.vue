@@ -1,9 +1,9 @@
 <template>
-  <div class="panel panel-default" style="color: black;">
+  <div class="panel panel-default" style="color: black;padding-top:5%;">
     <div class="panel-heading">
       <div>
         <h3 class="panel-title">
-          <a target="_top" href="./#/user_announce1" style="color:#fff7fb:margin:2px auto;">雲科網管系統維護</a>
+          <a target="_blank" href="./#/user_announce1" style="color:#fff7fb:margin:2px auto;">雲科網管系統維護</a>
         </h3>
       </div>
     </div>

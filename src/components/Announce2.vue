@@ -1,11 +1,11 @@
 <template>
-  <div class="panel panel-default" style="color: black;">
+  <div class="panel panel-default" style="color: black;padding-top:5%;">
     <div class="panel-heading">
       <div>
         <h3 class="panel-title">
           <a
-            target="_top"
-            href="./#/user_announce3"
+            target="_blank"
+            href="./#/user_announce2"
             style="color:#2980b9:margin:2px auto;"
           >系統表定維護時間公告</a>
         </h3>
@@ -14,7 +14,7 @@
     <div class="panel-body">
       <div class="post-info-area">
         <div class="row">
-          <div class="col-xs-4">2017-09-06 02:01:49</div>
+          <div style="padding:20px;">2017-09-06 02:01:49</div>
         </div>
       </div>
 

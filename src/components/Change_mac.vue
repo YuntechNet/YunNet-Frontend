@@ -102,7 +102,6 @@
                   ></b-form-input>
                 </div>
               </div>
-              <div class="col-12" style="padding:10px;"></div>
               <div style="text-align:left;display:inline;">
                 <input class="btn btn-primary" type="submit" value="確定" />
                 <input class="btn btn-danger" type="reset" value="重填" />

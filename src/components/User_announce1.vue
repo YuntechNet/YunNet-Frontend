@@ -11,13 +11,14 @@
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
-                <router-link
+                <a
+                  href="javascript:window.close();"
                   to="./"
                   class="btn btn-default btn-lg"
                   style="background-color: white;"
                 >
                   <font-awesome-icon icon="times" />
-                </router-link>
+                </a>
               </div>
               <div class="float-left">
                 <h1>User Contract</h1>

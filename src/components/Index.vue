@@ -66,7 +66,12 @@
       </div>
     </div>
     <div class="col-12 col-sm-10 frame" id="BK">
-      <b-alert :show="errors" variant="warning" dismissible>{{errors}}</b-alert>
+      <b-alert
+        class="col-12 col-sm-4 offset-sm-4"
+        :show="errors"
+        variant="warning"
+        dismissible
+      >{{errors}}</b-alert>
 
       <div class="col-12" style="padding:18vh;"></div>
       <div class="col-12">
@@ -83,50 +88,44 @@
     <div class="col-12 col-sm-10" style="background-color:rgba(63,127,191,0.85);">
       <div id="announce" class="col-12">
         <div class="col-10 offset-1 text-center" style="margin:5% auto 0% auto">
-          <h1 style="color:white;">公告｜Announce</h1>
+          <h1 class="font-size" style="color:white;">公告｜Announce</h1>
           <hr />
         </div>
         <div>
           <b-carousel id="carousel-1" v-model="slide" controls indicators>
-            <b-carousel-slide style="height:65vh;background-color:rgba(63,127,191,0.1);">
-              <div class="col-12 col-sm-10 offset-sm-1 announce rounded-lg">
-                <iframe
-                  class="rounded-lg"
-                  id="announce3"
-                  name="announce3"
-                  width="100%"
-                  height="100%"
-                  src="./#/announce3"
-                  style="background-color: white;"
-                ></iframe>
-              </div>
+            <b-carousel-slide style="height:62vh;background-color:rgba(63,127,191,0.1);">
+              <iframe
+                class="col-12 col-sm-10 offset-sm-1 announce rounded-lg"
+                id="announce3"
+                name="announce3"
+                width="100%"
+                height="100%"
+                src="./#/announce3"
+                style="background-color: white;margin:0px auto;"
+              ></iframe>
             </b-carousel-slide>
 
-            <b-carousel-slide style="height:65vh;background-color:rgba(63,127,191,0.1)">
-              <div class="col-12 col-sm-10 offset-sm-1 announce rounded-lg">
-                <iframe
-                  class="rounded-lg"
-                  id="announce1"
-                  name="announce1"
-                  width="100%"
-                  height="100%"
-                  src="./#/announce1"
-                  style="background-color: white;"
-                ></iframe>
-              </div>
+            <b-carousel-slide style="height:62vh;background-color:rgba(63,127,191,0.1)">
+              <iframe
+                class="col-12 col-sm-10 offset-sm-1 announce rounded-lg"
+                id="announce1"
+                name="announce1"
+                width="100%"
+                height="100%"
+                src="./#/announce1"
+                style="background-color: white;margin:0px auto;"
+              ></iframe>
             </b-carousel-slide>
-            <b-carousel-slide style="height:65vh;background-color:rgba(63,127,191,0.1)">
-              <div class="col-12 col-sm-10 offset-sm-1 announce rounded-lg">
-                <iframe
-                  class="rounded-lg"
-                  id="announce2"
-                  name="announce2"
-                  width="100%"
-                  height="100%"
-                  src="./#/announce2"
-                  style="background-color: white;"
-                ></iframe>
-              </div>
+            <b-carousel-slide style="height:62vh;background-color:rgba(63,127,191,0.1);">
+              <iframe
+                class="col-12 col-sm-10 offset-sm-1 announce rounded-lg"
+                id="announce2"
+                name="announce2"
+                width="100%"
+                height="100%"
+                src="./#/announce2"
+                style="background-color: white;margin:0px auto;"
+              ></iframe>
             </b-carousel-slide>
           </b-carousel>
           <div class="col-12" style="padding:2%;"></div>
@@ -135,7 +134,7 @@
     </div>
     <div id="findus" class="col-12 col-sm-10" style="background-color:white;">
       <div class="col-10 offset-1 text-center" style="margin:2% auto 0% auto">
-        <h1>關於我們｜Find Us!</h1>
+        <h1 class="font-size">關於我們｜Find Us!</h1>
         <hr />
       </div>
       <img class="map" src="https://i.imgur.com/7PChQEl.png" />
@@ -173,7 +172,7 @@
           role="button"
           style="color:#999;"
         >登出｜Login</a>
-        <div class="col-12" style="padding:80%;"></div>
+        <div class="col-12" style="padding-top:160%;"></div>
         <router-link class="btn col-12" to="./" role="button">首頁｜Home</router-link>
         <router-link
           v-if="!isAuthenticated"
@@ -297,7 +296,9 @@ hr {
   .btn {
     font-size: 1.4em;
   }
-
+  .font-size {
+    font-size: 24px;
+  }
   .map {
     width: 80%;
   }

@@ -6,18 +6,19 @@
         <div class="col-12 head-padding"></div>
         <div
           class="col-12 col-sm-10 offset-sm-1 frame"
-          style="background-color: rgb(51, 51, 51,0.6);height:130vh;"
+          style="background-color: rgb(51, 51, 51,0.6);height:80vh;"
         >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
-               <router-link
+               <a
+                  href="javascript:window.close();"
                   to="./"
                   class="btn btn-default btn-lg"
                   style="background-color: white;"
                 >
                   <font-awesome-icon icon="times" />
-                </router-link>
+                </a>
               </div>
               <div class="float-left">
                 <h1>User Contract</h1>
@@ -28,7 +29,7 @@
             <hr />
           </div>
           <div class="col-12" style="padding:2%;"></div>
-          <div class="col-12 col-sm-10 offset-sm-1 rounded-lg" style="height:80vh;">
+          <div class="col-12 col-sm-10 offset-sm-1 rounded-lg" style="height:40vh;">
             <iframe
               id="announce2"
               name="announce2"

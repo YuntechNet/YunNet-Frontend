@@ -1,9 +1,9 @@
 <template>
-  <div class="panel panel-default" style="color: black;">
+  <div class="panel panel-default" style="color: black;padding-top:5%;">
     <div class="panel-heading">
       <div>
         <h3 class="panel-title">
-          <a target="_top" href="./#/user_announce3" style="color:#2980b9:margin:2px auto;">用量規則</a>
+          <a target="_blank" href="./#/user_announce3" style="color:#2980b9:margin:2px auto;">用量規則</a>
         </h3>
       </div>
     </div>
