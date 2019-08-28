@@ -12,7 +12,7 @@
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
                 <router-link
-                  to="./"
+                  :to="{name:'Index'}"
                   class="btn btn-default btn-lg"
                   style="background-color: white;"
                 >
