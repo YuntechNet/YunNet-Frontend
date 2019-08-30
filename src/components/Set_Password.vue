@@ -94,7 +94,7 @@ export default {
       let reg = /[\W]/g
       let password = this.new_Password
       let db_token = this.db_token
-      if (!reg.test(password)) {
+      if (1) {
         if (this.new_Password === this.REnew_Password) {
           this.$store.dispatch(SET_PASSWORD, { password, db_token })
         } else {

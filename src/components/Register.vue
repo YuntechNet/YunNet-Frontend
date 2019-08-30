@@ -187,7 +187,7 @@ export default {
       let username = this.id
       let bed = this.bed
       let password = this.password
-      if (!reg.test(username) && !reg.test(password)) {
+      if (!reg.test(username)) {
         if (password === this.REpassword) {
           this.$store
             .dispatch(REGISTER, { username, bed, password })

@@ -80,6 +80,15 @@
                   to="./forgot_password"
                   style="margin:10px 10px;"
                 >忘記密碼｜Forget Password</router-link>
+                <div>
+                  <b-modal id="notice" hide-footer>
+                    <template slot="modal-title">通知</template>
+                    <div class="d-block text-center">
+                      <h4>新學期請住宿生重新註冊帳號</h4>
+                    </div>
+                    <b-button class="mt-3" block @click="$bvModal.hide('notice')">關閉</b-button>
+                  </b-modal>
+                </div>
               </div>
             </b-form>
           </div>
@@ -97,10 +106,10 @@
 </template>
 
 <script>
-import Background from "@/components/Background"
-import VueRecaptcha from "vue-recaptcha"
-import { mapState } from "vuex"
-import { LOGIN, ERROR } from "@/store/actions_type"
+import Background from "@/components/Background";
+import VueRecaptcha from "vue-recaptcha";
+import { mapState } from "vuex";
+import { LOGIN, ERROR } from "@/store/actions_type";
 
 export default {
   name: "Login",
@@ -113,28 +122,31 @@ export default {
       sitekey: "6LfB_rIUAAAAABwccTjvi8bez-uw7lcZuk3TjigQ",
       username: null,
       password: null
-    }
+    };
+  },
+  mounted: function() {
+    this.$bvModal.show("notice");
   },
   methods: {
     login() {
-      this.$refs.recaptcha.execute()
+      this.$refs.recaptcha.execute();
     },
     onVerify(response) {
-      this.$refs.recaptcha.reset()
-      let reg = /[\W]/g
-      let username = this.username
-      let password = this.password
-      if (!reg.test(username)&!reg.test(password)) {
-        let recaptcha_token = response
+      this.$refs.recaptcha.reset();
+      let reg = /[\W]/g;
+      let username = this.username;
+      let password = this.password;
+      if (!reg.test(username)) {
+        let recaptcha_token = response;
         this.$store
           .dispatch(LOGIN, { username, password, recaptcha_token })
-          .then(() => this.$router.push({ name: "Index" }))
+          .then(() => this.$router.push({ name: "Index" }));
       } else {
-        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字");
       }
     },
     onExpired() {
-      this.$refs.recaptcha.reset()
+      this.$refs.recaptcha.reset();
     }
   },
   computed: {
@@ -142,7 +154,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 
 <style scoped>

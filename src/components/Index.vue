@@ -74,7 +74,6 @@
       <div class="col-12" style="padding:18vh;"></div>
       <div class="col-12">
         <h1 class="title" style="margin:0px auto">YunNET 雲科網管</h1>
-
         <b-alert
           class="col-sm-4 offset-sm-4 col-8 offset-2 alert-frame"
           :show="k"
@@ -85,7 +84,6 @@
             <strong style="font-size:20px">網路管理小組歡迎你的加入</strong>
           </a>
         </b-alert>
-
         <div class="col-12" style="padding:16vh;"></div>
         <router-link
           v-if="!isAuthenticated"
@@ -182,8 +180,7 @@
           style="color:#999;"
         >登出｜Login</a>
 
-        <div style="position: fixed;
-  bottom: 0px;">
+        <div style="position: fixed;bottom: 0px;">
           <a class="btn col-12" href="#top" role="button">首頁｜Home</a>
           <router-link
             v-if="!isAuthenticated"
@@ -220,18 +217,18 @@ export default {
       slide: 0,
       sliding: null,
       k: true
-    }
+    };
   },
   beforeMount: function() {
     this.$store.dispatch(IP).then(() => {
-      this.$store.dispatch(WAN_DOWN)
-    })
+      this.$store.dispatch(WAN_DOWN);
+    });
   },
   methods: {
     logout() {
       this.$store.dispatch(LOGOUT).then(() => {
-        this.$router.push({ name: "Index" })
-      })
+        this.$router.push({ name: "Index" });
+      });
     }
   },
   computed: {
@@ -240,7 +237,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 <style scoped>
 #BK {
