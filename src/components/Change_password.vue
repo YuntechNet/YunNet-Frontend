@@ -110,17 +110,12 @@ export default {
   },
   methods: {
     submit() {
-      let reg = /[\W]/g
       let old_password = this.old_Password
       let new_password = this.new_Password
-      if (!reg.test(new_password)) {
-        if (this.new_Password === this.REnew_Password) {
-          this.$store.dispatch(CHANGE_PASSWORD, { old_password, new_password })
-        } else {
-          this.$store.dispatch(ERROR, "重複密碼錯誤!")
-        }
+      if (this.new_Password === this.REnew_Password) {
+        this.$store.dispatch(CHANGE_PASSWORD, { old_password, new_password })
       } else {
-        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
+        this.$store.dispatch(ERROR, "重複密碼錯誤!")
       }
     }
   },

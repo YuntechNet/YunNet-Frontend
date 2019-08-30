@@ -63,7 +63,11 @@
                 </b-form-group>
               </h5>
               <div>
-                <a class="btn btn-info btn-lg" href="./#/register" style="margin:5px 5px">註冊｜Regist</a>
+                <router-link
+                  class="btn btn-info btn-lg"
+                  to="./register"
+                  style="margin:5px 5px"
+                >註冊｜Regist</router-link>
                 <a>
                   <b-button
                     type="submit"
@@ -71,11 +75,20 @@
                     style="margin:5px 5px;"
                   >登入｜Login</b-button>
                 </a>
-                <a
-                  class="btn btn-danger btn-lg fontsize-auto"
-                  href="./#/forgot_password"
+                <router-link
+                  class="btn btn-danger btn-lg"
+                  to="./forgot_password"
                   style="margin:10px 10px;"
-                >忘記密碼｜Forget Password</a>
+                >忘記密碼｜Forget Password</router-link>
+                <div>
+                  <b-modal id="notice" hide-footer>
+                    <template slot="modal-title">通知</template>
+                    <div class="d-block text-center">
+                      <h4>新學期請住宿生重新註冊帳號</h4>
+                    </div>
+                    <b-button class="mt-3" block @click="$bvModal.hide('notice')">關閉</b-button>
+                  </b-modal>
+                </div>
               </div>
             </b-form>
           </div>
@@ -97,7 +110,6 @@ import Background from "@/components/Background"
 import VueRecaptcha from "vue-recaptcha"
 import { mapState } from "vuex"
 import { LOGIN, ERROR } from "@/store/actions_type"
-
 export default {
   name: "Login",
   components: {
@@ -111,6 +123,9 @@ export default {
       password: null
     }
   },
+  mounted: function() {
+    this.$bvModal.show("notice")
+  },
   methods: {
     login() {
       this.$refs.recaptcha.execute()
@@ -120,7 +135,7 @@ export default {
       let reg = /[\W]/g
       let username = this.username
       let password = this.password
-      if (!reg.test(username) & !reg.test(password)) {
+      if (!reg.test(username)) {
         let recaptcha_token = response
         this.$store
           .dispatch(LOGIN, { username, password, recaptcha_token })
@@ -148,10 +163,5 @@ label {
 }
 hr {
   background-color: white;
-}
-@media screen and (max-width: 600px) {
-  .fontsize-auto {
-    font-size: 4vw;
-  }
 }
 </style>

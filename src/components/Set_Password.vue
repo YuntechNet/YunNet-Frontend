@@ -91,17 +91,13 @@ export default {
   },
   methods: {
     submit() {
-      let reg = /[\W]/g
       let password = this.new_Password
       let db_token = this.db_token
-      if (!reg.test(password)) {
-        if (this.new_Password === this.REnew_Password) {
-          this.$store.dispatch(SET_PASSWORD, { password, db_token })
-        } else {
-          this.$store.dispatch(ERROR, "重複密碼錯誤!")
-        }
+
+      if (this.new_Password === this.REnew_Password) {
+        this.$store.dispatch(SET_PASSWORD, { password, db_token })
       } else {
-        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
+        this.$store.dispatch(ERROR, "重複密碼錯誤!")
       }
     }
   },
