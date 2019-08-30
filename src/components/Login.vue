@@ -63,11 +63,7 @@
                 </b-form-group>
               </h5>
               <div>
-                <a
-                  class="btn btn-info btn-lg"
-                  href="./#/register"
-                  style="margin:5px 5px"
-                >註冊｜Regist</a>
+                <a class="btn btn-info btn-lg" href="./#/register" style="margin:5px 5px">註冊｜Regist</a>
                 <a>
                   <b-button
                     type="submit"
@@ -76,7 +72,7 @@
                   >登入｜Login</b-button>
                 </a>
                 <a
-                  class="btn btn-danger btn-lg"
+                  class="btn btn-danger btn-lg fontsize-auto"
                   href="./#/forgot_password"
                   style="margin:10px 10px;"
                 >忘記密碼｜Forget Password</a>
@@ -124,7 +120,7 @@ export default {
       let reg = /[\W]/g
       let username = this.username
       let password = this.password
-      if (!reg.test(username)&!reg.test(password)) {
+      if (!reg.test(username) & !reg.test(password)) {
         let recaptcha_token = response
         this.$store
           .dispatch(LOGIN, { username, password, recaptcha_token })
@@ -152,5 +148,10 @@ label {
 }
 hr {
   background-color: white;
+}
+@media screen and (max-width: 600px) {
+  .fontsize-auto {
+    font-size: 4vw;
+  }
 }
 </style>

@@ -44,62 +44,74 @@
               @submit.prevent="submit(mac1+mac2+mac3+mac4+mac5+mac6)"
             >
               <label>新 MAC 卡號:</label>
-              
-              <div class="form-group">
-                <div style="display:inline;">
-                  <b-form-input
-                    type="text"
+
+              <div data-v-58764d52 class="form-group" style="white-space:nowrap;width:100%;">
+                <div data-v-58764d52 style="display: inline;">
+                  <input
+                    data-v-58764d52
                     id="new_mac1"
-                    v-model="mac1"
-                    style="height:25px;width:50px;display:inline;text-align:center;"
-                    maxlength="2"
-                    required
-                  ></b-form-input>
-                  <label style="margin:0px 5px;">:</label>
-                  <b-form-input
                     type="text"
+                    required="required"
+                    aria-required="true"
+                    class="form-control"
+                    maxlength="2"
+                    style="height: 25px; width: 15%; display: inline; text-align: center;"
+                  />
+                  <label data-v-58764d52 style="margin: 0px 1%;">:</label>
+                  <input
+                    data-v-58764d52
                     id="new_mac2"
-                    v-model="mac2"
-                    style="height:25px;width:50px;display:inline;text-align:center"
-                    maxlength="2"
-                    required
-                  ></b-form-input>
-                  <label style="margin:0px 5px;">:</label>
-                  <b-form-input
                     type="text"
+                    required="required"
+                    aria-required="true"
+                    class="form-control"
+                    maxlength="2"
+                    style="height: 25px; width: 15% ;display: inline; text-align: center;"
+                  />
+                  <label data-v-58764d52 style="margin: 0px 1%;">:</label>
+                  <input
+                    data-v-58764d52
                     id="new_mac3"
-                    v-model="mac3"
-                    style="height:25px;width:50px;display:inline;text-align:center"
-                    maxlength="2"
-                    required
-                  ></b-form-input>
-                  <label style="margin:0px 5px;">:</label>
-                  <b-form-input
                     type="text"
+                    required="required"
+                    aria-required="true"
+                    class="form-control"
+                    maxlength="2"
+                    style="height: 25px; width: 15%; display: inline; text-align: center;"
+                  />
+                  <label data-v-58764d52 style="margin: 0px 1%;">:</label>
+                  <input
+                    data-v-58764d52
                     id="new_mac4"
-                    v-model="mac4"
-                    style="height:25px;width:50px;display:inline;text-align:center"
-                    maxlength="2"
-                    required
-                  ></b-form-input>
-                  <label style="margin:0px 5px;">:</label>
-                  <b-form-input
                     type="text"
+                    required="required"
+                    aria-required="true"
+                    class="form-control"
+                    maxlength="2"
+                    style="height: 25px; width: 15%; display: inline; text-align: center;"
+                  />
+                  <label data-v-58764d52 style="margin: 0px 1%;">:</label>
+                  <input
+                    data-v-58764d52
                     id="new_mac5"
-                    v-model="mac5"
-                    style="height:25px;width:50px;display:inline;text-align:center"
-                    maxlength="2"
-                    required
-                  ></b-form-input>
-                  <label style="margin:0px 5px;">:</label>
-                  <b-form-input
                     type="text"
-                    id="new_mac6"
-                    v-model="mac6"
-                    style="height:25px;width:50px;display:inline;text-align:center"
+                    required="required"
+                    aria-required="true"
+                    class="form-control"
                     maxlength="2"
-                    required
-                  ></b-form-input>
+                    style="height: 25px; width: 15%; display: inline; text-align: center;"
+                  />
+                  <label data-v-58764d52 style="margin: 0px 1%;">:</label>
+                  <input
+                    data-v-58764d52
+                    id="new_mac6"
+                    type="text"
+                    required="required"
+                    aria-required="true"
+                    class="form-control"
+                    maxlength="2"
+                    style="height: 25px; width: 15%; display: inline; text-align: center;"
+                  />
                 </div>
               </div>
               <div style="text-align:left;display:inline;">
@@ -107,9 +119,16 @@
                 <input class="btn btn-danger" type="reset" value="重填" />
               </div>
             </b-form>
-            <ul>
+          </div>
+          <div class="col-md-6 offset-md-3 col-sm-10 offset-sm-1 col-xl-4 offset-xl-4" style="color: white;">
+            <ul style="text-align:left;">
               <li>本系統於每日 12:00 am 和 12:00 pm 連接網路設備更新有更動之使用者網路卡卡號，請耐心等候下次更新時間。</li>
-              <li>輸入之 MAC 格式可為下列型式: xx-xx-xx-xx-xx-xx, xx:xx:xx:xx:xx:xx, xxxx.xxxx.xxxx</li>
+              <li>
+                輸入之 MAC 格式可為下列型式:
+                <br />xx-xx-xx-xx-xx-xx。
+                <br />xx:xx:xx:xx:xx:xx。
+                <br />xxxx.xxxx.xxxx。
+              </li>
             </ul>
           </div>
           <div class="col-10 offset-1">
