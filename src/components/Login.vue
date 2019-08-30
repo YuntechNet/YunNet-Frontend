@@ -76,7 +76,7 @@
                   >登入｜Login</b-button>
                 </a>
                 <router-link
-                  class="btn btn-danger btn-lg"
+                  class="btn btn-danger btn-lg fontsize-auto"
                   to="./forgot_password"
                   style="margin:10px 10px;"
                 >忘記密碼｜Forget Password</router-link>
@@ -163,5 +163,20 @@ label {
 }
 hr {
   background-color: white;
+}
+.fontsize-auto {
+  width: 60%;
+}
+@media screen and (max-width: 900px) {
+  .fontsize-auto {
+    width: 70%;
+    font-size: 2vw;
+  }
+}
+@media screen and (max-width: 600px) {
+  .fontsize-auto {
+    font-size: 3vw;
+    width: 80%;
+  }
 }
 </style>

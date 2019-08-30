@@ -74,6 +74,7 @@
       <div class="col-12" style="padding:18vh;"></div>
       <div class="col-12">
         <h1 class="title" style="margin:0px auto">YunNET 雲科網管</h1>
+        
         <b-alert
           class="col-sm-4 offset-sm-4 col-8 offset-2 alert-frame"
           :show="k"

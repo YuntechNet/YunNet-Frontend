@@ -188,6 +188,11 @@ export default new Router({
       component: () => import("./components/Set_Password.vue")
     },
     {
+      path: "/sys_dorm_query",
+      name: "Sys_dorm_query",
+      component: () => import("./components/system_dormitory/Sys_dorm_query.vue")
+    },
+    {
       path: "*",
       component: () => import("./components/Index.vue")
     }
