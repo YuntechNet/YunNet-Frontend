@@ -71,11 +71,22 @@
         variant="warning"
         dismissible
       >{{errors}}</b-alert>
-
       <div class="col-12" style="padding:18vh;"></div>
       <div class="col-12">
         <h1 class="title" style="margin:0px auto">YunNET 雲科網管</h1>
-        <div class="col-12" style="padding:19vh;"></div>
+
+        <b-alert
+          class="col-sm-4 offset-sm-4 col-8 offset-2 alert-frame"
+          :show="k"
+          variant="danger"
+          dismissible
+        >
+          <a style="color:#a94442;">
+            <strong style="font-size:20px">網路管理小組歡迎你的加入</strong>
+          </a>
+        </b-alert>
+
+        <div class="col-12" style="padding:16vh;"></div>
         <router-link
           v-if="!isAuthenticated"
           :to="{name:'Register'}"
@@ -170,7 +181,7 @@
           role="button"
           style="color:#999;"
         >登出｜Login</a>
-        <div class="col-12" style="padding-top:160%;"></div>
+
         <div style="position: fixed;
   bottom: 0px;">
           <a class="btn col-12" href="#top" role="button">首頁｜Home</a>
@@ -207,19 +218,20 @@ export default {
   data() {
     return {
       slide: 0,
-      sliding: null
-    };
+      sliding: null,
+      k: true
+    }
   },
   beforeMount: function() {
     this.$store.dispatch(IP).then(() => {
-      this.$store.dispatch(WAN_DOWN);
-    });
+      this.$store.dispatch(WAN_DOWN)
+    })
   },
   methods: {
     logout() {
       this.$store.dispatch(LOGOUT).then(() => {
-        this.$router.push({ name: "Index" });
-      });
+        this.$router.push({ name: "Index" })
+      })
     }
   },
   computed: {
@@ -228,7 +240,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 <style scoped>
 #BK {
@@ -287,7 +299,24 @@ hr {
   z-index: -999;
   position: absolute;
 }
-
+.alert-frame {
+  animation-name: alert-frame;
+  animation-delay: 2s;
+  animation-duration: 3s;
+  animation-fill-mode: both;
+  left: 0;
+}
+@keyframes alert-frame {
+  from,
+  25% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 @media screen and (max-width: 600px) {
   .title {
     font-size: 2em;

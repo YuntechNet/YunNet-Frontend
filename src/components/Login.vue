@@ -63,11 +63,11 @@
                 </b-form-group>
               </h5>
               <div>
-                <a
+                <router-link
                   class="btn btn-info btn-lg"
-                  href="./#/register"
+                  to="./register"
                   style="margin:5px 5px"
-                >註冊｜Regist</a>
+                >註冊｜Regist</router-link>
                 <a>
                   <b-button
                     type="submit"
@@ -75,11 +75,11 @@
                     style="margin:5px 5px;"
                   >登入｜Login</b-button>
                 </a>
-                <a
+                <router-link
                   class="btn btn-danger btn-lg"
-                  href="./#/forgot_password"
+                  to="./forgot_password"
                   style="margin:10px 10px;"
-                >忘記密碼｜Forget Password</a>
+                >忘記密碼｜Forget Password</router-link>
               </div>
             </b-form>
           </div>
