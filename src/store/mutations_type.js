@@ -9,3 +9,5 @@ export const SET_INFO_IP = "setINFO_IP";
 export const SET_NETFLOW = "setNETFLOW";
 export const SET_LOCK = "setLOCK";
 export const ADD_WAN_DOWN = "add_WAN_Down";
+export const SET_QUERY = "setQuery";
+export const PURGE_SYSTEM = "purgeSystem";

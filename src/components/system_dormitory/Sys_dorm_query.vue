@@ -10,84 +10,85 @@
         <div class="row">
           <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
             <div class="float-right">
-              <router-link to="./" class="btn btn-default btn-lg" style="background-color: white;">
+              <router-link
+                :to="{name:'Index'}"
+                class="btn btn-default btn-lg"
+                style="background-color: white;"
+              >
                 <font-awesome-icon icon="times" />
               </router-link>
             </div>
             <div class="float-left">
-              <h1>使用者資訊｜User Info.</h1>
+              <h1>System Query</h1>
             </div>
           </div>
           <div class="col-10 offset-1">
             <hr />
           </div>
-          <b-form inline class="col-4 offset-4" @submit.prevent="login">
+
+          <b-form
+            inline
+            class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-xl-4 offset-xl-4"
+            @submit.prevent="submit()"
+          >
             <b-form-group class="col-12">
               <b-form-input
-                class="col-8 mx-2 mb-5"
                 id="username"
+                class="d-inline"
                 maxlength="40"
                 v-model="username"
                 required
                 placeholder="ID/Bed"
               ></b-form-input>
-              <button type="submit" class="col-4 mx-2 mb-5 btn btn-primary">Query</button>
+              <button type="submit" class="btn btn-primary d-inline">Query</button>
             </b-form-group>
           </b-form>
-
-          <div class="col-12" v-show="state">
+          <div class="col-12 mt-5" v-show="info.user.username">
             <div class="col-sm-6 offset-sm-3 col-10 offset-1" style="text-align: left;color:white;">
               <div class="row">
                 <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">學號</p>
+                  <p>學號</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">UID</p>
+                  <p>ID</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.username}}</p>
-                </div>
-
-                <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">姓名</p>
+                  <p>{{info.user.username}}</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">Name</p>
+                  <p>姓名</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.name}}</p>
-                </div>
-
-                <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">部門</p>
+                  <p>Name</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p
-                    style="white-space:nowrap;margin-right:15%"
-                    class="fontsize-auto-user"
-                  >Department</p>
+                  <p>{{info.user.nick}}</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.department}}</p>
-                </div>
-
-                <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">類型</p>
+                  <p>部門</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">Type</p>
+                  <p class="fontsize">Department</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <div v-for="(item,index) in info.group" :key="index">
-                    <p style="white-space:nowrap;" class="fontsize-auto-user">{{item}}</p>
+                  <p>{{info.user.department}}</p>
+                </div>
+                <div class="col-4 font-weight-bold">
+                  <p>類型</p>
+                </div>
+                <div class="col-4 font-weight-bold">
+                  <p>Type</p>
+                </div>
+                <div class="col-4 font-weight-bold">
+                  <div v-for="(item,index) in info.user.group" :key="index">
+                    <p>{{item}}</p>
                   </div>
                 </div>
               </div>
             </div>
-
             <div class="col-12" style="padding-top: 2%;"></div>
             <div class="col-sm-10 offset-sm-1 col-12" style="text-align:left;">
-              <div class="card-deck" v-for="(item,index) in info_IP" :key="index">
+              <div class="card-deck" v-for="(item,index) in info.ip" :key="index">
                 <div :class="['card bg-light', index===0?'border-warning':'' ,'text-dark']">
                   <div :class="[index === 0?'bg-warning':'bg-light','card-header']">
                     <button
@@ -102,6 +103,7 @@
                           class="col-sm-6 col-12 text-left font-weight-bold fontsize-auto"
                           style="white-space:nowrap;font-size:"
                         >{{item.ip}}</h4>
+
                         <h4
                           class="col-sm-6 col-12 text-right dropdown-toggle fontsize-auto"
                           style="white-space:nowrap;font-size:"
@@ -110,42 +112,69 @@
                     </button>
                   </div>
                   <div
-                    :class="['card-body','collapse',index===0|item.lock_status==='鎖定'?'show':'hide']"
+                    :class="['card-body','collapse',index!=0|item.lock_status==='UNLOCKED'?'hide':'show']"
                     :id="['id'+index]"
                   >
                     <div class="row">
-                      <h5 class="col-sm-2 col-6" style="white-space:nowrap;width:100%;">Switch</h5>
-                      <div class="row col-sm-10 col-6">
-                        <div class="col-12">
-                          <p class="fontsize-auto-user" style="white-space:nowrap;">{{item.switch}}</p>
+                      <h5 class="col-sm-2 col-4" style="white-space:nowrap;width:100%;">MAC</h5>
+                      <div class="row col-sm-10 col-8">
+                        <div class="d-inline pr-2">
+                          <p
+                            class="fontsize-auto-user"
+                            style="white-space:nowrap;text-align:left;"
+                          >{{item.mac!=null?item.mac.match( /.{1,2}/g ).join( ':' ).toUpperCase():"未設定" }}</p>
+                        </div>
+                        <div class="d-inline">
+                          <p style="white-space:nowrap;text-align:left;">
+                            <kbd
+                              :class="[item.is_updated?'bg-success':'bg-danger']"
+                            >{{item.is_updated?"已更新":"未更新"}}</kbd>
+                          </p>
                         </div>
                       </div>
 
                       <!-- <h5 class="col-sm-2 col-6" style="white-space:nowrap;width:100%;">校外總量</h5>
                       <div class="col-sm-10 col-6">{{readablizeBytes(wan[index])}}</div>-->
 
-                      <h5 class="col-sm-2 col-6" style="white-space:nowrap;width:100%;">Port</h5>
+                      <h5 class="col-sm-2 col-4" style="white-space:nowrap;width:100%;">Port</h5>
                       <div
                         style="white-space:nowrap;width:100%;"
-                        class="col-sm-10 col-6"
+                        class="row col-sm-10 col-8"
                       >{{item.port}}</div>
 
-                      <h5 class="col-sm-2 col-6" style="white-space:nowrap;width:100%;">Upper port</h5>
+                      <h5 class="col-sm-2 col-4" style="white-space:nowrap;width:100%;">Switch ID</h5>
                       <div
                         style="white-space:nowrap;width:100%;"
-                        class="col-sm-10 col-6"
-                      >{{item.upper_port}}</div>
+                        class="row col-sm-10 col-8"
+                      >{{item.switch_id}}</div>
 
-                      <h5 class="col-sm-2 col-6" style="white-space:nowrap;width:100%;">MAC</h5>
+                      <h5
+                        v-show="item.is_unlimited"
+                        class="col-sm-2 col-4"
+                        style="white-space:nowrap;width:100%;"
+                      >無限</h5>
+                      <div
+                        v-show="item.is_unlimited"
+                        style="white-space:nowrap;width:100%;"
+                        class="row col-sm-10 col-8"
+                      >{{item.is_unlimited?"True":"False"}}</div>
+
+                      <h5 class="col-sm-2 col-4" style="white-space:nowrap;width:100%;">鎖卡</h5>
                       <div
                         style="white-space:nowrap;width:100%;"
-                        class="col-sm-10 col-6"
-                      >{{item.mac}}</div>
-                      <h5 class="col-sm-2 col-6" style="white-space:nowrap;width:100%;">狀態</h5>
-                      <div
+                        :class="['row','col-sm-10 col-8', item.locked?'text-danger':'text-success']"
+                      >{{item.locked?"鎖定":"未鎖卡"}}</div>
+
+                      <h5
+                        v-show="item.locked"
+                        class="col-sm-2 col-4"
                         style="white-space:nowrap;width:100%;"
-                        class="col-sm-10 col-6"
-                      >{{item.state}}</div>
+                      >鎖卡原因</h5>
+                      <div
+                        v-show="item.locke_reason"
+                        style="white-space:nowrap;width:100%;"
+                        class="row col-sm-10 col-8"
+                      >{{item.switch_id}}</div>
 
                       <div class="btn-group btn-right mx-3" role="group" aria-label="功能">
                         <router-link
@@ -153,7 +182,15 @@
                           :to="`./user_netflow/${item.ip}`"
                           class="btn btn-primary"
                         >流量紀錄</router-link>
-                        <router-link :to="`./user_lock/${item.ip}`" class="btn btn-secondary">鎖卡紀錄</router-link>
+                        <router-link
+                          v-show="false"
+                          :to="`./user_lock/${item.ip}`"
+                          class="btn btn-secondary"
+                        >鎖卡紀錄</router-link>
+                        <router-link
+                          :to="`./system_abuse/${username}/${item.ip}`"
+                          class="btn btn-danger"
+                        >Abuse</router-link>
                       </div>
                     </div>
                   </div>
@@ -173,35 +210,41 @@
 
 
 <script>
-import Background from "@/components/Background"
-import { INFO, IP, WAN_DOWN } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { SYSTEM_QUERY, WAN_DOWN, SYSTEM_CLEAR } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
-  name: "Userinfo",
+  name: "System_query",
   components: { Background },
-  beforeCreate: function() {
-    this.$store.dispatch(INFO).then(() => {
-      this.$store.dispatch(IP).then(() => {
-        this.$store.dispatch(WAN_DOWN)
-      })
-    })
+  created: function() {
+    this.$store.dispatch(SYSTEM_CLEAR);
   },
   methods: {
-    readablizeBytes(bytes) {
-      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"]
-      let e = Math.floor(Math.log(bytes) / Math.log(1024))
-      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e]
+    eadablizeBytes(bytes) {
+      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"];
+      let e = Math.floor(Math.log(bytes) / Math.log(1024));
+      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
+    },
+    submit() {
+      let username = this.username;
+      this.$store.dispatch(SYSTEM_QUERY, username).then(() => {
+        //this.$store.dispatch(WAN_DOWN);
+      });
     }
+  },
+  data() {
+    return {
+      username: null
+    };
   },
   computed: {
     ...mapState({
-      info: state => state.profile.info,
-      info_IP: state => state.profile.info_IP,
-      wan: state => state.profile.wan
+      info: state => state.system.info
+      //wan: state => state.system.wan
     })
   }
-}
+};
 </script>
 
 

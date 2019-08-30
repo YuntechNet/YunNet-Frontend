@@ -27,10 +27,7 @@
                 <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">學號</p>
               </div>
               <div class="col-4 font-weight-bold">
-                <p
-                  style="white-space:nowrap;margin-right:15%"
-                  class="fontsize-auto-user"
-                >UID</p>
+                <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">UID</p>
               </div>
               <div class="col-4 font-weight-bold">
                 <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.username}}</p>
@@ -40,10 +37,7 @@
                 <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">姓名</p>
               </div>
               <div class="col-4 font-weight-bold">
-                <p
-                  style="white-space:nowrap;margin-right:15%"
-                  class="fontsize-auto-user"
-                >Name</p>
+                <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">Name</p>
               </div>
               <div class="col-4 font-weight-bold">
                 <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.name}}</p>
@@ -53,10 +47,7 @@
                 <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">部門</p>
               </div>
               <div class="col-4 font-weight-bold">
-                <p
-                  style="white-space:nowrap;margin-right:15%"
-                  class="fontsize-auto-user"
-                >Department</p>
+                <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">Department</p>
               </div>
               <div class="col-4 font-weight-bold">
                 <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.department}}</p>
@@ -66,10 +57,7 @@
                 <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">類型</p>
               </div>
               <div class="col-4 font-weight-bold">
-                <p
-                  style="white-space:nowrap;margin-right:15%"
-                  class="fontsize-auto-user"
-                >Type</p>
+                <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">Type</p>
               </div>
               <div class="col-4 font-weight-bold">
                 <div v-for="(item,index) in info.group" :key="index">
@@ -111,15 +99,15 @@
                   :id="['id'+index]"
                 >
                   <div class="row">
-                    <h5 class="col-sm-2 col-6" style="white-space:nowrap;width:100%;">MAC</h5>
-                    <div class="row col-sm-10 col-6">
-                      <div class="col-12">
+                    <h5 class="col-sm-2 col-4" style="white-space:nowrap;width:100%;">MAC</h5>
+                    <div class="row col-sm-10 col-8">
+                      <div class="d-inline pr-2">
                         <p
                           class="fontsize-auto-user"
-                          style="white-space:nowrap;"
+                          style="white-space:nowrap;text-align:left;"
                         >{{item.mac!=null?item.mac.match( /.{1,2}/g ).join( ':' ).toUpperCase():"未設定 (請按下方更改MAC)" }}</p>
                       </div>
-                      <div class="col-12">
+                      <div class="d-inline">
                         <p style="white-space:nowrap;text-align:left;">
                           <kbd
                             :class="[item.is_updated?'bg-success':'bg-danger']"
@@ -131,11 +119,11 @@
                     <!-- <h5 class="col-sm-2 col-6" style="white-space:nowrap;width:100%;">校外總量</h5>
                     <div class="col-sm-10 col-6">{{readablizeBytes(wan[index])}}</div>-->
 
-                    <h5 class="col-sm-2 col-6" style="white-space:nowrap;width:100%;">狀態</h5>
+                    <h5 class="col-sm-2 col-4" style="white-space:nowrap;width:100%;">狀態</h5>
                     <div
                       style="white-space:nowrap;width:100%;"
-                      :class="['col-sm-10 col-6', item.lock_status==='LOCKED'?'text-danger':'text-success']"
-                    >{{item.lock_status}}</div>
+                      :class="['row','col-sm-10 col-8', item.lock_status==='LOCKED'?'text-danger':'text-success']"
+                    >{{item.lock_status==="UNLOCKED"?"正常":item.lock_status}}</div>
 
                     <div class="btn-group btn-right mx-3" role="group" aria-label="功能">
                       <router-link :to="`./change_mac/${item.ip}`" class="btn btn-success">更改MAC</router-link>
@@ -163,9 +151,9 @@
 
 
 <script>
-import Background from "@/components/Background"
-import { INFO, IP, WAN_DOWN } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { INFO, IP, WAN_DOWN } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "Userinfo",
@@ -173,15 +161,15 @@ export default {
   beforeCreate: function() {
     this.$store.dispatch(INFO).then(() => {
       this.$store.dispatch(IP).then(() => {
-        this.$store.dispatch(WAN_DOWN)
-      })
-    })
+        this.$store.dispatch(WAN_DOWN);
+      });
+    });
   },
   methods: {
     readablizeBytes(bytes) {
-      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"]
-      let e = Math.floor(Math.log(bytes) / Math.log(1024))
-      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e]
+      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"];
+      let e = Math.floor(Math.log(bytes) / Math.log(1024));
+      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
     }
   },
   computed: {
@@ -191,7 +179,7 @@ export default {
       wan: state => state.profile.wan
     })
   }
-}
+};
 </script>
 
 
@@ -213,13 +201,11 @@ a.display {
   display: block;
 }
 
-
-@media screen and (max-width: 700px){
- .fontsize-auto {
+@media screen and (max-width: 700px) {
+  .fontsize-auto {
     font-size: 3vw;
   }
 }
-
 
 @media screen and (max-width: 550px) {
   p {

@@ -109,13 +109,7 @@ const actions = {
             resolve(data);
           })
           .catch(({ response }) => {
-            if (response.status != 500) {
-              ErrorService.init(
-                response.status,
-                response.data.message,
-                context
-              );
-            }
+            ErrorService.init(response.status, response.data.message, context);
           });
       });
     }

@@ -188,9 +188,20 @@ export default new Router({
       component: () => import("./components/Set_Password.vue")
     },
     {
-      path: "/sys_dorm_query",
-      name: "Sys_dorm_query",
+      path: "/system_query",
+      name: "System_query",
+      meta: {
+        isAuth: true
+      },
       component: () => import("./components/system_dormitory/Sys_dorm_query.vue")
+    },
+    {
+      path: "/system_abuse/:uid/:ip",
+      name: "System_abuse",
+      meta: {
+        isAuth: true
+      },
+      component: () => import("./components/system_dormitory/Sys_dorm_abuse.vue")
     },
     {
       path: "*",

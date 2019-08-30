@@ -106,10 +106,10 @@
 </template>
 
 <script>
-import Background from "@/components/Background"
-import VueRecaptcha from "vue-recaptcha"
-import { mapState } from "vuex"
-import { LOGIN, ERROR } from "@/store/actions_type"
+import Background from "@/components/Background";
+import VueRecaptcha from "vue-recaptcha";
+import { mapState } from "vuex";
+import { LOGIN, ERROR } from "@/store/actions_type";
 export default {
   name: "Login",
   components: {
@@ -121,31 +121,31 @@ export default {
       sitekey: "6LfB_rIUAAAAABwccTjvi8bez-uw7lcZuk3TjigQ",
       username: null,
       password: null
-    }
+    };
   },
   mounted: function() {
-    this.$bvModal.show("notice")
+    this.$bvModal.show("notice");
   },
   methods: {
     login() {
-      this.$refs.recaptcha.execute()
+      this.$refs.recaptcha.execute();
     },
     onVerify(response) {
-      this.$refs.recaptcha.reset()
-      let reg = /[\W]/g
-      let username = this.username
-      let password = this.password
+      this.$refs.recaptcha.reset();
+      let reg = /[\W]/g;
+      let username = this.username;
+      let password = this.password;
       if (!reg.test(username)) {
-        let recaptcha_token = response
+        let recaptcha_token = response;
         this.$store
           .dispatch(LOGIN, { username, password, recaptcha_token })
-          .then(() => this.$router.push({ name: "Index" }))
+          .then(() => this.$router.push({ name: "Userinfo" }));
       } else {
-        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字");
       }
     },
     onExpired() {
-      this.$refs.recaptcha.reset()
+      this.$refs.recaptcha.reset();
     }
   },
   computed: {
@@ -153,7 +153,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 
 <style scoped>

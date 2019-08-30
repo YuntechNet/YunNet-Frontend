@@ -37,7 +37,7 @@
             <li>
               <div>
                 <p>
-                  <span class="number">一、</span>如有任何鎖卡公告、網路使用方式異動時，公告於宿舍網路管理小組首頁(http://dormnet.yuntech.edu.tw)。
+                  <span class="number">一、</span>如有任何鎖卡公告、網路使用方式異動時，公告於宿舍網路管理小組首頁(https://yunnet.yuntech.edu.tw)。
                 </p>
               </div>
             </li>
@@ -78,7 +78,7 @@
                   <li>
                     <div class="decimal">
                       <p>
-                        <span class="number">3.</span>若符闔第2點，且於第二次申請解除管制七天內仍發現該使用者有中毒現象，則停止其使用宿舍網路一學期。
+                        <span class="number">3.</span>若符合第2點，且於第二次申請解除管制七天內仍發現該使用者有中毒現象，則停止其使用宿舍網路一學期。
                       </p>
                     </div>
                   </li>

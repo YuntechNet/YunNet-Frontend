@@ -11,7 +11,9 @@ const ErrorService = {
       router.replace({ name: "Index" });
     }
     if ((status === 401) & (message === "INVALID_SESSION")) {
-      router.back();
+      context.commit(PURGE_AUTH);
+      router.replace({ name: "Login" });
+      context.commit(SET_ERROR, "瀏覽階段無效 請重新登入!");
     }
     if ((status === 401) & (message === "SESSION_EXPIRED")) {
       context.commit(PURGE_AUTH);

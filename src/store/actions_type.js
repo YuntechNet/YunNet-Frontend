@@ -13,3 +13,6 @@ export const WAN_DOWN = "wan_down";
 export const REGISTER_VERIFY = "register_verify";
 export const FORGOT_PASSWORD = "forgot_password"
 export const SET_PASSWORD = "set_password"
+export const SYSTEM_QUERY = "system_query"
+export const SYSTEM_CLEAR = "system_clear"
+export const SYSTEM_ABUSE = "system_abuse"
