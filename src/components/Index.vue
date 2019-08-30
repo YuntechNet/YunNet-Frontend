@@ -33,7 +33,6 @@
                   to="./login"
                   role="button"
                 >登入｜Login</router-link>
-
                 <a
                   v-if="isAuthenticated"
                   class="btn col-12"
@@ -203,7 +202,6 @@
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
 import { LOGOUT, WAN_DOWN, IP } from "@/store/actions_type";
-
 export default {
   name: "index",
   data() {

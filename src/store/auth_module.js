@@ -1,5 +1,6 @@
 import ApiService from "@/util/api_service";
 import JwtService from "@/util/jwt_service";
+import ErrorService from "@/util/error_service";
 import router from "@/router";
 import {
   LOGIN,
@@ -37,7 +38,7 @@ const actions = {
           resolve(data);
         })
         .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.message);
+          ErrorService.init(response.status, response.data.message, context);
         });
     });
   },
@@ -53,7 +54,7 @@ const actions = {
           resolve(data);
         })
         .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.message);
+          ErrorService.init(response.status, response.data.message, context);
         });
     });
   },
@@ -66,12 +67,7 @@ const actions = {
           resolve(data);
         })
         .catch(({ response }) => {
-          if (response.status != 500) {
-            router.replace({ name: "Index" });
-            context.commit(SET_ERROR, response.data.message);
-          } else {
-            router.replace({ name: "Index" });
-          }
+          ErrorService.init(response.status, response.data.message, context);
         });
     });
   },
@@ -84,11 +80,7 @@ const actions = {
           resolve(data);
         })
         .catch(({ response }) => {
-          if (response.status != 500) {
-            context.commit(SET_ERROR, response.data.message);
-          } else {
-            router.replace({ name: "Index" });
-          }
+          ErrorService.init(response.status, response.data.message, context);
         });
     });
   },
@@ -103,11 +95,7 @@ const actions = {
           resolve(data);
         })
         .catch(({ response }) => {
-          if (response.status != 500) {
-            context.commit(SET_ERROR, response.data.message);
-          } else {
-            router.replace({ name: "Index" });
-          }
+          ErrorService.init(response.status, response.data.message, context);
         });
     });
   },

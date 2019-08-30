@@ -1,5 +1,6 @@
 import ApiService from "@/util/api_service";
 import JwtService from "@/util/jwt_service";
+import ErrorService from "@/util/error_service";
 import {
   INFO,
   IP,
@@ -25,7 +26,7 @@ const state = {
   info_IP: [],
   netflow: [],
   lock: [],
-  wan:[]
+  wan: []
 };
 
 const actions = {
@@ -40,13 +41,7 @@ const actions = {
             resolve(data);
           })
           .catch(({ response }) => {
-            if (response.status != 500) {
-              context.commit(PURGE_AUTH);
-              router.replace({ name: "Login" });
-              context.commit(SET_ERROR, response.data.message);
-            } else {
-              router.replace({ name: "Index" });
-            }
+            ErrorService.init(response.status, response.data.message, context);
           });
       });
     }
@@ -62,13 +57,7 @@ const actions = {
             resolve(data);
           })
           .catch(({ response }) => {
-            if (response.status != 500) {
-              context.commit(PURGE_AUTH);
-              router.replace({ name: "Login" });
-              context.commit(SET_ERROR, response.data.message);
-            } else {
-              router.replace({ name: "Index" });
-            }
+            ErrorService.init(response.status, response.data.message, context);
           });
       });
     }
@@ -87,7 +76,7 @@ const actions = {
             resolve(data);
           })
           .catch(({ response }) => {
-            context.commit(SET_ERROR, response.data.message);
+            ErrorService.init(response.status, response.data.message, context);
           });
       });
     }
@@ -105,7 +94,7 @@ const actions = {
             resolve(data);
           })
           .catch(({ response }) => {
-            context.commit(SET_ERROR, response.data.message);
+            ErrorService.init(response.status, response.data.message, context);
           });
       });
     }
@@ -121,21 +110,21 @@ const actions = {
           })
           .catch(({ response }) => {
             if (response.status != 500) {
-              context.commit(PURGE_AUTH);
-              router.replace({ name: "Login" });
-              context.commit(SET_ERROR, response.data.message);
-            } else {
-              router.replace({ name: "Index" });
+              ErrorService.init(
+                response.status,
+                response.data.message,
+                context
+              );
             }
           });
       });
     }
   },
   [WAN_DOWN](context) {
-    context.state.info_IP.forEach((element,index) => {
-      ApiService.get("netflow", element.ip).then(({data})=>{
-        context.commit(ADD_WAN_DOWN,[data,index])
-      })
+    context.state.info_IP.forEach((element, index) => {
+      ApiService.get("netflow", element.ip).then(({ data }) => {
+        context.commit(ADD_WAN_DOWN, [data, index]);
+      });
     });
   },
   [LOCK](context, credentials) {
@@ -149,13 +138,7 @@ const actions = {
             resolve(data);
           })
           .catch(({ response }) => {
-            if (response.status != 500) {
-              context.commit(PURGE_AUTH);
-              router.replace({ name: "Login" });
-              context.commit(SET_ERROR, response.data.message);
-            } else {
-              router.replace({ name: "Index" });
-            }
+            ErrorService.init(response.status, response.data.message, context);
           });
       });
     }
@@ -176,8 +159,8 @@ const mutations = {
     state.lock = lock;
   },
   [ADD_WAN_DOWN](state, data) {
-    let all=data[0].netflow[0].wan_download+data[0].netflow[0].wan_upload
-    state.wan[data[1]] =all;
+    let all = data[0].netflow[0].wan_download + data[0].netflow[0].wan_upload;
+    state.wan[data[1]] = all;
   }
 };
 

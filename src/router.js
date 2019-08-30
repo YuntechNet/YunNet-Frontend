@@ -191,5 +191,9 @@ export default new Router({
       path: "*",
       component: () => import("./components/Index.vue")
     }
-  ]
+  ],
+  // eslint-disable-next-line no-unused-vars
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  }
 });
