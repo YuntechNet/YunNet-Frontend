@@ -39,7 +39,7 @@
                   @click.prevent="logout"
                   role="button"
                   style="color:#999;"
-                >登出｜Login</a>
+                >登出｜Logout</a>
                 <div class="col-12" style="padding:7%;"></div>
                 <a class="btn col-12" href="#top" role="button">首頁｜Home</a>
                 <router-link
@@ -179,7 +179,7 @@
           @click.prevent="logout"
           role="button"
           style="color:#999;"
-        >登出｜Login</a>
+        >登出｜Logout</a>
 
         <div style="position: fixed;bottom: 0px;">
           <a class="btn col-12" href="#top" role="button">首頁｜Home</a>
