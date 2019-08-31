@@ -122,8 +122,8 @@
                     <h5 class="col-sm-2 col-4" style="white-space:nowrap;width:100%;">狀態</h5>
                     <div
                       style="white-space:nowrap;width:100%;"
-                      :class="['row','col-sm-10 col-8', item.locked?'text-danger':'text-success']"
-                    >{{item.locked?"鎖卡":"未鎖卡"}}</div>
+                      :class="['row','col-sm-10 col-8', item.lock_status==='LOCKED'?'text-danger':'text-success']"
+                    >{{item.lock_status==='LOCKED'?"鎖卡":"未鎖卡"}}</div>
 
                     <div class="btn-group btn-right mx-3" role="group" aria-label="功能">
                       <router-link :to="`./change_mac/${item.ip}`" class="btn btn-success">更改MAC</router-link>

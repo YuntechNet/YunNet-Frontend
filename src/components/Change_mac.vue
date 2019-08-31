@@ -27,7 +27,7 @@
           <div class="col-10 offset-1">
             <hr />
           </div>
-          <div class="col-sm-4 offset-sm-4 col-10 offset-1" style="color: white;">
+          <div class="col-sm-4 offset-sm-4 col-12" style="color: white;">
             <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
             <div style="text-align:left;">
               <div class="form-group">
@@ -51,9 +51,10 @@
                     data-v-58764d52
                     id="new_mac1"
                     type="text"
+                    v-model="mac1"
                     required="required"
                     aria-required="true"
-                    class="form-control"
+                    
                     maxlength="2"
                     style="height: 25px; width: 15%; display: inline; text-align: center;"
                   />
@@ -62,9 +63,10 @@
                     data-v-58764d52
                     id="new_mac2"
                     type="text"
+                    v-model="mac2"
                     required="required"
                     aria-required="true"
-                    class="form-control"
+                    
                     maxlength="2"
                     style="height: 25px; width: 15% ;display: inline; text-align: center;"
                   />
@@ -73,9 +75,10 @@
                     data-v-58764d52
                     id="new_mac3"
                     type="text"
+                    v-model="mac3"
                     required="required"
                     aria-required="true"
-                    class="form-control"
+                    
                     maxlength="2"
                     style="height: 25px; width: 15%; display: inline; text-align: center;"
                   />
@@ -83,10 +86,11 @@
                   <input
                     data-v-58764d52
                     id="new_mac4"
+                    v-model="mac4"
                     type="text"
                     required="required"
                     aria-required="true"
-                    class="form-control"
+                    
                     maxlength="2"
                     style="height: 25px; width: 15%; display: inline; text-align: center;"
                   />
@@ -94,10 +98,10 @@
                   <input
                     data-v-58764d52
                     id="new_mac5"
+                    v-model="mac5"
                     type="text"
                     required="required"
                     aria-required="true"
-                    class="form-control"
                     maxlength="2"
                     style="height: 25px; width: 15%; display: inline; text-align: center;"
                   />
@@ -105,10 +109,11 @@
                   <input
                     data-v-58764d52
                     id="new_mac6"
+                    v-model="mac6"
                     type="text"
                     required="required"
                     aria-required="true"
-                    class="form-control"
+                    
                     maxlength="2"
                     style="height: 25px; width: 15%; display: inline; text-align: center;"
                   />
