@@ -20,7 +20,7 @@
                 </router-link>
               </div>
               <div class="float-left">
-                <h1>Regist - Contract</h1>
+                <h1>Register - Contract</h1>
               </div>
             </div>
           </div>
@@ -83,10 +83,10 @@
 
               <p style="color:white;margin:0px auto;white-space:nowrap;">學號格式:限定字母全大寫。</p>
               <p style="color:white;margin:0px auto;white-space:nowrap;">床位格式:</p>
-              <p style="color:white;margin:0px auto;white-space:nowrap;">Example1: A3棟108房4床</p>
-              <p>A3108-4 | (棟別,房號)-(床號)</p>
-              <p style="color:white;margin:0px auto;white-space:nowrap;">Example2: F棟102房2床</p>
-              <p>E2102-2 | (棟別,房號)-(床號)</p>
+              <p style="color:white;margin:0px auto;white-space:nowrap;">Example1:</p>
+              <p>A3108-4</p>
+              <p style="color:white;margin:0px auto;white-space:nowrap;">Example2:</p>
+              <p>E2102-2</p>
 
               <b-form @submit.prevent="regist">
                 <div class="row">

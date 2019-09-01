@@ -54,7 +54,6 @@
                     v-model="mac1"
                     required="required"
                     aria-required="true"
-                    
                     maxlength="2"
                     style="height: 25px; width: 15%; display: inline; text-align: center;"
                   />
@@ -66,7 +65,6 @@
                     v-model="mac2"
                     required="required"
                     aria-required="true"
-                    
                     maxlength="2"
                     style="height: 25px; width: 15% ;display: inline; text-align: center;"
                   />
@@ -78,7 +76,6 @@
                     v-model="mac3"
                     required="required"
                     aria-required="true"
-                    
                     maxlength="2"
                     style="height: 25px; width: 15%; display: inline; text-align: center;"
                   />
@@ -90,7 +87,6 @@
                     type="text"
                     required="required"
                     aria-required="true"
-                    
                     maxlength="2"
                     style="height: 25px; width: 15%; display: inline; text-align: center;"
                   />
@@ -113,7 +109,6 @@
                     type="text"
                     required="required"
                     aria-required="true"
-                    
                     maxlength="2"
                     style="height: 25px; width: 15%; display: inline; text-align: center;"
                   />
@@ -125,9 +120,12 @@
               </div>
             </b-form>
           </div>
-          <div class="col-md-6 offset-md-3 col-sm-10 offset-sm-1 col-xl-4 offset-xl-4" style="color: white;">
+          <div
+            class="col-md-6 offset-md-3 col-sm-10 offset-sm-1 col-xl-4 offset-xl-4"
+            style="color: white;"
+          >
             <ul style="text-align:left;">
-              <li>本系統於每日 12:00 am 和 12:00 pm 連接網路設備更新有更動之使用者網路卡卡號，請耐心等候下次更新時間。</li>
+              <li>本系統於每小時連接網路設備更新有更動之使用者網路卡卡號，請耐心等候下次更新時間。</li>
               <li>
                 輸入之 MAC 格式可為下列型式:
                 <br />xx-xx-xx-xx-xx-xx。
@@ -172,26 +170,26 @@
   </div>
 </template>
 <script>
-import Background from "@/components/Background"
-import { IP, CHANGE_MAC, ERROR } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { IP, CHANGE_MAC, ERROR } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "Change_mac",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(IP)
+    this.$store.dispatch(IP);
   },
   created: function() {
-    let i = 0
+    let i = 0;
     for (i = 0; i < this.info_IP.length; i++) {
       if (this.info_IP[i].ip === this.$route.params.ip) {
-        this.macnow = this.info_IP[i].mac
-        this.ipnow = this.info_IP[i].ip
+        this.macnow = this.info_IP[i].mac;
+        this.ipnow = this.info_IP[i].ip;
       }
     }
     if (this.ipnow === null) {
-      this.$router.push({ name: "Index" })
+      this.$router.push({ name: "Index" });
     }
   },
   data() {
@@ -204,17 +202,17 @@ export default {
       mac6: null,
       macnow: null,
       ipnow: null
-    }
+    };
   },
   methods: {
     submit(mac) {
-      let reg = /[\W]/g
-      mac = mac.toUpperCase()
+      let reg = /[\W]/g;
+      mac = mac.toUpperCase();
       if (!reg.test(mac)) {
-        let ip = this.$route.params.ip
-        this.$store.dispatch(CHANGE_MAC, { mac, ip })
+        let ip = this.$route.params.ip;
+        this.$store.dispatch(CHANGE_MAC, { mac, ip });
       } else {
-        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字");
       }
     }
   },
@@ -224,7 +222,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 <style scoped>
 hr {

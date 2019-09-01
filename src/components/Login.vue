@@ -84,9 +84,10 @@
                   <b-modal id="notice" hide-footer>
                     <template slot="modal-title">通知</template>
                     <div class="d-block text-center">
-                      <h4>新學期請住宿生重新註冊帳號</h4>
+                      <h5>本學期尚未註冊的住宿生請盡快註冊帳號及MAC卡號</h5>
+                      <h5 class="text-left">Students who haven't register account. Please register your new acoount and MAC address as soon as posible.</h5>
                     </div>
-                    <b-button class="mt-3" block @click="$bvModal.hide('notice')">關閉</b-button>
+                    <b-button class="mt-3" block @click="$bvModal.hide('notice')">關閉 Close</b-button>
                   </b-modal>
                 </div>
               </div>
@@ -123,9 +124,6 @@ export default {
       password: null,
       sitekey: process.env.VUE_APP_SITEKEY
     };
-  },
-  created: function() {
-    console.log(process.env.VUE_APP_SITEKEY);
   },
   mounted: function() {
     this.$bvModal.show("notice");
