@@ -110,6 +110,7 @@ import Background from "@/components/Background";
 import VueRecaptcha from "vue-recaptcha";
 import { mapState } from "vuex";
 import { LOGIN, ERROR } from "@/store/actions_type";
+
 export default {
   name: "Login",
   components: {
@@ -118,10 +119,13 @@ export default {
   },
   data() {
     return {
-      sitekey: "6LfB_rIUAAAAABwccTjvi8bez-uw7lcZuk3TjigQ",
       username: null,
-      password: null
+      password: null,
+      sitekey: process.env.VUE_APP_SITEKEY
     };
+  },
+  created: function() {
+    console.log(process.env.VUE_APP_SITEKEY);
   },
   mounted: function() {
     this.$bvModal.show("notice");

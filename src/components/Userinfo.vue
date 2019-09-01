@@ -143,7 +143,6 @@
         </div>
         <div class="col-12" style="padding-top: 2%;"></div>
       </div>
-
       <div class="col-12" style="padding-top: 20%;"></div>
     </section>
   </div>
