@@ -5,7 +5,6 @@ const ErrorService = {
   init(status, message, context) {
     if ((status === 401) & (message === "NO_PERMISSION")) {
       router.replace({ name: "Index" });
-      context.commit(SET_ERROR, "沒有權限");
     }
     if ((status === 404) & (message === "INVALID_ENDPOINT")) {
       router.replace({ name: "Index" });

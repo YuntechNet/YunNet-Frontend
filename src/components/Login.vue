@@ -67,7 +67,7 @@
                   class="btn btn-info btn-lg"
                   to="./register"
                   style="margin:5px 5px"
-                >註冊｜Regist</router-link>
+                >註冊｜Register</router-link>
                 <a>
                   <b-button
                     type="submit"
