@@ -84,8 +84,11 @@
                   <b-modal id="notice" hide-footer>
                     <template slot="modal-title">通知</template>
                     <div class="d-block text-center">
-                      <h5>本學期尚未註冊的住宿生請盡快註冊帳號及MAC卡號</h5>
-                      <h5 class="text-left">Students who haven't register account. Please register your new acoount and MAC address as soon as posible.</h5>
+                      <h5 v-if="language()">本學期尚未註冊的住宿生請盡快註冊帳號及MAC卡號</h5>
+                      <h5
+                        class="text-left"
+                        v-else
+                      >Students who haven't register account. Please register your new acoount and MAC address as soon as posible.</h5>
                     </div>
                     <b-button class="mt-3" block @click="$bvModal.hide('notice')">關閉 Close</b-button>
                   </b-modal>
@@ -148,6 +151,11 @@ export default {
     },
     onExpired() {
       this.$refs.recaptcha.reset();
+    },
+    language() {
+      if ((navigator.language || navigator.userLanguage) === "zh-TW")
+        return true;
+      else return false;
     }
   },
   computed: {
