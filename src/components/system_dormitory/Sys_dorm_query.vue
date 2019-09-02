@@ -25,7 +25,12 @@
           <div class="col-10 offset-1">
             <hr />
           </div>
-
+          <b-alert
+            class="col-12 col-sm-4 offset-sm-4"
+            :show="errors"
+            variant="warning"
+            dismissible
+          >{{errors}}</b-alert>
           <b-form
             inline
             class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-xl-4 offset-xl-4"
@@ -165,17 +170,6 @@
                         :class="['row','col-sm-10 col-8', item.lock_status==='LOCKED'?'text-danger':'text-success']"
                       >{{item.lock_status==='LOCKED'?"鎖卡":"未鎖卡"}}</div>
 
-                      <h5
-                        v-show="item.locked"
-                        class="col-sm-2 col-4"
-                        style="white-space:nowrap;width:100%;"
-                      >鎖卡原因</h5>
-                      <div
-                        v-show="item.locke_reason"
-                        style="white-space:nowrap;width:100%;"
-                        class="row col-sm-10 col-8"
-                      >{{item.switch_id}}</div>
-
                       <div class="btn-group btn-right mx-3" role="group" aria-label="功能">
                         <router-link
                           v-show="false"
@@ -191,6 +185,11 @@
                           :to="`./system_abuse/${username}/${item.ip}`"
                           class="btn btn-danger"
                         >Abuse</router-link>
+                        <b-button
+                          v-show="item.lock_status==='LOCKED'"
+                          @click="showMsgBoxTwo(item.ip)"
+                          variant="success"
+                        >解卡</b-button>
                       </div>
                     </div>
                   </div>
@@ -211,7 +210,11 @@
 
 <script>
 import Background from "@/components/Background";
-import { SYSTEM_QUERY,/* WAN_DOWN,*/ SYSTEM_CLEAR } from "@/store/actions_type";
+import {
+  SYSTEM_QUERY,
+  /* WAN_DOWN,*/ SYSTEM_CLEAR,
+  SYSTEM_UNLOCK
+} from "@/store/actions_type";
 import { mapState } from "vuex";
 
 export default {
@@ -231,6 +234,25 @@ export default {
       this.$store.dispatch(SYSTEM_QUERY, username).then(() => {
         //this.$store.dispatch(WAN_DOWN);
       });
+    },
+    showMsgBoxTwo(ip) {
+      this.boxTwo = "";
+      this.$bvModal
+        .msgBoxConfirm("確定解卡?", {
+          title: "通知",
+          size: "sm",
+          buttonSize: "sm",
+          okVariant: "success",
+          okTitle: "YES",
+          cancelVariant: "danger",
+          cancelTitle: "NO",
+          footerClass: "p-2",
+          hideHeaderClose: false,
+          centered: true
+        })
+        .then(value => {
+          if (value) this.$store.dispatch(SYSTEM_UNLOCK, ip);
+        });
     }
   },
   data() {
@@ -240,7 +262,8 @@ export default {
   },
   computed: {
     ...mapState({
-      info: state => state.system.info
+      info: state => state.system.info,
+      errors: state => state.auth.errors
       //wan: state => state.system.wan
     })
   }

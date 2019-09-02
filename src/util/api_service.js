@@ -48,9 +48,7 @@ const ApiService = {
   },
 
   delete(resource) {
-    return Vue.axios.delete(resource).catch(error => {
-      throw new Error(`[YunNet] ApiService ${error}`);
-    });
+    return Vue.axios.delete(resource);
   }
 };
 

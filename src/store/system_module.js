@@ -2,7 +2,12 @@ import ApiService from "@/util/api_service";
 import JwtService from "@/util/jwt_service";
 import ErrorService from "@/util/error_service";
 import router from "@/router";
-import { SYSTEM_QUERY, SYSTEM_CLEAR, SYSTEM_ABUSE } from "./actions_type";
+import {
+  SYSTEM_QUERY,
+  SYSTEM_CLEAR,
+  SYSTEM_ABUSE,
+  SYSTEM_UNLOCK
+} from "./actions_type";
 import { SET_QUERY, PURGE_SYSTEM, SET_ERROR } from "./mutations_type";
 
 const state = {
@@ -38,7 +43,22 @@ const actions = {
           title: credentials.title
         })
           .then(({ data }) => {
-            router.replace({ name: "Index" });
+            router.replace({ name: "System_query" });
+            context.commit(SET_ERROR, data.message);
+            resolve(data);
+          })
+          .catch(({ response }) => {
+            ErrorService.init(response.status, response.data.message, context);
+          });
+      });
+    }
+  },
+  [SYSTEM_UNLOCK](context, ip) {
+    if (JwtService.getToken()) {
+      ApiService.setHeader();
+      return new Promise(resolve => {
+        ApiService.delete(`/management/abuse/${ip}`)
+          .then(({ data }) => {
             context.commit(SET_ERROR, data.message);
             resolve(data);
           })
