@@ -20,14 +20,14 @@
 
       <div class="post-conten-area">
         <p>
-          <span style="font-size:22px">
+          <span style="font-size:20px">
             即日(0906)起至0911(一) 開學止、開學後每逢周三、周六，
             <br />每日00點00分至02點00分為表定系統維護時間。
           </span>
         </p>
 
         <p>
-          <span style="font-size:22px">期間停止系統所有服務，關閉正常使用者登入管道。</span>
+          <span style="font-size:20px">期間停止系統所有服務，關閉正常使用者登入管道。</span>
         </p>
 
         <p>&nbsp;</p>

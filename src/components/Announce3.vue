@@ -16,13 +16,13 @@
 
       <div class="post-conten-area">
         <p>
-          <span style="font-size:22px">
+          <span style="font-size:20px">
             學校宿舍流量每天限用8GB，超過用量依照規定封鎖流量。
             <br />每日00點00分為表定流量更新時間。
           </span>
         </p>
         <p>
-          <span style="font-size:22px">
+          <span style="font-size:20px">
             <br />用量達8GB以上/鎖卡3天。
             <br />用量達9GB以上/鎖卡4天。
             <br />用量達10GB以上/鎖卡5天。
@@ -32,7 +32,7 @@
         </p>
 
         <p>
-          <span style="font-size:22px">若違反宿舍規定，造成其他住宿生困擾，依學校校規懲處。</span>
+          <span style="font-size:20px">若違反宿舍規定，造成其他住宿生困擾，依學校校規懲處。</span>
         </p>
 
         <p>&nbsp;</p>
