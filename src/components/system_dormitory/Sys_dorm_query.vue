@@ -211,7 +211,7 @@
 
 <script>
 import Background from "@/components/Background";
-import { SYSTEM_QUERY, WAN_DOWN, SYSTEM_CLEAR } from "@/store/actions_type";
+import { SYSTEM_QUERY,/* WAN_DOWN,*/ SYSTEM_CLEAR } from "@/store/actions_type";
 import { mapState } from "vuex";
 
 export default {

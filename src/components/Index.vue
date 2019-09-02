@@ -74,7 +74,7 @@
       <div class="col-12" style="padding:18vh;"></div>
       <div class="col-12">
         <h1 class="title" style="margin:0px auto">YunNET 雲科網管</h1>
-        
+
         <b-alert
           class="col-sm-4 offset-sm-4 col-8 offset-2 alert-frame"
           :show="k"
@@ -82,7 +82,7 @@
           dismissible
         >
           <a style="color:#a94442;">
-            <strong style="font-size:20px">網路管理小組歡迎你的加入</strong>
+            <strong style="font-size:20px">網路管理小組歡迎你的加入，晚上7點到9點，為網管值班時間。</strong>
           </a>
         </b-alert>
         <div class="col-12" style="padding:16vh;"></div>
@@ -208,9 +208,9 @@
 
 
 <script>
-import { mapGetters } from "vuex";
-import { mapState } from "vuex";
-import { LOGOUT, WAN_DOWN, IP } from "@/store/actions_type";
+import { mapGetters } from "vuex"
+import { mapState } from "vuex"
+import { LOGOUT, WAN_DOWN, IP } from "@/store/actions_type"
 export default {
   name: "index",
   data() {
@@ -218,18 +218,18 @@ export default {
       slide: 0,
       sliding: null,
       k: true
-    };
+    }
   },
   beforeMount: function() {
     this.$store.dispatch(IP).then(() => {
-      this.$store.dispatch(WAN_DOWN);
-    });
+      this.$store.dispatch(WAN_DOWN)
+    })
   },
   methods: {
     logout() {
       this.$store.dispatch(LOGOUT).then(() => {
-        this.$router.push({ name: "Index" });
-      });
+        this.$router.push({ name: "Index" })
+      })
     }
   },
   computed: {
@@ -238,7 +238,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 <style scoped>
 #BK {
