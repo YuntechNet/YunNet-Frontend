@@ -162,10 +162,10 @@ export default {
   },
   methods: {
     submit(title, text) {
-      let reason = `(${title})${text}`;
+      let reason = text;
       let ip = this.ipnow;
       let datenow = this.date;
-      this.$store.dispatch(SYSTEM_ABUSE, { datenow, reason, ip });
+      this.$store.dispatch(SYSTEM_ABUSE, { datenow, reason, title, ip });
     }
   },
 

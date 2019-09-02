@@ -34,7 +34,8 @@ const actions = {
       return new Promise(resolve => {
         ApiService.put(`/management/abuse/${credentials.ip}`, {
           lock_until: credentials.datenow,
-          reason: credentials.reason
+          description: credentials.reason,
+          title: credentials.title
         })
           .then(({ data }) => {
             router.replace({ name: "Index" });
