@@ -12,6 +12,7 @@ import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import store from "./store";
 import ApiService from "./util/api_service";
+import PermissionService from "@/util/permission_service";
 import { CHECK_AUTH, ERROR } from "./store/actions_type";
 
 library.add(faTimes, faSignInAlt);
@@ -39,6 +40,13 @@ router.beforeEach((to, from, next) => {
     } else {
       next();
     }
+  }
+  if (to.meta.system & !PermissionService.Check("system.view")) {
+    next({
+      name: "Index"
+    });
+  } else {
+      next()
   }
 });
 

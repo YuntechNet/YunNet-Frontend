@@ -182,6 +182,7 @@
                           class="btn btn-secondary"
                         >鎖卡紀錄</router-link>
                         <router-link
+                          v-show="abuse"
                           :to="`./system_abuse/${username}/${item.ip}`"
                           class="btn btn-danger"
                         >Abuse</router-link>
@@ -210,6 +211,7 @@
 
 <script>
 import Background from "@/components/Background";
+import PermissionService from "@/util/permission_service";
 import {
   SYSTEM_QUERY,
   /* WAN_DOWN,*/ SYSTEM_CLEAR,
@@ -257,7 +259,9 @@ export default {
   },
   data() {
     return {
-      username: null
+      username: null,
+      abuse: PermissionService.Check("system.dormitory.abuse.view"),
+      unlock: PermissionService.Check("system.dormitory.abuse.unlock")
     };
   },
   computed: {
