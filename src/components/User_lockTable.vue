@@ -19,7 +19,7 @@
               </button>
             </div>
             <div class="float-left">
-              <h1>鎖卡紀錄｜User_lockTable.</h1>
+              <h1>鎖卡紀錄｜UserlockTable.</h1>
             </div>
           </div>
 
@@ -28,62 +28,86 @@
           </div>
           <div class="col-12" style="padding-top: 2%;"></div>
 
-          <div class="col-sm-6 offset-sm-3 col-10 offset-1" style="text-align: left;color:white;">
+          <div class="col-sm-6 offset-sm-3 col-10 offset-1" style="text-align:left;color:white;">
             <div class="row">
               <div class="col-4 font-weight-bold">
-                <p>學號</p>
+                <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">學號</p>
               </div>
               <div class="col-4 font-weight-bold">
-                <p>ID</p>
+                <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">UID</p>
               </div>
               <div class="col-4 font-weight-bold">
-                <p>{{info.username}}</p>
-              </div>
-
-              <div class="col-4 font-weight-bold">
-                <p>姓名</p>
-              </div>
-              <div class="col-4 font-weight-bold">
-                <p>Name</p>
-              </div>
-              <div class="col-4 font-weight-bold">
-                <p>{{info.name}}</p>
+                <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.username}}</p>
               </div>
 
               <div class="col-4 font-weight-bold">
-                <p>部門</p>
+                <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">姓名</p>
               </div>
               <div class="col-4 font-weight-bold">
-                <p class="fontsize">Department</p>
+                <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">Name</p>
               </div>
               <div class="col-4 font-weight-bold">
-                <p>{{info.department}}</p>
-              </div>
-
-              <div class="col-4 font-weight-bold">
-                <p>IP</p>
-              </div>
-              <div class="col-4 font-weight-bold">
-                <p class="fontsize">IP</p>
-              </div>
-              <div class="col-4 font-weight-bold">
-                <p>{{ipnow}}</p>
+                <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.name}}</p>
               </div>
 
               <div class="col-4 font-weight-bold">
-                <p>類型</p>
+                <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">部門</p>
               </div>
               <div class="col-4 font-weight-bold">
-                <p>Type</p>
+                <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">Department</p>
+              </div>
+              <div class="col-4 font-weight-bold">
+                <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.department}}</p>
+              </div>
+              <div class="col-4 font-weight-bold">
+                <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">ip</p>
+              </div>
+              <div class="col-4 font-weight-bold">
+                <p style="white-space:nowrap;margin-right:15%;" class="fontsize-auto-user">ip</p>
+              </div>
+              <div class="col-4 font-weight-bold">
+                <p style="white-space:nowrap;font-size:12px;" class="fontsize-auto-user">{{ipnow}}</p>
+              </div>
+              <div class="col-4 font-weight-bold">
+                <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">類型</p>
+              </div>
+              <div class="col-4 font-weight-bold">
+                <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">Type</p>
               </div>
               <div class="col-4 font-weight-bold">
                 <div v-for="(item,index) in info.group" :key="index">
-                  <p>{{item}}</p>
+                  <p style="white-space:nowrap;" class="fontsize-auto-user">{{item}}</p>
                 </div>
               </div>
             </div>
           </div>
-
+          <div v-show="(this.lock[0].lock_type)" class="col-sm-4 offset-sm-4 col-12">
+            <p style="font-size:20px;color:white;background-color:red;">永鎖/中毒申請書</p>
+            <button
+              type="button"
+              class="col-3 btn btn-danger"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="DOC"
+              style="margin:1% 1%"
+            >DOC</button>
+            <button
+              type="button"
+              class="col-3 btn btn-danger"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="PDF"
+              style="margin:1% 1%"
+            >PDF</button>
+            <button
+              type="button"
+              class="col-3 btn btn-danger"
+              data-toggle="tooltip"
+              data-placement="top"
+              title="ODT"
+              style="margin:1% 1%"
+            >ODT</button>
+          </div>
           <div class="col-12" style="padding-top: 3%;"></div>
           <div class="col-10 offset-1 table-responsive">
             <table class="table table-sm" cellspacing="0">
@@ -120,33 +144,33 @@
 
 
 <script>
-import Background from "@/components/Background";
-import { INFO, LOCK, IP } from "@/store/actions_type";
-import { mapState } from "vuex";
+import Background from "@/components/Background"
+import { INFO, LOCK, IP } from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "User_lockTable",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(INFO);
-    this.$store.dispatch(IP);
+    this.$store.dispatch(INFO)
+    this.$store.dispatch(IP)
   },
   created: function() {
-    let i = 0;
+    let i = 0
     for (i = 0; i < this.info_IP.length; i++) {
       if (this.info_IP[i].ip === this.$route.params.ip) {
-        this.ipnow = this.info_IP[i].ip;
+        this.ipnow = this.info_IP[i].ip
       }
     }
     if (this.ipnow === null) {
-      this.$router.push({ name: "Index" });
+      this.$router.push({ name: "Index" })
     }
-    this.$store.dispatch(LOCK, this.ipnow);
+    this.$store.dispatch(LOCK, this.ipnow)
   },
   data() {
     return {
       ipnow: null
-    };
+    }
   },
   computed: {
     ...mapState({
@@ -155,7 +179,7 @@ export default {
       lock: state => state.profile.lock
     })
   }
-};
+}
 </script>
 
 
