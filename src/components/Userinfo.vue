@@ -76,8 +76,8 @@
           <div class="col-12" style="padding-top: 2%;"></div>
           <div class="col-sm-10 offset-sm-1 col-12" style="text-align:left;">
             <div class="card-deck" v-for="(item,index) in info_IP" :key="index">
-              <div :class="['card bg-light', index===0?'border-warning':'' ,'text-dark']">
-                <div :class="[index === 0?'bg-warning':'bg-light','card-header']">
+              <div :class="['card bg-light', item.lock_status==='LOCKED'?'border-warning':'']">
+                <div :class="[item.lock_status==='LOCKED'?'bg-warning':'bg-light','card-header']">
                   <button
                     class="btn btn-block"
                     data-toggle="collapse"
@@ -155,7 +155,7 @@
 <script>
 import Background from "@/components/Background";
 import PermissionService from "@/util/permission_service";
-import { INFO, IP, /*WAN_DOWN */} from "@/store/actions_type";
+import { INFO, IP /*WAN_DOWN */ } from "@/store/actions_type";
 import { mapState } from "vuex";
 
 export default {

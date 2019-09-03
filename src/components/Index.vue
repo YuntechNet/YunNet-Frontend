@@ -214,9 +214,9 @@
 
 
 <script>
-import { mapGetters } from "vuex"
-import { mapState } from "vuex"
-import { LOGOUT, WAN_DOWN, IP } from "@/store/actions_type"
+import { mapGetters } from "vuex";
+import { mapState } from "vuex";
+import { LOGOUT, WAN_DOWN, IP } from "@/store/actions_type";
 export default {
   name: "index",
   data() {
@@ -224,18 +224,20 @@ export default {
       slide: 0,
       sliding: null,
       k: true
-    }
+    };
   },
+  /*
   beforeMount: function() {
     this.$store.dispatch(IP).then(() => {
       this.$store.dispatch(WAN_DOWN)
     })
   },
+  */
   methods: {
     logout() {
       this.$store.dispatch(LOGOUT).then(() => {
-        this.$router.push({ name: "Index" })
-      })
+        this.$router.push({ name: "Index" });
+      });
     }
   },
   computed: {
@@ -244,7 +246,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 <style scoped>
 #BK {

@@ -100,8 +100,8 @@
             <div class="col-12" style="padding-top: 2%;"></div>
             <div class="col-sm-10 offset-sm-1 col-12" style="text-align:left;">
               <div class="card-deck" v-for="(item,index) in info.ip" :key="index">
-                <div :class="['card bg-light', index===0?'border-warning':'' ,'text-dark']">
-                  <div :class="[index === 0?'bg-warning':'bg-light','card-header']">
+                <div :class="['card bg-light', item.lock_status==='LOCKED'?'border-warning':'']">
+                  <div :class="[item.lock_status==='LOCKED'?'bg-warning':'bg-light','card-header']">
                     <button
                       class="btn btn-block"
                       data-toggle="collapse"
@@ -123,7 +123,7 @@
                     </button>
                   </div>
                   <div
-                    :class="['card-body','collapse',index!=0|item.lock_status==='UNLOCKED'?'hide':'show']"
+                    :class="['card-body','collapse',index===0|item.lock_status==='LOCKED'?'show':'hide']"
                     :id="['id'+index]"
                   >
                     <div class="row">
@@ -197,7 +197,7 @@
                         >Abuse</router-link>
                         <b-button
                           v-show="item.lock_status==='LOCKED'"
-                          @click="showMsgBoxTwo(item.ip)"
+                          @click="showMsgBox(item.ip)"
                           variant="success"
                         >解卡</b-button>
                       </div>
@@ -219,35 +219,35 @@
 
 
 <script>
-import Background from "@/components/Background"
-import PermissionService from "@/util/permission_service"
+import Background from "@/components/Background";
+import PermissionService from "@/util/permission_service";
 import {
   SYSTEM_QUERY,
   /* WAN_DOWN,*/ SYSTEM_CLEAR,
   SYSTEM_UNLOCK
-} from "@/store/actions_type"
-import { mapState } from "vuex"
+} from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "System_query",
   components: { Background },
   created: function() {
-    this.$store.dispatch(SYSTEM_CLEAR)
+    this.$store.dispatch(SYSTEM_CLEAR);
   },
   methods: {
     eadablizeBytes(bytes) {
-      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"]
-      let e = Math.floor(Math.log(bytes) / Math.log(1024))
-      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e]
+      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"];
+      let e = Math.floor(Math.log(bytes) / Math.log(1024));
+      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
     },
     submit() {
-      let username = this.username
+      let username = this.username;
       this.$store.dispatch(SYSTEM_QUERY, username).then(() => {
         //this.$store.dispatch(WAN_DOWN);
-      })
+      });
     },
-    showMsgBoxTwo(ip) {
-      this.boxTwo = ""
+    showMsgBox(ip) {
+      this.boxTwo = "";
       this.$bvModal
         .msgBoxConfirm("確定解卡?", {
           title: "通知",
@@ -262,8 +262,8 @@ export default {
           centered: true
         })
         .then(value => {
-          if (value) this.$store.dispatch(SYSTEM_UNLOCK, ip)
-        })
+          if (value) this.$store.dispatch(SYSTEM_UNLOCK, ip);
+        });
     }
   },
   data() {
@@ -271,7 +271,7 @@ export default {
       username: null,
       abuse: PermissionService.Check("system.dormitory.abuse.view"),
       unlock: PermissionService.Check("system.dormitory.abuse.unlock")
-    }
+    };
   },
   computed: {
     ...mapState({
@@ -280,7 +280,7 @@ export default {
       //wan: state => state.system.wan
     })
   }
-}
+};
 </script>
 
 
