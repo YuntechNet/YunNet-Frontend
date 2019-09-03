@@ -23,6 +23,13 @@ ApiService.init();
 router.beforeEach((to, from, next) => {
   store.dispatch(CHECK_AUTH);
   if (store.getters.isAuthenticated) {
+    if (to.meta.system & !PermissionService.Check("system.view")) {
+      next({
+        name: "Index"
+      });
+    } else {
+      next();
+    }
     if (to.meta.deAuth) {
       next({
         name: "Index"
@@ -40,13 +47,6 @@ router.beforeEach((to, from, next) => {
     } else {
       next();
     }
-  }
-  if (to.meta.system & !PermissionService.Check("system.view")) {
-    next({
-      name: "Index"
-    });
-  } else {
-      next()
   }
 });
 
