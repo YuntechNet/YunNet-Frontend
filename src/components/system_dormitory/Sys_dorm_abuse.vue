@@ -152,6 +152,7 @@ export default {
       selected: null,
       date: null,
       title: null,
+      text: null,
       options: [
         { value: "Overflow", text: "Overflow" },
         { value: "Abuse智慧財產權", text: "Abuse智慧財產權" },

@@ -191,7 +191,8 @@ export default new Router({
       path: "/system_query",
       name: "System_query",
       meta: {
-        isAuth: true
+        isAuth: true,
+        system: true
       },
       component: () => import("./components/system_dormitory/Sys_dorm_query.vue")
     },
@@ -199,7 +200,8 @@ export default new Router({
       path: "/system_abuse/:uid/:ip",
       name: "System_abuse",
       meta: {
-        isAuth: true
+        isAuth: true,
+        system: true
       },
       component: () => import("./components/system_dormitory/Sys_dorm_abuse.vue")
     },
