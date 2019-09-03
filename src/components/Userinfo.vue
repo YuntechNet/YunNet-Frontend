@@ -66,7 +66,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-4 offset-sm-4 col-6">
+          <div class="col-sm-4 offset-sm-4 col-12">
             <b-button-group>
               <router-link to="./Change_password" class="btn btn-danger">更改密碼</router-link>
               <router-link v-show="Query" to="./system_query" class="btn btn-info">System Query</router-link>
@@ -155,7 +155,7 @@
 <script>
 import Background from "@/components/Background";
 import PermissionService from "@/util/permission_service";
-import { INFO, IP, WAN_DOWN } from "@/store/actions_type";
+import { INFO, IP, /*WAN_DOWN */} from "@/store/actions_type";
 import { mapState } from "vuex";
 
 export default {
