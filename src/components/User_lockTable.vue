@@ -81,7 +81,7 @@
               </div>
             </div>
           </div>
-          <div v-show="(this.lock[0].lock_type)" class="col-sm-4 offset-sm-4 col-12">
+          <div v-show="(0)" class="col-sm-4 offset-sm-4 col-12">
             <p style="font-size:20px;color:white;background-color:red;">永鎖/中毒申請書</p>
             <button
               type="button"
@@ -113,7 +113,6 @@
             <table class="table table-sm" cellspacing="0">
               <thead>
                 <tr style="white-space:nowrap;background-color:#337ab7;">
-                  <th id="thead" class="text-size" style="text-align:center;">lock_id</th>
                   <th id="thead" class="text-size" style="text-align:center;">lock_type</th>
                   <th id="thead" class="text-size" style="text-align:center;">lock_date</th>
                   <th id="thead" class="text-size" style="text-align:center;">unlock_date</th>
@@ -125,7 +124,6 @@
                   v-for="(item,index) in lock"
                   :key="index"
                 >
-                  <th class="text-size" style="text-align:center;">{{item.lock_id}}</th>
                   <th class="text-size" style="text-align:center;">{{item.lock_type}}</th>
                   <th class="text-size" style="text-align:center;">{{item.lock_date}}</th>
                   <th class="text-size" style="text-align:center;">{{item.unlock_date}}</th>

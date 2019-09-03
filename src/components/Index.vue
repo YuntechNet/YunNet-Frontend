@@ -80,9 +80,15 @@
           :show="k"
           variant="danger"
           dismissible
+          style="text-align:left;"
         >
-          <a style="color:#a94442;">
-            <strong style="font-size:20px">網路管理小組歡迎你的加入，晚上7點到9點，為網管值班時間。</strong>
+          <a
+            style="font-size:20px;color:#a94442;"
+            href="https://docs.google.com/forms/d/e/1FAIpQLScRyKiNdM5xJ5AuMnTK8woKtgz8ZiQgCnLLWSrmt0Z-nL5Rqw/viewform?fbclid=IwAR2uvr1ajFIJmWpUfMV8KM3HBdVfsfPZzqmngmZHbcMNLH6T0daZiZMT5CU"
+            target="_blank"
+          >
+            網路管理小組歡迎你的加入。
+            <br />晚上7點到9點，為網管值班時間。
           </a>
         </b-alert>
         <div class="col-12" style="padding:16vh;"></div>

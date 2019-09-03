@@ -52,41 +52,47 @@
             <div class="col-sm-6 offset-sm-3 col-10 offset-1" style="text-align: left;color:white;">
               <div class="row">
                 <div class="col-4 font-weight-bold">
-                  <p>學號</p>
+                  <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">學號</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p>ID</p>
+                  <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">UID</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p>{{info.user.username}}</p>
+                  <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.user.username}}</p>
+                </div>
+
+                <div class="col-4 font-weight-bold">
+                  <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">姓名</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p>姓名</p>
+                  <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">Name</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p>Name</p>
+                  <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.user.nick}}</p>
+                </div>
+
+                <div class="col-4 font-weight-bold">
+                  <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">部門</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p>{{info.user.nick}}</p>
+                  <p
+                    style="white-space:nowrap;margin-right:15%"
+                    class="fontsize-auto-user"
+                  >Department</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p>部門</p>
+                  <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.user.department}}</p>
+                </div>
+
+                <div class="col-4 font-weight-bold">
+                  <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">類型</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p class="fontsize">Department</p>
-                </div>
-                <div class="col-4 font-weight-bold">
-                  <p>{{info.user.department}}</p>
-                </div>
-                <div class="col-4 font-weight-bold">
-                  <p>類型</p>
-                </div>
-                <div class="col-4 font-weight-bold">
-                  <p>Type</p>
+                  <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">Type</p>
                 </div>
                 <div class="col-4 font-weight-bold">
                   <div v-for="(item,index) in info.user.group" :key="index">
-                    <p>{{item}}</p>
+                    <p style="white-space:nowrap;" class="fontsize-auto-user">{{item}}</p>
                   </div>
                 </div>
               </div>
@@ -147,7 +153,10 @@
                         class="row col-sm-10 col-8"
                       >{{item.port}}</div>
 
-                      <h5 class="col-sm-2 col-4" style="white-space:nowrap;width:100%;">Switch ID</h5>
+                      <h5
+                        class="col-sm-2 col-4"
+                        style="font-size:15px;white-space:nowrap;width:100%;"
+                      >Switch ID</h5>
                       <div
                         style="white-space:nowrap;width:100%;"
                         class="row col-sm-10 col-8"
@@ -210,35 +219,35 @@
 
 
 <script>
-import Background from "@/components/Background";
-import PermissionService from "@/util/permission_service";
+import Background from "@/components/Background"
+import PermissionService from "@/util/permission_service"
 import {
   SYSTEM_QUERY,
   /* WAN_DOWN,*/ SYSTEM_CLEAR,
   SYSTEM_UNLOCK
-} from "@/store/actions_type";
-import { mapState } from "vuex";
+} from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "System_query",
   components: { Background },
   created: function() {
-    this.$store.dispatch(SYSTEM_CLEAR);
+    this.$store.dispatch(SYSTEM_CLEAR)
   },
   methods: {
     eadablizeBytes(bytes) {
-      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"];
-      let e = Math.floor(Math.log(bytes) / Math.log(1024));
-      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
+      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"]
+      let e = Math.floor(Math.log(bytes) / Math.log(1024))
+      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e]
     },
     submit() {
-      let username = this.username;
+      let username = this.username
       this.$store.dispatch(SYSTEM_QUERY, username).then(() => {
         //this.$store.dispatch(WAN_DOWN);
-      });
+      })
     },
     showMsgBoxTwo(ip) {
-      this.boxTwo = "";
+      this.boxTwo = ""
       this.$bvModal
         .msgBoxConfirm("確定解卡?", {
           title: "通知",
@@ -253,8 +262,8 @@ export default {
           centered: true
         })
         .then(value => {
-          if (value) this.$store.dispatch(SYSTEM_UNLOCK, ip);
-        });
+          if (value) this.$store.dispatch(SYSTEM_UNLOCK, ip)
+        })
     }
   },
   data() {
@@ -262,7 +271,7 @@ export default {
       username: null,
       abuse: PermissionService.Check("system.dormitory.abuse.view"),
       unlock: PermissionService.Check("system.dormitory.abuse.unlock")
-    };
+    }
   },
   computed: {
     ...mapState({
@@ -271,7 +280,7 @@ export default {
       //wan: state => state.system.wan
     })
   }
-};
+}
 </script>
 
 
