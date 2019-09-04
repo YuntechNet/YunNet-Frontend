@@ -6,9 +6,15 @@ import {
   SYSTEM_QUERY,
   SYSTEM_CLEAR,
   SYSTEM_ABUSE,
-  SYSTEM_UNLOCK
+  SYSTEM_UNLOCK,
+  SYSTEM_LOCK_TABLE
 } from "./actions_type";
-import { SET_QUERY, PURGE_SYSTEM, SET_ERROR } from "./mutations_type";
+import {
+  SET_QUERY,
+  SET_SYSTEM_LOCK,
+  PURGE_SYSTEM,
+  SET_ERROR
+} from "./mutations_type";
 
 const state = {
   info: { user: {}, ip: {} },
@@ -68,6 +74,21 @@ const actions = {
       });
     }
   },
+  [SYSTEM_LOCK_TABLE](context, ip) {
+    if (JwtService.getToken()) {
+      ApiService.setHeader();
+      return new Promise(resolve => {
+        ApiService.get_pure(`/management/user/${ip}/lock`)
+          .then(({ data }) => {
+            context.commit(SET_SYSTEM_LOCK, data);
+            resolve(data);
+          })
+          .catch(({ response }) => {
+            ErrorService.init(response.status, response.data.message, context);
+          });
+      });
+    }
+  },
   [SYSTEM_CLEAR](context) {
     context.commit(PURGE_SYSTEM);
   }
@@ -76,6 +97,9 @@ const actions = {
 const mutations = {
   [SET_QUERY](state, info) {
     state.info = info;
+  },
+  [SET_SYSTEM_LOCK](state, lock) {
+    state.lock = lock;
   },
   [PURGE_SYSTEM](state) {
     state.info = { user: {}, ip: {} };

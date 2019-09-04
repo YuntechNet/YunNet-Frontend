@@ -172,7 +172,7 @@
                         style="white-space:nowrap;width:100%;"
                         class="row col-sm-10 col-8"
                       >{{item.is_unlimited?"True":"False"}}</div>
-
+          
                       <h5 class="col-sm-2 col-4" style="white-space:nowrap;width:100%;">鎖卡</h5>
                       <div
                         style="white-space:nowrap;width:100%;"
@@ -186,8 +186,8 @@
                           class="btn btn-primary"
                         >流量紀錄</router-link>
                         <router-link
-                          v-show="false"
-                          :to="`./user_lock/${item.ip}`"
+                          v-show="true"
+                          :to="`./system_user_lock/${item.ip}`"
                           class="btn btn-secondary"
                         >鎖卡紀錄</router-link>
                         <router-link

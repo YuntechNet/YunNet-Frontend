@@ -198,6 +198,14 @@ export default new Router({
         import("./components/system_dormitory/Sys_dorm_query.vue")
     },
     {
+      path: "/system_user_lock/:ip",
+      name: "User_lock",
+      component: () => import("./components/system_dormitory/sys_query_lock.vue"),
+      meta: {
+        isAuth: true
+      }
+    },
+    {
       path: "/system_abuse/:uid/:ip",
       name: "System_abuse",
       meta: {
