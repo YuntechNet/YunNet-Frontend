@@ -209,7 +209,7 @@ export default new Router({
     },
     {
       path: "/system_user_lock/:ip",
-      name: "User_lock",
+      name: "System_User_lock",
       component: () => import("./components/system_dormitory/sys_query_lock.vue"),
       meta: {
         isAuth: true
