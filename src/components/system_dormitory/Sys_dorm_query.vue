@@ -223,7 +223,7 @@
                             $bvModal.show('modalUnlock')
                             ip=item.ip
                           }"
-                          v-show="item.lock_status==='LOCKED'"
+                          v-show="item.lock_status==='LOCKED'&unlock"
                           variant="success"
                         >解卡</b-button>
                       </div>
