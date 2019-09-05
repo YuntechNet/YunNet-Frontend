@@ -81,6 +81,12 @@
               </div>
             </div>
           </div>
+          <b-alert
+            show="true"
+            class="mt-4 col-sm-4 offset-sm-4 col-12"
+            variant="warning"
+            dismissible
+          >若無解卡日期請至資訊中心網頁下載資安事件通報單填寫完並送至資訊中心</b-alert>
           <div v-show="(0)" class="col-sm-4 offset-sm-4 col-12">
             <p style="font-size:20px;color:white;background-color:red;">永鎖/中毒申請書</p>
             <button

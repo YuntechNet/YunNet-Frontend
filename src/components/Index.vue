@@ -226,7 +226,7 @@
 <script>
 import { mapGetters } from "vuex"
 import { mapState } from "vuex"
-import { LOGOUT /*WAN_DOWN*/, IP  } from "@/store/actions_type"
+import { LOGOUT /*WAN_DOWN ,IP */  } from "@/store/actions_type"
 export default {
   name: "index",
   data() {
