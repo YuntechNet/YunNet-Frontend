@@ -212,7 +212,8 @@ export default new Router({
       name: "System_User_lock",
       component: () => import("./components/system_dormitory/sys_query_lock.vue"),
       meta: {
-        isAuth: true
+        isAuth: true,
+        system: true
       }
     },
     {
