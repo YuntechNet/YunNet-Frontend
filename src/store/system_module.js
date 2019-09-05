@@ -59,19 +59,44 @@ const actions = {
       });
     }
   },
-  [SYSTEM_UNLOCK](context, ip) {
+  [SYSTEM_UNLOCK](context, data) {
     if (JwtService.getToken()) {
       ApiService.setHeader();
-      return new Promise(resolve => {
-        ApiService.delete(`/management/abuse/${ip}`)
-          .then(({ data }) => {
-            context.commit(SET_ERROR, data.message);
-            resolve(data);
+      if (data.date != null) {
+        return new Promise(resolve => {
+          ApiService.delete(`/management/abuse/${data.ip}`, {
+            unlock_date: data.date
           })
-          .catch(({ response }) => {
-            ErrorService.init(response.status, response.data.message, context);
-          });
-      });
+            .then(({ data }) => {
+              router.go({ name: "System_query" });
+              context.commit(SET_ERROR, data.message);
+              resolve(data);
+            })
+            .catch(({ response }) => {
+              ErrorService.init(
+                response.status,
+                response.data.message,
+                context
+              );
+            });
+        });
+      } else {
+        return new Promise(resolve => {
+          ApiService.delete(`/management/abuse/${data.ip}`)
+            .then(({ data }) => {
+              router.go({ name: "System_query" });
+              context.commit(SET_ERROR, data.message);
+              resolve(data);
+            })
+            .catch(({ response }) => {
+              ErrorService.init(
+                response.status,
+                response.data.message,
+                context
+              );
+            });
+        });
+      }
     }
   },
   [SYSTEM_LOCK_TABLE](context, ip) {

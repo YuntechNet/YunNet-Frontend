@@ -108,6 +108,7 @@
                 placeholder="Enter something..."
                 rows="6"
                 max-rows="6"
+                required
                 style="margin-top:5%;"
               ></b-form-textarea>
               <b-button type="submit" variant="btn btn-success btn-lg" style="margin:10px 5px;">送出</b-button>
