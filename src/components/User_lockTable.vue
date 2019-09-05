@@ -123,6 +123,7 @@
                   <th id="thead" class="text-size" style="text-align:center;">類型</th>
                   <th id="thead" class="text-size" style="text-align:center;">鎖卡日期</th>
                   <th id="thead" class="text-size" style="text-align:center;">解卡日期</th>
+                  <th id="thead" class="text-size" style="text-align:center;">描述</th>
                 </tr>
               </thead>
               <tbody>
@@ -135,6 +136,7 @@
                   <th class="text-size" style="text-align:center;">{{item.lock_type}}</th>
                   <th class="text-size" style="text-align:center;">{{item.lock_date}}</th>
                   <th class="text-size" style="text-align:center;">{{item.unlock_date}}</th>
+                  <th class="text-size" style="text-align:center;">{{item.description}}</th>
                 </tr>
               </tbody>
             </table>
