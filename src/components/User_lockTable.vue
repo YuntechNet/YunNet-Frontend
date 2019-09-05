@@ -60,10 +60,10 @@
                 <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.department}}</p>
               </div>
               <div class="col-4 font-weight-bold">
-                <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">ip</p>
+                <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">IP</p>
               </div>
               <div class="col-4 font-weight-bold">
-                <p style="white-space:nowrap;margin-right:15%;" class="fontsize-auto-user">ip</p>
+                <p style="white-space:nowrap;margin-right:15%;" class="fontsize-auto-user">IP</p>
               </div>
               <div class="col-4 font-weight-bold">
                 <p style="white-space:nowrap;font-size:12px;" class="fontsize-auto-user">{{ipnow}}</p>
@@ -119,9 +119,10 @@
             <table class="table table-sm" cellspacing="0">
               <thead>
                 <tr style="white-space:nowrap;background-color:#337ab7;">
-                  <th id="thead" class="text-size" style="text-align:center;">lock_type</th>
-                  <th id="thead" class="text-size" style="text-align:center;">lock_date</th>
-                  <th id="thead" class="text-size" style="text-align:center;">unlock_date</th>
+                  <th id="thead" class="text-size" style="text-align:center;">標題</th>
+                  <th id="thead" class="text-size" style="text-align:center;">類型</th>
+                  <th id="thead" class="text-size" style="text-align:center;">鎖卡日期</th>
+                  <th id="thead" class="text-size" style="text-align:center;">解卡日期</th>
                 </tr>
               </thead>
               <tbody>
@@ -130,6 +131,7 @@
                   v-for="(item,index) in lock"
                   :key="index"
                 >
+                  <th class="text-size" style="text-align:center;">{{item.title}}</th>
                   <th class="text-size" style="text-align:center;">{{item.lock_type}}</th>
                   <th class="text-size" style="text-align:center;">{{item.lock_date}}</th>
                   <th class="text-size" style="text-align:center;">{{item.unlock_date}}</th>
@@ -148,33 +150,33 @@
 
 
 <script>
-import Background from "@/components/Background"
-import { INFO, LOCK, IP } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { INFO, LOCK, IP } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "User_lockTable",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(INFO)
-    this.$store.dispatch(IP)
+    this.$store.dispatch(INFO);
+    this.$store.dispatch(IP);
   },
   created: function() {
-    let i = 0
+    let i = 0;
     for (i = 0; i < this.info_IP.length; i++) {
       if (this.info_IP[i].ip === this.$route.params.ip) {
-        this.ipnow = this.info_IP[i].ip
+        this.ipnow = this.info_IP[i].ip;
       }
     }
     if (this.ipnow === null) {
-      this.$router.push({ name: "Index" })
+      this.$router.push({ name: "Index" });
     }
-    this.$store.dispatch(LOCK, this.ipnow)
+    this.$store.dispatch(LOCK, this.ipnow);
   },
   data() {
     return {
       ipnow: null
-    }
+    };
   },
   computed: {
     ...mapState({
@@ -183,7 +185,7 @@ export default {
       lock: state => state.profile.lock
     })
   }
-}
+};
 </script>
 
 

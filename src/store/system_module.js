@@ -17,7 +17,7 @@ import {
 } from "./mutations_type";
 
 const state = {
-  info: { user: {}, ip: {} },
+  info: { user: [{}], ip: [{ ip: null }] },
   netflow: [],
   lock: [],
   wan: []

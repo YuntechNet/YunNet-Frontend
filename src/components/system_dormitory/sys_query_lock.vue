@@ -94,9 +94,11 @@
             <table class="table table-sm" cellspacing="0">
               <thead>
                 <tr style="white-space:nowrap;background-color:#337ab7;">
-                  <th id="thead" class="text-size" style="text-align:center;">lock_type</th>
-                  <th id="thead" class="text-size" style="text-align:center;">lock_date</th>
-                  <th id="thead" class="text-size" style="text-align:center;">unlock_date</th>
+                  <th id="thead" class="text-size" style="text-align:center;">標題</th>
+                  <th id="thead" class="text-size" style="text-align:center;">類型</th>
+                  <th id="thead" class="text-size" style="text-align:center;">鎖卡日期</th>
+                  <th id="thead" class="text-size" style="text-align:center;">解卡日期</th>
+                  <th id="thead" class="text-size" style="text-align:center;">描述</th>
                 </tr>
               </thead>
               <tbody>
@@ -105,9 +107,11 @@
                   v-for="(item,index) in lock"
                   :key="index"
                 >
+                  <th class="text-size" style="text-align:center;">{{item.title}}</th>
                   <th class="text-size" style="text-align:center;">{{item.lock_type}}</th>
                   <th class="text-size" style="text-align:center;">{{item.lock_date}}</th>
                   <th class="text-size" style="text-align:center;">{{item.unlock_date}}</th>
+                  <th class="text-size" style="text-align:center;">{{item.description}}</th>
                 </tr>
               </tbody>
             </table>
