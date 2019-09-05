@@ -18,3 +18,4 @@ export const SYSTEM_CLEAR = "system_clear"
 export const SYSTEM_ABUSE = "system_abuse"
 export const SYSTEM_UNLOCK = "system_unlock"
 export const SYSTEM_LOCK_TABLE = "system_lock_table"
+export const SYSTEM_CHANGE_BED = "system_change_bed";
