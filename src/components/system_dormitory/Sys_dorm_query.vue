@@ -8,6 +8,29 @@
         style="background-color: rgb(51,51,51,0.6);"
       >
         <div class="row">
+          <b-modal
+            id="modalUnlock"
+            ref="modal"
+            title="解卡類型"
+            @show="resetModal"
+            @hidden="resetModal"
+            @ok="UnloclOK"
+          >
+            <b-form ref="form" @submit.stop.prevent="UnlockSubmit">
+              <b-form-radio-group
+                v-model="selected"
+                :options="[{ text: '立即解卡', value: false },{ text: '設定解卡日期', value: true }]"
+                :state="state"
+                class="pb-2"
+                name="radio-validation"
+              >
+                <b-form-invalid-feedback
+                  :state="state"
+                >{{selected===true&date===null?"Please select date":"Please select one"}}</b-form-invalid-feedback>
+              </b-form-radio-group>
+              <b-form-input v-model="date" v-show="selected" class="mr-1" id="date" type="date"></b-form-input>
+            </b-form>
+          </b-modal>
           <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
             <div class="float-right">
               <router-link
@@ -172,7 +195,7 @@
                         style="white-space:nowrap;width:100%;"
                         class="row col-sm-10 col-8"
                       >{{item.is_unlimited?"True":"False"}}</div>
-          
+
                       <h5 class="col-sm-2 col-4" style="white-space:nowrap;width:100%;">鎖卡</h5>
                       <div
                         style="white-space:nowrap;width:100%;"
@@ -196,8 +219,11 @@
                           class="btn btn-danger"
                         >Abuse</router-link>
                         <b-button
-                          v-show="item.lock_status==='LOCKED'"
-                          @click="showMsgBox(item.ip)"
+                          @click="()=>{
+                            $bvModal.show('modalUnlock')
+                            ip=item.ip
+                          }"
+                          v-show="item.lock_status==='LOCKED'&unlock"
                           variant="success"
                         >解卡</b-button>
                       </div>
@@ -246,34 +272,42 @@ export default {
         //this.$store.dispatch(WAN_DOWN);
       });
     },
-    showMsgBox(ip) {
-      this.boxTwo = "";
-      this.$bvModal
-        .msgBoxConfirm("確定解卡?", {
-          title: "通知",
-          size: "sm",
-          buttonSize: "sm",
-          okVariant: "success",
-          okTitle: "YES",
-          cancelVariant: "danger",
-          cancelTitle: "NO",
-          footerClass: "p-2",
-          hideHeaderClose: false,
-          centered: true
-        })
-        .then(value => {
-          if (value) this.$store.dispatch(SYSTEM_UNLOCK, ip);
-        });
+    resetModal() {
+      this.date = null;
+      this.selected = null;
+    },
+    UnloclOK(bvModalEvt) {
+      bvModalEvt.preventDefault();
+      this.UnlockSubmit();
+    },
+    UnlockSubmit() {
+      let date = this.date;
+      let ip = this.ip;
+      if (!this.state) {
+        return;
+      }
+      this.$store.dispatch(SYSTEM_UNLOCK, { ip, date });
+      this.$nextTick(() => {
+        this.$refs.modal.hide();
+      });
     }
   },
   data() {
     return {
+      selected: null,
+      date: null,
       username: null,
+      ip: null,
       abuse: PermissionService.Check("system.dormitory.abuse.view"),
       unlock: PermissionService.Check("system.dormitory.abuse.unlock")
     };
   },
   computed: {
+    state: function() {
+      if (this.selected === false) return true;
+      if ((this.selected === true) & (this.date != null)) return true;
+      else return false;
+    },
     ...mapState({
       info: state => state.system.info,
       errors: state => state.auth.errors
