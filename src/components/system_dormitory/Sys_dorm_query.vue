@@ -204,28 +204,28 @@
 
                       <div class="btn-group btn-right mx-3" role="group" aria-label="功能">
                         <router-link
-                          v-show="false"
-                          :to="`./user_netflow/${item.ip}`"
-                          class="btn btn-primary"
-                        >流量紀錄</router-link>
-                        <router-link
                           v-show="true"
                           :to="`./system_user_lock/${item.ip}`"
                           class="btn btn-secondary"
                         >鎖卡紀錄</router-link>
                         <router-link
-                          v-show="abuse"
-                          :to="`./system_abuse/${username}/${item.ip}`"
-                          class="btn btn-danger"
-                        >Abuse</router-link>
-                        <b-button
+                          v-show="false"
+                          :to="`./user_netflow/${item.ip}`"
+                          class="btn btn-primary"
+                        >流量紀錄</router-link>
+                        <button
                           @click="()=>{
                             $bvModal.show('modalUnlock')
                             ip=item.ip
                           }"
                           v-show="item.lock_status==='LOCKED'&unlock"
-                          variant="success"
-                        >解卡</b-button>
+                          class="btn btn-success"
+                        >解卡</button>
+                        <router-link
+                          v-show="abuse"
+                          :to="`./system_abuse/${username}/${item.ip}`"
+                          class="btn btn-danger"
+                        >Abuse</router-link>
                       </div>
                     </div>
                   </div>
