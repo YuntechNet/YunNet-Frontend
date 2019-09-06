@@ -13,4 +13,3 @@ const PermissionService = {
 };
 
 export default PermissionService;
- 
