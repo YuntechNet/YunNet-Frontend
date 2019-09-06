@@ -82,7 +82,7 @@
             </div>
           </div>
           <div
-            v-show="lock[0].unlock_date === null & lock[0].lock_id != null"
+            v-show="(lock[0].unlock_date === null)&(lock[0].lock_id != null)"
             class="col-sm-4 offset-sm-4 col-12"
           >
             <b-alert show="true" class="col-12" variant="danger">永鎖/中毒申請書</b-alert>
@@ -102,7 +102,6 @@
               data-placement="top"
               title="PDF"
               role="button"
-
             >PDF</a>
             <a
               href="https://tcx.yuntech.edu.tw/index.php?option=com_docman&task=doc_download&gid=1570"
@@ -112,7 +111,6 @@
               data-placement="top"
               title="ODT"
               role="button"
-
             >ODT</a>
           </div>
           <div class="col-12" style="padding-top: 3%;"></div>
