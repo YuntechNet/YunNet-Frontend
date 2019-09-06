@@ -26,7 +26,7 @@
               >
                 <b-form-invalid-feedback
                   :state="state"
-                >{{selected===true&date===null?"Please select date":"Please select one"}}</b-form-invalid-feedback>
+                >{{ selected === true & date === null ? "Please select date" : "Please select one" }}</b-form-invalid-feedback>
               </b-form-radio-group>
               <b-form-input v-model="date" v-show="selected" class="mr-1" id="date" type="date"></b-form-input>
             </b-form>
@@ -66,7 +66,7 @@
                 maxlength="40"
                 v-model="username"
                 required
-                placeholder="ID/Bed"
+                placeholder="ID/IP/Bed"
               ></b-form-input>
               <button type="submit" class="btn btn-primary d-inline">Query</button>
             </b-form-group>

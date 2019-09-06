@@ -43,11 +43,7 @@ const ErrorService = {
       (message === "INTERNAL_SERVER_ERROR")
     ) {
       router.replace({ name: "Index" });
-      if ((navigator.language || navigator.userLanguage) === "zh-TW") {
-        context.commit(SET_ERROR, "內部伺服器錯誤");
-      } else {
-        context.commit(SET_ERROR, ErrorService.format(message));
-      }
+      context.commit(SET_ERROR, ErrorService.format(message));
     }
     if ((status === 401) & (message === "LOGIN_FAILED")) {
       if ((navigator.language || navigator.userLanguage) === "zh-TW") {

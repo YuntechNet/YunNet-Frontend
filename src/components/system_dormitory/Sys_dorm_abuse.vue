@@ -86,7 +86,7 @@
           <div class="col-10 offset-1 col-sm-4 offset-sm-4" style="color:white;">
             <b-form @submit.prevent="submit(title,text,date)">
               <b-form-group style="text-align: left;" id="option_group" label="類型">
-                <b-form-select v-model="title" :options="options"></b-form-select>
+                <b-form-select required v-model="title" :options="options"></b-form-select>
                 <b-form-radio
                   v-model="selected"
                   name="some-radios"

@@ -25,7 +25,7 @@ const state = {
   info: [],
   info_IP: [],
   netflow: [],
-  lock: [],
+  lock: [{ unlock_date: null, lock_id: null }],
   wan: []
 };
 
