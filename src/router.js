@@ -210,7 +210,8 @@ export default new Router({
     {
       path: "/system_user_lock/:ip",
       name: "System_User_lock",
-      component: () => import("./components/system_dormitory/sys_query_lock.vue"),
+      component: () =>
+        import("./components/system_dormitory/sys_query_lock.vue"),
       meta: {
         isAuth: true,
         system: true
@@ -227,9 +228,15 @@ export default new Router({
         import("./components/system_dormitory/Sys_dorm_abuse.vue")
     },
     {
-      path: "/system_change_bed/",
+      path: "/system_change_bed",
       name: "Sys_change_bed",
-      component: () => import("./components/system_dormitory/Sys_change_bed.vue"),
+      meta: {
+        isAuth: true,
+        system: true
+      },
+      component: () =>
+        import("./components/system_dormitory/Sys_change_bed.vue")
+
     },
     {
       path: "*",

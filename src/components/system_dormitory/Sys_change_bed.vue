@@ -20,7 +20,7 @@
                 </router-link>
               </div>
               <div class="float-left">
-                <h1>Change_bed</h1>
+                <h1>Change bed</h1>
               </div>
             </div>
           </div>
@@ -37,7 +37,6 @@
                   label-for="old-bed"
                 >
                   <b-form-input
-                    type="bed"
                     id="old-bed"
                     maxlength="40"
                     v-model="old_bed"
@@ -53,7 +52,6 @@
                   label-for="new-bed"
                 >
                   <b-form-input
-                    type="bed"
                     id="new-bed"
                     maxlength="40"
                     required
@@ -69,7 +67,6 @@
                   label-for="confirm-bed"
                 >
                   <b-form-input
-                    type="bed"
                     id="confirm-bed"
                     maxlength="40"
                     v-model="REnew_bed"

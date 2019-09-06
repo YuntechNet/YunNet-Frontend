@@ -119,7 +119,7 @@ const actions = {
     if (JwtService.getToken()) {
       ApiService.setHeader();
       return new Promise(resolve => {
-        ApiService.post(`/management/`, credentials)
+        ApiService.post("/management", credentials)
           .then(({ data }) => {
             router.replace({ name: "Index" });
             context.commit(SET_ERROR, data.message);
