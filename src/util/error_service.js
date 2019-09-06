@@ -108,6 +108,15 @@ const ErrorService = {
         context.commit(SET_ERROR, ErrorService.format(message));
       }
     }
+    if ((status === 400) & (message === "USER_ALREADY_EXIST")) {
+      context.commit(SET_ERROR, "帳號已存在");
+    }
+    if ((status === 400) & (message === "USER_NOT_EXIST")) {
+      context.commit(SET_ERROR, "帳號不存在");
+    }
+    if ((status === 400) & (message === "BAD_REQUEST")) {
+      context.commit(SET_ERROR, "請求失敗");
+    }
   },
   format(message) {
     return message
