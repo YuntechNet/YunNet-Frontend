@@ -230,10 +230,6 @@ export default new Router({
     {
       path: "/system_change_bed",
       name: "Sys_change_bed",
-      meta: {
-        isAuth: true,
-        system: true
-      },
       component: () =>
         import("./components/system_dormitory/Sys_change_bed.vue")
 
