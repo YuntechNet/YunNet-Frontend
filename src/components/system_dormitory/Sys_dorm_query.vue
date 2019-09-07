@@ -71,9 +71,9 @@
               <button type="submit" class="btn btn-primary d-inline">Query</button>
             </b-form-group>
           </b-form>
-          <div class="col-12 mt-5" v-show="info.user.username">
+          <div class="col-12 mt-5" v-show="info.ip.length!=0">
             <div class="col-sm-6 offset-sm-3 col-10 offset-1" style="text-align: left;color:white;">
-              <div class="row">
+              <div v-show="info.user.length!=0" class="row">
                 <div class="col-4 font-weight-bold">
                   <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">學號</p>
                 </div>

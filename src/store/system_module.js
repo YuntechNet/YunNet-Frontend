@@ -17,7 +17,7 @@ import {
 } from "./mutations_type";
 
 const state = {
-  info: { user: [{}], ip: [{ ip: null }] },
+  info: { user: [{}], ip: [] },
   netflow: [],
   lock: [],
   wan: []
@@ -127,7 +127,7 @@ const mutations = {
     state.lock = lock;
   },
   [PURGE_SYSTEM](state) {
-    state.info = { user: {}, ip: {} };
+    state.info = { user: [], ip: [] };
   }
 };
 
