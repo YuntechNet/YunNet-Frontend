@@ -26,7 +26,7 @@
               >
                 <b-form-invalid-feedback
                   :state="state"
-                >{{selected===true&date===null?"Please select date":"Please select one"}}</b-form-invalid-feedback>
+                >{{ selected === true & date === null ? "Please select date" : "Please select one" }}</b-form-invalid-feedback>
               </b-form-radio-group>
               <b-form-input v-model="date" v-show="selected" class="mr-1" id="date" type="date"></b-form-input>
             </b-form>
@@ -66,7 +66,7 @@
                 maxlength="40"
                 v-model="username"
                 required
-                placeholder="ID/Bed"
+                placeholder="ID/IP/Bed"
               ></b-form-input>
               <button type="submit" class="btn btn-primary d-inline">Query</button>
             </b-form-group>
@@ -204,28 +204,28 @@
 
                       <div class="btn-group btn-right mx-3" role="group" aria-label="功能">
                         <router-link
-                          v-show="false"
-                          :to="`./user_netflow/${item.ip}`"
-                          class="btn btn-primary"
-                        >流量紀錄</router-link>
-                        <router-link
                           v-show="true"
                           :to="`./system_user_lock/${item.ip}`"
                           class="btn btn-secondary"
                         >鎖卡紀錄</router-link>
                         <router-link
-                          v-show="abuse"
-                          :to="`./system_abuse/${username}/${item.ip}`"
-                          class="btn btn-danger"
-                        >Abuse</router-link>
-                        <b-button
+                          v-show="false"
+                          :to="`./user_netflow/${item.ip}`"
+                          class="btn btn-primary"
+                        >流量紀錄</router-link>
+                        <button
                           @click="()=>{
                             $bvModal.show('modalUnlock')
                             ip=item.ip
                           }"
                           v-show="item.lock_status==='LOCKED'&unlock"
-                          variant="success"
-                        >解卡</b-button>
+                          class="btn btn-success"
+                        >解卡</button>
+                        <router-link
+                          v-show="abuse"
+                          :to="`./system_abuse/${username}/${item.ip}`"
+                          class="btn btn-danger"
+                        >Abuse</router-link>
                       </div>
                     </div>
                   </div>

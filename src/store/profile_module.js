@@ -25,7 +25,7 @@ const state = {
   info: [],
   info_IP: [],
   netflow: [],
-  lock: [],
+  lock: [{}],
   wan: []
 };
 
@@ -150,7 +150,11 @@ const mutations = {
     state.netflow = netflow;
   },
   [SET_LOCK](state, lock) {
-    state.lock = lock;
+    if (lock.length != 0) {
+      state.lock = lock;
+    } else {
+      state.lock[0] = { unlock_date: null, lock_id: null };
+    }
   },
   [ADD_WAN_DOWN](state, data) {
     let all = data[0].netflow[0].wan_download + data[0].netflow[0].wan_upload;

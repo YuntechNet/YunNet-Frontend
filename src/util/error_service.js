@@ -43,11 +43,7 @@ const ErrorService = {
       (message === "INTERNAL_SERVER_ERROR")
     ) {
       router.replace({ name: "Index" });
-      if ((navigator.language || navigator.userLanguage) === "zh-TW") {
-        context.commit(SET_ERROR, "內部伺服器錯誤");
-      } else {
-        context.commit(SET_ERROR, ErrorService.format(message));
-      }
+      context.commit(SET_ERROR, ErrorService.format(message));
     }
     if ((status === 401) & (message === "LOGIN_FAILED")) {
       if ((navigator.language || navigator.userLanguage) === "zh-TW") {
@@ -107,6 +103,15 @@ const ErrorService = {
       } else {
         context.commit(SET_ERROR, ErrorService.format(message));
       }
+    }
+    if ((status === 400) & (message === "USER_ALREADY_EXIST")) {
+      context.commit(SET_ERROR, "帳號已存在");
+    }
+    if ((status === 400) & (message === "USER_NOT_EXIST")) {
+      context.commit(SET_ERROR, "帳號不存在");
+    }
+    if ((status === 400) & (message === "BAD_REQUEST")) {
+      context.commit(SET_ERROR, "請求失敗");
     }
   },
   format(message) {

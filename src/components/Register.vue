@@ -165,9 +165,9 @@
 </template>
 
 <script>
-import Background from "@/components/Background"
-import { REGISTER, ERROR } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { REGISTER, ERROR } from "@/store/actions_type";
+import { mapState } from "vuex";
 export default {
   name: "Register",
   components: {
@@ -179,24 +179,24 @@ export default {
       bed: null,
       password: null,
       REpassword: null
-    }
+    };
   },
   methods: {
     regist() {
-      let reg = /[\W]/g
-      let username = this.id
-      let bed = this.bed
-      let password = this.password
+      let reg = /[\W]/g;
+      let username = this.id;
+      let bed = this.bed;
+      let password = this.password;
       if (!reg.test(username)) {
         if (password === this.REpassword) {
           this.$store
             .dispatch(REGISTER, { username, bed, password })
-            .then(() => this.$router.push({ name: "Index" }))
+            .then(() => this.$router.push({ name: "Index" }));
         } else {
-          this.$store.dispatch(ERROR, "重複密碼錯誤!")
+          this.$store.dispatch(ERROR, "重複密碼錯誤!");
         }
       } else {
-        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字");
       }
     }
   },
@@ -205,7 +205,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 
 

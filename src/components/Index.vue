@@ -48,6 +48,11 @@
                   to="./register"
                   role="button"
                 >註冊｜Register</router-link>
+                <a
+                  href="http://cnms.yuntech.edu.tw/netflow.pl"
+                  class="btn col-12"
+                  role="button"
+                >流量｜Netflow</a>
                 <router-link v-if="false" class="btn col-12" to="./netflow" role="button">流量｜Netflow</router-link>
                 <router-link class="btn col-12" to="./user_contract" role="button">規範｜Contract</router-link>
                 <router-link
@@ -205,6 +210,11 @@
             to="./register"
             role="button"
           >註冊｜Register</router-link>
+          <a
+            href="http://cnms.yuntech.edu.tw/netflow.pl"
+            class="btn col-12"
+            role="button"
+          >流量｜Netflow</a>
           <router-link v-if="false" class="btn col-12" to="./netflow" role="button">流量｜Netflow</router-link>
           <router-link class="btn col-12" to="./user_contract" role="button">規範｜Contract</router-link>
           <router-link
@@ -224,9 +234,9 @@
 
 
 <script>
-import { mapGetters } from "vuex"
-import { mapState } from "vuex"
-import { LOGOUT /*WAN_DOWN ,IP */  } from "@/store/actions_type"
+import { mapGetters } from "vuex";
+import { mapState } from "vuex";
+import { LOGOUT /*WAN_DOWN ,IP */ } from "@/store/actions_type";
 export default {
   name: "index",
   data() {
@@ -234,7 +244,7 @@ export default {
       slide: 0,
       sliding: null,
       k: true
-    }
+    };
   },
   /*
   beforeMount: function() {
@@ -246,8 +256,8 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch(LOGOUT).then(() => {
-        this.$router.push({ name: "Index" })
-      })
+        this.$router.push({ name: "Index" });
+      });
     }
   },
   computed: {
@@ -256,7 +266,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 <style scoped>
 #BK {

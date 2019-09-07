@@ -81,38 +81,37 @@
               </div>
             </div>
           </div>
-          <b-alert
-            show="true"
-            class="mt-4 col-sm-4 offset-sm-4 col-12"
-            variant="warning"
-            dismissible
-          >若無解卡日期請至資訊中心網頁下載資安事件通報單填寫完並送至資訊中心</b-alert>
-          <div v-show="(0)" class="col-sm-4 offset-sm-4 col-12">
-            <p style="font-size:20px;color:white;background-color:red;">永鎖/中毒申請書</p>
-            <button
+          <div
+            v-show="(lock[0].unlock_date === null)&(lock[0].lock_id != null)"
+            class="col-sm-4 offset-sm-4 col-12"
+          >
+            <b-alert show="true" class="col-12" variant="danger">永鎖/中毒申請書</b-alert>
+            <a
+              href="https://tcx.yuntech.edu.tw/index.php?option=com_docman&task=doc_download&gid=1568"
               type="button"
-              class="col-3 btn btn-danger"
+              class="col-3 btn btn-danger text-light mx-2"
               data-toggle="tooltip"
               data-placement="top"
               title="DOC"
-              style="margin:1% 1%"
-            >DOC</button>
-            <button
+            >DOC</a>
+            <a
+              href="https://tcx.yuntech.edu.tw/index.php?option=com_docman&task=doc_download&gid=1566"
               type="button"
-              class="col-3 btn btn-danger"
+              class="col-3 btn btn-danger text-light mx-2"
               data-toggle="tooltip"
               data-placement="top"
               title="PDF"
-              style="margin:1% 1%"
-            >PDF</button>
-            <button
+              role="button"
+            >PDF</a>
+            <a
+              href="https://tcx.yuntech.edu.tw/index.php?option=com_docman&task=doc_download&gid=1570"
               type="button"
-              class="col-3 btn btn-danger"
+              class="col-3 btn btn-danger text-light mx-2"
               data-toggle="tooltip"
               data-placement="top"
               title="ODT"
-              style="margin:1% 1%"
-            >ODT</button>
+              role="button"
+            >ODT</a>
           </div>
           <div class="col-12" style="padding-top: 3%;"></div>
           <div class="col-10 offset-1 table-responsive">
