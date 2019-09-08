@@ -70,6 +70,7 @@
             <b-button-group>
               <router-link to="./Change_password" class="btn btn-danger">更改密碼</router-link>
               <router-link v-show="Query" to="./system_query" class="btn btn-info">System Query</router-link>
+              <router-link v-show="Bed" to="./system_change_bed" class="btn btn-info">床位異動</router-link>
             </b-button-group>
           </div>
 
@@ -130,7 +131,10 @@
 
                     <div class="btn-group btn-right mx-3" role="group" aria-label="功能">
                       <router-link :to="`./change_mac/${item.ip}`" class="btn btn-success">更改MAC</router-link>
-                      <a class="btn btn-primary" :href="`http://cnms.yuntech.edu.tw/netflow.pl?action=ShowIP&IP=${item.ip}`">流量紀錄</a>
+                      <a
+                        class="btn btn-primary"
+                        :href="`http://cnms.yuntech.edu.tw/netflow.pl?action=ShowIP&IP=${item.ip}`"
+                      >流量紀錄</a>
                       <router-link
                         v-show="false"
                         :to="`./user_netflow/${item.ip}`"
@@ -171,7 +175,8 @@ export default {
   },
   data() {
     return {
-      Query: PermissionService.Check("api.query")
+      Query: PermissionService.Check("api.query"),
+      Bed: PermissionService.Check("api.bed.exchange")
     };
   },
   methods: {
