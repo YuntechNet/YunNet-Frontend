@@ -85,7 +85,11 @@
             v-show="(lock[0].unlock_date === null)&(lock[0].lock_id != null)"
             class="col-sm-6 offset-sm-3 col-12"
           >
-            <b-alert show="true" class="col-12" variant="danger">您的IP已被永久鎖卡請下載下方申請表填寫並送至資訊中心</b-alert>
+            <b-alert
+              show="true"
+              class="col-12"
+              variant="danger"
+            >{{language()?'您的IP因資安原因而永久鎖卡，請列印下方報告單並填寫聯絡資料後送交至資訊中心':'Your IP has been locked without unlock date due to security reasons, please print out the report document below, fill in contact information and deliver it to Information Technology Service Center'}}</b-alert>
             <a
               href="https://tcx.yuntech.edu.tw/index.php?option=com_docman&task=doc_download&gid=1568"
               type="button"
@@ -178,6 +182,13 @@ export default {
     return {
       ipnow: null
     };
+  },
+  methods: {
+    language() {
+      if ((navigator.language || navigator.userLanguage) === "zh-TW")
+        return true;
+      else return false;
+    }
   },
   computed: {
     ...mapState({
