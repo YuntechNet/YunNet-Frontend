@@ -19,7 +19,7 @@
               </button>
             </div>
             <div class="float-left">
-              <h1>鎖卡紀錄｜UserlockTable.</h1>
+              <h1>鎖卡紀錄｜Lock Table</h1>
             </div>
           </div>
 
@@ -83,9 +83,9 @@
           </div>
           <div
             v-show="(lock[0].unlock_date === null)&(lock[0].lock_id != null)"
-            class="col-sm-4 offset-sm-4 col-12"
+            class="col-sm-6 offset-sm-3 col-12"
           >
-            <b-alert show="true" class="col-12" variant="danger">永鎖/中毒申請書</b-alert>
+            <b-alert show="true" class="col-12" variant="danger">您的IP已被永久鎖卡請下載下方申請表填寫並送至資訊中心</b-alert>
             <a
               href="https://tcx.yuntech.edu.tw/index.php?option=com_docman&task=doc_download&gid=1568"
               type="button"

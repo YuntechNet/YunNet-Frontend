@@ -170,7 +170,7 @@ export default {
   },
   data() {
     return {
-      Query: PermissionService.Check("system.dormitory.query.view")
+      Query: PermissionService.Check("api.query")
     };
   },
   methods: {

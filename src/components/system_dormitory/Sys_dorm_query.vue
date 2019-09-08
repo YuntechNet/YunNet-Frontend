@@ -298,8 +298,8 @@ export default {
       date: null,
       username: null,
       ip: null,
-      abuse: PermissionService.Check("system.dormitory.abuse.view"),
-      unlock: PermissionService.Check("system.dormitory.abuse.unlock")
+      abuse: PermissionService.Check("api.ip.lock.add"),
+      unlock: PermissionService.Check("api.ip.lock.edit")
     };
   },
   computed: {

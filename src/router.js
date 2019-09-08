@@ -202,7 +202,7 @@ export default new Router({
       name: "System_query",
       meta: {
         isAuth: true,
-        system: true
+        system: "api.query"
       },
       component: () =>
         import("./components/system_dormitory/Sys_dorm_query.vue")
@@ -210,10 +210,11 @@ export default new Router({
     {
       path: "/system_user_lock/:ip",
       name: "System_User_lock",
-      component: () => import("./components/system_dormitory/sys_query_lock.vue"),
+      component: () =>
+        import("./components/system_dormitory/sys_query_lock.vue"),
       meta: {
         isAuth: true,
-        system: true
+        system: "api.query.lock"
       }
     },
     {
@@ -221,7 +222,7 @@ export default new Router({
       name: "System_abuse",
       meta: {
         isAuth: true,
-        system: true
+        system: "api.ip.lock.add"
       },
       component: () =>
         import("./components/system_dormitory/Sys_dorm_abuse.vue")
