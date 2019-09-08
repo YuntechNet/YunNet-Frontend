@@ -213,6 +213,10 @@
                           :to="`./user_netflow/${item.ip}`"
                           class="btn btn-primary"
                         >流量紀錄</router-link>
+                        <a
+                          class="btn btn-primary"
+                          :href="`http://cnms.yuntech.edu.tw/netflow.pl?action=ShowIP&IP=${item.ip}`"
+                        >流量紀錄</a>
                         <button
                           @click="()=>{
                             $bvModal.show('modalUnlock')

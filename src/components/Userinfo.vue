@@ -130,6 +130,7 @@
 
                     <div class="btn-group btn-right mx-3" role="group" aria-label="功能">
                       <router-link :to="`./change_mac/${item.ip}`" class="btn btn-success">更改MAC</router-link>
+                      <a class="btn btn-primary" :href="`http://cnms.yuntech.edu.tw/netflow.pl?action=ShowIP&IP=${item.ip}`">流量紀錄</a>
                       <router-link
                         v-show="false"
                         :to="`./user_netflow/${item.ip}`"
