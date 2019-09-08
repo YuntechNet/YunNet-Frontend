@@ -228,6 +228,13 @@ export default new Router({
         import("./components/system_dormitory/Sys_dorm_abuse.vue")
     },
     {
+      path: "/system_change_bed",
+      name: "Sys_change_bed",
+      component: () =>
+        import("./components/system_dormitory/Sys_change_bed.vue")
+
+    },
+    {
       path: "*",
       component: () => import("./components/Index.vue")
     }

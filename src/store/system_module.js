@@ -7,7 +7,10 @@ import {
   SYSTEM_CLEAR,
   SYSTEM_ABUSE,
   SYSTEM_UNLOCK,
-  SYSTEM_LOCK_TABLE
+  SYSTEM_LOCK_TABLE,
+  SYSTEM_CHANGE_BED,
+  SYSTEM_FILLIN_BED,
+  SYSTEM_DELETE_BED
 } from "./actions_type";
 import {
   SET_QUERY,
@@ -106,6 +109,54 @@ const actions = {
         ApiService.get_pure(`/management/user/${ip}/lock`)
           .then(({ data }) => {
             context.commit(SET_SYSTEM_LOCK, data);
+            resolve(data);
+          })
+          .catch(({ response }) => {
+            ErrorService.init(response.status, response.data.message, context);
+          });
+      });
+    }
+  },
+  [SYSTEM_CHANGE_BED](context, credentials) {
+    if (JwtService.getToken()) {
+      ApiService.setHeader();
+      return new Promise(resolve => {
+        ApiService.put("/management/bed-change", credentials)
+          .then(({ data }) => {
+            router.replace({ name: "Index" });
+            context.commit(SET_ERROR, data.message);
+            resolve(data);
+          })
+          .catch(({ response }) => {
+            ErrorService.init(response.status, response.data.message, context);
+          });
+      });
+    }
+  },
+  [SYSTEM_FILLIN_BED](context, credentials) {
+    if (JwtService.getToken()) {
+      ApiService.setHeader();
+      return new Promise(resolve => {
+        ApiService.post("/management/bed-change", credentials)
+          .then(({ data }) => {
+            router.replace({ name: "Index" });
+            context.commit(SET_ERROR, data.message);
+            resolve(data);
+          })
+          .catch(({ response }) => {
+            ErrorService.init(response.status, response.data.message, context);
+          });
+      });
+    }
+  },
+  [SYSTEM_DELETE_BED](context, credentials) {
+    if (JwtService.getToken()) {
+      ApiService.setHeader();
+      return new Promise(resolve => {
+        ApiService.delete(`/management/bed-change/${credentials}`)
+          .then(({ data }) => {
+            router.replace({ name: "Index" });
+            context.commit(SET_ERROR, data.message);
             resolve(data);
           })
           .catch(({ response }) => {
