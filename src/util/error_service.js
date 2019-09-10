@@ -113,6 +113,13 @@ const ErrorService = {
     if ((status === 400) & (message === "BAD_REQUEST")) {
       context.commit(SET_ERROR, "請求失敗");
     }
+    if (message === "請先設定MAC卡號!") {
+      if ((navigator.language || navigator.userLanguage) === "zh-TW") {
+        context.commit(SET_ERROR, message);
+      } else {
+        context.commit(SET_ERROR, "Please set MAC address!");
+      }
+    }
   },
   format(message) {
     return message

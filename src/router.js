@@ -112,6 +112,7 @@ export default new Router({
     */
     {
       path: "/change_mac/:ip",
+      name: "change_mac",
       component: () => import("./components/Change_mac.vue"),
       meta: {
         isAuth: true

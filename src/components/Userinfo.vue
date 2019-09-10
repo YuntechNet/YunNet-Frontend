@@ -158,10 +158,10 @@
 
 
 <script>
-import Background from "@/components/Background";
-import PermissionService from "@/util/permission_service";
-import { INFO, IP /*WAN_DOWN */ } from "@/store/actions_type";
-import { mapState } from "vuex";
+import Background from "@/components/Background"
+import PermissionService from "@/util/permission_service"
+import { INFO, IP /*WAN_DOWN */ } from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "Userinfo",
@@ -170,20 +170,20 @@ export default {
     this.$store.dispatch(INFO).then(() => {
       this.$store.dispatch(IP).then(() => {
         //this.$store.dispatch(WAN_DOWN);
-      });
-    });
+      })
+    })
   },
   data() {
     return {
       Query: PermissionService.Check("api.query"),
       Bed: PermissionService.Check("api.bed.exchange")
-    };
+    }
   },
   methods: {
     readablizeBytes(bytes) {
-      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"];
-      let e = Math.floor(Math.log(bytes) / Math.log(1024));
-      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
+      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"]
+      let e = Math.floor(Math.log(bytes) / Math.log(1024))
+      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e]
     }
   },
   computed: {
@@ -193,7 +193,7 @@ export default {
       wan: state => state.profile.wan
     })
   }
-};
+}
 </script>
 
 
