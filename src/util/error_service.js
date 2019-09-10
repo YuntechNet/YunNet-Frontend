@@ -62,7 +62,7 @@ const ErrorService = {
     }
     if ((status === 400) & (message === "REGISTER_FAILED")) {
       if ((navigator.language || navigator.userLanguage) === "zh-TW") {
-        context.commit(SET_ERROR, "註冊失敗");
+        context.commit(SET_ERROR, "註冊失敗 請確認床號及學號是否正確!");
       } else {
         context.commit(SET_ERROR, ErrorService.format(message));
       }
