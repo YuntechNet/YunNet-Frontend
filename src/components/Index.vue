@@ -97,6 +97,13 @@
           </a>
         </b-alert>
         <div class="col-12" style="padding:16vh;"></div>
+        <div class="w-100 mb-4"> 
+        <router-link
+          v-if="!isAuthenticated"
+          :to="{name:'Login'}"
+          class="btn-dark btn-lg "
+          style="margin:0px auto"
+        >Login</router-link></div>
         <router-link
           v-if="!isAuthenticated"
           :to="{name:'Register'}"
@@ -234,9 +241,9 @@
 
 
 <script>
-import { mapGetters } from "vuex";
-import { mapState } from "vuex";
-import { LOGOUT /*WAN_DOWN ,IP */ } from "@/store/actions_type";
+import { mapGetters } from "vuex"
+import { mapState } from "vuex"
+import { LOGOUT /*WAN_DOWN ,IP */ } from "@/store/actions_type"
 export default {
   name: "index",
   data() {
@@ -244,7 +251,7 @@ export default {
       slide: 0,
       sliding: null,
       k: true
-    };
+    }
   },
   /*
   beforeMount: function() {
@@ -256,8 +263,8 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch(LOGOUT).then(() => {
-        this.$router.push({ name: "Index" });
-      });
+        this.$router.push({ name: "Index" })
+      })
     }
   },
   computed: {
@@ -266,7 +273,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 <style scoped>
 #BK {

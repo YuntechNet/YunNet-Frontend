@@ -64,7 +64,7 @@ const ErrorService = {
       if ((navigator.language || navigator.userLanguage) === "zh-TW") {
         context.commit(SET_ERROR, "註冊失敗 請確認床號及學號是否正確!");
       } else {
-        context.commit(SET_ERROR, ErrorService.format(message));
+        context.commit(SET_ERROR, `${ErrorService.format(message)} Please check bed number and username!`);
       }
     }
     if ((status === 400) & (message === "NOT_REGISTERED")) {
