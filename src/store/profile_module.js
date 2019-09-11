@@ -54,6 +54,12 @@ const actions = {
         ApiService.get_pure(`user/${username}/ip`)
           .then(({ data }) => {
             context.commit(SET_INFO_IP, data);
+            if (typeof data[0] !== 'undefined') {
+              if (data.length === 1 & data[0].mac === null) {
+                router.push({ path: `/change_mac/${data[0].ip}` })
+                ErrorService.init(200, "請先設定MAC卡號!", context);
+              }
+            }
             resolve(data);
           })
           .catch(({ response }) => {
@@ -128,7 +134,7 @@ const actions = {
       return new Promise(resolve => {
         ApiService.get_pure(`user/${username}/${credentials}/lock`)
           .then(({ data }) => {
-            context.commit(SET_LOCK, data);
+            context.commit(SET_LOCK, data, context);
             resolve(data);
           })
           .catch(({ response }) => {
@@ -142,9 +148,11 @@ const actions = {
 const mutations = {
   [SET_INFO](state, info) {
     state.info = info;
+
   },
   [SET_INFO_IP](state, info_IP) {
     state.info_IP = info_IP;
+
   },
   [SET_NETFLOW](state, netflow) {
     state.netflow = netflow;

@@ -62,9 +62,9 @@ const ErrorService = {
     }
     if ((status === 400) & (message === "REGISTER_FAILED")) {
       if ((navigator.language || navigator.userLanguage) === "zh-TW") {
-        context.commit(SET_ERROR, "註冊失敗");
+        context.commit(SET_ERROR, "註冊失敗 請確認床號及學號是否正確!");
       } else {
-        context.commit(SET_ERROR, ErrorService.format(message));
+        context.commit(SET_ERROR, `${ErrorService.format(message)} Please check bed number and username!`);
       }
     }
     if ((status === 400) & (message === "NOT_REGISTERED")) {
@@ -112,6 +112,13 @@ const ErrorService = {
     }
     if ((status === 400) & (message === "BAD_REQUEST")) {
       context.commit(SET_ERROR, "請求失敗");
+    }
+    if (message === "請先設定MAC卡號!") {
+      if ((navigator.language || navigator.userLanguage) === "zh-TW") {
+        context.commit(SET_ERROR, message);
+      } else {
+        context.commit(SET_ERROR, "Please set MAC address!");
+      }
     }
   },
   format(message) {

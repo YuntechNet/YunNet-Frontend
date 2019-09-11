@@ -72,7 +72,7 @@
                 </router-link>
               </div>
               <div class="float-left">
-                <h1>Regist - Application Form</h1>
+                <h1>Register - Application Form</h1>
               </div>
             </div>
             <div class="col-10 offset-1">

@@ -12,7 +12,7 @@
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
                 <router-link
-                  :to="{name:'Userinfo'}"
+                  :to="{name:'Index'}"
                   class="btn btn-default btn-lg"
                   style="background-color: white;"
                 >
@@ -170,28 +170,14 @@
   </div>
 </template>
 <script>
-import Background from "@/components/Background";
-import { IP, CHANGE_MAC, ERROR } from "@/store/actions_type";
-import { mapState } from "vuex";
+import Background from "@/components/Background"
+import { CHANGE_MAC, ERROR } from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "Change_mac",
   components: { Background },
-  beforeCreate: function() {
-    this.$store.dispatch(IP);
-  },
-  created: function() {
-    let i = 0;
-    for (i = 0; i < this.info_IP.length; i++) {
-      if (this.info_IP[i].ip === this.$route.params.ip) {
-        this.macnow = this.info_IP[i].mac;
-        this.ipnow = this.info_IP[i].ip;
-      }
-    }
-    if (this.ipnow === null) {
-      this.$router.push({ name: "Index" });
-    }
-  },
+  
   data() {
     return {
       mac1: null,
@@ -201,18 +187,18 @@ export default {
       mac5: null,
       mac6: null,
       macnow: null,
-      ipnow: null
-    };
+      ipnow: this.$route.params.ip
+    }
   },
   methods: {
     submit(mac) {
-      let reg = /[\W]/g;
-      mac = mac.toUpperCase();
+      let reg = /[\W]/g
+      mac = mac.toUpperCase()
       if (!reg.test(mac)) {
-        let ip = this.$route.params.ip;
-        this.$store.dispatch(CHANGE_MAC, { mac, ip });
+        let ip = this.$route.params.ip
+        this.$store.dispatch(CHANGE_MAC, { mac, ip })
       } else {
-        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字");
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
       }
     }
   },
@@ -222,7 +208,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-};
+}
 </script>
 <style scoped>
 hr {

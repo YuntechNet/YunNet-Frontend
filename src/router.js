@@ -112,6 +112,7 @@ export default new Router({
     */
     {
       path: "/change_mac/:ip",
+      name: "change_mac",
       component: () => import("./components/Change_mac.vue"),
       meta: {
         isAuth: true
@@ -236,6 +237,15 @@ export default new Router({
       },
       component: () =>
         import("./components/system_dormitory/Sys_change_bed.vue")
+    },
+    {
+      path: "/IP_log/:ip",
+      name: "Sys_IP_Log",
+      meta: {
+        isAuth: true,
+        system: "api.query"
+      },
+      component: () => import("./components/system_dormitory/Sys_ip_log.vue")
     },
     {
       path: "*",

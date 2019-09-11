@@ -213,6 +213,7 @@
                           :to="`./user_netflow/${item.ip}`"
                           class="btn btn-primary"
                         >流量紀錄</router-link>
+                        <router-link :to="`./IP_Log/${item.ip}`" class="btn btn-info">使用紀錄</router-link>
                         <a
                           class="btn btn-primary"
                           :href="`http://cnms.yuntech.edu.tw/netflow.pl?action=ShowIP&IP=${item.ip}`"
