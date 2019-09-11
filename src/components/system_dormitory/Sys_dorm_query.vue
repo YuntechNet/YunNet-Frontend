@@ -14,7 +14,7 @@
             title="解卡類型"
             @show="resetModal"
             @hidden="resetModal"
-            @ok="UnloclOK"
+            @ok="UnlockOK"
           >
             <b-form ref="form" @submit.stop.prevent="UnlockSubmit">
               <b-form-radio-group
@@ -280,7 +280,7 @@ export default {
       this.date = null;
       this.selected = null;
     },
-    UnloclOK(bvModalEvt) {
+    UnlockOK(bvModalEvt) {
       bvModalEvt.preventDefault();
       this.UnlockSubmit();
     },
