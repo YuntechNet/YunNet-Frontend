@@ -99,7 +99,7 @@
                   :key="index"
                 >
                   <th class="text-size" style="text-align:center;">{{item.action}}</th>
-                  <th class="text-size" style="text-align:center;">{{item.date}}</th>
+                  <th class="text-size" style="text-align:center;">{{`${item.date} +00`}}</th>
                   <th class="text-size" style="text-align:center;">{{item.id}}</th>
                   <th class="text-size" style="text-align:center;">{{item.username}}</th>
                 </tr>
@@ -170,7 +170,7 @@
                     class="text-size"
                     style="text-align:center;"
                   >{{item.new_mac!=null?item.new_mac.match( /.{1,2}/g ).join( ':' ).toUpperCase():"未設定"}}</th>
-                  <th class="text-size" style="text-align:center;">{{item.date}}</th>
+                  <th class="text-size" style="text-align:center;">{{`${item.date} +00`}}</th>
                   <th class="text-size" style="text-align:center;">{{item.id}}</th>
                 </tr>
               </tbody>
@@ -201,7 +201,7 @@ export default {
   },
 
   methods:{
-    
+
   },
 
   computed: {
