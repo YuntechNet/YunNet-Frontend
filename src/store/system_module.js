@@ -188,8 +188,8 @@ const actions = {
   [SYSTEM_ALL_LOG](context, credentials) {
     if (JwtService.getToken()) {
       return new Promise(resolve => {
-        const lock = ApiService.get("/log/ip/lock", credentials);
-        const mac = ApiService.get("/log/ip/mac", credentials);
+        const lock = ApiService.get("/log/lock", credentials);
+        const mac = ApiService.get("/log/mac", credentials);
         const action = ApiService.get("/log/actions", credentials);
         ApiService.all([lock, mac, action])
           .then(response => {
@@ -223,8 +223,6 @@ const mutations = {
       if (item.data !== null) state.log.push(item.data);
       else state.log.push([]);
     });
-    // eslint-disable-next-line no-console
-    console.log(state.log);
   }
 };
 

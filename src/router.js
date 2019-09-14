@@ -199,6 +199,14 @@ export default new Router({
       component: () => import("./components/Set_Password.vue")
     },
     {
+      path: "/user_log/:username",
+      name: "user_log",
+      meta: {
+        isAuth: true,
+      },
+      component: () => import("./components/User_action_log.vue")
+    },
+    {
       path: "/system_query",
       name: "System_query",
       meta: {

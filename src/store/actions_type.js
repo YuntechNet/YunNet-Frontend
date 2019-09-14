@@ -23,3 +23,4 @@ export const SYSTEM_FILLIN_BED = "system_fillin_bed";
 export const SYSTEM_DELETE_BED = "system_delete_bed";
 export const SYSTEM_IP_LOG = "system_ip_log";
 export const SYSTEM_ALL_LOG = "system_all_log";
+export const USER_LOG = "user_log";

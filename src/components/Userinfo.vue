@@ -71,6 +71,7 @@
               <router-link to="./Change_password" class="btn btn-danger">更改密碼</router-link>
               <router-link v-show="Query" to="./system_query" class="btn btn-info">System Query</router-link>
               <router-link v-show="Bed" to="./system_change_bed" class="btn btn-info">床位異動</router-link>
+              <router-link :to="`./user_log/${info.username}`" class="btn btn-primary">使用紀錄</router-link>
             </b-button-group>
           </div>
 
@@ -158,10 +159,10 @@
 
 
 <script>
-import Background from "@/components/Background"
-import PermissionService from "@/util/permission_service"
-import { INFO, IP /*WAN_DOWN */ } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import PermissionService from "@/util/permission_service";
+import { INFO, IP /*WAN_DOWN */ } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "Userinfo",
@@ -170,20 +171,20 @@ export default {
     this.$store.dispatch(INFO).then(() => {
       this.$store.dispatch(IP).then(() => {
         //this.$store.dispatch(WAN_DOWN);
-      })
-    })
+      });
+    });
   },
   data() {
     return {
       Query: PermissionService.Check("api.query"),
       Bed: PermissionService.Check("api.bed.exchange")
-    }
+    };
   },
   methods: {
     readablizeBytes(bytes) {
-      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"]
-      let e = Math.floor(Math.log(bytes) / Math.log(1024))
-      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e]
+      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"];
+      let e = Math.floor(Math.log(bytes) / Math.log(1024));
+      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
     }
   },
   computed: {
@@ -193,7 +194,7 @@ export default {
       wan: state => state.profile.wan
     })
   }
-}
+};
 </script>
 
 

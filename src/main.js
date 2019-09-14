@@ -13,11 +13,13 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import store from "./store";
 import ApiService from "./util/api_service";
 import PermissionService from "@/util/permission_service";
+import moment from "moment";
 import { CHECK_AUTH, ERROR } from "./store/actions_type";
 
 library.add(faTimes, faSignInAlt);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.use(BootstrapVue);
+Vue.prototype.$moment = moment;
 
 ApiService.init();
 router.beforeEach((to, from, next) => {

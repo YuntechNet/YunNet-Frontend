@@ -125,7 +125,7 @@
               <tbody>
                 <tr
                   style="background-color:#FAFAD2;color:#444444;"
-                  v-for="(item,index) in log[1]"
+                  v-for="(item,index) in log[0]"
                   :key="index"
                 >
                   <th class="text-size" style="text-align:center;">{{item.type}}</th>
@@ -192,11 +192,16 @@ import { mapState } from "vuex";
 import { SYSTEM_ALL_LOG, SYSTEM_QUERY } from "@/store/actions_type";
 
 export default {
-  name: "IP_Log",
+  name: "All_Log",
   components: { Background },
+  
   beforeCreate: function() {
     this.$store.dispatch(SYSTEM_QUERY, this.$route.params.username);
     this.$store.dispatch(SYSTEM_ALL_LOG, this.$route.params.username);
+  },
+
+  methods:{
+    
   },
 
   computed: {
