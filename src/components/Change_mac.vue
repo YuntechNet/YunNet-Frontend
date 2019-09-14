@@ -170,14 +170,14 @@
   </div>
 </template>
 <script>
-import Background from "@/components/Background"
-import { CHANGE_MAC, ERROR } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { CHANGE_MAC, ERROR } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "Change_mac",
   components: { Background },
-  
+
   data() {
     return {
       mac1: null,
@@ -188,17 +188,17 @@ export default {
       mac6: null,
       macnow: null,
       ipnow: this.$route.params.ip
-    }
+    };
   },
   methods: {
     submit(mac) {
-      let reg = /[\W]/g
-      mac = mac.toUpperCase()
+      let reg = /[\W]/g;
+      mac = mac.toUpperCase();
       if (!reg.test(mac)) {
-        let ip = this.$route.params.ip
-        this.$store.dispatch(CHANGE_MAC, { mac, ip })
+        let ip = this.$route.params.ip;
+        this.$store.dispatch(CHANGE_MAC, { mac, ip });
       } else {
-        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字");
       }
     }
   },
@@ -208,7 +208,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 <style scoped>
 hr {

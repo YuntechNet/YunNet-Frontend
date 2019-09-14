@@ -49,7 +49,10 @@ const ApiService = {
 
   delete(resource, params) {
     return Vue.axios.delete(`${resource}`, { data: params });
-  }
+  },
+  all(array){
+    return Vue.axios.all(array);
+  },
 };
 
 export default ApiService;

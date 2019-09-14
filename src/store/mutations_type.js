@@ -12,3 +12,4 @@ export const ADD_WAN_DOWN = "add_WAN_Down";
 export const SET_QUERY = "setQuery";
 export const PURGE_SYSTEM = "purgeSystem";
 export const SET_SYSTEM_LOCK = "setSystemLOCK";
+export const SET_SYSTEM_IP_LOG = "setSystemIpLog";

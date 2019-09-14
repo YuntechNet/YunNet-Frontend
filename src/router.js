@@ -243,7 +243,7 @@ export default new Router({
       name: "Sys_IP_Log",
       meta: {
         isAuth: true,
-        system: "api.query"
+        system: "api.log.actions.all"
       },
       component: () => import("./components/system_dormitory/Sys_ip_log.vue")
     },
