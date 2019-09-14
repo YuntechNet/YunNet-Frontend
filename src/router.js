@@ -248,6 +248,15 @@ export default new Router({
       component: () => import("./components/system_dormitory/Sys_ip_log.vue")
     },
     {
+      path: "/all_log/:username",
+      name: "Sys_ALL_Log",
+      meta: {
+        isAuth: true,
+        system: "api.log.actions.all"
+      },
+      component: () => import("./components/system_dormitory/Sys_all_log.vue")
+    },
+    {
       path: "*",
       component: () => import("./components/Index.vue")
     }

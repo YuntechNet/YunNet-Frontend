@@ -118,6 +118,9 @@
                     <p style="white-space:nowrap;" class="fontsize-auto-user">{{item}}</p>
                   </div>
                 </div>
+                <div class="col-sm-4 offset-sm-4 col-12">
+                  <router-link :to="`./all_log/${info.user.username}`" class="btn btn-info">帳號紀錄</router-link>
+                </div>
               </div>
             </div>
             <div class="col-12" style="padding-top: 2%;"></div>

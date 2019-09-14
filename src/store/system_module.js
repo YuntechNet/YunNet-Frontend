@@ -11,14 +11,15 @@ import {
   SYSTEM_CHANGE_BED,
   SYSTEM_FILLIN_BED,
   SYSTEM_DELETE_BED,
-  SYSTEM_IP_LOG
+  SYSTEM_IP_LOG,
+  SYSTEM_ALL_LOG
 } from "./actions_type";
 import {
   SET_QUERY,
   SET_SYSTEM_LOCK,
   PURGE_SYSTEM,
   SET_ERROR,
-  SET_SYSTEM_IP_LOG
+  SET_SYSTEM_LOG
 } from "./mutations_type";
 
 const state = {
@@ -26,7 +27,7 @@ const state = {
   netflow: [],
   lock: [],
   wan: [],
-  ip_log: []
+  log: []
 };
 
 const actions = {
@@ -175,7 +176,24 @@ const actions = {
         const mac = ApiService.get("/log/ip/mac", credentials);
         ApiService.all([lock, mac])
           .then(response => {
-            context.commit(SET_SYSTEM_IP_LOG, response);
+            context.commit(SET_SYSTEM_LOG, response);
+            resolve(response);
+          })
+          .catch(() => {
+            router.replace({ name: "Index" });
+          });
+      });
+    }
+  },
+  [SYSTEM_ALL_LOG](context, credentials) {
+    if (JwtService.getToken()) {
+      return new Promise(resolve => {
+        const lock = ApiService.get("/log/ip/lock", credentials);
+        const mac = ApiService.get("/log/ip/mac", credentials);
+        const action = ApiService.get("/log/actions", credentials);
+        ApiService.all([lock, mac, action])
+          .then(response => {
+            context.commit(SET_SYSTEM_LOG, response);
             resolve(response);
           })
           .catch(() => {
@@ -199,14 +217,14 @@ const mutations = {
   [PURGE_SYSTEM](state) {
     state.info = { user: [], ip: [] };
   },
-  [SET_SYSTEM_IP_LOG](state, row) {
-    state.ip_log = [];
+  [SET_SYSTEM_LOG](state, row) {
+    state.log = [];
     row.forEach(item => {
-      if (item.data !== null) state.ip_log.push(item.data);
-      else state.ip_log.push([]);
+      if (item.data !== null) state.log.push(item.data);
+      else state.log.push([]);
     });
     // eslint-disable-next-line no-console
-    console.log(state.ip_log);
+    console.log(state.log);
   }
 };
 

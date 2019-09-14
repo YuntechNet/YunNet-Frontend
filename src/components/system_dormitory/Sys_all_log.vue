@@ -19,7 +19,7 @@
               </button>
             </div>
             <div class="float-left">
-              <h1>IP Log</h1>
+              <h1>User Log</h1>
             </div>
           </div>
 
@@ -65,16 +65,6 @@
                 </div>
 
                 <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">IP</p>
-                </div>
-                <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">IP</p>
-                </div>
-                <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.ip[0].ip}}</p>
-                </div>
-
-                <div class="col-4 font-weight-bold">
                   <p style="white-space:nowrap;text-align: center;" class="fontsize-auto-user">類型</p>
                 </div>
                 <div class="col-4 font-weight-bold">
@@ -87,6 +77,34 @@
                 </div>
               </div>
             </div>
+          </div>
+
+          <div class="pt-5 col-10 offset-1 table-responsive">
+            <table class="table table-sm" cellspacing="0">
+              <thead>
+                <tr style="white-space:nowrap;background-color:#337ab7;">
+                  <td id="thead" colspan="4" class="text-size" style="text-align:center;">Action Log</td>
+                </tr>
+                <tr style="white-space:nowrap;background-color:#337ab7;">
+                  <th id="thead" class="text-size" style="text-align:center;">Action</th>
+                  <th id="thead" class="text-size" style="text-align:center;">Date</th>
+                  <th id="thead" class="text-size" style="text-align:center;">ID</th>
+                  <th id="thead" class="text-size" style="text-align:center;">Username</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  style="background-color:#FAFAD2;color:#444444;"
+                  v-for="(item,index) in log[2]"
+                  :key="index"
+                >
+                  <th class="text-size" style="text-align:center;">{{item.action}}</th>
+                  <th class="text-size" style="text-align:center;">{{item.date}}</th>
+                  <th class="text-size" style="text-align:center;">{{item.id}}</th>
+                  <th class="text-size" style="text-align:center;">{{item.username}}</th>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <div class="pt-5 col-10 offset-1 table-responsive">
@@ -107,7 +125,7 @@
               <tbody>
                 <tr
                   style="background-color:#FAFAD2;color:#444444;"
-                  v-for="(item,index) in log[0]"
+                  v-for="(item,index) in log[1]"
                   :key="index"
                 >
                   <th class="text-size" style="text-align:center;">{{item.type}}</th>
@@ -144,8 +162,14 @@
                 >
                   <th class="text-size" style="text-align:center;">{{item.ip}}</th>
                   <th class="text-size" style="text-align:center;">{{item.owner}}</th>
-                  <th class="text-size" style="text-align:center;">{{item.old_mac!=null?item.old_mac.match( /.{1,2}/g ).join( ':' ).toUpperCase():"未設定"}}</th>
-                  <th class="text-size" style="text-align:center;">{{item.new_mac!=null?item.new_mac.match( /.{1,2}/g ).join( ':' ).toUpperCase():"未設定"}}</th>
+                  <th
+                    class="text-size"
+                    style="text-align:center;"
+                  >{{item.old_mac!=null?item.old_mac.match( /.{1,2}/g ).join( ':' ).toUpperCase():"未設定"}}</th>
+                  <th
+                    class="text-size"
+                    style="text-align:center;"
+                  >{{item.new_mac!=null?item.new_mac.match( /.{1,2}/g ).join( ':' ).toUpperCase():"未設定"}}</th>
                   <th class="text-size" style="text-align:center;">{{item.date}}</th>
                   <th class="text-size" style="text-align:center;">{{item.id}}</th>
                 </tr>
@@ -165,14 +189,14 @@
 <script>
 import Background from "@/components/Background";
 import { mapState } from "vuex";
-import { SYSTEM_IP_LOG, SYSTEM_QUERY } from "@/store/actions_type";
+import { SYSTEM_ALL_LOG, SYSTEM_QUERY } from "@/store/actions_type";
 
 export default {
   name: "IP_Log",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(SYSTEM_QUERY, this.$route.params.ip);
-    this.$store.dispatch(SYSTEM_IP_LOG, this.$route.params.ip);
+    this.$store.dispatch(SYSTEM_QUERY, this.$route.params.username);
+    this.$store.dispatch(SYSTEM_ALL_LOG, this.$route.params.username);
   },
 
   computed: {
