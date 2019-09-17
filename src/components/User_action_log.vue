@@ -91,7 +91,7 @@
                 >
                   <th class="text-size" style="text-align:center;">{{item.action}}</th>
                   <th class="text-size" style="text-align:center;">{{item.username}}</th>
-                  <th class="text-size" style="text-align:center;">{{`${item.date} +00`}}</th>
+                  <th class="text-size" style="text-align:center;">{{dateformat(item.id)}}</th>
                 </tr>
               </tbody>
             </table>
@@ -107,25 +107,31 @@
 
 
 <script>
-import Background from "@/components/Background";
-import { mapState } from "vuex";
-import { USER_LOG, INFO } from "@/store/actions_type";
+import Background from "@/components/Background"
+import { mapState } from "vuex"
+import { USER_LOG, INFO } from "@/store/actions_type"
 
 export default {
   name: "User_Log",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(INFO);
-    this.$store.dispatch(USER_LOG, this.$route.params.username);
+    this.$store.dispatch(INFO)
+    this.$store.dispatch(USER_LOG, this.$route.params.username)
   },
-
+  methods: {
+    dateformat(objectId) {
+      return new Date(
+        parseInt(objectId.substring(0, 8), 16) * 1000
+      ).toLocaleString("zh-TW", { timeZone: "Asia/Taipei", hour12: false })
+    }
+  },
   computed: {
     ...mapState({
       info: state => state.profile.info,
       log: state => state.system.log
     })
   }
-};
+}
 </script>
 
 

@@ -99,7 +99,7 @@
                   :key="index"
                 >
                   <th class="text-size" style="text-align:center;">{{item.action}}</th>
-                  <th class="text-size" style="text-align:center;">{{`${item.date} +00`}}</th>
+                  <th class="text-size" style="text-align:center;">{{dateformat(item.id)}}</th>
                   <th class="text-size" style="text-align:center;">{{item.id}}</th>
                   <th class="text-size" style="text-align:center;">{{item.username}}</th>
                 </tr>
@@ -170,7 +170,7 @@
                     class="text-size"
                     style="text-align:center;"
                   >{{item.new_mac!=null?item.new_mac.match( /.{1,2}/g ).join( ':' ).toUpperCase():"未設定"}}</th>
-                  <th class="text-size" style="text-align:center;">{{`${item.date} +00`}}</th>
+                  <th class="text-size" style="text-align:center;">{{dateformat(item.id)}}</th>
                   <th class="text-size" style="text-align:center;">{{item.id}}</th>
                 </tr>
               </tbody>
@@ -187,21 +187,25 @@
 
 
 <script>
-import Background from "@/components/Background";
-import { mapState } from "vuex";
-import { SYSTEM_ALL_LOG, SYSTEM_QUERY } from "@/store/actions_type";
+import Background from "@/components/Background"
+import { mapState } from "vuex"
+import { SYSTEM_ALL_LOG, SYSTEM_QUERY } from "@/store/actions_type"
 
 export default {
   name: "All_Log",
   components: { Background },
-  
+
   beforeCreate: function() {
-    this.$store.dispatch(SYSTEM_QUERY, this.$route.params.username);
-    this.$store.dispatch(SYSTEM_ALL_LOG, this.$route.params.username);
+    this.$store.dispatch(SYSTEM_QUERY, this.$route.params.username)
+    this.$store.dispatch(SYSTEM_ALL_LOG, this.$route.params.username)
   },
 
-  methods:{
-
+  methods: {
+    dateformat(objectId) {
+      return new Date(
+        parseInt(objectId.substring(0, 8), 16) * 1000
+      ).toLocaleString("zh-TW", { timeZone: "Asia/Taipei", hour12: false })
+    }
   },
 
   computed: {
@@ -210,7 +214,7 @@ export default {
       log: state => state.system.log
     })
   }
-};
+}
 </script>
 
 
