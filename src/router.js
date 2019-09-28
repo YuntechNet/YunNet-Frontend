@@ -205,6 +205,14 @@ export default new Router({
       component: () => import("./components/Set_Password.vue")
     },
     {
+      path: "/user_log/:username",
+      name: "user_log",
+      meta: {
+        isAuth: true,
+      },
+      component: () => import("./components/User_action_log.vue")
+    },
+    {
       path: "/system_query",
       name: "System_query",
       meta: {
@@ -243,6 +251,24 @@ export default new Router({
       },
       component: () =>
         import("./components/system_dormitory/Sys_change_bed.vue")
+    },
+    {
+      path: "/IP_log/:ip",
+      name: "Sys_IP_Log",
+      meta: {
+        isAuth: true,
+        system: "api.log.actions.all"
+      },
+      component: () => import("./components/system_dormitory/Sys_ip_log.vue")
+    },
+    {
+      path: "/all_log/:username",
+      name: "Sys_ALL_Log",
+      meta: {
+        isAuth: true,
+        system: "api.log.actions.all"
+      },
+      component: () => import("./components/system_dormitory/Sys_all_log.vue")
     },
     {
       path: "*",

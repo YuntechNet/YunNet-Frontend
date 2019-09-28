@@ -14,7 +14,7 @@
             title="解卡類型"
             @show="resetModal"
             @hidden="resetModal"
-            @ok="UnloclOK"
+            @ok="UnlockOK"
           >
             <b-form ref="form" @submit.stop.prevent="UnlockSubmit">
               <b-form-radio-group
@@ -118,6 +118,9 @@
                     <p style="white-space:nowrap;" class="fontsize-auto-user">{{item}}</p>
                   </div>
                 </div>
+                <div class="col-sm-4 offset-sm-4 col-12">
+                  <router-link :to="`./all_log/${info.user.username}`" class="btn btn-info">帳號紀錄</router-link>
+                </div>
               </div>
             </div>
             <div class="col-12" style="padding-top: 2%;"></div>
@@ -213,6 +216,7 @@
                           :to="`./user_netflow/${item.ip}`"
                           class="btn btn-primary"
                         >流量紀錄</router-link>
+                        <router-link :to="`./IP_Log/${item.ip}`" class="btn btn-info">使用紀錄</router-link>
                         <a
                           class="btn btn-primary"
                           :href="`http://cnms.yuntech.edu.tw/netflow.pl?action=ShowIP&IP=${item.ip}`"
@@ -280,7 +284,7 @@ export default {
       this.date = null;
       this.selected = null;
     },
-    UnloclOK(bvModalEvt) {
+    UnlockOK(bvModalEvt) {
       bvModalEvt.preventDefault();
       this.UnlockSubmit();
     },

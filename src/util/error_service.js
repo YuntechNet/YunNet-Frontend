@@ -104,10 +104,10 @@ const ErrorService = {
         context.commit(SET_ERROR, ErrorService.format(message));
       }
     }
-    if ((status === 400) & (message === "USER_ALREADY_EXIST")) {
+    if ((status === 400) & (message === "USER_ALREADY_EXISTS")) {
       context.commit(SET_ERROR, "帳號已存在");
     }
-    if ((status === 400) & (message === "USER_NOT_EXIST")) {
+    if ((status === 404) & (message === "USER_DOES_NOT_EXIST")) {
       context.commit(SET_ERROR, "帳號不存在");
     }
     if ((status === 400) & (message === "BAD_REQUEST")) {

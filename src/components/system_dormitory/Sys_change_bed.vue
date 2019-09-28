@@ -28,6 +28,7 @@
           <div class="col-10 offset-1">
             <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
             <div class="col-12">
+              <label class="pr-2">異動類型:</label>
               <select v-model="selected">
                 <option>床位交換</option>
                 <option>新增床位</option>
@@ -132,6 +133,7 @@
                   :options="[{ text: '一般房', value: false },{ text: '晨康房', value: true }]"
                   class="pb-2 text-light"
                   name="radio-validation"
+                  required
                 ></b-form-radio-group>
               </h5>
               <div>
@@ -153,7 +155,7 @@
                     maxlength="40"
                     v-model="delete_bed"
                     required
-                    placeholder="delete_bed"
+                    placeholder="username"
                   ></b-form-input>
                 </b-form-group>
               </h5>
@@ -172,14 +174,14 @@
 </template>
 
 <script>
-import Background from "@/components/Background"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { mapState } from "vuex";
 import {
   SYSTEM_CHANGE_BED,
   SYSTEM_FILLIN_BED,
   SYSTEM_DELETE_BED,
   ERROR
-} from "@/store/actions_type"
+} from "@/store/actions_type";
 
 export default {
   name: "Sys_change_bed",
@@ -197,24 +199,22 @@ export default {
       bed: null,
       is_panda: null,
       delete_bed: null,
-      selected: null,
-      back_mail: null,
-      note: null
-    }
+      selected: null
+    };
   },
   methods: {
     submit() {
-      let source_bed = this.old_bed
-      let dest_bed = this.new_bed
+      let source_bed = this.old_bed;
+      let dest_bed = this.new_bed;
       if (this.new_bed === this.REnew_bed) {
-        this.$store.dispatch(SYSTEM_CHANGE_BED, { source_bed, dest_bed })
+        this.$store.dispatch(SYSTEM_CHANGE_BED, { source_bed, dest_bed });
       } else {
-        this.$store.dispatch(ERROR, "重複床位錯誤!")
+        this.$store.dispatch(ERROR, "重複床位錯誤!");
       }
     },
     submit_add(username, nick, department, bed, is_panda) {
-      let back_mail = this.back_mail
-      let note = this.note
+      let back_mail = null;
+      let note = null;
       this.$store.dispatch(SYSTEM_FILLIN_BED, {
         username,
         nick,
@@ -223,10 +223,10 @@ export default {
         is_panda,
         note,
         back_mail
-      })
+      });
     },
     submit_delete(delete_bed) {
-      this.$store.dispatch(SYSTEM_DELETE_BED, delete_bed)
+      this.$store.dispatch(SYSTEM_DELETE_BED, delete_bed);
     }
   },
   computed: {
@@ -234,7 +234,7 @@ export default {
       errors: state => state.auth.errors
     })
   }
-}
+};
 </script>
 
 <style scoped>
