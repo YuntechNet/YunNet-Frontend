@@ -3,7 +3,7 @@
     <div class="panel-heading">
       <div>
         <h3 class="panel-title">
-          <a target="_blank" href="./#/user_announce4" style="color:#2980b9:margin:2px auto;">新血招募</a>
+          <a target="_blank" href="./#/user_announce4" style="color:#2980b9:margin:2px auto;">新生第二次招募</a>
         </h3>
       </div>
     </div>
@@ -16,7 +16,7 @@
 
       <div class="post-conten-area">
         <p>
-          <span style="font-size:20px">想在大學充滿回憶嗎，想在大學留下些甚麼嗎。</span>
+          <span style="font-size:20px">同學們期待的第二次招募出來了喔。現在就趕緊點下報名按鈕一探究竟吧</span>
         </p>
         <p>
           <span style="font-size:20px">
@@ -30,14 +30,10 @@
                 <li class="breadcrumb-item">
                   <a
                     target="_blank"
-                    href="https://docs.google.com/forms/d/e/1FAIpQLScLJLNtdIjuETvaEqxHAMbl0Z-NrDl4KkLrGfx8rj9z5tbPhA/viewform?fbclid=IwAR0P910NYT2Fb8l4fgS31BtuXagfoOWT_bWjIy-FVrIi8fQV9fsRjGoC-Y4"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSdqSF24WojCRKd_x_AyUMLGObs2cRr9V8SOan5qo3x5Jk5JXQ/viewform"
                   >報名面試</a>
                 </li>
                 <li class="breadcrumb-item">
-                  <a
-                    target="_blank"
-                    href="https://docs.google.com/forms/d/e/1FAIpQLScRyKiNdM5xJ5AuMnTK8woKtgz8ZiQgCnLLWSrmt0Z-nL5Rqw/viewform?fbclid=IwAR2uvr1ajFIJmWpUfMV8KM3HBdVfsfPZzqmngmZHbcMNLH6T0daZiZMT5CU"
-                  >報名體驗</a>
                 </li>
               </ol>
             </nav>

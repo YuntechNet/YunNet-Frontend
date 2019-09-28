@@ -80,22 +80,7 @@
       <div class="col-12">
         <h1 class="title" style="margin:0px auto">YunNET 雲科網管</h1>
 
-        <b-alert
-          class="col-sm-4 offset-sm-4 col-8 offset-2 alert-frame"
-          :show="k"
-          variant="danger"
-          dismissible
-          style="text-align:left;"
-        >
-          <a
-            style="font-size:20px;color:#a94442;"
-            href="https://docs.google.com/forms/d/e/1FAIpQLScRyKiNdM5xJ5AuMnTK8woKtgz8ZiQgCnLLWSrmt0Z-nL5Rqw/viewform?fbclid=IwAR2uvr1ajFIJmWpUfMV8KM3HBdVfsfPZzqmngmZHbcMNLH6T0daZiZMT5CU"
-            target="_blank"
-          >
-            網路管理小組歡迎你的加入。
-            <br />晚上7點到9點，為網管值班時間。
-          </a>
-        </b-alert>
+      
         <div class="col-12" style="padding:16vh;"></div>
         <div class="w-100 mb-4"> 
         <router-link
@@ -153,17 +138,7 @@
                 style="background-color: white;margin:0px auto;"
               ></iframe>
             </b-carousel-slide>
-            <b-carousel-slide style="height:62vh;background-color:rgba(63,127,191,0.1);">
-              <iframe
-                class="col-12 col-sm-10 offset-sm-1 announce rounded-lg"
-                id="announce2"
-                name="announce2"
-                width="100%"
-                height="100%"
-                src="./#/announce2"
-                style="background-color: white;margin:0px auto;"
-              ></iframe>
-            </b-carousel-slide>
+         
           </b-carousel>
           <div class="col-12" style="padding:2%;"></div>
         </div>
