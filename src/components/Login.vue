@@ -129,7 +129,7 @@ export default {
     };
   },
   mounted: function() {
-    this.$bvModal.show("notice");
+    //this.$bvModal.show("notice");
   },
   methods: {
     login() {
