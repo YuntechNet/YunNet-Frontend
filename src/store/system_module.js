@@ -127,7 +127,6 @@ const actions = {
       return new Promise(resolve => {
         ApiService.put("/management/bed-change", credentials)
           .then(({ data }) => {
-            router.replace({ name: "Index" });
             context.commit(SET_ERROR, data.message);
             resolve(data);
           })
@@ -143,7 +142,6 @@ const actions = {
       return new Promise(resolve => {
         ApiService.post("/management/bed-change", credentials)
           .then(({ data }) => {
-            router.replace({ name: "Index" });
             context.commit(SET_ERROR, data.message);
             resolve(data);
           })
@@ -159,7 +157,6 @@ const actions = {
       return new Promise(resolve => {
         ApiService.delete(`/management/bed-change/${credentials}`)
           .then(({ data }) => {
-            router.replace({ name: "Index" });
             context.commit(SET_ERROR, data.message);
             resolve(data);
           })

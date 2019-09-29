@@ -127,12 +127,6 @@ export default new Router({
       }
     },
     {
-      path: "/user_log",
-      name: "User_log",
-      component: () => import("./components/User_log.vue"),
-
-    },
-    {
       path: "/change_password",
       name: "Change_password",
       component: () => import("./components/Change_password.vue"),

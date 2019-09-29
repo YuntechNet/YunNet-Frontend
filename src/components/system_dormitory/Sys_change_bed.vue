@@ -26,7 +26,7 @@
           </div>
           <hr />
           <div class="col-10 offset-1">
-            <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
+            <b-alert :show="errors" variant="warning">{{errors}}</b-alert>
             <div class="col-12">
               <label class="pr-2">異動類型:</label>
               <select v-model="selected">
