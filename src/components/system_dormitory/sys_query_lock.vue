@@ -71,7 +71,7 @@
                   <p style="white-space:nowrap;margin-right:15%" class="fontsize-auto-user">IP</p>
                 </div>
                 <div class="col-4 font-weight-bold">
-                  <p style="white-space:nowrap;" class="fontsize-auto-user">{{info.ip[0].ip}}</p>
+                  <p style="white-space:nowrap;" class="fontsize-auto-user">{{this.$route.params.ip}}</p>
                 </div>
 
                 <div class="col-4 font-weight-bold">
@@ -127,29 +127,31 @@
 
 
 <script>
-import Background from "@/components/Background";
-import { SYSTEM_LOCK_TABLE, SYSTEM_QUERY } from "@/store/actions_type";
-import { mapState } from "vuex";
+import Background from "@/components/Background"
+import { SYSTEM_LOCK_TABLE, SYSTEM_QUERY } from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "User_lockTable",
   components: { Background },
   beforeCreate: function() {
-    this.$store.dispatch(SYSTEM_QUERY, this.$route.params.ip);
+    this.$store.dispatch(SYSTEM_QUERY, this.$route.params.ip)
   },
   created: function() {
-    if (this.info.ip[0].ip === this.$route.params.ip) {
-      this.ipnow = this.info.ip[0].ip;
+    this.ipdata = this.info.ip.find(item => {
+      return item.ip === this.$route.params.ip
+    })
+    if (typeof this.ipdata === "undefined") {
+      this.$router.replace({ name: "Index" })
+    } else {
+      this.$store.dispatch(SYSTEM_LOCK_TABLE, this.ipdata.ip)
     }
-    if (this.ipnow === null) {
-      this.$router.push({ name: "Index" });
-    }
-    this.$store.dispatch(SYSTEM_LOCK_TABLE, this.$route.params.ip);
   },
   data() {
     return {
+      ipdata: [],
       ipnow: null
-    };
+    }
   },
   computed: {
     ...mapState({
@@ -157,7 +159,7 @@ export default {
       lock: state => state.system.lock
     })
   }
-};
+}
 </script>
 
 
