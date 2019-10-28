@@ -158,6 +158,11 @@ export default new Router({
       component: () => import("./components/User_announce3.vue")
     },
     {
+      path: "/user_announce4",
+      name: "User_announce3",
+      component: () => import("./components/User_announce4.vue")
+    },
+    {
       path: "/announce1",
       name: "Announce1",
       component: () => import("./components/Announce1.vue")
@@ -171,6 +176,11 @@ export default new Router({
       path: "/announce3",
       name: "Announce3",
       component: () => import("./components/Announce3.vue")
+    },
+    {
+      path: "/announce4",
+      name: "Announce3",
+      component: () => import("./components/Announce4.vue")
     },
     {
       path: "/register_verify/:token",
