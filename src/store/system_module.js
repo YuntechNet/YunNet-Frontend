@@ -217,7 +217,7 @@ const mutations = {
   [SET_SYSTEM_LOG](state, row) {
     state.log = [];
     row.forEach(item => {
-      if (item.data !== null) state.log.push(item.data);
+      if (item.data !== null) state.log.push(item.data.reverse());
       else state.log.push([]);
     });
   }

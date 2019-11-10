@@ -126,8 +126,8 @@
             <div class="col-12" style="padding-top: 2%;"></div>
             <div class="col-sm-10 offset-sm-1 col-12" style="text-align:left;">
               <div class="card-deck" v-for="(item,index) in info.ip" :key="index">
-                <div :class="['card bg-light', item.lock_status==='LOCKED'?'border-warning':'']">
-                  <div :class="[item.lock_status==='LOCKED'?'bg-warning':'bg-light','card-header']">
+                <div :class="['card bg-light', item.lock_id!==null?'border-warning':'']">
+                  <div :class="[item.lock_id!==null?'bg-warning':'bg-light','card-header']">
                     <button
                       class="btn btn-block"
                       data-toggle="collapse"
@@ -149,7 +149,7 @@
                     </button>
                   </div>
                   <div
-                    :class="['card-body','collapse',index===0|item.lock_status==='LOCKED'?'show':'hide']"
+                    :class="['card-body','collapse',index===0|item.lock_id!==null?'show':'hide']"
                     :id="['id'+index]"
                   >
                     <div class="row">
@@ -202,8 +202,8 @@
                       <h5 class="col-sm-2 col-4" style="white-space:nowrap;width:100%;">鎖卡</h5>
                       <div
                         style="white-space:nowrap;width:100%;"
-                        :class="['row','col-sm-10 col-8', item.lock_status==='LOCKED'?'text-danger':'text-success']"
-                      >{{item.lock_status==='LOCKED'?"鎖卡":"未鎖卡"}}</div>
+                        :class="['row','col-sm-10 col-8', item.lock_id!==null?'text-danger':'text-success']"
+                      >{{item.lock_id!==null?"鎖卡":"未鎖卡"}}</div>
 
                       <div class="btn-group btn-right mx-3" role="group" aria-label="功能">
                         <router-link
@@ -253,51 +253,51 @@
 
 
 <script>
-import Background from "@/components/Background";
-import PermissionService from "@/util/permission_service";
+import Background from "@/components/Background"
+import PermissionService from "@/util/permission_service"
 import {
   SYSTEM_QUERY,
   /* WAN_DOWN,*/ SYSTEM_CLEAR,
   SYSTEM_UNLOCK
-} from "@/store/actions_type";
-import { mapState } from "vuex";
+} from "@/store/actions_type"
+import { mapState } from "vuex"
 
 export default {
   name: "System_query",
   components: { Background },
   created: function() {
-    this.$store.dispatch(SYSTEM_CLEAR);
+    this.$store.dispatch(SYSTEM_CLEAR)
   },
   methods: {
     eadablizeBytes(bytes) {
-      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"];
-      let e = Math.floor(Math.log(bytes) / Math.log(1024));
-      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
+      let s = ["Bytes", "KB", "MB", "GB", "TB", "PB"]
+      let e = Math.floor(Math.log(bytes) / Math.log(1024))
+      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e]
     },
     submit() {
-      let username = this.username;
+      let username = this.username
       this.$store.dispatch(SYSTEM_QUERY, username).then(() => {
         //this.$store.dispatch(WAN_DOWN);
-      });
+      })
     },
     resetModal() {
-      this.date = null;
-      this.selected = null;
+      this.date = null
+      this.selected = null
     },
     UnlockOK(bvModalEvt) {
-      bvModalEvt.preventDefault();
-      this.UnlockSubmit();
+      bvModalEvt.preventDefault()
+      this.UnlockSubmit()
     },
     UnlockSubmit() {
-      let date = this.date;
-      let ip = this.ip;
+      let date = this.date
+      let ip = this.ip
       if (!this.state) {
-        return;
+        return
       }
-      this.$store.dispatch(SYSTEM_UNLOCK, { ip, date });
+      this.$store.dispatch(SYSTEM_UNLOCK, { ip, date })
       this.$nextTick(() => {
-        this.$refs.modal.hide();
-      });
+        this.$refs.modal.hide()
+      })
     }
   },
   data() {
@@ -308,13 +308,13 @@ export default {
       ip: null,
       abuse: PermissionService.Check("api.ip.lock.add"),
       unlock: PermissionService.Check("api.ip.lock.edit")
-    };
+    }
   },
   computed: {
     state: function() {
-      if (this.selected === false) return true;
-      if ((this.selected === true) & (this.date != null)) return true;
-      else return false;
+      if (this.selected === false) return true
+      if ((this.selected === true) & (this.date != null)) return true
+      else return false
     },
     ...mapState({
       info: state => state.system.info,
@@ -322,7 +322,7 @@ export default {
       //wan: state => state.system.wan
     })
   }
-};
+}
 </script>
 
 
