@@ -157,13 +157,13 @@ export default new Router({
       name: "User_announce3",
       component: () => import("./components/User_announce3.vue")
     },
-
+    /*
     {
       path: "/user_announce4",
       name: "User_announce3",
       component: () => import("./components/User_announce4.vue")
     },
-
+*/
     {
       path: "/announce1",
       name: "Announce1",
@@ -179,13 +179,14 @@ export default new Router({
       name: "Announce3",
       component: () => import("./components/Announce3.vue")
     },
-    
+    /*    
     {
       path: "/announce4",
       name: "Announce3",
       component: () => import("./components/Announce4.vue")
     },
-    
+*/
+
     {
       path: "/register_verify/:token",
       name: "Register_verify",
@@ -206,7 +207,7 @@ export default new Router({
       path: "/user_log/:username",
       name: "user_log",
       meta: {
-        isAuth: true,
+        isAuth: true
       },
       component: () => import("./components/User_action_log.vue")
     },
