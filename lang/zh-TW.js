@@ -11,5 +11,8 @@ export default {
       netflow: '流量'
     }
   },
+  index: {
+    yunnet: '雲科網管'
+  },
   $vuetify: VuetifyZhTW
 }

@@ -22,7 +22,13 @@
         />
       </v-toolbar-items>
       <v-toolbar-items>
-        <v-btn @click="show" class="mx-1" outlined color="info">
+        <v-btn
+          v-show="$vuetify.breakpoint.mdAndUp"
+          @click="$vuetify.theme.dark = !$vuetify.theme.dark"
+          class="mx-1"
+          outlined
+          color="info"
+        >
           {{ this.$vuetify.theme.dark ? '開燈' : '關燈' }}
         </v-btn>
       </v-toolbar-items>
@@ -51,9 +57,9 @@ export default {
       default() {
         // the default model
         return {
-          router: [{ name: null, icon: null, to: null }],
-          link: [{ name: null, icon: null, to: null }],
-          tool: [{ name: null, icon: null, to: null }]
+          router: [{ name: String, icon: String, to: String }],
+          link: [{ name: String, icon: String, to: String }],
+          tool: [{ name: String, icon: String, to: String }]
         }
       }
     }
@@ -68,11 +74,6 @@ export default {
       if (this.$vuetify.theme.dark)
         return 'https://zh.nuxtjs.org/logos/built-with-nuxt-white.svg'
       else return 'https://nuxtjs.org/logos/built-with-nuxt.svg'
-    }
-  },
-  methods: {
-    show() {
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
     }
   }
 }

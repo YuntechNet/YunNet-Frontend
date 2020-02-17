@@ -11,5 +11,8 @@ export default {
       netflow: 'Netflow'
     }
   },
+  index: {
+    yunnet: 'YunNET'
+  },
   $vuetify: VuetifyEn
 }

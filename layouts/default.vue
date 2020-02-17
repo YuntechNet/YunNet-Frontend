@@ -17,8 +17,17 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-divider></v-divider>
-
+      <v-divider />
+      <v-list dense nav>
+        <v-btn
+          @click="$vuetify.theme.dark = !$vuetify.theme.dark"
+          class="mx-1"
+          outlined
+          color="info"
+        >
+          {{ this.$vuetify.theme.dark ? '開燈' : '關燈' }}
+        </v-btn></v-list
+      >
       <v-list dense nav>
         <v-list-item v-for="i in item.router" :key="i.name" link disabled>
           <v-list-item-content>
