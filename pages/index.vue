@@ -31,14 +31,14 @@
           <v-row align="center">
             <v-col>
               <v-window v-model="window" class="elevation-1" vertical>
-                <v-window-item v-for="n in length" :key="n">
+                <v-window-item v-for="j in length" :key="j">
                   <v-card>
                     <v-card-text>
                       <div class="mb-4 d-flex">
                         <v-avatar color="grey" class="mr-4"></v-avatar>
-                        <v-list-item-title class="title"
-                          >Title {{ n }}</v-list-item-title
-                        >
+                        <v-list-item-title class="title">
+                          Title {{ j }}
+                        </v-list-item-title>
                         <v-spacer />
                         <v-btn icon>
                           <v-icon>mdi-account</v-icon>

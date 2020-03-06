@@ -27,7 +27,7 @@
           @click="$vuetify.theme.dark = !$vuetify.theme.dark"
           class="mx-1"
           outlined
-          color="info"
+          color="teal accent-4"
         >
           {{ this.$vuetify.theme.dark ? '開燈' : '關燈' }}
         </v-btn>
@@ -36,11 +36,13 @@
         <v-btn
           v-for="k in linkItem.tool"
           :key="k.name"
+          :to="k.to"
           class="mx-1"
           outlined
-          color="info"
-          disabled
-          >{{ k.name }}</v-btn
+          color="teal accent-4"
+          nuxt
+        >
+          {{ k.name }}</v-btn
         >
       </v-toolbar-items>
     </v-row>
@@ -71,9 +73,8 @@ export default {
   },
   computed: {
     logo() {
-      if (this.$vuetify.theme.dark)
-        return 'https://zh.nuxtjs.org/logos/built-with-nuxt-white.svg'
-      else return 'https://nuxtjs.org/logos/built-with-nuxt.svg'
+      if (this.$vuetify.theme.dark) return '/Yunnet-dark.svg'
+      else return '/Yunnet-light.svg'
     }
   }
 }

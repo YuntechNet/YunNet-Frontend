@@ -47,6 +47,7 @@ module.exports = {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
+    '@nuxtjs/recaptcha',
     'nuxt-i18n'
   ],
   /*
@@ -106,6 +107,13 @@ module.exports = {
       // If no locale for the browsers locale is a match, use this one as a fallback
       fallbackLocale: 'zhHant'
     }
+  },
+  recaptcha: {
+    hideBadge: false, // Hide badge element (v3 & v2 via size=invisible)
+    language: 'zh-TW',
+    siteKey: '6LcukLAUAAAAACA1hw5Rz_uh8dwNrNZGYlAl4CDW', // Site key for requests
+    version: 2, // Version
+    size: 'invisible' // Size: 'compact', 'normal', 'invisible' (v2)
   },
   /*
    ** Build configuration

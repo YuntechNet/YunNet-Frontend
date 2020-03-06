@@ -4,12 +4,16 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title">
-            <v-avatar color="primary" class="mr-2">
-              <v-icon dark>mdi-account-circle</v-icon>
-            </v-avatar>
-            {{
-              `${$t('layout.default.login')} / ${$t('layout.default.register')}`
-            }}
+            <nuxt-link :to="localePath('login')">
+              <v-avatar color="primary" class="mr-2">
+                <v-icon dark>mdi-account-circle</v-icon>
+              </v-avatar>
+              {{
+                `${$t('layout.default.login')} / ${$t(
+                  'layout.default.register'
+                )}`
+              }}</nuxt-link
+            >
           </v-list-item-title>
           <v-list-item-subtitle v-show="false">
             subtext
@@ -49,6 +53,7 @@
     </v-navigation-drawer>
 
     <HeaderBar :linkItem="item" @show-draw="draw = $event" />
+
     <v-content>
       <nuxt />
     </v-content>
@@ -90,12 +95,12 @@ export default {
           {
             name: this.$t('layout.default.login'),
             icon: 'mdi-information',
-            to: null
+            to: this.localePath('login')
           },
           {
             name: this.$t('layout.default.register'),
             icon: 'mdi-information',
-            to: null
+            to: this.localePath('register')
           }
         ],
         link: [
@@ -116,3 +121,10 @@ export default {
   }
 }
 </script>
+
+<style>
+router-link,
+a {
+  text-decoration: none !important;
+}
+</style>
