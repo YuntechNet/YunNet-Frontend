@@ -1,93 +1,130 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
+  <v-app>
+    <v-navigation-drawer v-model="draw" app disable-resize-watcher>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="title">
+            <nuxt-link :to="localePath('login')">
+              <v-avatar color="primary" class="mr-2">
+                <v-icon dark>mdi-account-circle</v-icon>
+              </v-avatar>
+              {{
+                `${$t('layout.default.login')} / ${$t(
+                  'layout.default.register'
+                )}`
+              }}</nuxt-link
+            >
+          </v-list-item-title>
+          <v-list-item-subtitle v-show="false">
+            subtext
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider />
+      <v-list dense nav>
+        <v-btn
+          class="mx-1"
+          outlined
+          color="info"
+          @click="$vuetify.theme.dark = !$vuetify.theme.dark"
         >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
+          {{ this.$vuetify.theme.dark ? '開燈' : '關燈' }}
+        </v-btn></v-list
+      >
+      <v-list dense nav>
+        <v-list-item v-for="i in item.router" :key="i.name" link disabled>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title>
+              <v-icon class="mr-2">{{ i.icon }}</v-icon>
+              {{ i.name }}</v-list-item-title
+            >
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item v-for="j in item.link" :key="j.name" :href="j.to" link>
+          <v-list-item-content>
+            <v-list-item-title
+              ><v-icon class="mr-2">{{ j.icon }}</v-icon
+              >{{ j.name }}</v-list-item-title
+            >
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
-    </v-app-bar>
+
+    <HeaderBar :link-item="item" @show-draw="draw = $event" />
+
     <v-content>
-      <v-container>
-        <nuxt />
-      </v-container>
+      <nuxt />
     </v-content>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+
+    <v-footer app absolute>
+      <span>Yuntech Network Management. All rights reserved.</span>
+      <v-spacer v-show="$vuetify.breakpoint.mdAndUp" />
+      <span>&copy; {{ year }}</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import HeaderBar from '@/components/HeaderBar'
 export default {
+  name: 'Default',
+  components: { HeaderBar },
   data() {
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      item: {
+        router: [
+          {
+            name: this.$t('layout.default.contract'),
+            icon: 'mdi-information-variant',
+            to: null
+          },
+          {
+            name: this.$t('layout.default.announce'),
+            icon: 'mdi-bullhorn',
+            to: null
+          },
+          {
+            name: this.$t('layout.default.about'),
+            icon: 'mdi-face-agent',
+            to: null
+          }
+        ],
+        tool: [
+          {
+            name: this.$t('layout.default.login'),
+            icon: 'mdi-information',
+            to: this.localePath('login')
+          },
+          {
+            name: this.$t('layout.default.register'),
+            icon: 'mdi-information',
+            to: this.localePath('register')
+          }
+        ],
+        link: [
+          {
+            name: this.$t('layout.default.netflow'),
+            icon: 'mdi-swap-vertical-bold',
+            to: 'http://cnms.yuntech.edu.tw/netflow.pl'
+          }
+        ]
+      },
+      draw: false
+    }
+  },
+  computed: {
+    year() {
+      return new Date().getFullYear()
     }
   }
 }
 </script>
+
+<style>
+router-link,
+a {
+  text-decoration: none !important;
+}
+</style>

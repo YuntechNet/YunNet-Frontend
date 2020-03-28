@@ -22,7 +22,7 @@ module.exports = {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: '#00BFA6' },
   /*
    ** Global CSS
    */
@@ -47,7 +47,9 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/recaptcha',
+    'nuxt-i18n'
   ],
   /*
    ** Axios module configuration
@@ -61,7 +63,7 @@ module.exports = {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -73,7 +75,46 @@ module.exports = {
           success: colors.green.accent3
         }
       }
+    },
+    optionsPath: './vuetify.options.js'
+  },
+  i18n: {
+    locales: [
+      {
+        name: '繁體中文',
+        code: 'zhHant',
+        iso: 'zhHant',
+        file: 'zh-TW.js'
+      },
+      {
+        name: 'English',
+        code: 'en',
+        iso: 'en-US',
+        file: 'en-US.js'
+      }
+    ],
+    lazy: true,
+    langDir: 'lang/',
+    defaultLocale: 'zhHant',
+    detectBrowserLanguage: {
+      // If enabled, a cookie is set once a user has been redirected to his
+      // preferred language to prevent subsequent redirections
+      // Set to false to redirect every time
+      useCookie: true,
+      // Cookie name
+      cookieKey: 'i18n_redirected',
+      // Set to always redirect to value stored in the cookie, not just once
+      alwaysRedirect: true,
+      // If no locale for the browsers locale is a match, use this one as a fallback
+      fallbackLocale: 'zhHant'
     }
+  },
+  recaptcha: {
+    hideBadge: false, // Hide badge element (v3 & v2 via size=invisible)
+    language: 'zh-TW',
+    siteKey: '6LcukLAUAAAAACA1hw5Rz_uh8dwNrNZGYlAl4CDW', // Site key for requests
+    version: 2, // Version
+    size: 'invisible' // Size: 'compact', 'normal', 'invisible' (v2)
   },
   /*
    ** Build configuration
