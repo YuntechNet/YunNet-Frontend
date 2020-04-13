@@ -157,6 +157,11 @@ export default new Router({
       name: "User_announce3",
       component: () => import("./components/User_announce3.vue")
     },
+    {
+      path: "/user_announce5",
+      name: "User_announce5",
+      component: () => import("./components/User_announce5.vue")
+    },
     /*
     {
       path: "/user_announce4",
@@ -178,6 +183,11 @@ export default new Router({
       path: "/announce3",
       name: "Announce3",
       component: () => import("./components/Announce3.vue")
+    },
+    {
+      path: "/announce5",
+      name: "Announce5",
+      component: () => import("./components/Announce5.vue")
     },
     /*    
     {
