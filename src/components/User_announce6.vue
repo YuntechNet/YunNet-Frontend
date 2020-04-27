@@ -6,12 +6,12 @@
         <div class="col-12 head-padding"></div>
         <div
           class="col-12 col-sm-10 offset-sm-1 frame"
-          style="background-color: rgb(51, 51, 51,0.6);height:110vh;"
+          style="background-color: rgb(51, 51, 51,0.6);height:80vh;"
         >
           <div class="row">
             <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
               <div class="float-right">
-                <a
+               <a
                   href="javascript:window.close();"
                   to="./"
                   class="btn btn-default btn-lg"
@@ -29,13 +29,13 @@
             <hr />
           </div>
           <div class="col-12" style="padding:2%;"></div>
-          <div class="col-12 col-sm-10 offset-sm-1 rounded-lg" style="height:70vh;">
+          <div class="col-12 col-sm-10 offset-sm-1 rounded-lg" style="height:40vh;">
             <iframe
-              id="announce4"
-              name="announce4"
+              id="announce6"
+              name="announce6"
               width="100%"
               height="100%"
-              src="./#/announce4"
+              src="./#/announce6"
               style="background-color: white;"
             ></iframe>
           </div>
@@ -60,4 +60,5 @@ export default {
 hr {
   background-color: white;
 }
+
 </style>
