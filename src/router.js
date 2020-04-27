@@ -189,13 +189,11 @@ export default new Router({
       name: "Announce5",
       component: () => import("./components/Announce5.vue")
     },
-    /*    
     {
       path: "/announce4",
       name: "Announce3",
       component: () => import("./components/Announce4.vue")
     },
-*/
 
     {
       path: "/register_verify/:token",
