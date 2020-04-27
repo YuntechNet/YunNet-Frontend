@@ -5,7 +5,7 @@
         <h3 class="panel-title">
           <a
             target="_blank"
-            href="./#/user_announce5"
+            href="./#/user_announce6"
             style="color:#2980b9:margin:2px auto;"
             >C3 設備更換公告</a
           >
@@ -32,7 +32,7 @@
 </template>
 <script>
 export default {
-  name: "Announce6"
+  name: "Announce6",
 };
 </script>
 <style scoped>
