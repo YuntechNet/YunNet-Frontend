@@ -187,21 +187,21 @@ export default new Router({
       name: "Announce3",
       component: () => import("./components/Announce3.vue")
     },
-    {
+    /*{
       path: "/announce4",
       name: "Announce4",
       component: () => import("./components/Announce4.vue")
-    },
+    },*/
     {
       path: "/announce5",
       name: "Announce5",
       component: () => import("./components/Announce5.vue")
     },
-    {
+    /*{
       path: "/announce6",
       name: "Announce6",
       component: () => import("./components/Announce6.vue")
-    },
+    },*/
 
     {
       path: "/register_verify/:token",
