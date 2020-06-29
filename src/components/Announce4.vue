@@ -3,7 +3,7 @@
     <div class="panel-heading">
       <div>
         <h3 class="panel-title">
-          <a target="_blank" href="./#/user_announce4" style="color:#2980b9:margin:2px auto;">期中考週外修公告</a>
+          <a target="_blank" href="./#/user_announce4" style="color:#2980b9:margin:2px auto;">期末考週外修公告</a>
         </h3>
       </div>
     </div>
