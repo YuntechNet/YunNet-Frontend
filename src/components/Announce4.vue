@@ -10,7 +10,9 @@
     <div class="panel-body">
       <div class="post-info-area">
         <div class="row">
-          <div style="padding:20px;">2020-4-27 02:00:00</div>
+
+          <div style="padding:20px;">2020-6-28 00:00:00</div>
+
         </div>
       </div>
 
@@ -20,7 +22,9 @@
         </p>
         <p>
           <span style="font-size:20px">
-            由於四月二十七日至五月三日為期中考週，因此網管小組暫停外修
+
+            由於六月二十九日至七月三日為期末考週，因此網管小組暫停外修
+
             一週。若宿舍網路有問題，請多加利用本小組值班時間，提前至C1 宿舍服
             務中心報修。造成不便，敬請見諒
           </span>

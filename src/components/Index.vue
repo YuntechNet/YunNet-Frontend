@@ -105,7 +105,9 @@
         </div>
         <div>
           <b-carousel id="carousel-1" v-model="slide" controls indicators>
-             <!--<b-carousel-slide style="height:62vh;background-color:rgba(63,127,191,0.1);">
+
+            <b-carousel-slide style="height:62vh;background-color:rgba(63,127,191,0.1);">
+
               <iframe
                 class="col-12 col-sm-10 offset-sm-1 announce rounded-lg"
                 id="announce4"
@@ -116,17 +118,7 @@
                 style="background-color: white;margin:0px auto;"
               ></iframe>
             </b-carousel-slide>
-            <b-carousel-slide style="height:62vh;background-color:rgba(63,127,191,0.1);">
-              <iframe
-                class="col-12 col-sm-10 offset-sm-1 announce rounded-lg"
-                id="announce6"
-                name="announce6"
-                width="100%"
-                height="100%"
-                src="./#/announce6"
-                style="background-color: white;margin:0px auto;"
-              ></iframe>
-            </b-carousel-slide>-->
+
             <b-carousel-slide style="height:62vh;background-color:rgba(63,127,191,0.1);">
               <iframe
                 class="col-12 col-sm-10 offset-sm-1 announce rounded-lg"
