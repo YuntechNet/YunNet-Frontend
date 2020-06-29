@@ -162,13 +162,11 @@ export default new Router({
       name: "User_announce5",
       component: () => import("./components/User_announce5.vue")
     },
-    /*
     {
       path: "/user_announce4",
       name: "User_announce3",
       component: () => import("./components/User_announce4.vue")
     },
-*/
     {
       path: "/announce1",
       name: "Announce1",
@@ -188,15 +186,12 @@ export default new Router({
       path: "/announce5",
       name: "Announce5",
       component: () => import("./components/Announce5.vue")
-    },
-    /*    
+    },    
     {
       path: "/announce4",
       name: "Announce3",
       component: () => import("./components/Announce4.vue")
     },
-*/
-
     {
       path: "/register_verify/:token",
       name: "Register_verify",
