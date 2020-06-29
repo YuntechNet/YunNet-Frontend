@@ -7,7 +7,8 @@
             target="_blank"
             href="./#/user_announce5"
             style="color:#2980b9:margin:2px auto;"
-          >防疫期間流量調整公告</a>
+            >防疫期間流量調整公告</a
+          >
         </h3>
       </div>
     </div>
@@ -34,13 +35,16 @@
         </p>
         <p>
           <span style="font-size:20px">
-            From 4/14 to 7/10, during the epidemic prevention period, in order to meet the needs of distance learning, the daily netflow was adjusted from 8G to 10G.
+            From 4/14 to 7/10, during the epidemic prevention period, in order
+            to meet the needs of distance learning, the daily netflow was
+            adjusted from 8G to 10G.
             <br />
           </span>
         </p>
         <p>
           <span style="font-size:20px">
-            If you have network problems, please report to the network management group at the C1 dormitory service center.
+            If you have network problems, please report to the network
+            management group at the C1 dormitory service center.
             <br />
           </span>
         </p>
@@ -51,7 +55,7 @@
 <script>
 export default {
   name: "Announce5"
-}
+};
 </script>
 <style scoped>
 p {
@@ -61,5 +65,3 @@ p {
   font-weight: 400;
 }
 </style>
-
-<script>

@@ -158,14 +158,19 @@ export default new Router({
       component: () => import("./components/User_announce3.vue")
     },
     {
+      path: "/user_announce4",
+      name: "User_announce4",
+      component: () => import("./components/User_announce4.vue")
+    },
+    {
       path: "/user_announce5",
       name: "User_announce5",
       component: () => import("./components/User_announce5.vue")
     },
     {
-      path: "/user_announce4",
-      name: "User_announce3",
-      component: () => import("./components/User_announce4.vue")
+      path: "/user_announce6",
+      name: "User_announce6",
+      component: () => import("./components/User_announce6.vue")
     },
     {
       path: "/announce1",
@@ -182,16 +187,23 @@ export default new Router({
       name: "Announce3",
       component: () => import("./components/Announce3.vue")
     },
+    /*{
+      path: "/announce4",
+      name: "Announce4",
+      component: () => import("./components/Announce4.vue")
+    },*/
     {
       path: "/announce5",
       name: "Announce5",
       component: () => import("./components/Announce5.vue")
+
     },    
     {
       path: "/announce4",
       name: "Announce3",
       component: () => import("./components/Announce4.vue")
     },
+
     {
       path: "/register_verify/:token",
       name: "Register_verify",
