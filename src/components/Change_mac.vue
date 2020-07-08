@@ -9,10 +9,13 @@
           style="background-color: rgb(51, 51, 51,0.6);"
         >
           <div class="row">
-            <div class="col-10 offset-1" style="padding-top: 3%; padding-bottom: 2%; color: white;">
+            <div
+              class="col-10 offset-1"
+              style="padding-top: 3%; padding-bottom: 2%; color: white;"
+            >
               <div class="float-right">
                 <router-link
-                  :to="{name:'Index'}"
+                  :to="{ name: 'Index' }"
                   class="btn btn-default btn-lg"
                   style="background-color: white;"
                 >
@@ -28,24 +31,39 @@
             <hr />
           </div>
           <div class="col-sm-4 offset-sm-4 col-12" style="color: white;">
-            <b-alert :show="errors" variant="danger">{{errors}}</b-alert>
+            <b-alert :show="errors" variant="danger">{{ errors }}</b-alert>
             <div style="text-align:left;">
               <div class="form-group">
                 <label>當前 MAC 卡號:</label>
                 <div class="w-100"></div>
                 <kbd
-                  :class="['form-contro-static',ipdata.mac===null?'bg-danger text-white':'']"
-                >{{ipdata.mac!=null?ipdata.mac.match( /.{1,2}/g ).join( ':' ).toUpperCase():"未設定"}}</kbd>
+                  :class="[
+                    'form-contro-static',
+                    ipdata.mac === null ? 'bg-danger text-white' : '',
+                  ]"
+                  >{{
+                    ipdata.mac != null
+                      ? ipdata.mac
+                          .match(/.{1,2}/g)
+                          .join(":")
+                          .toUpperCase()
+                      : "未設定"
+                  }}</kbd
+                >
               </div>
             </div>
             <b-form
               class="mb-3"
               style="text-align:left;"
-              @submit.prevent="submit(mac1+mac2+mac3+mac4+mac5+mac6)"
+              @submit.prevent="submit(mac1 + mac2 + mac3 + mac4 + mac5 + mac6)"
             >
               <label>新 MAC 卡號:</label>
 
-              <div data-v-58764d52 class="form-group" style="white-space:nowrap;width:100%;">
+              <div
+                data-v-58764d52
+                class="form-group"
+                style="white-space:nowrap;width:100%;"
+              >
                 <div data-v-58764d52 style="display: inline;">
                   <input
                     data-v-58764d52
@@ -125,11 +143,12 @@
             style="color: white;"
           >
             <ul style="text-align:left;">
-              <li>本系統於每小時連接網路設備更新有更動之使用者網路卡卡號，請耐心等候下次更新時間。</li>
+              <li>
+                本系統於每小時連接網路設備更新有更動之使用者網路卡卡號，請耐心等候下次更新時間。
+              </li>
               <li>
                 輸入之 MAC 格式可為下列型式:
-                <br />xx-xx-xx-xx-xx-xx。
-                <br />xx:xx:xx:xx:xx:xx。
+                <br />xx-xx-xx-xx-xx-xx。 <br />xx:xx:xx:xx:xx:xx。
                 <br />xxxx.xxxx.xxxx。
               </li>
             </ul>
@@ -139,8 +158,8 @@
               <div class="col-sm-4 col-12">
                 <strong>Windows XP System.</strong>
                 <iframe
+                  src="https://drive.google.com/file/d/1QEf9slMTt9bIQBsxngATXaU0oBOZMenK/preview"
                   style="width:100%;height:80%"
-                  src="https://drive.google.com/file/d/0B7hvpkydNrx8STVnRmF0bS0zdFE/preview"
                   allowfullscreen
                 ></iframe>
               </div>
@@ -148,7 +167,7 @@
                 <strong>Windows 7/8/10</strong>
                 <iframe
                   style="width:100%;height:80%"
-                  src="https://drive.google.com/file/d/0B7hvpkydNrx8Y1NsdFlLUDUybmc/preview"
+                  src="https://drive.google.com/file/d/1eU6EbGYix-tVVzUslm6uhBH43wZUbSpB/preview"
                   allowfullscreen
                 ></iframe>
               </div>
@@ -156,7 +175,7 @@
                 <strong>MAC OS ---System.</strong>
                 <iframe
                   style="width:100%;height:80%"
-                  src="https://drive.google.com/file/d/0B7hvpkydNrx8eTZJRjVnYUdVMHM/preview"
+                  src="https://drive.google.com/file/d/1CwCFhEJl7AhHwr-n6Aigoo_SwMDfokLg/preview"
                   allowfullscreen
                 ></iframe>
               </div>
@@ -170,22 +189,22 @@
   </div>
 </template>
 <script>
-import Background from "@/components/Background"
-import { CHANGE_MAC, IP, ERROR } from "@/store/actions_type"
-import { mapState } from "vuex"
+import Background from "@/components/Background";
+import { CHANGE_MAC, IP, ERROR } from "@/store/actions_type";
+import { mapState } from "vuex";
 
 export default {
   name: "Change_mac",
   components: { Background },
   created: function() {
     this.$store.dispatch(IP).then(() => {
-      this.ipdata = this.info_IP.find(item => {
-        return item.ip === this.ipnow
-      })
+      this.ipdata = this.info_IP.find((item) => {
+        return item.ip === this.ipnow;
+      });
       if (this.ipdata === undefined) {
-        this.$router.replace({ name: "Index" })
+        this.$router.replace({ name: "Index" });
       }
-    })
+    });
   },
   data() {
     return {
@@ -196,28 +215,28 @@ export default {
       mac5: null,
       mac6: null,
       ipdata: {},
-      ipnow: this.$route.params.ip
-    }
+      ipnow: this.$route.params.ip,
+    };
   },
   methods: {
     submit(mac) {
-      let reg = /[\W]/g
-      mac = mac.toUpperCase()
+      let reg = /[\W]/g;
+      mac = mac.toUpperCase();
       if (!reg.test(mac)) {
-        let ip = this.$route.params.ip
-        this.$store.dispatch(CHANGE_MAC, { mac, ip })
+        let ip = this.$route.params.ip;
+        this.$store.dispatch(CHANGE_MAC, { mac, ip });
       } else {
-        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字")
+        this.$store.dispatch(ERROR, "格式錯誤:只能英文和數字");
       }
-    }
+    },
   },
   computed: {
     ...mapState({
-      info_IP: state => state.profile.info_IP,
-      errors: state => state.auth.errors
-    })
-  }
-}
+      info_IP: (state) => state.profile.info_IP,
+      errors: (state) => state.auth.errors,
+    }),
+  },
+};
 </script>
 <style scoped>
 hr {
