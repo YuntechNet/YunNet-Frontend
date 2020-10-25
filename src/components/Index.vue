@@ -265,7 +265,7 @@ export default {
 </script>
 <style scoped>
 #BK {
-  background: url("https://yunnet.yuntech.edu.tw/static/stylish-portfolio/img/bg_test8_compress.jpg")
+  background: url("~@/assets/bg_test8_compress.jpg")
     center center no-repeat;
   margin: 0;
   padding: 0;
